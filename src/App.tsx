@@ -1,10 +1,9 @@
 import React from 'react';
-import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div >
-     hello
+     <h1>hello</h1>
     </div>
   );
 }
