@@ -6,7 +6,8 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ForgotPassword from "./pages/ForgotPassword";
 
-function App() {
+
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -15,6 +16,6 @@ function App() {
       <Route path="forgot-password" element={<ForgotPassword />} />
     </Routes>
   );
-}
+};
 
 export default App;
