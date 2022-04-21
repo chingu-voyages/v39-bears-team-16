@@ -5,11 +5,11 @@ import App from './App';
 import { GlobalStyle } from './global-style';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
+  document.getElementById('root') as HTMLElement
 );
 root.render(
   <>
     <GlobalStyle />
     <App />
-  </>,
+  </>
 );
