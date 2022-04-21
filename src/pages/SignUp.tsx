@@ -4,35 +4,9 @@ import { FaUserAlt, FaTwitterSquare } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-
-const Container = styled.section`
-  background: black;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const Section = styled.section`
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1.5rem;
-  width: fit-content;
-  height: auto;
-  padding: 2rem;
-`;
-const Input = styled.input`
-  background: lightgray;
-  border: none;
-  border-radius: 1rem;
-  height: 50px;
-  width: 100%;
-`;
+import { Container } from "../styles/Container";
+import { Section } from "../styles/Section";
+import { Field } from "../styles/Field";
 
 const SignUp = () => {
   const {
@@ -47,40 +21,42 @@ const SignUp = () => {
     <Container>
       <Section>
         <h1>Sign Up</h1>
-        <FaTwitterSquare />
+        <FaTwitterSquare className="tweeterIcon" />
         <h2>or use your email to register</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <FaUserAlt />
-            <Input
+          <Field>
+            <FaUserAlt className="fieldIcon" />
+            <input
               type="text"
               placeholder="name"
               {...register("name", { required: true, maxLength: 80 })}
             />
-          </div>
+          </Field>
 
-          <div>
-            <AiOutlineMail />
-            <Input
+          <Field>
+            <AiOutlineMail className="fieldIcon" />
+            <input
               type="email"
               placeholder="email"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             />
-          </div>
+          </Field>
 
-          <div>
-            <RiLockPasswordLine />
-            <Input
+          <Field>
+            <RiLockPasswordLine className="fieldIcon" />
+            <input
               type="password"
               placeholder="password"
               {...register("password", { required: true })}
             />
-          </div>
+          </Field>
 
-          <button type="submit">SIGN UP</button>
+          <Field>
+            <button type="submit">SIGN UP</button>
+          </Field>
         </form>
         <h3>Already have an account?</h3>
-        <Link to="/sign-in">Login Here</Link>
+        <Link className="link" to="/sign-in">Login Here</Link>
       </Section>
     </Container>
   );
