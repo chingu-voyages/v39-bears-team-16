@@ -1,5 +1,3 @@
-import React from "react";
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
@@ -7,6 +5,7 @@ import SignIn from "./pages/SignIn";
 import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
+  // theme provider here
   return (
     <Routes>
       <Route path="/" element={<Home />} />
