@@ -1,3 +1,6 @@
+import React from "react";
+import { ThemeProvider } from "styled-components";
+
 export const theme = {
     color: {
         white: '#FFFFFF',
@@ -18,3 +21,9 @@ export const theme = {
         darkViolet: '#30304D'
     }
 };
+
+const Theme = ({ children }) => (
+    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+);
+
+export default Theme;
