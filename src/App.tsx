@@ -5,8 +5,8 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ForgotPassword from "./pages/ForgotPassword";
 
-
 const App = () => {
+  // theme provider here
   return (
     <Routes>
       <Route path="/" element={<Home />} />
