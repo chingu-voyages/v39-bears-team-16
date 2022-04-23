@@ -8,11 +8,6 @@ import styled from "styled-components";
 
 function App() {
   // theme provider here
-  <Theme>
-    <div>
-      <h2>Test</h2>
-    </div>
-  </Theme>
   
   return (
       <ThemeProvider theme={theme}>
