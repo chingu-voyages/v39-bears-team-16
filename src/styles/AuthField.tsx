@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Field = styled.section`
+export const AuthField = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -25,14 +25,5 @@ export const Field = styled.section`
   .fieldIcon {
     color: white;
   }
-  button {
-    border: none;
-    background: none;
-    width: 100%;
-    height: 100%;
-    color: white;
-    background-color: #20c997;
-    border-radius: 10px;
-    cursor: pointer;
-  }
+
 `;

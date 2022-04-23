@@ -1,12 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaUserAlt, FaTwitterSquare } from "react-icons/fa";
-import { AiOutlineMail } from "react-icons/ai";
-import { RiLockPasswordLine } from "react-icons/ri";
+import { HiMail } from "react-icons/hi";
+import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { Container } from "../styles/Container";
 import { Section } from "../styles/Section";
-import { Field } from "../styles/Field";
+import { AuthField } from "../styles/AuthField";
+import { AuthButton } from "../styles/AuthButton";
 
 const SignUp = () => {
   const {
@@ -21,42 +22,42 @@ const SignUp = () => {
     <Container>
       <Section>
         <h1>Sign Up</h1>
-        <FaTwitterSquare className="tweeterIcon" />
+        <FaTwitterSquare className="twitterIcon" />
         <h2>or use your email to register</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Field>
+          <AuthField>
             <FaUserAlt className="fieldIcon" />
             <input
               type="text"
               placeholder="name"
               {...register("name", { required: true, maxLength: 80 })}
             />
-          </Field>
+          </AuthField>
 
-          <Field>
-            <AiOutlineMail className="fieldIcon" />
+          <AuthField>
+            <HiMail className="fieldIcon" />
             <input
               type="email"
               placeholder="email"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             />
-          </Field>
+          </AuthField>
 
-          <Field>
-            <RiLockPasswordLine className="fieldIcon" />
+          <AuthField>
+            <RiLockPasswordFill className="fieldIcon" />
             <input
               type="password"
               placeholder="password"
               {...register("password", { required: true })}
             />
-          </Field>
+          </AuthField>
 
-          <Field>
-            <button type="submit">SIGN UP</button>
-          </Field>
+          <AuthButton type="submit">SIGN UP</AuthButton>
         </form>
         <h3>Already have an account?</h3>
-        <Link className="link" to="/sign-in">Login Here</Link>
+        <Link className="link" to="/sign-in">
+          Login Here
+        </Link>
       </Section>
     </Container>
   );

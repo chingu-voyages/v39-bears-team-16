@@ -11,9 +11,13 @@ export const Section = styled.section`
   width: fit-content;
   height: auto;
   padding: 2rem;
-  .tweeterIcon {
+  .twitterIcon {
     font-size: 3rem;
     cursor: pointer;
+  }
+  h1{
+    font-size: 3rem;
+    margin: 0 0 1rem 0;
   }
   h2,
   h3 {
