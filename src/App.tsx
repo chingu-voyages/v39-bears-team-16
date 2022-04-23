@@ -1,10 +1,11 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ForgotPassword from "./pages/ForgotPassword";
 
-function App() {
+const App = () => {
   // theme provider here
   return (
     <Routes>
@@ -14,6 +15,6 @@ function App() {
       <Route path="forgot-password" element={<ForgotPassword />} />
     </Routes>
   );
-}
+};
 
 export default App;
