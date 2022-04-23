@@ -1,7 +1,5 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
 
-export const theme = {
+const theme = {
   color: {
     white: '#FFFFFF',
     brightPurple: '#6610F2',
@@ -22,4 +20,4 @@ export const theme = {
   },
 };
 
-export default Theme;
+export default theme;

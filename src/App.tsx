@@ -3,8 +3,9 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ForgotPassword from "./pages/ForgotPassword";
-import Theme from "./theme";
+import theme from "./theme";
 import styled from "styled-components";
+import { ThemeProvider } from "styled-components";
 
 function App() {
   // theme provider here
