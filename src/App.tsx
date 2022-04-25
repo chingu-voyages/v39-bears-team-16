@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
@@ -7,7 +8,7 @@ import theme from "./theme";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 
-function App() {
+const App = () => {
   // theme provider here
   
   return (
@@ -20,6 +21,6 @@ function App() {
         </Routes>
       </ThemeProvider>
   );
-}
+};
 
 export default App;
