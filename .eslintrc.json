@@ -22,7 +22,8 @@
 	"plugins": [
 		"react",
 		"@typescript-eslint",
-		"react-hooks"
+		"react-hooks",
+		"prettier"
 	],
 	"rules": {
 		"no-use-before-define":"off",
