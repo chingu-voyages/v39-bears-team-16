@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   color: {
     white: '#FFFFFF',
     brightPurple: '#6610F2',
@@ -18,3 +18,5 @@ export const theme = {
     darkViolet: '#30304D',
   },
 };
+
+export default theme;
