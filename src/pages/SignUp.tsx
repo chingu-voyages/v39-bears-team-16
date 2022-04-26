@@ -1,13 +1,13 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { FaUserAlt, FaTwitterSquare } from "react-icons/fa";
-import { HiMail } from "react-icons/hi";
-import { RiLockPasswordFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import { Container } from "../styles/Container";
-import { Section } from "../styles/Section";
-import { AuthField } from "../styles/AuthField";
-import { AuthButton } from "../styles/AuthButton";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { FaUserAlt, FaTwitterSquare } from 'react-icons/fa';
+import { HiMail } from 'react-icons/hi';
+import { RiLockPasswordFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
+import { Container } from '../styles/Container';
+import { Section } from '../styles/Section';
+import { AuthField } from '../styles/AuthField';
+import { AuthButton } from '../styles/AuthButton';
 
 const SignUp = () => {
   const {
@@ -30,7 +30,7 @@ const SignUp = () => {
             <input
               type="text"
               placeholder="name"
-              {...register("name", { required: true, maxLength: 80 })}
+              {...register('name', { required: true, maxLength: 80 })}
             />
           </AuthField>
 
@@ -39,7 +39,7 @@ const SignUp = () => {
             <input
               type="email"
               placeholder="email"
-              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+              {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
             />
           </AuthField>
 
@@ -48,7 +48,7 @@ const SignUp = () => {
             <input
               type="password"
               placeholder="password"
-              {...register("password", { required: true })}
+              {...register('password', { required: true })}
             />
           </AuthField>
 

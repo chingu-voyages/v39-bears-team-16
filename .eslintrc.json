@@ -47,10 +47,11 @@
 				"error"
 		],
 		"@typescript-eslint/explicit-function-return-type": "off",
-		"react-hooks/rules-of-hooks":"error",
-		"react-hooks/exhaustive-deps":"warn",
-		"import/prefer-default-export":"off",
-		"react/prop-types":"off"
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn",
+		"import/prefer-default-export": "off",
+		"react/prop-types": "off",
+		"react/jsx-props-no-spreading": "off"
 	},
 	"settings": {
 		"import/resolver": {

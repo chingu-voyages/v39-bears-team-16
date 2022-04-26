@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const AuthField = styled.section`
   display: flex;
@@ -25,5 +25,4 @@ export const AuthField = styled.section`
   .fieldIcon {
     color: white;
   }
-
 `;

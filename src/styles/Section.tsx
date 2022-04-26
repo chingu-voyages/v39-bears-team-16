@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Section = styled.section`
   background-color: white;
@@ -15,7 +15,7 @@ export const Section = styled.section`
     font-size: 3rem;
     cursor: pointer;
   }
-  h1{
+  h1 {
     font-size: 3rem;
     margin: 0 0 1rem 0;
   }
