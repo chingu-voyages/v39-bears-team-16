@@ -3,44 +3,57 @@ import { FaUserAlt, FaTwitterSquare } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import * as global from '../../global-style';
 
-export const AuthContainer = styled(global.Container)`
+export const AuthContainer = styled.section`
+  width: 100vw;
+  height: 100vh;
+  background: ${({ theme }) => theme.background.secondary};
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-export const AuthCard = styled(global.Card)`
-  color: ${(p) => p.theme.color.secondary};
-  background: ${(p) => p.theme.background.white};
+export const AuthCard = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  gap: 1rem;
+  border-radius: 20px;
+  padding: 3rem;
+  margin: 10px;
+  color: ${({ theme }) => theme.color.secondary};
+  background: ${({ theme }) => theme.background.white};
   min-width: 400px;
 `;
 export const AuthHead = styled.h1`
-  color: ${(p) => p.theme.color.black};
+  color: ${({ theme }) => theme.color.black};
   font-weight: 300;
   margin: 0;
   font-size: 3.5rem;
 `;
+const iconStyles = {
+  fontSize: '1rem',
+  margin: '0 20px',
+  color: 'black',
+};
 export const TwitterIcon = styled(FaTwitterSquare)`
-  color: ${(p) => p.theme.color.black};
+  color: ${({ theme }) => theme.color.black};
   font-size: 3rem;
   margin: 0 auto;
   cursor: pointer;
 `;
 export const UserIcon = styled(FaUserAlt)`
-  font-size: 1rem;
-  margin: 0 20px;
+  ${iconStyles}
 `;
 export const EmailIcon = styled(HiMail)`
-  font-size: 1rem;
-  margin: 0 20px;
+  ${iconStyles}
 `;
 export const PasswordIcon = styled(RiLockPasswordFill)`
-  font-size: 1rem;
-  margin: 0 20px;
+  ${iconStyles}
 `;
 export const AuthSub = styled.h2`
-  color: ${(p) => p.theme.color.black};
+  color: ${({ theme }) => theme.color.black};
   font-size: 1rem;
   font-weight: 100;
 `;
@@ -51,9 +64,9 @@ export const AuthForm = styled.form`
 `;
 export const AuthField = styled.div`
   border-radius: 10px;
-  background: ${(p) => p.theme.background.grey};
+  background: ${({ theme }) => theme.background.grey};
   opacity: 50%;
-  color: ${(p) => p.theme.color.primary};
+  color: ${({ theme }) => theme.color.primary};
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -63,7 +76,7 @@ export const AuthInput = styled.input`
   background: none;
   border: none;
   height: 100%;
-  color: ${(p) => p.theme.color.black};
+  color: ${({ theme }) => theme.color.black};
   font-weight: 200;
   :focus {
     outline: none;
@@ -72,8 +85,8 @@ export const AuthInput = styled.input`
 `;
 export const SignUpBtn = styled.button`
   border-radius: 10px;
-  background: ${(p) => p.theme.background.teal};
-  color: ${(p) => p.theme.color.primary};
+  background: ${({ theme }) => theme.background.teal};
+  color: ${({ theme }) => theme.color.primary};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,7 +95,7 @@ export const SignUpBtn = styled.button`
   cursor: pointer;
 `;
 export const AuthLogin = styled(Link)`
-  color: ${(p) => p.theme.color.teal};
+  color: ${({ theme }) => theme.color.teal};
   text-decoration: none;
   font-weight: 200;
 `;
