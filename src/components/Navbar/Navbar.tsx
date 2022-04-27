@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { NavbarContainer, MenuItems } from './Navbar.styled.js';
+import { NavbarContainer, MenuItems } from './Navbar.styled';
 // import { logout } from '../utilities/auth';
 
 interface NavbarProps {
