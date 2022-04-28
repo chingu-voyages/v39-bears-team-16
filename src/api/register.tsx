@@ -6,12 +6,15 @@ interface RegisterProps {
   password: string;
 }
 
-export const postRegister = ({ name, email, password }: RegisterProps) => {
+export const registerUser = ({ name, email, password }: RegisterProps) => {
   return api
     .post('/register', {
       name,
       email,
       password,
+    })
+    .then((res) => {
+      return res;
     })
     .catch(({ response }) => {
       return response
