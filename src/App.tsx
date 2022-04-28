@@ -1,11 +1,12 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import theme from './theme.js';
-import Home from './pages/Home';
-import SignUp from './pages/SignUp';
-import SignIn from './pages/SignIn';
-import ForgotPassword from './pages/ForgotPassword';
+import { darkTheme } from './theme.js';
+import { GlobalStyle } from './global-style';
+import SignUp from './pages/SignUp/SignUp';
+import Home from './pages/Home/Home';
+import SignIn from './pages/SignIn/SignIn';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import StudentMainLayout from './pages/Student/StudentMainLayout';
 import StudentDashboard from './pages/Student/StudentDashboard';
 import StudentClassTracker from './pages/Student/StudentClassTracker';
@@ -14,9 +15,9 @@ import AdminDashboard from './pages/Admin/AdminDashboard';
 import AdminUpdateClass from './pages/Admin/AdminUpdateClass';
 
 const App = () => {
-  // theme provider here
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
+      <GlobalStyle />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="sign-up" element={<SignUp />} />

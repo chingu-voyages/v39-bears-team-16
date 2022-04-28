@@ -1,22 +1,31 @@
-const theme = {
+// Default theme color
+export const darkTheme = {
   color: {
-    white: '#FFFFFF',
-    brightPurple: '#6610F2',
+    primary: '#FFFFFF',
+    secondary: '#A8A8A8',
+    teal: '#20C997',
+    violet: '#6610F2',
     pink: '#D63384',
     orange: '#FD7E14',
+    red: '#EE2D21',
+    black: '#000000DC',
     blue: '#0D6EFD',
-    darkGreen: '#198754',
-    slateGray: '#343A40',
-    darkBlue: '#242237',
-    lightGray: '#6C757D',
-    purple: '#6F42C1',
-    red: '#DC3545',
-    yellow: '#FFC107',
-    aquaBlue: '#0DCAF0',
-    seaGreen: '#20C997',
-    black: '#212529',
-    darkViolet: '#30304D',
+    grey: '#6D6D6D',
+  },
+  background: {
+    primary: '#30304D',
+    secondary: '#242237',
+    teal: '#20C997',
+    violet: '#6610F2',
+    pink: '#D63384',
+    orange: '#FD7E14',
+    red: '#EE2D21',
+    black: '#000000',
+    blue: '#0D6EFD',
+    grey: '#A8A8A85B',
+    white: '#FFFFFF',
   },
 };
 
-export default theme;
+// Light theme color
+export const lightTheme = {};
