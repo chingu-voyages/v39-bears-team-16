@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../../api/register';
 import {
   AuthContainer,
   AuthCard,
@@ -20,10 +22,26 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors: formErrors },
   } = useForm();
-  const onSubmit = (data: object) => console.log(data);
-  console.log(errors);
+  const [errorMessages, setErrorMessages] = useState([]);
+  const navigate = useNavigate();
+
+  const onSubmit = async (payload: any) => {
+    const res = await registerUser(payload);
+
+    if (res.data) {
+      navigate('/sign-in', { replace: true });
+    } else {
+      setErrorMessages(res);
+    }
+  };
+
+  useEffect(() => {
+    if (formErrors) {
+      console.log('formErrors', formErrors);
+    }
+  }, [formErrors]);
 
   return (
     <AuthContainer>
@@ -58,6 +76,11 @@ const SignUp = () => {
               {...register('password', { required: true })}
             />
           </AuthField>
+          <div>
+            {errorMessages.map(({ msg, param }) => (
+              <span key={param}>{msg}</span>
+            ))}
+          </div>
 
           <SignUpBtn type="submit">SIGN UP</SignUpBtn>
         </AuthForm>
