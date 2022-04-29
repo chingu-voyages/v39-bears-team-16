@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { FaUserAlt, FaTwitterSquare } from 'react-icons/fa';
+import { MdSchool } from 'react-icons/md';
 import { HiMail } from 'react-icons/hi';
 import { RiLockPasswordFill } from 'react-icons/ri';
+import { AiOutlineOrderedList } from 'react-icons/ai';
+
 import { Link } from 'react-router-dom';
 
 export const AuthContainer = styled.section`
@@ -52,6 +55,12 @@ export const EmailIcon = styled(HiMail)`
 export const PasswordIcon = styled(RiLockPasswordFill)`
   ${iconStyles}
 `;
+export const ProgramIcon = styled(MdSchool)`
+  ${iconStyles}
+`;
+export const CohortIcon = styled(AiOutlineOrderedList)`
+  ${iconStyles}
+`;
 export const AuthSub = styled.h2`
   color: ${({ theme }) => theme.color.black};
   font-size: 1rem;
@@ -94,8 +103,34 @@ export const SignUpBtn = styled.button`
   border: none;
   cursor: pointer;
 `;
+export const AuthSelect = styled.select`
+  background: none;
+  border: none;
+  height: 100%;
+  color: ${({ theme }) => theme.color.black};
+  font-weight: 200;
+  :focus {
+    outline: none;
+    font-weight: 300;
+  }
+`;
 export const AuthLogin = styled(Link)`
   color: ${({ theme }) => theme.color.teal};
   text-decoration: none;
   font-weight: 200;
+`;
+export const AuthProgram = styled.section`
+  display: flex;
+  gap: 20px;
+`;
+export const AuthProgramField = styled.div`
+  border-radius: 10px;
+  background: ${({ theme }) => theme.background.grey};
+  opacity: 50%;
+  color: ${({ theme }) => theme.color.primary};
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
 `;
