@@ -50,16 +50,20 @@ export const UserIcon = styled(FaUserAlt)`
   ${iconStyles}
 `;
 export const EmailIcon = styled(HiMail)`
-  ${iconStyles}
+  ${iconStyles};
+  margin: 0 0 0 -12px;
 `;
 export const PasswordIcon = styled(RiLockPasswordFill)`
   ${iconStyles}
+  margin: 0 0 0 -12px;
 `;
 export const ProgramIcon = styled(MdSchool)`
-  ${iconStyles}
+  ${iconStyles};
+  font-size: 1.5em;
 `;
 export const CohortIcon = styled(AiOutlineOrderedList)`
-  ${iconStyles}
+  ${iconStyles};
+  font-size: 1.5em;
 `;
 export const AuthSub = styled.h2`
   color: ${({ theme }) => theme.color.black};
@@ -109,6 +113,7 @@ export const AuthSelect = styled.select`
   height: 100%;
   color: ${({ theme }) => theme.color.black};
   font-weight: 200;
+  width: 80%;
   :focus {
     outline: none;
     font-weight: 300;
@@ -130,7 +135,7 @@ export const AuthProgramField = styled.div`
   color: ${({ theme }) => theme.color.primary};
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   height: 3rem;
+  width: 50%;
 `;
