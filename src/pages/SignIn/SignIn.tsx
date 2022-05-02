@@ -10,7 +10,6 @@ import {
   AuthProgram,
   AuthProgramField,
   AuthSelect,
-  UserIcon,
   ProgramIcon,
   CohortIcon,
   AuthInput,
