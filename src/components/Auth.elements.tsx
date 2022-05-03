@@ -96,7 +96,7 @@ export const AuthInput = styled.input`
     font-weight: 300;
   }
 `;
-export const SignUpBtn = styled.button`
+export const AuthButton = styled.button`
   border-radius: 10px;
   background: ${({ theme }) => theme.background.teal};
   color: ${({ theme }) => theme.color.primary};
@@ -120,12 +120,12 @@ export const AuthSelect = styled.select`
     font-weight: 300;
   }
 `;
-export const AuthLogin = styled(Link)`
+export const AuthRedirectLink = styled(Link)`
   color: ${({ theme }) => theme.color.teal};
   text-decoration: none;
   font-weight: 200;
 `;
-export const AuthProgram = styled.section`
+export const AuthProgramContainer = styled.section`
   display: flex;
   gap: 20px;
 `;

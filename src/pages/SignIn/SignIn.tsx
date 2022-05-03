@@ -7,7 +7,7 @@ import {
   AuthSub,
   AuthForm,
   AuthField,
-  AuthProgram,
+  AuthProgramContainer,
   AuthProgramField,
   AuthSelect,
   ProgramIcon,
@@ -15,8 +15,8 @@ import {
   AuthInput,
   EmailIcon,
   PasswordIcon,
-  SignUpBtn,
-  AuthLogin,
+  AuthButton,
+  AuthRedirectLink,
 } from '../../components/Auth.elements';
 
 const SignIn = () => {
@@ -38,7 +38,7 @@ const SignIn = () => {
             <AuthInput />
           </AuthField>
 
-          <AuthProgram>
+          <AuthProgramContainer>
             <AuthProgramField>
               <ProgramIcon />
               <AuthSelect />
@@ -48,12 +48,12 @@ const SignIn = () => {
               <CohortIcon />
               <AuthSelect />
             </AuthProgramField>
-          </AuthProgram>
+          </AuthProgramContainer>
 
-          <SignUpBtn type="submit">SIGN IN</SignUpBtn>
+          <AuthButton type="submit">SIGN IN</AuthButton>
         </AuthForm>
         <AuthSub>Forget your password?</AuthSub>
-        <AuthLogin to="/forgot-password">Click Here</AuthLogin>
+        <AuthRedirectLink to="/forgot-password">Click Here</AuthRedirectLink>
       </AuthCard>
     </AuthContainer>
   );

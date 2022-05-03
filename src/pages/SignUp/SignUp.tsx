@@ -12,8 +12,8 @@ import {
   AuthInput,
   EmailIcon,
   PasswordIcon,
-  SignUpBtn,
-  AuthLogin,
+  AuthButton,
+  AuthRedirectLink,
 } from '../../components/Auth.elements';
 
 const SignUp = () => {
@@ -59,10 +59,10 @@ const SignUp = () => {
             />
           </AuthField>
 
-          <SignUpBtn type="submit">SIGN UP</SignUpBtn>
+          <AuthButton type="submit">SIGN UP</AuthButton>
         </AuthForm>
         <AuthSub>Already have an account?</AuthSub>
-        <AuthLogin to="/sign-in">Login Here</AuthLogin>
+        <AuthRedirectLink to="/sign-in">Login Here</AuthRedirectLink>
       </AuthCard>
     </AuthContainer>
   );
