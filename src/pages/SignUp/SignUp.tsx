@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../api/register';
@@ -17,17 +17,47 @@ import {
   SignUpBtn,
   AuthLogin,
 } from '../../components/Auth.elements';
+import {
+  FormErrorMessages,
+  StyledErrorMessage,
+} from '../../components/ErrorMessage';
+
+interface SignUpFormInputs {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const validationRules = {
+  name: {
+    required: 'Name is required',
+    maxLength: {
+      value: 80,
+      message: 'Name cannot exceed 80 characters',
+    },
+  },
+  email: {
+    required: 'Email is required',
+    pattern: {
+      value: /^\S+@\S+$/i,
+      message: 'Email is invalid',
+    },
+  },
+  password: {
+    required: 'Password is required',
+  },
+};
 
 const SignUp = () => {
   const {
     register,
     handleSubmit,
     formState: { errors: formErrors },
-  } = useForm();
+  } = useForm<SignUpFormInputs>();
   const [errorMessages, setErrorMessages] = useState([]);
   const navigate = useNavigate();
 
-  const onSubmit = async (payload: any) => {
+  const onSubmit = async (payload: SignUpFormInputs) => {
     const res = await registerUser(payload);
 
     if (res.data) {
@@ -36,12 +66,6 @@ const SignUp = () => {
       setErrorMessages(res);
     }
   };
-
-  useEffect(() => {
-    if (formErrors) {
-      console.log('formErrors', formErrors);
-    }
-  }, [formErrors]);
 
   return (
     <AuthContainer>
@@ -55,7 +79,7 @@ const SignUp = () => {
             <AuthInput
               type="text"
               placeholder="name"
-              {...register('name', { required: true, maxLength: 80 })}
+              {...register('name', { ...validationRules.name })}
             />
           </AuthField>
 
@@ -64,7 +88,7 @@ const SignUp = () => {
             <AuthInput
               type="email"
               placeholder="email"
-              {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+              {...register('email', { ...validationRules.email })}
             />
           </AuthField>
 
@@ -73,14 +97,14 @@ const SignUp = () => {
             <AuthInput
               type="password"
               placeholder="password"
-              {...register('password', { required: true })}
+              {...register('password', { ...validationRules.password })}
             />
           </AuthField>
-          <div>
-            {errorMessages.map(({ msg, param }) => (
-              <span key={param}>{msg}</span>
-            ))}
-          </div>
+          <FormErrorMessages errors={formErrors} />
+
+          {errorMessages.map(({ msg, param }) => (
+            <StyledErrorMessage key={param}>{msg}</StyledErrorMessage>
+          ))}
 
           <SignUpBtn type="submit">SIGN UP</SignUpBtn>
         </AuthForm>
