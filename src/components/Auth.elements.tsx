@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { FaUserAlt, FaTwitterSquare } from 'react-icons/fa';
+import { MdSchool } from 'react-icons/md';
 import { HiMail } from 'react-icons/hi';
 import { RiLockPasswordFill } from 'react-icons/ri';
+import { AiOutlineOrderedList } from 'react-icons/ai';
+
 import { Link } from 'react-router-dom';
 
 export const AuthContainer = styled.section`
@@ -47,10 +50,20 @@ export const UserIcon = styled(FaUserAlt)`
   ${iconStyles}
 `;
 export const EmailIcon = styled(HiMail)`
-  ${iconStyles}
+  ${iconStyles};
 `;
 export const PasswordIcon = styled(RiLockPasswordFill)`
   ${iconStyles}
+`;
+export const ProgramIcon = styled(MdSchool)`
+  ${iconStyles};
+  font-size: 1.5rem;
+  margin-left: 30px;
+`;
+export const CohortIcon = styled(AiOutlineOrderedList)`
+  ${iconStyles};
+  font-size: 1.5rem;
+  margin-left: 30px;
 `;
 export const AuthSub = styled.h2`
   color: ${({ theme }) => theme.color.black};
@@ -83,7 +96,7 @@ export const AuthInput = styled.input`
     font-weight: 300;
   }
 `;
-export const SignUpBtn = styled.button`
+export const AuthButton = styled.button`
   border-radius: 10px;
   background: ${({ theme }) => theme.background.teal};
   color: ${({ theme }) => theme.color.primary};
@@ -94,8 +107,36 @@ export const SignUpBtn = styled.button`
   border: none;
   cursor: pointer;
 `;
-export const AuthLogin = styled(Link)`
+export const AuthSelect = styled.select`
+  background: none;
+  border: none;
+  height: 100%;
+  color: ${({ theme }) => theme.color.black};
+  font-weight: 200;
+  width: 80%;
+  cursor: pointer;
+  :focus {
+    outline: none;
+    font-weight: 300;
+  }
+`;
+export const AuthRedirectLink = styled(Link)`
   color: ${({ theme }) => theme.color.teal};
   text-decoration: none;
   font-weight: 200;
+`;
+export const AuthProgramContainer = styled.section`
+  display: flex;
+  gap: 20px;
+`;
+export const AuthProgramField = styled.div`
+  border-radius: 10px;
+  background: ${({ theme }) => theme.background.grey};
+  opacity: 50%;
+  color: ${({ theme }) => theme.color.primary};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 3rem;
+  width: 50%;
 `;
