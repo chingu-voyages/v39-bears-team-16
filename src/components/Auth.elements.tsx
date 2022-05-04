@@ -4,6 +4,7 @@ import { MdSchool } from 'react-icons/md';
 import { HiMail } from 'react-icons/hi';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { AiOutlineOrderedList } from 'react-icons/ai';
+import { VscKey } from 'react-icons/vsc';
 
 import { Link } from 'react-router-dom';
 
@@ -64,6 +65,14 @@ export const CohortIcon = styled(AiOutlineOrderedList)`
   ${iconStyles};
   font-size: 1.5rem;
   margin-left: 30px;
+`;
+export const KeyIcon = styled(VscKey)`
+  font-size: 3.5rem;
+  margin: 0 auto;
+  background: ${({ theme }) => theme.background.orange};
+  color: ${({ theme }) => theme.color.primary};
+  border-radius: 50%;
+  padding: 5px;
 `;
 export const AuthSub = styled.h2`
   color: ${({ theme }) => theme.color.black};
@@ -139,4 +148,9 @@ export const AuthProgramField = styled.div`
   align-items: center;
   height: 3rem;
   width: 50%;
+`;
+export const AuthForgetHead = styled.h2`
+  color: ${({ theme }) => theme.color.black};
+  font-size: 2rem;
+  font-weight: 200;
 `;
