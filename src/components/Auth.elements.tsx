@@ -74,6 +74,9 @@ export const KeyIcon = styled(VscKey)`
   border-radius: 50%;
   padding: 5px;
 `;
+export const KeySuccessIcon = styled(KeyIcon)`
+  background: ${({ theme }) => theme.background.teal};
+`;
 export const AuthSub = styled.h2`
   color: ${({ theme }) => theme.color.black};
   font-size: 1rem;
