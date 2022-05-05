@@ -9,6 +9,7 @@ import {
   AuthInput,
   AuthButton,
   PasswordIcon,
+  EmailIcon,
 } from '../../components/Auth.elements';
 
 const CreatePassword = () => {
@@ -21,6 +22,11 @@ const CreatePassword = () => {
         <KeySuccessIcon />
 
         <AuthForm>
+          <AuthField>
+            <EmailIcon />
+            <AuthInput placeholder="email" />
+          </AuthField>
+
           <AuthField>
             <PasswordIcon />
             <AuthInput placeholder="new password" />
