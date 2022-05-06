@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { getCsrfToken } from '../../api/getCsrfToken';
+import { login } from '../../api/login';
 import {
   AuthContainer,
   AuthCard,
@@ -18,24 +22,60 @@ import {
   AuthButton,
   AuthRedirectLink,
 } from '../../components/Auth.elements';
+import {
+  FormErrorMessages,
+  StyledErrorMessage,
+} from '../../components/ErrorMessage';
+import { getValidationRules } from '../../utilities/auth';
+
+interface SignInFormInputs {
+  email: string;
+  password: string;
+}
 
 const SignIn = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors: formErrors },
+  } = useForm<SignInFormInputs>();
+  const [errorMessages, setErrorMessages] = useState([]);
+  const navigate = useNavigate();
+
+  const onSubmit = async (payload: SignInFormInputs) => {
+    // await getCsrfToken();
+    const res = await login(payload);
+
+    if (res.data) {
+      navigate('/home', { replace: true });
+    } else {
+      setErrorMessages(res);
+    }
+  };
+
   return (
     <AuthContainer>
       <AuthCard>
         <AuthHead>Sign In</AuthHead>
         <TwitterIcon />
         <AuthSub>or use your email to login</AuthSub>
-
-        <AuthForm>
+        <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <EmailIcon />
-            <AuthInput />
+            <AuthInput
+              type="text"
+              placeholder="email"
+              {...register('email', { ...getValidationRules('email') })}
+            />
           </AuthField>
 
           <AuthField>
             <PasswordIcon />
-            <AuthInput />
+            <AuthInput
+              type="password"
+              placeholder="password"
+              {...register('password', { ...getValidationRules('password') })}
+            />
           </AuthField>
 
           <AuthProgramContainer>
@@ -50,10 +90,19 @@ const SignIn = () => {
             </AuthProgramField>
           </AuthProgramContainer>
 
+          <FormErrorMessages errors={formErrors} />
+
+          {errorMessages.map(({ msg, param }) => (
+            <StyledErrorMessage key={param}>{msg}</StyledErrorMessage>
+          ))}
+
           <AuthButton type="submit">SIGN IN</AuthButton>
         </AuthForm>
         <AuthSub>Forget your password?</AuthSub>
         <AuthRedirectLink to="/forgot-password">Click Here</AuthRedirectLink>
+        or
+        <AuthSub>Create Account</AuthSub>
+        <AuthRedirectLink to="/sign-up">Click Here</AuthRedirectLink>
       </AuthCard>
     </AuthContainer>
   );

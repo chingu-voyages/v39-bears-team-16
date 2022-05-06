@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { getCsrfToken } from '../../api/getCsrfToken';
-import { registerUser } from '../../api/register';
+import { useNavigate, useParams } from 'react-router-dom';
+import { resetPassword } from '../../api/resetPassword';
 import {
   AuthContainer,
   AuthCard,
-  AuthHead,
-  TwitterIcon,
-  AuthSub,
+  AuthForgetHead,
+  KeySuccessIcon,
   AuthForm,
   AuthField,
-  UserIcon,
   AuthInput,
-  EmailIcon,
-  PasswordIcon,
   AuthButton,
-  AuthRedirectLink,
+  PasswordIcon,
+  EmailIcon,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
@@ -24,24 +20,25 @@ import {
 } from '../../components/ErrorMessage';
 import { getValidationRules } from '../../utilities/auth';
 
-interface SignUpFormInputs {
-  name: string;
+interface ResetPasswordInputs {
   email: string;
-  password: string;
+  newPassword: string;
+  passwordConfirmation: string;
 }
 
-const SignUp = () => {
+const ResetPassword = () => {
+  const { token = '' } = useParams();
   const {
     register,
     handleSubmit,
     formState: { errors: formErrors },
-  } = useForm<SignUpFormInputs>();
+  } = useForm<ResetPasswordInputs>();
+
   const [errorMessages, setErrorMessages] = useState([]);
   const navigate = useNavigate();
 
-  const onSubmit = async (payload: SignUpFormInputs) => {
-    await getCsrfToken();
-    const res = await registerUser(payload);
+  const onSubmit = async (payload: ResetPasswordInputs) => {
+    const res = await resetPassword({ ...payload, token });
 
     if (res.data) {
       navigate('/sign-in', { replace: true });
@@ -53,19 +50,12 @@ const SignUp = () => {
   return (
     <AuthContainer>
       <AuthCard>
-        <AuthHead>Sign Up</AuthHead>
-        <TwitterIcon />
-        <AuthSub>or use your email to register</AuthSub>
-        <AuthForm onSubmit={handleSubmit(onSubmit)}>
-          <AuthField>
-            <UserIcon />
-            <AuthInput
-              type="text"
-              placeholder="name"
-              {...register('name', { ...getValidationRules('name') })}
-            />
-          </AuthField>
+        <AuthForgetHead>
+          Create a new <br /> password
+        </AuthForgetHead>
+        <KeySuccessIcon />
 
+        <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <EmailIcon />
             <AuthInput
@@ -79,8 +69,21 @@ const SignUp = () => {
             <PasswordIcon />
             <AuthInput
               type="password"
-              placeholder="password"
-              {...register('password', { ...getValidationRules('password') })}
+              placeholder="new password"
+              {...register('newPassword', {
+                ...getValidationRules('password'),
+              })}
+            />
+          </AuthField>
+
+          <AuthField>
+            <PasswordIcon />
+            <AuthInput
+              type="password"
+              placeholder="verify password"
+              {...register('passwordConfirmation', {
+                ...getValidationRules('password'),
+              })}
             />
           </AuthField>
           <FormErrorMessages errors={formErrors} />
@@ -88,14 +91,11 @@ const SignUp = () => {
           {errorMessages.map(({ msg, param }) => (
             <StyledErrorMessage key={param}>{msg}</StyledErrorMessage>
           ))}
-
-          <AuthButton type="submit">SIGN UP</AuthButton>
+          <AuthButton type="submit">CHANGE PASSWORD</AuthButton>
         </AuthForm>
-        <AuthSub>Already have an account?</AuthSub>
-        <AuthRedirectLink to="/sign-in">Login Here</AuthRedirectLink>
       </AuthCard>
     </AuthContainer>
   );
 };
 
-export default SignUp;
+export default ResetPassword;

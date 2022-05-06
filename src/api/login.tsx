@@ -12,9 +12,11 @@ export const login = ({ email, password }: LoginProps) => {
       password,
     })
     .then((res) => {
+      console.log('login res', res);
       return res;
     })
     .catch(({ response }) => {
+      console.log('response error', response);
       return response
         ? response.data.errors
         : [

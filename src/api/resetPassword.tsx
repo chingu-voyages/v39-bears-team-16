@@ -1,18 +1,18 @@
 import api from './api';
-import { getCsrfToken } from './getCsrfToken';
 
 interface ResetPasswordProps {
   email: string;
   newPassword: string;
   passwordConfirmation: string;
+  token: string;
 }
 
 export const resetPassword = ({
   email,
   newPassword,
   passwordConfirmation,
+  token,
 }: ResetPasswordProps) => {
-  const token = getCsrfToken();
   return api
     .post(`/reset-password/${token}`, {
       email,
