@@ -1,7 +1,9 @@
 import React from 'react';
-import { AiFillPlusCircle } from 'react-icons/ai';
-import { BiMessageSquareEdit } from 'react-icons/bi';
+import { AiOutlineEdit } from 'react-icons/ai';
+import { BiTrash } from 'react-icons/bi';
+import { RiEditBoxFill } from 'react-icons/ri';
 import { MdExpandMore } from 'react-icons/md';
+import { BsCalendarDate } from 'react-icons/bs';
 import styled from 'styled-components';
 
 const SyllabusContainer = styled.section`
@@ -20,43 +22,156 @@ const Line = styled.div`
   opacity: 20%;
   height: 1px;
 `;
+const SyllabusHeadlineWrapper = styled.section`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+`;
 const SyllabusHeadline = styled.section`
+  font-weight: 500;
+  font-size: 1.5rem;
+`;
+const SyllabusDate = styled.span`
+  font-weight: 100;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0 10px;
+`;
+const Classes = styled.section`
   display: flex;
   justify-content: space-between;
+  margin-top: 50px;
 `;
-const SyllabusClasses = styled.section`
-  display: flex;
-  justify-content: space-between;
-`;
-const SyllabusClass = styled.section`
+const Class = styled.section`
   display: flex;
 `;
-const EditIcon = styled(BiMessageSquareEdit)`
+const ClassContent = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
+const ClassDate = styled.h4`
+  font-size: 0.8rem;
+  font-weight: 100;
+  font-style: italic;
+  color: ${({ theme }) => theme.color.secondary};
+`;
+const ClassTitleWrapper = styled.section`
+  display: flex;
+  align-items: center;
+`;
+const ClassTitle = styled.span`
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-left: 10px;
+`;
+const ClassDescription = styled.h4`
+  font-weight: 200;
+  margin-left: 30px;
+  font-size: 1rem;
+`;
+const AddClassButton = styled.button`
+  background: none;
+  color: ${({ theme }) => theme.color.primary};
+  width: 120px;
+  height: 40px;
+  border-radius: 10px;
+  font-weight: 400;
+  cursor: pointer;
+  border-color: white;
+  &:hover {
+    border: none;
+    background-color: ${({ theme }) => theme.background.yellow};
+    color: ${({ theme }) => theme.color.primary};
+  }
+`;
+
+const iconStyles = {
+  fontSize: `1.3rem`,
+  opacity: `50%`,
+  cursor: `pointer`,
+  transition: `all ease 0.1s`,
+};
+
+const EditClassIcon = styled(RiEditBoxFill)`
+  ${iconStyles}
   margin-right: 20px;
+  color: ${({ theme }) => theme.color.yellow};
+  font-size: 2rem;
+  &:hover {
+    opacity: 100%;
+  }
+`;
+const EditClassContentIcon = styled(AiOutlineEdit)`
+  ${iconStyles}
+  color: ${({ theme }) => theme.color.yellow};
+  &:hover {
+    opacity: 100%;
+  }
+`;
+const TrashIcon = styled(BiTrash)`
+  ${iconStyles}
+  margin-left: 10px;
+  margin-right: 10px;
+  color: ${({ theme }) => theme.color.red};
+  &:hover {
+    opacity: 100%;
+  }
+`;
+const DateIcon = styled(BsCalendarDate)`
+  ${iconStyles}
+  opacity: 100%;
+  color: ${({ theme }) => theme.color.primary};
+`;
+const Items = styled.ul`
+  margin-left: 50px;
+  margin-top: 10px;
+  font-weight: 100;
+`;
+const Item = styled.li`
+  list-style-type: none;
+  display: flex;
+  align-items: center;
 `;
 
 const AdminUpdateClass = () => {
   return (
     <SyllabusContainer>
-      <SyllabusHeadline>
-        <h2>Syllabus</h2>
-        <AiFillPlusCircle />
-      </SyllabusHeadline>
+      <SyllabusHeadlineWrapper>
+        <SyllabusHeadline>
+          Syllabus
+          <SyllabusDate>(March 1st, 2022 - December 1st, 2022)</SyllabusDate>
+          <DateIcon />
+        </SyllabusHeadline>
+        <AddClassButton type="button">+ New Class</AddClassButton>
+      </SyllabusHeadlineWrapper>
       <Line />
-      <SyllabusClasses>
-        <SyllabusClass>
-          <EditIcon />
-          <div>
-            <h4>March,10th,2022</h4>
-            <h2>Class 1: Introduction</h2>
-            <h3>
-              In this course, you will learn about JavaScript data types,
-              built-in methods, and variables.
-            </h3>
-          </div>
-        </SyllabusClass>
+      <Classes>
+        <Class>
+          <EditClassIcon />
+          <ClassContent>
+            <article>
+              <ClassDate>March,10th,2022</ClassDate>
+              <ClassTitleWrapper>
+                <ClassTitle>Class 1: Introduction</ClassTitle>
+                <TrashIcon />
+              </ClassTitleWrapper>
+              <ClassDescription>
+                In this course, you will learn about JavaScript data types,
+                built-in methods, and variables.
+              </ClassDescription>
+            </article>
+            <Items>
+              <Item>
+                <EditClassContentIcon />
+                <TrashIcon />
+                <span>Stream</span>
+              </Item>
+            </Items>
+          </ClassContent>
+        </Class>
         <MdExpandMore />
-      </SyllabusClasses>
+      </Classes>
     </SyllabusContainer>
   );
 };
