@@ -1,26 +1,61 @@
 import styled from 'styled-components';
+import { HiOutlineHome } from 'react-icons/hi';
+import { BsBoxArrowInDown } from 'react-icons/bs';
+import { RiLogoutCircleLine } from 'react-icons/ri';
 
 // should be styled and updated later
 export const NavbarContainer = styled.div`
   background-color: ${({ theme }) => theme.background.primary};
-  width: 20vw;
+  width: 250px;
   height: 100%;
   color: white;
-  padding: 2.5em;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
 `;
-
+export const NameLogo = styled.h2`
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 2px;
+`;
 export const MenuItems = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: white;
   padding: 2.5em;
+  display: inline-flex;
+  align-items: flex-start;
 `;
 
-// This Avatar styling is not working yet.
 export const Avatar = styled.img`
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  src: 'https://api.multiavatar.com/268ffa7121a2ff2573.svg';
+  height: 70%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  padding: 6px;
+  margin-bottom: 1em;
+`;
+
+export const UserData = styled.p`
+  text-align: center;
+  padding: 6px;
+`;
+
+const iconStyles = {
+  fontSize: '1.5rem',
+  margin: '5px',
+  color: 'white',
+};
+export const HomeIcon = styled(HiOutlineHome)`
+  ${iconStyles}
+`;
+export const UpdateIcon = styled(BsBoxArrowInDown)`
+  ${iconStyles}
+`;
+export const LogoutIcon = styled(RiLogoutCircleLine)`
+  ${iconStyles}
+`;
+export const Logout = styled.p`
+  display: inline-flex;
 `;
