@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BiTrash } from 'react-icons/bi';
 import { RiEditBoxFill } from 'react-icons/ri';
-import { MdExpandMore } from 'react-icons/md';
+import { MdExpandMore, MdAdd } from 'react-icons/md';
 import { BsCalendarDate } from 'react-icons/bs';
 import styled from 'styled-components';
 
@@ -123,6 +123,13 @@ const DateIcon = styled(BsCalendarDate)`
   opacity: 100%;
   color: ${({ theme }) => theme.color.primary};
 `;
+const AddClassContentIcon = styled(MdAdd)`
+  ${iconStyles}
+  color: ${({ theme }) => theme.color.yellow};
+  &:hover {
+    opacity: 100%;
+  }
+`;
 const Items = styled.ul`
   margin-left: 50px;
   margin-top: 10px;
@@ -132,6 +139,14 @@ const Item = styled.li`
   list-style-type: none;
   display: flex;
   align-items: center;
+`;
+const AddClassWrapper = styled.section`
+  display: flex;
+  gap: 10px;
+`;
+const Form = styled.form`
+  display: flex;
+  gap: 10px;
 `;
 
 const AdminUpdateClass = () => {
@@ -167,6 +182,26 @@ const AdminUpdateClass = () => {
                 <TrashIcon />
                 <span>Stream</span>
               </Item>
+              <AddClassWrapper>
+                <AddClassContentIcon />
+                <Form>
+                  <label htmlFor="class-item">
+                    <select>
+                      <option>Resource Type</option>
+                      <option value="stream">Stream</option>
+                      <option value="article">Article</option>
+                      <option value="check-in">Check-in</option>
+                      <option value="reading-resource">Reading resource</option>
+                      <option value="video-resource">Video resource</option>
+                      <option value="homework">Homework</option>
+                    </select>
+                  </label>
+                  <label htmlFor="resource-link">
+                    <input type="link" placeholder="enter url" />
+                  </label>
+                  <button type="submit">Apply</button>
+                </Form>
+              </AddClassWrapper>
             </Items>
           </ClassContent>
         </Class>
