@@ -21,13 +21,27 @@ const validationRules: ValidationRuleProp = {
   },
   password: {
     required: 'Password is required',
+    maxLength: {
+      value: 12,
+      message: 'Password cannot exceed 12 characters',
+    },
+  },
+  passwordConfirmation: {
+    required: 'New password confirmation is required',
+    maxLength: {
+      value: 12,
+      message: 'Password cannot exceed 12 characters',
+    },
+  },
+  newPassword: {
+    required: 'New password is required',
+    maxLength: {
+      value: 12,
+      message: 'Password cannot exceed 12 characters',
+    },
   },
 };
 
 export const getValidationRules = (field: string) => {
   return validationRules[field] ?? {};
-};
-
-export const logout = () => {
-  console.log('Logout');
 };

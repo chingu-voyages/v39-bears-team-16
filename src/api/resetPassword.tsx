@@ -15,7 +15,7 @@ export const resetPassword = async ({
   token,
 }: ResetPasswordProps) => {
   const csrfToken = await getCsrfToken();
-  console.log('resToken', csrfToken);
+
   return api
     .post(`/reset-password/${token}`, {
       email,

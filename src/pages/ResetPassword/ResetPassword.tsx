@@ -71,7 +71,7 @@ const ResetPassword = () => {
               type="password"
               placeholder="new password"
               {...register('newPassword', {
-                ...getValidationRules('password'),
+                ...getValidationRules('newPassword'),
               })}
             />
           </AuthField>
@@ -80,9 +80,9 @@ const ResetPassword = () => {
             <PasswordIcon />
             <AuthInput
               type="password"
-              placeholder="verify password"
+              placeholder="confirm new password"
               {...register('passwordConfirmation', {
-                ...getValidationRules('password'),
+                ...getValidationRules('passwordConfirmation'),
               })}
             />
           </AuthField>
