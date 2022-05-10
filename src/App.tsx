@@ -4,7 +4,6 @@ import { ThemeProvider } from 'styled-components';
 import { darkTheme } from './theme.js';
 import { GlobalStyle } from './global-style';
 import SignUp from './pages/SignUp/SignUp';
-import Home from './pages/Home/Home';
 import SignIn from './pages/SignIn/SignIn';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
