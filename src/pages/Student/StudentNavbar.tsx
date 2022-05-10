@@ -1,12 +1,24 @@
 import React from 'react';
+import { useParams, useMatch } from 'react-router-dom';
 import MenuItem from '../../components/Navbar/MenuItem';
 import Navbar from '../../components/Navbar/Navbar';
 
 const StudentNavbar = () => {
+  const isCohortPage = useMatch({
+    path: '/student/cohort',
+    end: true,
+    caseSensitive: false,
+  });
+  const { id } = useParams();
+
   return (
     <Navbar>
-      <MenuItem to="/student/home">Dashboard</MenuItem>
-      <MenuItem to="/student/class">Class Tracker</MenuItem>
+      {!isCohortPage && (
+        <>
+          <MenuItem to={`/student/cohort/${id}/home`}>Dashboard</MenuItem>
+          <MenuItem to={`/student/cohort/${id}/class`}>Class Tracker</MenuItem>
+        </>
+      )}
       <div>Logout</div>
     </Navbar>
   );
