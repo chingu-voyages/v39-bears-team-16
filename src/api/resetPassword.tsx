@@ -1,4 +1,5 @@
 import api from './api';
+import { getCsrfToken } from './getCsrfToken';
 
 interface ResetPasswordProps {
   email: string;
@@ -7,17 +8,21 @@ interface ResetPasswordProps {
   token: string;
 }
 
-export const resetPassword = ({
+export const resetPassword = async ({
   email,
   newPassword,
   passwordConfirmation,
   token,
 }: ResetPasswordProps) => {
+  const csrfToken = await getCsrfToken();
+  console.log('resToken', csrfToken);
   return api
     .post(`/reset-password/${token}`, {
       email,
       newPassword,
       passwordConfirmation,
+      token,
+      _csrf: csrfToken,
     })
     .then((res) => {
       return res;

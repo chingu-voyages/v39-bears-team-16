@@ -1,6 +1,6 @@
 import api from './api';
 
-const fetchCsrfToken = () => {
+export const fetchCsrfToken = () => {
   return api.get('/fetchCsrfToken', {}).then((res) => {
     return res;
   });
@@ -8,5 +8,6 @@ const fetchCsrfToken = () => {
 
 export const getCsrfToken = async () => {
   const response = await fetchCsrfToken();
-  api.defaults.headers.post['X-CSRF-Token'] = response.data.CSRFToken;
+  api.defaults.headers.common['X-CSRF-Token'] = response.data.csrfToken;
+  return response.data.csrfToken;
 };

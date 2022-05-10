@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { getCsrfToken } from '../../api/getCsrfToken';
 import { login } from '../../api/login';
 import {
   AuthContainer,
@@ -11,11 +10,6 @@ import {
   AuthSub,
   AuthForm,
   AuthField,
-  AuthProgramContainer,
-  AuthProgramField,
-  AuthSelect,
-  ProgramIcon,
-  CohortIcon,
   AuthInput,
   EmailIcon,
   PasswordIcon,
@@ -43,7 +37,6 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (payload: SignInFormInputs) => {
-    // await getCsrfToken();
     const res = await login(payload);
 
     if (res.data) {
@@ -77,18 +70,6 @@ const SignIn = () => {
               {...register('password', { ...getValidationRules('password') })}
             />
           </AuthField>
-
-          <AuthProgramContainer>
-            <AuthProgramField>
-              <ProgramIcon />
-              <AuthSelect />
-            </AuthProgramField>
-
-            <AuthProgramField>
-              <CohortIcon />
-              <AuthSelect />
-            </AuthProgramField>
-          </AuthProgramContainer>
 
           <FormErrorMessages errors={formErrors} />
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { forgotPassword } from '../../api/forgotPassword';
-import { getCsrfToken } from '../../api/getCsrfToken';
 import {
   AuthContainer,
   AuthCard,
@@ -36,7 +35,6 @@ const ForgotPassword = () => {
   } = useForm<ForgotPasswordFormInputs>();
 
   const onSubmit = async (payload: ForgotPasswordFormInputs) => {
-    await getCsrfToken();
     const res = await forgotPassword(payload);
 
     if (res.data) {
