@@ -31,9 +31,9 @@ const App = () => {
           <Route path="cohort" element={<AdminMainLayout />}>
             <Route index element={<AdminCohortPage />} />
             <Route path=":id">
-              <Route path="home" element={<AdminDashboard />} />
+              <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="class" element={<AdminUpdateClass />} />
-              <Route index element={<Navigate to="home" replace />} />
+              <Route index element={<Navigate to="dashboard" replace />} />
             </Route>
           </Route>
           <Route index element={<Navigate to="cohort" replace />} />
@@ -42,9 +42,9 @@ const App = () => {
           <Route path="cohort" element={<StudentMainLayout />}>
             <Route index element={<StudentCohortPage />} />
             <Route path=":id">
-              <Route path="home" element={<StudentDashboard />} />
+              <Route path="dashboard" element={<StudentDashboard />} />
               <Route path="class" element={<StudentClassTracker />} />
-              <Route index element={<Navigate to="home" replace />} />
+              <Route index element={<Navigate to="dashboard" replace />} />
             </Route>
           </Route>
           <Route index element={<Navigate to="cohort" replace />} />

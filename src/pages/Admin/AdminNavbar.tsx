@@ -15,7 +15,8 @@ const AdminNavbar = () => {
     <Navbar>
       {!isCohortPage && (
         <>
-          <MenuItem to={`/admin/cohort/${id}/home`}>Dashboard</MenuItem>
+          <MenuItem to="/admin/cohort/">Cohort List</MenuItem>
+          <MenuItem to={`/admin/cohort/${id}/dashboard`}>Dashboard</MenuItem>
           <MenuItem to={`/admin/cohort/${id}/class`}>Update Class</MenuItem>
         </>
       )}

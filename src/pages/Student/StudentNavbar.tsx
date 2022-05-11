@@ -15,7 +15,8 @@ const StudentNavbar = () => {
     <Navbar>
       {!isCohortPage && (
         <>
-          <MenuItem to={`/student/cohort/${id}/home`}>Dashboard</MenuItem>
+          <MenuItem to="/student/cohort/">Cohort List</MenuItem>
+          <MenuItem to={`/student/cohort/${id}/dashboard`}>Dashboard</MenuItem>
           <MenuItem to={`/student/cohort/${id}/class`}>Class Tracker</MenuItem>
         </>
       )}
