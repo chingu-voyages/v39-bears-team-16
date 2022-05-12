@@ -14,6 +14,8 @@ import StudentClassTracker from './pages/Student/StudentClassTracker';
 import AdminMainLayout from './pages/Admin/AdminMainLayout';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import AdminUpdateClass from './pages/Admin/AdminUpdateClass';
+import AdminCohortPage from './pages/Admin/AdminCohortPage';
+import StudentCohortPage from './pages/Student/StudentCohortPage';
 
 const App = () => {
   return (
@@ -25,15 +27,27 @@ const App = () => {
         <Route path="sign-in" element={<SignIn />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="create-password" element={<CreatePassword />} />
-        <Route path="admin" element={<AdminMainLayout />}>
-          <Route path="home" element={<AdminDashboard />} />
-          <Route path="class" element={<AdminUpdateClass />} />
-          <Route index element={<Navigate to="/admin/home" replace />} />
+        <Route path="admin">
+          <Route path="cohorts" element={<AdminMainLayout />}>
+            <Route index element={<AdminCohortPage />} />
+            <Route path=":id">
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="class" element={<AdminUpdateClass />} />
+              <Route index element={<Navigate to="dashboard" replace />} />
+            </Route>
+          </Route>
+          <Route index element={<Navigate to="cohort" replace />} />
         </Route>
-        <Route path="student" element={<StudentMainLayout />}>
-          <Route path="home" element={<StudentDashboard />} />
-          <Route path="class" element={<StudentClassTracker />} />
-          <Route index element={<Navigate to="/student/home" replace />} />
+        <Route path="student">
+          <Route path="cohorts" element={<StudentMainLayout />}>
+            <Route index element={<StudentCohortPage />} />
+            <Route path=":id">
+              <Route path="dashboard" element={<StudentDashboard />} />
+              <Route path="class" element={<StudentClassTracker />} />
+              <Route index element={<Navigate to="dashboard" replace />} />
+            </Route>
+          </Route>
+          <Route index element={<Navigate to="cohort" replace />} />
         </Route>
       </Routes>
     </ThemeProvider>
