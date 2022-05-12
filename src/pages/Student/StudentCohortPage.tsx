@@ -6,7 +6,7 @@ const StudentCohortPage = () => {
   return (
     <div>
       <div>Student Cohort Page</div>
-      <Link to={`/student/cohort/${id}`}>Cohort id {id}</Link>
+      <Link to={`/student/cohorts/${id}`}>Cohort id {id}</Link>
     </div>
   );
 };

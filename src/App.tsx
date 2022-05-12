@@ -28,7 +28,7 @@ const App = () => {
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="create-password" element={<CreatePassword />} />
         <Route path="admin">
-          <Route path="cohort" element={<AdminMainLayout />}>
+          <Route path="cohorts" element={<AdminMainLayout />}>
             <Route index element={<AdminCohortPage />} />
             <Route path=":id">
               <Route path="dashboard" element={<AdminDashboard />} />
@@ -39,7 +39,7 @@ const App = () => {
           <Route index element={<Navigate to="cohort" replace />} />
         </Route>
         <Route path="student">
-          <Route path="cohort" element={<StudentMainLayout />}>
+          <Route path="cohorts" element={<StudentMainLayout />}>
             <Route index element={<StudentCohortPage />} />
             <Route path=":id">
               <Route path="dashboard" element={<StudentDashboard />} />

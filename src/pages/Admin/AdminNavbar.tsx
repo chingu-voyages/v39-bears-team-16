@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar/Navbar';
 
 const AdminNavbar = () => {
   const isCohortPage = useMatch({
-    path: '/admin/cohort',
+    path: '/admin/cohorts',
     end: true,
     caseSensitive: false,
   });
@@ -15,9 +15,9 @@ const AdminNavbar = () => {
     <Navbar>
       {!isCohortPage && (
         <>
-          <MenuItem to="/admin/cohort/">Cohort List</MenuItem>
-          <MenuItem to={`/admin/cohort/${id}/dashboard`}>Dashboard</MenuItem>
-          <MenuItem to={`/admin/cohort/${id}/class`}>Update Class</MenuItem>
+          <MenuItem to="/admin/cohorts/">Cohort List</MenuItem>
+          <MenuItem to={`/admin/cohorts/${id}/dashboard`}>Dashboard</MenuItem>
+          <MenuItem to={`/admin/cohorts/${id}/class`}>Update Class</MenuItem>
         </>
       )}
       <div>Logout</div>

@@ -6,7 +6,7 @@ const AdminCohortPage = () => {
   return (
     <div>
       <div>Admin Cohort Page</div>
-      <Link to={`/admin/cohort/${id}`}>Cohort id {id}</Link>
+      <Link to={`/admin/cohorts/${id}`}>Cohort id {id}</Link>
     </div>
   );
 };
