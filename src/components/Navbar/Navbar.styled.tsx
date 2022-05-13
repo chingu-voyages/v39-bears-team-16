@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { HiOutlineHome } from 'react-icons/hi';
+import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs';
 import { BsBoxArrowInDown } from 'react-icons/bs';
 import { RiLogoutCircleLine } from 'react-icons/ri';
 
@@ -13,7 +14,7 @@ export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-export const NameLogo = styled.h2`
+export const NameLogo = styled.p`
   font-weight: bold;
   font-size: 20px;
   text-align: center;
@@ -21,12 +22,20 @@ export const NameLogo = styled.h2`
 `;
 export const MenuItems = styled.section`
   display: flex;
+  gap: 30px;
   flex-direction: column;
   justify-content: space-between;
   color: white;
   padding: 2.5em;
   display: inline-flex;
   align-items: flex-start;
+`;
+export const UserInfoContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
 `;
 
 export const Avatar = styled.img`
@@ -50,12 +59,13 @@ const iconStyles = {
 export const HomeIcon = styled(HiOutlineHome)`
   ${iconStyles}
 `;
+export const DashboardIcon = styled(BsReverseLayoutTextWindowReverse)`
+  ${iconStyles};
+  font-size: '.5em';
+`;
 export const UpdateIcon = styled(BsBoxArrowInDown)`
   ${iconStyles}
 `;
 export const LogoutIcon = styled(RiLogoutCircleLine)`
   ${iconStyles}
-`;
-export const Logout = styled.p`
-  display: inline-flex;
 `;
