@@ -1,5 +1,4 @@
 import api from './api';
-import { getCsrfToken } from './getCsrfToken';
 
 interface LoginProps {
   email: string;
@@ -16,7 +15,6 @@ export const login = async ({ email, password }: LoginProps) => {
       return res;
     })
     .catch(({ response }) => {
-      console.log('ERROR', response);
       return response
         ? response.data.errors
         : [

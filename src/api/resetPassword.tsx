@@ -1,5 +1,4 @@
 import api from './api';
-import { getCsrfToken } from './getCsrfToken';
 
 interface ResetPasswordProps {
   email: string;
