@@ -37,7 +37,7 @@ const App = () => {
               <Route index element={<Navigate to="dashboard" replace />} />
             </Route>
           </Route>
-          <Route index element={<Navigate to="cohort" replace />} />
+          <Route index element={<Navigate to="cohorts" replace />} />
         </Route>
         <Route path="student">
           <Route path="cohorts" element={<StudentMainLayout />}>
@@ -48,7 +48,7 @@ const App = () => {
               <Route index element={<Navigate to="dashboard" replace />} />
             </Route>
           </Route>
-          <Route index element={<Navigate to="cohort" replace />} />
+          <Route index element={<Navigate to="cohorts" replace />} />
         </Route>
       </Routes>
     </ThemeProvider>

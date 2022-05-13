@@ -8,6 +8,5 @@ export const fetchCsrfToken = () => {
 
 export const getCsrfToken = async () => {
   const response = await fetchCsrfToken();
-  api.defaults.headers.common['X-CSRF-Token'] = response.data.csrfToken;
-  return response.data.csrfToken;
+  api.defaults.headers.post['X-CSRF-Token'] = response.data.csrfToken;
 };

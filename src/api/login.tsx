@@ -7,17 +7,16 @@ interface LoginProps {
 }
 
 export const login = async ({ email, password }: LoginProps) => {
-  const csrfToken = await getCsrfToken();
   return api
     .post('/login', {
       email,
       password,
-      _csrf: csrfToken,
     })
     .then((res) => {
       return res;
     })
     .catch(({ response }) => {
+      console.log('ERROR', response);
       return response
         ? response.data.errors
         : [

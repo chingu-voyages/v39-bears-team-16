@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
+import { getCsrfToken } from '../../api/getCsrfToken';
 import { resetPassword } from '../../api/resetPassword';
 import {
   AuthContainer,
@@ -46,6 +47,10 @@ const ResetPassword = () => {
       setErrorMessages(res);
     }
   };
+
+  useEffect(() => {
+    getCsrfToken();
+  }, []);
 
   return (
     <AuthContainer>

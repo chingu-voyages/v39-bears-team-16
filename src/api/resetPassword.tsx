@@ -14,15 +14,12 @@ export const resetPassword = async ({
   passwordConfirmation,
   token,
 }: ResetPasswordProps) => {
-  const csrfToken = await getCsrfToken();
-
   return api
     .post(`/reset-password/${token}`, {
       email,
       newPassword,
       passwordConfirmation,
       token,
-      _csrf: csrfToken,
     })
     .then((res) => {
       return res;

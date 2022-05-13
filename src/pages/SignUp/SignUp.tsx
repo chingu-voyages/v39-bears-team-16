@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { getCsrfToken } from '../../api/getCsrfToken';
 import { registerUser } from '../../api/register';
 import {
   AuthContainer,
@@ -47,6 +48,10 @@ const SignUp = () => {
       setErrorMessages(res);
     }
   };
+
+  useEffect(() => {
+    getCsrfToken();
+  }, []);
 
   return (
     <AuthContainer>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { forgotPassword } from '../../api/forgotPassword';
+import { getCsrfToken } from '../../api/getCsrfToken';
 import {
   AuthContainer,
   AuthCard,
@@ -43,6 +44,10 @@ const ForgotPassword = () => {
       setErrorMessages(res);
     }
   };
+
+  useEffect(() => {
+    getCsrfToken();
+  }, []);
 
   return (
     <AuthContainer>
