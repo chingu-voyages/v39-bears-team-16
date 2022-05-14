@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { forgotPassword } from '../../api/forgotPassword';
@@ -19,14 +20,18 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import { getValidationRules } from '../../utilities/auth';
+import {
+  ErrorMessageType,
+  ERROR_MESSAGE,
+  getValidationRules,
+} from '../../utilities/auth';
 
 interface ForgotPasswordFormInputs {
   email: string;
 }
 
 const ForgotPassword = () => {
-  const [errorMessages, setErrorMessages] = useState([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const {
@@ -36,12 +41,15 @@ const ForgotPassword = () => {
   } = useForm<ForgotPasswordFormInputs>();
 
   const onSubmit = async (payload: ForgotPasswordFormInputs) => {
-    const res = await forgotPassword(payload);
-
-    if (res.data) {
+    try {
+      await forgotPassword(payload);
       setShowSuccessMessage(true);
-    } else {
-      setErrorMessages(res);
+    } catch (err) {
+      let errMessages = [{ msg: ERROR_MESSAGE.default }];
+      if (axios.isAxiosError(err)) {
+        errMessages = err.response?.data.errors;
+      }
+      setErrorMessages(errMessages);
     }
   };
 
@@ -70,7 +78,7 @@ const ForgotPassword = () => {
           </AuthField>
           <FormErrorMessages errors={formErrors} />
 
-          {errorMessages.map(({ msg, param }) => (
+          {errorMessages?.map(({ msg, param }) => (
             <StyledErrorMessage key={param}>{msg}</StyledErrorMessage>
           ))}
           <AuthButton type="submit">SEND REQUEST</AuthButton>

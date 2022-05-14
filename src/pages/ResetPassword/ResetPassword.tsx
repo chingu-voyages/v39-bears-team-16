@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -19,7 +20,11 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import { getValidationRules } from '../../utilities/auth';
+import {
+  ErrorMessageType,
+  ERROR_MESSAGE,
+  getValidationRules,
+} from '../../utilities/auth';
 
 interface ResetPasswordInputs {
   email: string;
@@ -35,16 +40,19 @@ const ResetPassword = () => {
     formState: { errors: formErrors },
   } = useForm<ResetPasswordInputs>();
 
-  const [errorMessages, setErrorMessages] = useState([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
   const navigate = useNavigate();
 
   const onSubmit = async (payload: ResetPasswordInputs) => {
-    const res = await resetPassword({ ...payload, token });
-
-    if (res.data) {
+    try {
+      await resetPassword({ ...payload, token });
       navigate('/sign-in', { replace: true });
-    } else {
-      setErrorMessages(res);
+    } catch (err) {
+      let errMessages = [{ msg: ERROR_MESSAGE.default }];
+      if (axios.isAxiosError(err)) {
+        errMessages = err.response?.data.errors;
+      }
+      setErrorMessages(errMessages);
     }
   };
 
@@ -93,8 +101,8 @@ const ResetPassword = () => {
           </AuthField>
           <FormErrorMessages errors={formErrors} />
 
-          {errorMessages.map(({ msg, param }) => (
-            <StyledErrorMessage key={param}>{msg}</StyledErrorMessage>
+          {errorMessages?.map(({ msg }) => (
+            <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
           ))}
           <AuthButton type="submit">CHANGE PASSWORD</AuthButton>
         </AuthForm>

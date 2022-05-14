@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +22,11 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import { getValidationRules } from '../../utilities/auth';
+import {
+  ErrorMessageType,
+  ERROR_MESSAGE,
+  getValidationRules,
+} from '../../utilities/auth';
 
 interface SignInFormInputs {
   email: string;
@@ -34,16 +39,19 @@ const SignIn = () => {
     handleSubmit,
     formState: { errors: formErrors },
   } = useForm<SignInFormInputs>();
-  const [errorMessages, setErrorMessages] = useState([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
   const navigate = useNavigate();
 
   const onSubmit = async (payload: SignInFormInputs) => {
-    const res = await login(payload);
-
-    if (res.data) {
+    try {
+      await login(payload);
       navigate('/home', { replace: true });
-    } else {
-      setErrorMessages(res);
+    } catch (err) {
+      let errMessages = [{ msg: ERROR_MESSAGE.login }];
+      if (axios.isAxiosError(err)) {
+        errMessages = err.response?.data.errors;
+      }
+      setErrorMessages(errMessages);
     }
   };
 
@@ -78,8 +86,8 @@ const SignIn = () => {
 
           <FormErrorMessages errors={formErrors} />
 
-          {errorMessages.map(({ msg, param }) => (
-            <StyledErrorMessage key={param}>{msg}</StyledErrorMessage>
+          {errorMessages?.map(({ msg }) => (
+            <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
           ))}
 
           <AuthButton type="submit">SIGN IN</AuthButton>

@@ -1,5 +1,10 @@
 import { RegisterOptions } from 'react-hook-form';
 
+export interface ErrorMessageType {
+  msg: string;
+  value?: string;
+  param?: string;
+}
 interface ValidationRuleProp {
   [x: string]: RegisterOptions;
 }
@@ -40,6 +45,12 @@ const validationRules: ValidationRuleProp = {
       message: 'Password cannot exceed 12 characters',
     },
   },
+};
+
+export const ERROR_MESSAGE = {
+  register: 'There is an error in the registration process',
+  login: 'There is an error in the login process',
+  default: 'There is an error in the request',
 };
 
 export const getValidationRules = (field: string) => {

@@ -13,23 +13,10 @@ export const resetPassword = async ({
   passwordConfirmation,
   token,
 }: ResetPasswordProps) => {
-  return api
-    .post(`/reset-password/${token}`, {
-      email,
-      newPassword,
-      passwordConfirmation,
-      token,
-    })
-    .then((res) => {
-      return res;
-    })
-    .catch(({ response }) => {
-      return response
-        ? response.data.errors
-        : [
-            {
-              msg: "There's an error in the request",
-            },
-          ];
-    });
+  return api.post(`/reset-password`, {
+    email,
+    password: newPassword,
+    passwordConfirmation,
+    token,
+  });
 };
