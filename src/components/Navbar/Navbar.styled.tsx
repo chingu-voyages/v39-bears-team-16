@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { HiOutlineHome } from 'react-icons/hi';
-import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs';
-import { BsBoxArrowInDown } from 'react-icons/bs';
+import {
+  BsReverseLayoutTextWindowReverse,
+  BsBoxArrowInDown,
+} from 'react-icons/bs';
 import { RiLogoutCircleLine } from 'react-icons/ri';
 
 // should be styled and updated later
