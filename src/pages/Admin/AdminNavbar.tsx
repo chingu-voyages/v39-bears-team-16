@@ -53,12 +53,10 @@ const AdminNavbar = () => {
             <HomeIcon />
             Home
           </MenuItem>
-
           <MenuItem to={`/admin/cohorts/${id}/dashboard`}>
             <DashboardIcon />
             Dashboard
           </MenuItem>
-
           <MenuItem to={`/admin/cohorts/${id}/class`}>
             <UpdateIcon />
             Update Class

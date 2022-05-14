@@ -12,12 +12,14 @@ export const NavbarContainer = styled.div`
   color: white;
   padding: 5px;
   display: flex;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: space-around;
 `;
 export const NameLogo = styled.p`
   font-weight: bold;
   font-size: 20px;
   text-align: center;
+  width: 100%;
   margin-bottom: 2px;
 `;
 export const MenuItems = styled.section`
