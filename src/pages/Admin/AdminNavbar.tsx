@@ -63,13 +63,12 @@ const AdminNavbar = () => {
             <UpdateIcon />
             Update Class
           </MenuItem>
-
-          <MenuItem to="/admin/signin">
-            <LogoutIcon />
-            Logout
-          </MenuItem>
         </>
       )}
+      <MenuItem to="/admin/signin">
+        <LogoutIcon />
+        Logout
+      </MenuItem>
     </Navbar>
   );
 };
