@@ -8,7 +8,6 @@ const activeStyle = {
   width: '180px',
   height: '3em',
   borderRadius: '15px',
-  background: '#A8A8A85B',
   background:
     'linear-gradient(124deg, rgba(32,201,151,1) 10%, rgba(35,194,154,1) 35%, rgba(68,107,197,1) 75%, rgba(102,16,242,1) 90%)',
   boxShadow: '0px 0px 3px 3px #A8A8A8',
