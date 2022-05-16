@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -20,11 +19,7 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import {
-  ErrorMessageType,
-  ERROR_MESSAGE,
-  getValidationRules,
-} from '../../utilities/auth';
+import { ErrorMessageType, getValidationRules } from '../../utilities/auth';
 
 interface ResetPasswordInputs {
   email: string;
@@ -47,12 +42,8 @@ const ResetPassword = () => {
     try {
       await resetPassword({ ...payload, token });
       navigate('/sign-in', { replace: true });
-    } catch (err) {
-      let errMessages = [{ msg: ERROR_MESSAGE.default }];
-      if (axios.isAxiosError(err)) {
-        errMessages = err.response?.data.errors;
-      }
-      setErrorMessages(errMessages);
+    } catch (error) {
+      setErrorMessages(error as ErrorMessageType[]);
     }
   };
 

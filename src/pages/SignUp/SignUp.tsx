@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -23,11 +22,7 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import {
-  ErrorMessageType,
-  ERROR_MESSAGE,
-  getValidationRules,
-} from '../../utilities/auth';
+import { ErrorMessageType, getValidationRules } from '../../utilities/auth';
 
 interface SignUpFormInputs {
   name: string;
@@ -48,12 +43,8 @@ const SignUp = () => {
     try {
       await registerUser(payload);
       navigate('/sign-in', { replace: true });
-    } catch (err) {
-      let errMessages = [{ msg: ERROR_MESSAGE.register }];
-      if (axios.isAxiosError(err)) {
-        errMessages = err.response?.data.errors;
-      }
-      setErrorMessages(errMessages);
+    } catch (error) {
+      setErrorMessages(error as ErrorMessageType[]);
     }
   };
 

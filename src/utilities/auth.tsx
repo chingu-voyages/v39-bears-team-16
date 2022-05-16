@@ -47,12 +47,6 @@ const validationRules: ValidationRuleProp = {
   },
 };
 
-export const ERROR_MESSAGE = {
-  register: 'There is an error in the registration process',
-  login: 'There is an error in the login process',
-  default: 'There is an error in the request',
-};
-
 export const getValidationRules = (field: string) => {
   return validationRules[field] ?? {};
 };

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { forgotPassword } from '../../api/forgotPassword';
@@ -20,11 +19,7 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import {
-  ErrorMessageType,
-  ERROR_MESSAGE,
-  getValidationRules,
-} from '../../utilities/auth';
+import { ErrorMessageType, getValidationRules } from '../../utilities/auth';
 
 interface ForgotPasswordFormInputs {
   email: string;
@@ -44,12 +39,8 @@ const ForgotPassword = () => {
     try {
       await forgotPassword(payload);
       setShowSuccessMessage(true);
-    } catch (err) {
-      let errMessages = [{ msg: ERROR_MESSAGE.default }];
-      if (axios.isAxiosError(err)) {
-        errMessages = err.response?.data.errors;
-      }
-      setErrorMessages(errMessages);
+    } catch (error) {
+      setErrorMessages(error as ErrorMessageType[]);
     }
   };
 
