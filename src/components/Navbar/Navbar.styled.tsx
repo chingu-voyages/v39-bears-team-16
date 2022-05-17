@@ -31,7 +31,6 @@ export const MenuItems = styled.section`
   justify-content: space-between;
   color: white;
   padding: 2.5em;
-  display: inline-flex;
   align-items: flex-start;
 `;
 export const UserInfoContainer = styled.section`
