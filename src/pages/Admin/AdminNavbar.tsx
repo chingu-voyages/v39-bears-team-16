@@ -6,7 +6,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import {
   NameLogo,
   Avatar,
-  UserData,
+  StyledUserInfo,
   HomeIcon,
   DashboardIcon,
   UpdateIcon,
@@ -17,9 +17,9 @@ import {
 const Line = styled.div`
   width: 100%;
   height: 1.5px;
-  background: white;
+  background: ${({ theme }) => theme.background.white};
   opacity: 30%;
-  border-radius: 4px;
+  border-radius: 1em;
 `;
 
 const AdminNavbar = () => {
@@ -39,12 +39,12 @@ const AdminNavbar = () => {
           src="https://api.multiavatar.com/268ffa7121a2ff2573.svg"
           alt="User avatar"
         />
-        <UserData>
+        <StyledUserInfo>
           <p>Name</p>
-        </UserData>
-        <UserData>
+        </StyledUserInfo>
+        <StyledUserInfo>
           <p>Administrator</p>
-        </UserData>
+        </StyledUserInfo>
       </UserInfoContainer>
       <Line />
       {!isCohortPage && (
@@ -63,7 +63,7 @@ const AdminNavbar = () => {
           </MenuItem>
         </>
       )}
-      <MenuItem to="/admin/signin">
+      <MenuItem to="/sign-in">
         <LogoutIcon />
         Logout
       </MenuItem>

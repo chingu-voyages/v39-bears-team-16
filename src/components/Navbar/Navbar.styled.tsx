@@ -12,7 +12,7 @@ export const NavbarContainer = styled.div`
   width: 250px;
   height: 100%;
   color: white;
-  padding: 5px;
+  padding: 1em;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
@@ -22,11 +22,11 @@ export const NameLogo = styled.p`
   font-size: 20px;
   text-align: center;
   width: 100%;
-  margin-bottom: 2px;
+  margin-bottom: 0.125em;
 `;
 export const MenuItems = styled.section`
   display: flex;
-  gap: 30px;
+  gap: 1.5em;
   flex-direction: column;
   justify-content: space-between;
   color: white;
@@ -44,20 +44,20 @@ export const UserInfoContainer = styled.section`
 
 export const Avatar = styled.img`
   height: 70%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 0.125em solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  padding: 6px;
+  padding: 0.5em;
   margin-bottom: 1em;
 `;
 
-export const UserData = styled.p`
+export const StyledUserInfo = styled.div`
   text-align: center;
-  padding: 6px;
+  padding: 0.5em;
 `;
 
 const iconStyles = {
   fontSize: '1.5rem',
-  margin: '5px',
+  margin: '.175em',
   color: 'white',
 };
 export const HomeIcon = styled(HiOutlineHome)`
