@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import AdminNavbar from './AdminNavbar';
 
 const Container = styled.div`
-  max-width: 1200px;
-  padding: 0 60px;
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  background: ${({ theme }) => theme.background.secondary};
 `;
 
 const AdminMainLayout = () => {
