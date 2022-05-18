@@ -5,6 +5,7 @@ import { getAdminCohorts } from '../../api/getAdminCohorts';
 import { Cohort, ErrorMessageType } from '../../types';
 import { ERROR_MESSAGES } from '../../utilities/constants';
 import AdminNavbar from './AdminNavbar';
+import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
 
 const Container = styled.div`
   width: 100vw;
@@ -60,7 +61,12 @@ const AdminMainLayout = () => {
     <div>
       <Container>
         <AdminNavbar />
+<<<<<<< HEAD
         <Outlet context={{ cohorts: cohortsList }} />
+=======
+        <BreadcrumbMenu />
+        <Outlet />
+>>>>>>> d6b1cfb (styling attempt one for breadcrumb menu)
       </Container>
     </div>
   );
