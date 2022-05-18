@@ -4,10 +4,9 @@ import { ThemeProvider } from 'styled-components';
 import { darkTheme } from './theme.js';
 import { GlobalStyle } from './global-style';
 import SignUp from './pages/SignUp/SignUp';
-import Home from './pages/Home/Home';
 import SignIn from './pages/SignIn/SignIn';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
-import CreatePassword from './pages/CreatePassword/CreatePassword';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
 import StudentMainLayout from './pages/Student/StudentMainLayout';
 import StudentDashboard from './pages/Student/StudentDashboard';
 import StudentClassTracker from './pages/Student/StudentClassTracker';
@@ -22,11 +21,11 @@ const App = () => {
     <ThemeProvider theme={darkTheme}>
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
-        <Route path="create-password" element={<CreatePassword />} />
+        <Route path="reset-password/:token" element={<ResetPassword />} />
         <Route path="admin">
           <Route path="cohorts" element={<AdminMainLayout />}>
             <Route index element={<AdminCohortPage />} />
@@ -36,7 +35,7 @@ const App = () => {
               <Route index element={<Navigate to="dashboard" replace />} />
             </Route>
           </Route>
-          <Route index element={<Navigate to="cohort" replace />} />
+          <Route index element={<Navigate to="cohorts" replace />} />
         </Route>
         <Route path="student">
           <Route path="cohorts" element={<StudentMainLayout />}>
@@ -47,7 +46,7 @@ const App = () => {
               <Route index element={<Navigate to="dashboard" replace />} />
             </Route>
           </Route>
-          <Route index element={<Navigate to="cohort" replace />} />
+          <Route index element={<Navigate to="cohorts" replace />} />
         </Route>
       </Routes>
     </ThemeProvider>
