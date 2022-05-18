@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import AdminNavbar from './AdminNavbar';
+import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
 
 const Container = styled.div`
   width: 100vw;
@@ -15,6 +16,7 @@ const AdminMainLayout = () => {
     <div>
       <Container>
         <AdminNavbar />
+        <BreadcrumbMenu />
         <Outlet />
       </Container>
     </div>
