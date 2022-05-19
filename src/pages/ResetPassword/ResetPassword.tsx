@@ -19,7 +19,8 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import { ErrorMessageType, getValidationRules } from '../../utilities/auth';
+import { ErrorMessageType } from '../../types';
+import { getValidationRules } from '../../utilities/auth';
 
 interface ResetPasswordInputs {
   email: string;

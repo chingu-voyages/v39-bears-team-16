@@ -6,6 +6,7 @@ import { FiEdit } from 'react-icons/fi';
 import { SiGoogleclassroom } from 'react-icons/si';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import cohortCard1 from '../../assets/img/cohort-card-1.png';
+import { useAdminContext } from './AdminMainLayout';
 
 const CardContainer = styled.section`
   width: 270px;
@@ -63,12 +64,17 @@ const OptionIcon = styled(BsThreeDotsVertical)`
   font-size: 1.5rem;
 `;
 
-const AdminCohortPage = () => {
-  const id = '1';
+const AdminCohortsPage = () => {
+  const { cohorts } = useAdminContext();
+
   return (
     <div>
       <div>Admin Cohort Page</div>
-      <Link to={`/admin/cohorts/${id}`}>Cohort id {id}</Link>
+      {cohorts?.map(({ _id, name }) => (
+        <Link to={`/admin/cohorts/${_id}`} key={_id}>
+          {name}
+        </Link>
+      ))}
 
       <CardContainer>
         {/* Cohort Info */}
@@ -94,4 +100,4 @@ const AdminCohortPage = () => {
   );
 };
 
-export default AdminCohortPage;
+export default AdminCohortsPage;

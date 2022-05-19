@@ -1,6 +1,9 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Outlet, useNavigate, useOutletContext } from 'react-router-dom';
 import styled from 'styled-components';
+import { getAdminCohorts } from '../../api/getAdminCohorts';
+import { Cohort, ErrorMessageType } from '../../types';
+import { ERROR_MESSAGES } from '../../utilities/constants';
 import AdminNavbar from './AdminNavbar';
 
 const Container = styled.div`
@@ -11,15 +14,38 @@ const Container = styled.div`
   background: ${({ theme }) => theme.background.secondary}; ;
 `;
 
-const AdminMainLayout = () => {
-  return (
+type AdminContextType = { cohorts: Cohort[] | null };
+
+export const AdminMainLayout = () => {
+  const [cohortsList, setCohortsList] = useState<Cohort[]>([]);
+  const navigate = useNavigate();
+
+  const fetchAdminCohorts = async () => {
+    try {
+      const res = await getAdminCohorts();
+      setCohortsList(res.data);
+    } catch (error) {
+      const errors = error as ErrorMessageType[];
+      if (errors?.[0].msg === ERROR_MESSAGES.unauthorized) {
+        navigate('/sign-in', { replace: true });
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchAdminCohorts();
+  });
+
+  return cohortsList.length ? (
     <div>
       <Container>
         <AdminNavbar />
-        <Outlet />
+        <Outlet context={{ cohorts: cohortsList }} />
       </Container>
     </div>
-  );
+  ) : null;
 };
 
-export default AdminMainLayout;
+export function useAdminContext() {
+  return useOutletContext<AdminContextType>();
+}
