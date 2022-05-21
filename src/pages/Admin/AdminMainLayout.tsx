@@ -5,6 +5,7 @@ import { getAdminCohorts } from '../../api/getAdminCohorts';
 import { Cohort, ErrorMessageType } from '../../types';
 import { ERROR_MESSAGES } from '../../utilities/constants';
 import AdminNavbar from './AdminNavbar';
+import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
 
 const Container = styled.div`
@@ -14,6 +15,7 @@ const Container = styled.div`
   background: ${({ theme }) => theme.background.secondary}; ;
 `;
 
+<<<<<<< HEAD
 type AdminContextType = { cohorts: Cohort[] | null };
 
 export const AdminMainLayout = () => {
@@ -43,6 +45,8 @@ export const AdminMainLayout = () => {
   return cohortsList?.length ? (
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
 // const Breadcrumbs = () => {
 //   const breadcrumbs = useBreadcrumbs();
 //   return (
@@ -65,8 +69,11 @@ const AdminMainLayout = () => {
         <Outlet context={{ cohorts: cohortsList }} />
 =======
         <BreadcrumbMenu />
+<<<<<<< HEAD
         <Outlet />
 >>>>>>> d6b1cfb (styling attempt one for breadcrumb menu)
+=======
+>>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
       </Container>
     </div>
   );
