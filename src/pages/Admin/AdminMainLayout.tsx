@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import AdminNavbar from './AdminNavbar';
+import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
 
 const Container = styled.div`
@@ -11,13 +12,21 @@ const Container = styled.div`
   background: ${({ theme }) => theme.background.secondary};
 `;
 
+// const Breadcrumbs = () => {
+//   const breadcrumbs = useBreadcrumbs();
+//   return (
+//     <React.Fragment>
+//       {breadcrumbs.map(({ breadcrumb }) => breadcrumb)}
+//     </React.Fragment>
+//   );
+// };
+
 const AdminMainLayout = () => {
   return (
     <div>
       <Container>
         <AdminNavbar />
         <BreadcrumbMenu />
-        <Outlet />
       </Container>
     </div>
   );
