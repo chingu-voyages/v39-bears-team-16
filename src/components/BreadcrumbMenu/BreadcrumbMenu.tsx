@@ -1,13 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Outlet } from 'react-router-dom';
 import { HiMenuAlt3 } from 'react-icons/hi';
+import useBreadcrumbs from 'use-react-router-breadcrumbs';
+import { Link } from 'react-router-dom';
 
-const BreadcrumbContainer = styled.div`
+const Breadcrumbs = () => {
+  const breadcrumbs = useBreadcrumbs();
+  return (
+    <React.Fragment>
+      {breadcrumbs.map(({ breadcrumb }) => breadcrumb)}
+    </React.Fragment>
+  );
+};
+
+const Crumb = styled.div`
+  padding-left: 0.625rem;
+  display: flex;
+  flex-direction: row;
+`;
+
+const BreadcrumbArea = styled.div`
   background: ${({ theme }) => theme.background.primary};
   margin: 1.5em;
   height: 90px;
   border-radius: 1em;
-  width: 60%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  color: ${({ theme }) => theme.background.white};
 `;
 
 const CohortContainer = styled.section`
@@ -23,7 +44,7 @@ const CohortDash = styled.section`
   font-weight: 600;
 `;
 
-const Backlinks = styled.span`
+const BreadcrumbContainer = styled.span`
   padding-left: 1.5em;
   font-size: 0.75em;
   color: ${({ theme }) => theme.background.white};
@@ -41,14 +62,18 @@ export const MenuIcon = styled(HiMenuAlt3)`
 
 export const BreadcrumbMenu = () => {
   return (
-    <BreadcrumbContainer>
+    <BreadcrumbArea>
       <CohortContainer>
         <CohortDash>Cohort 1: Dashboard</CohortDash>
         <CohortDash>
           <MenuIcon />
         </CohortDash>
       </CohortContainer>
-      <Backlinks>Home / Dashboard</Backlinks>
-    </BreadcrumbContainer>
+      <BreadcrumbContainer>
+        <Breadcrumbs />
+      </BreadcrumbContainer>
+
+      {/* <Outlet /> */}
+    </BreadcrumbArea>
   );
 };
