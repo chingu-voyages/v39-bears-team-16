@@ -183,24 +183,10 @@ const AdminUpdateClass = () => {
                 <span>Stream</span>
               </Item>
               <AddClassWrapper>
-                <AddClassContentIcon />
-                <Form>
-                  <label htmlFor="class-item">
-                    <select>
-                      <option>Resource Type</option>
-                      <option value="stream">Stream</option>
-                      <option value="article">Article</option>
-                      <option value="check-in">Check-in</option>
-                      <option value="reading-resource">Reading resource</option>
-                      <option value="video-resource">Video resource</option>
-                      <option value="homework">Homework</option>
-                    </select>
-                  </label>
-                  <label htmlFor="resource-link">
-                    <input type="link" placeholder="enter url" />
-                  </label>
-                  <button type="submit">Apply</button>
-                </Form>
+                <div>
+                  <AddClassContentIcon />
+                  Add new content
+                </div>
               </AddClassWrapper>
             </Items>
           </ClassContent>
