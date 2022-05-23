@@ -9,7 +9,6 @@ import AdminNavbar from './AdminNavbar';
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  padding: 0 60px;
   display: flex;
   background: ${({ theme }) => theme.background.secondary}; ;
 `;
@@ -26,7 +25,7 @@ export const AdminMainLayout = () => {
       setCohortsList(res.data);
     } catch (error) {
       const errors = error as ErrorMessageType[];
-      if (errors?.[0].msg === ERROR_MESSAGES.unauthorized) {
+      if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
         navigate('/sign-in', { replace: true });
       }
     }

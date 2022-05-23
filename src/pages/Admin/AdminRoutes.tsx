@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { AdminMainLayout } from './AdminMainLayout';
 import AdminDashboard from './AdminDashboard';
 import AdminUpdateClass from './AdminUpdateClass/AdminUpdateClass';
-import AdminCohortsPage from './AdminCohortsPage';
+import AdminCohortsPage from './AdminCohortsPage/AdminCohortsPage';
 
 const AdminRoutes = () => {
   return (
