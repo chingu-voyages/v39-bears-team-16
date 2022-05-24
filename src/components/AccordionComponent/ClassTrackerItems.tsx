@@ -1,4 +1,6 @@
 import React, { ReactNode } from 'react';
+import styled from 'styled-components';
+
 
 // Streamline Types, Integrate the types later to a single file
 
@@ -7,7 +9,7 @@ type ClassTrackerItemsType = {
   content: ReactNode;
 };
 
-// Final Mock Data Source is ClassInformation  src/Data/ClassInformation.tsx
+//  Mock Data Source is ClassInformation  src/Data/ClassInformation.tsx
 
 const ClassTrackerItems = ({
   data,

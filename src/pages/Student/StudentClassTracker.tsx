@@ -5,7 +5,8 @@ import { ClassInformation } from '../../Data/ClassInformation';
 const StudentClassTracker = () => {
   return (
     <div>
-      <Accordion items={ClassInformation} />
+      Student class tracker
+      {/* <Accordion items={ClassInformation} />  Testing Accordion*/}
     </div>
   );
 };
