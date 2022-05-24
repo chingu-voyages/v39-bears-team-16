@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-
+//Sample Test Component to be replaced with Admin - class 
 // Streamline Types, Integrate the types later to a single file
 
 type ClassTrackerItemsType = {
