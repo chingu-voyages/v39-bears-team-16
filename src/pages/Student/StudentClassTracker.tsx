@@ -6,7 +6,7 @@ const StudentClassTracker = () => {
   return (
     <div>
       Student class tracker
-      {/* <Accordion items={ClassInformation} />  Testing Accordion*/}
+      {/* <Accordion items={ClassInformation} />  Testing Accordion */}
     </div>
   );
 };

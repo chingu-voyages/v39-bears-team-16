@@ -7,7 +7,7 @@ type ClassTrackerItemsType = {
 };
 
 const Accordion = ({ items }: { items: Array<ClassTrackerItemsType> }) => {
-//   const [isExpanded, setIsExpanded] = useState<Boolean>(false);
+  //   const [isExpanded, setIsExpanded] = useState<Boolean>(false);
   const [currentID, setCurrentID] = useState<number>();
 
   return (
@@ -19,8 +19,7 @@ const Accordion = ({ items }: { items: Array<ClassTrackerItemsType> }) => {
           handleClick={() => {
             setCurrentID(currentID === id ? -1 : id);
           }}
-
-          isExpanded={currentID==id?true:false}
+          isExpanded={currentID == id ? true : false}
         />
       ))}
     </div>
