@@ -65,25 +65,66 @@ export const BreadcrumbMenu = () => {
     <BreadcrumbArea>
 =======
 import styled from 'styled-components';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link, NavLink, useParams, matchPath } from 'react-router-dom';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
-import { Link } from 'react-router-dom';
 
-const Breadcrumbs = () => {
-  const breadcrumbs = useBreadcrumbs();
-  return (
-    <React.Fragment>
-      {breadcrumbs.map(({ breadcrumb }) => breadcrumb)}
-    </React.Fragment>
-  );
+const DynamicBreadcrumb = () => {
+  const { id } = useParams();
+  return <span>{id}</span>;
 };
 
-const Crumb = styled.div`
-  padding-left: 0.625rem;
-  display: flex;
-  flex-direction: row;
-`;
+const routes = [
+  { path: '/', breadcrumb: 'Home' },
+  { path: '/admin', breadcrumb: null },
+  { path: '/admin/cohorts/:id', breadcrumb: DynamicBreadcrumb },
+];
+
+const excludePaths = ['/', '/admin/cohorts/:id'];
+
+const isRouteExcluded = (pathname: string) => {
+  return excludePaths.find((path) => matchPath({ path }, pathname));
+};
+
+const navLinkStyles = {
+  color: 'white',
+};
+
+const activeStyle = {
+  fontWeight: 'bold',
+  fontSize: '1.125em',
+};
+
+const Breadcrumbs = () => {
+  const breadcrumbs = useBreadcrumbs(routes);
+  return (
+    <>
+      {breadcrumbs.map(({ match, breadcrumb }, idx) => {
+        const excludedRoute = isRouteExcluded(match.pathname);
+
+        return breadcrumb ? (
+          <span key={match.pathname}>
+            {excludedRoute ? (
+              breadcrumb
+            ) : (
+              <NavLink
+                end
+                to={match.pathname}
+                style={({ isActive }) => ({
+                  ...navLinkStyles,
+                  ...(isActive && activeStyle),
+                })}
+              >
+                {breadcrumb}
+              </NavLink>
+            )}
+            {idx === breadcrumbs.length - 1 ? null : '/'}
+          </span>
+        ) : null;
+      })}
+    </>
+  );
+};
 
 const BreadcrumbArea = styled.div`
   background: ${({ theme }) => theme.background.primary};
