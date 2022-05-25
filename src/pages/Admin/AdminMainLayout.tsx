@@ -1,8 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import AdminNavbar from './AdminNavbar';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
+import AdminNavbar from './AdminNavbar';
 import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
 
 const Container = styled.div`
