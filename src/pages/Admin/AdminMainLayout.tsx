@@ -1,11 +1,15 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Outlet, useOutletContext, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+<<<<<<< HEAD
 import { getAdminCohorts } from '../../api/getAdminCohorts';
 import { Cohort, ErrorMessageType } from '../../types';
 import { ERROR_MESSAGES } from '../../utilities/constants';
 import AdminNavbar from './AdminNavbar';
+=======
+>>>>>>> 651b2e4 (fixed netlify error)
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
+import AdminNavbar from './AdminNavbar';
 import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
 
 const Container = styled.div`
