@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Outlet, useOutletContext, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { getAdminCohorts } from '../../api/getAdminCohorts';
@@ -19,7 +19,7 @@ export const AdminMainLayout = () => {
   const [cohortsList, setCohortsList] = useState<Cohort[]>([]);
   const navigate = useNavigate();
 
-  const fetchAdminCohorts = async () => {
+  const fetchAdminCohorts = useCallback(async () => {
     try {
       const res = await getAdminCohorts();
       setCohortsList(res.data);
@@ -29,13 +29,13 @@ export const AdminMainLayout = () => {
         navigate('/sign-in', { replace: true });
       }
     }
-  };
+  }, [navigate]);
 
   useEffect(() => {
     fetchAdminCohorts();
-  }, []);
+  }, [fetchAdminCohorts]);
 
-  return cohortsList.length ? (
+  return cohortsList?.length ? (
     <div>
       <Container>
         <AdminNavbar />
