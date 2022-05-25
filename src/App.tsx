@@ -12,7 +12,7 @@ import StudentDashboard from './pages/Student/StudentDashboard';
 import StudentClassTracker from './pages/Student/StudentClassTracker';
 import AdminMainLayout from './pages/Admin/AdminMainLayout';
 import AdminDashboard from './pages/Admin/AdminDashboard';
-import AdminUpdateClass from './pages/Admin/AdminUpdateClass';
+import AdminUpdateClass from './pages/Admin/AdminUpdateClass/AdminUpdateClass';
 import AdminCohortPage from './pages/Admin/AdminCohortPage';
 import StudentCohortPage from './pages/Student/StudentCohortPage';
 
