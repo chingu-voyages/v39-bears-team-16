@@ -8,6 +8,7 @@ import {
   StyledAddCohortCard,
   StyledCohortCardsContainer,
 } from './AdminCohortsPage.styled';
+import { Cohort } from '../../../types';
 
 const AdminCohortsPage = () => {
   const { cohorts } = useAdminContext();
@@ -16,7 +17,7 @@ const AdminCohortsPage = () => {
   return (
     <CohortsPageContainer>
       <StyledCohortCardsContainer>
-        {cohorts?.map(({ _id, ...cohortData }) => (
+        {cohorts?.map(({ _id, ...cohortData }: Cohort) => (
           <CohortCard
             _id={_id}
             key={_id}

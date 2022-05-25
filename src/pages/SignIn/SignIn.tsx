@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { getCsrfToken } from '../../api/getCsrfToken';
@@ -41,9 +41,9 @@ const SignIn = () => {
 
   const onSubmit = async (payload: SignInFormInputs) => {
     try {
-      await login(payload);
-      // const redirectUrl = res.isAdmin ? '/admin': '/student';
-      navigate('/admin', { replace: true }); // for now, until we get back user data from backend
+      const res = await login(payload);
+      const redirectUrl = res?.data?.isAdmin ? '/admin' : '/student';
+      navigate(redirectUrl, { replace: true });
     } catch (error) {
       setErrorMessages(error as ErrorMessageType[]);
     }
