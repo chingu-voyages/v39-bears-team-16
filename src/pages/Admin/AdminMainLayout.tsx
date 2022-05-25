@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState, useCallback } from 'react';
 import { Outlet, useOutletContext, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -9,6 +10,10 @@ import AdminNavbar from './AdminNavbar';
 =======
 >>>>>>> 651b2e4 (fixed netlify error)
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
+=======
+import React from 'react';
+import styled from 'styled-components';
+>>>>>>> d87fbdb (netlify update to remove unused imports from headers)
 import AdminNavbar from './AdminNavbar';
 import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
 
