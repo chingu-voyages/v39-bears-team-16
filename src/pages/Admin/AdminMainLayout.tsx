@@ -5,7 +5,6 @@ import { getAdminCohorts } from '../../api/getAdminCohorts';
 import { Cohort, ErrorMessageType } from '../../types';
 import { ERROR_MESSAGES } from '../../utilities/constants';
 import AdminNavbar from './AdminNavbar';
-import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
 
 const Container = styled.div`
@@ -15,7 +14,6 @@ const Container = styled.div`
   background: ${({ theme }) => theme.background.secondary}; ;
 `;
 
-<<<<<<< HEAD
 type AdminContextType = { cohorts: Cohort[] | null };
 
 export const AdminMainLayout = () => {
@@ -38,37 +36,13 @@ export const AdminMainLayout = () => {
     fetchAdminCohorts();
   }, [fetchAdminCohorts]);
 
-<<<<<<< HEAD
   // return cohortsList?.length ? (
   return (
-=======
-  return cohortsList?.length ? (
-=======
-// const Breadcrumbs = () => {
-//   const breadcrumbs = useBreadcrumbs();
-//   return (
-//     <React.Fragment>
-//       {breadcrumbs.map(({ breadcrumb }) => breadcrumb)}
-//     </React.Fragment>
-//   );
-// };
-
-const AdminMainLayout = () => {
-  return (
->>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
->>>>>>> 66387d6 (breadcrumb created using the use-react-router-breadcrumbs)
     <div>
       <Container>
         <AdminNavbar />
-<<<<<<< HEAD
-        <Outlet context={{ cohorts: cohortsList }} />
-=======
         <BreadcrumbMenu />
-<<<<<<< HEAD
-        <Outlet />
->>>>>>> d6b1cfb (styling attempt one for breadcrumb menu)
-=======
->>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
+        <Outlet context={{ cohorts: cohortsList }} />
       </Container>
     </div>
   );
