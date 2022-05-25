@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ERROR_MESSAGES } from '../utilities/constants';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
@@ -14,9 +15,17 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
-    const errMessages = error.response?.data?.errors
-      ? error.response.data.errors
-      : [{ msg: 'There is an error in the request' }];
+    let errMessages = [
+      { msg: ERROR_MESSAGES.default, status: error.response.status },
+    ];
+    if (error.response.status === 401) {
+      errMessages = [
+        { msg: ERROR_MESSAGES.unauthorized, status: error.response.status },
+      ];
+    } else if (error.response?.data?.errors) {
+      errMessages = error.response.data.errors;
+    }
+
     return Promise.reject(errMessages);
   }
 );

@@ -1,6 +1,7 @@
 import React from 'react';
-import { useMatch, useParams } from 'react-router-dom';
+import { useMatch, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { logout } from '../../api/logout';
 import MenuItem from '../../components/Navbar/MenuItem';
 import Navbar from '../../components/Navbar/Navbar';
 import {
@@ -29,6 +30,13 @@ const AdminNavbar = () => {
     caseSensitive: false,
   });
   const { id } = useParams();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/sign-in', { replace: true });
+  };
 
   return (
     <Navbar>
@@ -63,7 +71,7 @@ const AdminNavbar = () => {
           </MenuItem>
         </>
       )}
-      <MenuItem to="/sign-in">
+      <MenuItem to="/sign-in" onClick={() => handleLogout()}>
         <LogoutIcon />
         Logout
       </MenuItem>

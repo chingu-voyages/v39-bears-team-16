@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { getCsrfToken } from '../../api/getCsrfToken';
 import { login } from '../../api/login';
+import { logout } from '../../api/logout';
 import {
   AuthContainer,
   AuthCard,
@@ -21,7 +22,8 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import { ErrorMessageType, getValidationRules } from '../../utilities/auth';
+import { ErrorMessageType } from '../../types';
+import { getValidationRules } from '../../utilities/auth';
 
 interface SignInFormInputs {
   email: string;
@@ -39,15 +41,16 @@ const SignIn = () => {
 
   const onSubmit = async (payload: SignInFormInputs) => {
     try {
-      await login(payload);
-      navigate('/home', { replace: true });
+      const res = await login(payload);
+      const redirectUrl = res?.data?.isAdmin ? '/admin' : '/student';
+      navigate(redirectUrl, { replace: true });
     } catch (error) {
       setErrorMessages(error as ErrorMessageType[]);
     }
   };
 
   useEffect(() => {
-    getCsrfToken();
+    getCsrfToken().then(() => logout());
   }, []);
 
   return (
