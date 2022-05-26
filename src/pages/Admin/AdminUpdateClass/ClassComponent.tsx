@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdExpandMore } from 'react-icons/md';
 import {
   AddClassContentIcon,
@@ -16,41 +16,66 @@ import {
   StyledClassItemsContainer,
   TrashIcon,
 } from './ClassComponent.styled';
+import { ClassComponentData } from '../../../api/ClassComponentData';
+
+interface ClassComponentData {
+  id: string;
+  date: string;
+  title: string;
+  classDescription: string;
+  content?: [];
+}
 
 const ClassComponent = () => {
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [currentId, setCurrentID] = useState<number>();
+
   return (
     <StyledClassContainer>
-      <EditClassIcon />
-      <StyledAccordionWrapper>
-        {/* accordion header */}
-        <StyledClassHeaderWrapper>
-          <article>
-            <ClassDate>March,10th,2022</ClassDate>
-            <ClassTitleWrapper>
-              <ClassTitle>Class 1: Introduction</ClassTitle>
-              <TrashIcon />
-            </ClassTitleWrapper>
-            <ClassDescription>
-              In this course, you will learn about JavaScript data types,
-              built-in methods, and variables.
-            </ClassDescription>
-          </article>
-          <MdExpandMore />
-        </StyledClassHeaderWrapper>
+      {ClassComponentData.map((item, idx) => (
+        <div key={item.id}>
+          <EditClassIcon />
+          <StyledAccordionWrapper
+            onClick={() => {
+              setCurrentID(currentId === idx ? -1 : idx);
+              setIsExpanded(!isExpanded);
+            }}
+          >
+            {/* accordion header */}
+            <StyledClassHeaderWrapper>
+              <article>
+                <ClassDate>{item.date}</ClassDate>
+                <ClassTitleWrapper>
+                  <ClassTitle>{item.title}</ClassTitle>
+                  <TrashIcon />
+                </ClassTitleWrapper>
+                <ClassDescription>{item.classDescription}</ClassDescription>
+              </article>
+              <MdExpandMore
+                className={
+                  isExpanded && currentId === idx ? 'closed' : 'expanded'
+                }
+              />
+            </StyledClassHeaderWrapper>
 
-        {/* accordion content */}
-        <StyledClassItemsContainer>
-          <StyledClassItem>
-            <EditClassContentIcon />
-            <TrashIcon />
-            <span>Stream</span>
-          </StyledClassItem>
-          <AddClassWrapper>
-            <AddClassContentIcon />
-            Add new content
-          </AddClassWrapper>
-        </StyledClassItemsContainer>
-      </StyledAccordionWrapper>
+            {/* accordion content */}
+
+            {item.content?.map((innerElement, innerIdx) => (
+              <div key={innerElement}>
+                {currentId === idx && (
+                  <StyledClassItemsContainer>
+                    <StyledClassItem>
+                      <EditClassContentIcon />
+                      <TrashIcon />
+                      <span>{innerElement}</span>
+                    </StyledClassItem>
+                  </StyledClassItemsContainer>
+                )}
+              </div>
+            ))}
+          </StyledAccordionWrapper>
+        </div>
+      ))}
     </StyledClassContainer>
   );
 };
