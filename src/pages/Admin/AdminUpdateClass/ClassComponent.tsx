@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { MdExpandMore } from 'react-icons/md';
 import {
-  AddClassContentIcon,
-  AddClassWrapper,
   StyledClassContainer,
   StyledAccordionWrapper,
   StyledClassHeaderWrapper,
@@ -60,7 +58,7 @@ const ClassComponent = () => {
 
             {/* accordion content */}
 
-            {item.content?.map((innerElement, innerIdx) => (
+            {item.content?.map((innerElement) => (
               <div key={innerElement}>
                 {currentId === idx && (
                   <StyledClassItemsContainer>
