@@ -10,6 +10,7 @@ import { getAdminCohorts } from '../../api/getAdminCohorts';
 import { Cohort, ErrorMessageType } from '../../types';
 import { ERROR_MESSAGES } from '../../utilities/constants';
 import AdminNavbar from './AdminNavbar';
+<<<<<<< HEAD
 =======
 >>>>>>> 651b2e4 (fixed netlify error)
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
@@ -19,6 +20,8 @@ import styled from 'styled-components';
 >>>>>>> d87fbdb (netlify update to remove unused imports from headers)
 import AdminNavbar from './AdminNavbar';
 import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
+=======
+>>>>>>> 5335910 (fixed unused import in header)
 
 const Container = styled.div`
   width: 100vw;
