@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React from 'react';
-=======
 import React, { useEffect, useState, useCallback } from 'react';
 import { Outlet, useOutletContext, useNavigate } from 'react-router-dom';
->>>>>>> main
 import styled from 'styled-components';
 import { getAdminCohorts } from '../../api/getAdminCohorts';
 import { Cohort, ErrorMessageType } from '../../types';
@@ -18,23 +14,6 @@ const Container = styled.div`
   background: ${({ theme }) => theme.background.secondary}; ;
 `;
 
-<<<<<<< HEAD
-// const Breadcrumbs = () => {
-//   const breadcrumbs = useBreadcrumbs();
-//   return (
-//     <React.Fragment>
-//       {breadcrumbs.map(({ breadcrumb }) => breadcrumb)}
-//     </React.Fragment>
-//   );
-// };
-
-const AdminMainLayout = () => {
-  return (
-    <div>
-      <Container>
-        <AdminNavbar />
-        <BreadcrumbMenu />
-=======
 type AdminContextType = { cohorts: Cohort[] | null };
 
 export const AdminMainLayout = () => {
@@ -62,7 +41,6 @@ export const AdminMainLayout = () => {
       <Container>
         <AdminNavbar />
         <Outlet context={{ cohorts: cohortsList }} />
->>>>>>> main
       </Container>
     </div>
   ) : null;
