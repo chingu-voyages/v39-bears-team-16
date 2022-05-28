@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ae180d9 (fixed AdminMainLayout conflict)
 import React, { useEffect, useState, useCallback } from 'react';
 import { Outlet, useOutletContext, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -25,6 +28,9 @@ const Container = styled.div`
 `;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ae180d9 (fixed AdminMainLayout conflict)
 type AdminContextType = { cohorts: Cohort[] | null };
 
 export const AdminMainLayout = () => {
@@ -76,6 +82,7 @@ const AdminMainLayout = () => {
         <AdminNavbar />
 <<<<<<< HEAD
         <Outlet context={{ cohorts: cohortsList }} />
+<<<<<<< HEAD
 =======
         <BreadcrumbMenu />
 <<<<<<< HEAD
@@ -83,6 +90,8 @@ const AdminMainLayout = () => {
 >>>>>>> d6b1cfb (styling attempt one for breadcrumb menu)
 =======
 >>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
+=======
+>>>>>>> ae180d9 (fixed AdminMainLayout conflict)
       </Container>
     </div>
   );
