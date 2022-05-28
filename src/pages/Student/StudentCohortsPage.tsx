@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const StudentCohortPage = () => {
+const StudentCohortsPage = () => {
   const id = '1';
   return (
     <div>
@@ -11,4 +11,4 @@ const StudentCohortPage = () => {
   );
 };
 
-export default StudentCohortPage;
+export default StudentCohortsPage;

@@ -11,6 +11,8 @@ export const darkTheme = {
     black: '#000000DC',
     blue: '#0D6EFD',
     grey: '#6D6D6D',
+    white: '#FFFFFF',
+    yellow: '#FFC700',
   },
   background: {
     primary: '#30304D',
@@ -24,6 +26,7 @@ export const darkTheme = {
     blue: '#0D6EFD',
     grey: '#A8A8A85B',
     white: '#FFFFFF',
+    yellow: '#FFC700',
   },
 };
 

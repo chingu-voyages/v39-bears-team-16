@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getCsrfToken } from '../../api/getCsrfToken';
-import { login } from '../../api/login';
-import { logout } from '../../api/logout';
+import { resetPassword } from '../../api/resetPassword';
 import {
   AuthContainer,
   AuthCard,
-  AuthHead,
-  TwitterIcon,
-  AuthSub,
+  AuthForgetHead,
+  KeySuccessIcon,
   AuthForm,
   AuthField,
   AuthInput,
-  EmailIcon,
-  PasswordIcon,
   AuthButton,
-  AuthRedirectLink,
+  PasswordIcon,
+  EmailIcon,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
@@ -25,45 +22,49 @@ import {
 import { ErrorMessageType } from '../../types';
 import { getValidationRules } from '../../utilities/auth';
 
-interface SignInFormInputs {
+interface ResetPasswordInputs {
   email: string;
-  password: string;
+  newPassword: string;
+  passwordConfirmation: string;
 }
 
-const SignIn = () => {
+const ResetPassword = () => {
+  const { token = '' } = useParams();
   const {
     register,
     handleSubmit,
     formState: { errors: formErrors },
-  } = useForm<SignInFormInputs>();
+  } = useForm<ResetPasswordInputs>();
+
   const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
   const navigate = useNavigate();
 
-  const onSubmit = async (payload: SignInFormInputs) => {
+  const onSubmit = async (payload: ResetPasswordInputs) => {
     try {
-      const res = await login(payload);
-      const redirectUrl = res?.data?.isAdmin ? '/admin' : '/student';
-      navigate(redirectUrl, { replace: true });
+      await resetPassword({ ...payload, token });
+      navigate('/sign-in', { replace: true });
     } catch (error) {
       setErrorMessages(error as ErrorMessageType[]);
     }
   };
 
   useEffect(() => {
-    getCsrfToken().then(() => logout());
+    getCsrfToken();
   }, []);
 
   return (
     <AuthContainer>
       <AuthCard>
-        <AuthHead>Sign In</AuthHead>
-        <TwitterIcon />
-        <AuthSub>or use your email to login</AuthSub>
+        <AuthForgetHead>
+          Create a new <br /> password
+        </AuthForgetHead>
+        <KeySuccessIcon />
+
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <EmailIcon />
             <AuthInput
-              type="text"
+              type="email"
               placeholder="email"
               {...register('email', { ...getValidationRules('email') })}
             />
@@ -73,27 +74,33 @@ const SignIn = () => {
             <PasswordIcon />
             <AuthInput
               type="password"
-              placeholder="password"
-              {...register('password', { ...getValidationRules('password') })}
+              placeholder="new password"
+              {...register('newPassword', {
+                ...getValidationRules('newPassword'),
+              })}
             />
           </AuthField>
 
+          <AuthField>
+            <PasswordIcon />
+            <AuthInput
+              type="password"
+              placeholder="confirm new password"
+              {...register('passwordConfirmation', {
+                ...getValidationRules('passwordConfirmation'),
+              })}
+            />
+          </AuthField>
           <FormErrorMessages errors={formErrors} />
 
           {errorMessages?.map(({ msg }) => (
             <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
           ))}
-
-          <AuthButton type="submit">SIGN IN</AuthButton>
+          <AuthButton type="submit">CHANGE PASSWORD</AuthButton>
         </AuthForm>
-        <AuthSub>Forget your password?</AuthSub>
-        <AuthRedirectLink to="/forgot-password">Click Here</AuthRedirectLink>
-        or
-        <AuthSub>Create Account</AuthSub>
-        <AuthRedirectLink to="/sign-up">Click Here</AuthRedirectLink>
       </AuthCard>
     </AuthContainer>
   );
 };
 
-export default SignIn;
+export default ResetPassword;

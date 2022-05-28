@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { getCsrfToken } from '../../api/getCsrfToken';
 import { registerUser } from '../../api/register';
 import {
   AuthContainer,
@@ -21,6 +22,8 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
+import { ErrorMessageType } from '../../types';
+import { getValidationRules } from '../../utilities/auth';
 
 interface SignUpFormInputs {
   name: string;
@@ -28,44 +31,27 @@ interface SignUpFormInputs {
   password: string;
 }
 
-const validationRules = {
-  name: {
-    required: 'Name is required',
-    maxLength: {
-      value: 80,
-      message: 'Name cannot exceed 80 characters',
-    },
-  },
-  email: {
-    required: 'Email is required',
-    pattern: {
-      value: /^\S+@\S+$/i,
-      message: 'Email is invalid',
-    },
-  },
-  password: {
-    required: 'Password is required',
-  },
-};
-
 const SignUp = () => {
   const {
     register,
     handleSubmit,
     formState: { errors: formErrors },
   } = useForm<SignUpFormInputs>();
-  const [errorMessages, setErrorMessages] = useState([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
   const navigate = useNavigate();
 
   const onSubmit = async (payload: SignUpFormInputs) => {
-    const res = await registerUser(payload);
-
-    if (res.data) {
+    try {
+      await registerUser(payload);
       navigate('/sign-in', { replace: true });
-    } else {
-      setErrorMessages(res);
+    } catch (error) {
+      setErrorMessages(error as ErrorMessageType[]);
     }
   };
+
+  useEffect(() => {
+    getCsrfToken();
+  }, []);
 
   return (
     <AuthContainer>
@@ -79,7 +65,7 @@ const SignUp = () => {
             <AuthInput
               type="text"
               placeholder="name"
-              {...register('name', { ...validationRules.name })}
+              {...register('name', { ...getValidationRules('name') })}
             />
           </AuthField>
 
@@ -88,7 +74,7 @@ const SignUp = () => {
             <AuthInput
               type="email"
               placeholder="email"
-              {...register('email', { ...validationRules.email })}
+              {...register('email', { ...getValidationRules('email') })}
             />
           </AuthField>
 
@@ -97,13 +83,13 @@ const SignUp = () => {
             <AuthInput
               type="password"
               placeholder="password"
-              {...register('password', { ...validationRules.password })}
+              {...register('password', { ...getValidationRules('password') })}
             />
           </AuthField>
           <FormErrorMessages errors={formErrors} />
 
-          {errorMessages.map(({ msg, param }) => (
-            <StyledErrorMessage key={param}>{msg}</StyledErrorMessage>
+          {errorMessages?.map(({ msg }) => (
+            <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
           ))}
 
           <AuthButton type="submit">SIGN UP</AuthButton>
