@@ -29,11 +29,7 @@
       "error",
       {
         "endOfLine": "auto"
-<<<<<<< HEAD
       }
-=======
-      },
->>>>>>> 6a73d91 (updated eslint and json)
     ],
 		"no-use-before-define":"off",
 		"@typescript-eslint/no-use-before-define":[
