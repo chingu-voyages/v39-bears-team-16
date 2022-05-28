@@ -36,7 +36,7 @@ const ClassComponent = () => {
 
   return (
     <StyledClassContainer>
-      {ClassComponentData.map((item, idx) => (
+      {ClassComponentData.map((item) => (
         <div key={item.id}>
           <EditClassIcon />
           <StyledAccordionWrapper>
