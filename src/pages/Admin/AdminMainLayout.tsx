@@ -26,7 +26,7 @@ export const AdminMainLayout = () => {
     } catch (error) {
       const errors = error as ErrorMessageType[];
       if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
-        navigate('/sign-in', { replace: true });
+        // navigate('/sign-in', { replace: true });
       }
     }
   }, [navigate]);
