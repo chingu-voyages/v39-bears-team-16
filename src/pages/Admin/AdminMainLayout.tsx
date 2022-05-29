@@ -1,27 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ae180d9 (fixed AdminMainLayout conflict)
 import React, { useEffect, useState, useCallback } from 'react';
 import { Outlet, useOutletContext, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-<<<<<<< HEAD
 import { getAdminCohorts } from '../../api/getAdminCohorts';
 import { Cohort, ErrorMessageType } from '../../types';
 import { ERROR_MESSAGES } from '../../utilities/constants';
 import AdminNavbar from './AdminNavbar';
-<<<<<<< HEAD
-=======
->>>>>>> 651b2e4 (fixed netlify error)
-import useBreadcrumbs from 'use-react-router-breadcrumbs';
-=======
-import React from 'react';
-import styled from 'styled-components';
->>>>>>> d87fbdb (netlify update to remove unused imports from headers)
-import AdminNavbar from './AdminNavbar';
 import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
-=======
->>>>>>> 5335910 (fixed unused import in header)
 
 const Container = styled.div`
   width: 100vw;
@@ -30,10 +14,6 @@ const Container = styled.div`
   background: ${({ theme }) => theme.background.secondary}; ;
 `;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ae180d9 (fixed AdminMainLayout conflict)
 type AdminContextType = { cohorts: Cohort[] | null };
 
 export const AdminMainLayout = () => {
@@ -56,45 +36,13 @@ export const AdminMainLayout = () => {
     fetchAdminCohorts();
   }, [fetchAdminCohorts]);
 
-<<<<<<< HEAD
   // return cohortsList?.length ? (
   return (
-=======
-  return cohortsList?.length ? (
-<<<<<<< HEAD
-=======
-=======
->>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
-// const Breadcrumbs = () => {
-//   const breadcrumbs = useBreadcrumbs();
-//   return (
-//     <React.Fragment>
-//       {breadcrumbs.map(({ breadcrumb }) => breadcrumb)}
-//     </React.Fragment>
-//   );
-// };
-
-const AdminMainLayout = () => {
-  return (
->>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
->>>>>>> 66387d6 (breadcrumb created using the use-react-router-breadcrumbs)
-=======
->>>>>>> 3abc66c (fixed netlify error)
     <div>
       <Container>
         <AdminNavbar />
-<<<<<<< HEAD
-        <Outlet context={{ cohorts: cohortsList }} />
-<<<<<<< HEAD
-=======
         <BreadcrumbMenu />
-<<<<<<< HEAD
-        <Outlet />
->>>>>>> d6b1cfb (styling attempt one for breadcrumb menu)
-=======
->>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
-=======
->>>>>>> ae180d9 (fixed AdminMainLayout conflict)
+        <Outlet context={{ cohorts: cohortsList }} />
       </Container>
     </div>
   );
