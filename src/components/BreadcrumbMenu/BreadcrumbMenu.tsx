@@ -1,6 +1,9 @@
 import React from 'react';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cb4b04cf45bb9c72c6bb51b88de686ea1d14f40d
 import { NavLink, useParams, matchPath } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import {
@@ -64,6 +67,7 @@ const Breadcrumbs = () => {
 export const BreadcrumbMenu = () => {
   return (
     <BreadcrumbArea>
+<<<<<<< HEAD
 =======
 import styled from 'styled-components';
 =======
@@ -136,6 +140,8 @@ export const BreadcrumbMenu = () => {
 =======
     <BreadcrumbArea>
 >>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
+=======
+>>>>>>> cb4b04cf45bb9c72c6bb51b88de686ea1d14f40d
       <CohortContainer>
         <CohortDash>Cohort 1: Dashboard</CohortDash>
         <CohortDash>
@@ -144,8 +150,11 @@ export const BreadcrumbMenu = () => {
       </CohortContainer>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
+=======
+>>>>>>> cb4b04cf45bb9c72c6bb51b88de686ea1d14f40d
       <BreadcrumbContainer>
         <Breadcrumbs />
       </BreadcrumbContainer>
@@ -153,11 +162,14 @@ export const BreadcrumbMenu = () => {
       {/* <Outlet /> */}
     </BreadcrumbArea>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       <Backlinks>Home / Dashboard</Backlinks>
     </BreadcrumbContainer>
 >>>>>>> d6b1cfb (styling attempt one for breadcrumb menu)
 =======
 >>>>>>> c4274cb (breadcrumb created using the use-react-router-breadcrumbs)
+=======
+>>>>>>> cb4b04cf45bb9c72c6bb51b88de686ea1d14f40d
   );
 };
