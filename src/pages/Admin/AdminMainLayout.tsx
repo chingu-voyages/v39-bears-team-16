@@ -35,14 +35,16 @@ export const AdminMainLayout = () => {
     fetchAdminCohorts();
   }, [fetchAdminCohorts]);
 
-  return cohortsList?.length ? (
+  // return cohortsList?.length ? (
+  return (
     <div>
       <Container>
         <AdminNavbar />
         <Outlet context={{ cohorts: cohortsList }} />
       </Container>
     </div>
-  ) : null;
+  );
+  // ) : null;
 };
 
 export function useAdminContext() {
