@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Outlet, useOutletContext, useNavigate } from 'react-router-dom';
+import { Outlet, useOutletContext } from 'react-router-dom';
 import styled from 'styled-components';
 import { getAdminCohorts } from '../../api/getAdminCohorts';
 import { Cohort, ErrorMessageType } from '../../types';
@@ -18,7 +18,7 @@ type AdminContextType = { cohorts: Cohort[] | null };
 
 export const AdminMainLayout = () => {
   const [cohortsList, setCohortsList] = useState<Cohort[]>([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const fetchAdminCohorts = useCallback(async () => {
     try {
@@ -30,7 +30,7 @@ export const AdminMainLayout = () => {
         // navigate('/sign-in', { replace: true });
       }
     }
-  }, [navigate]);
+  }, []);
 
   useEffect(() => {
     fetchAdminCohorts();
