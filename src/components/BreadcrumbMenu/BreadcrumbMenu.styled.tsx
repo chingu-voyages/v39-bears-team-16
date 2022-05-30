@@ -18,7 +18,7 @@ export const BreadcrumbArea = styled.div`
   margin: 1.5em;
   height: 90px;
   border-radius: 1em;
-  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   color: ${({ theme }) => theme.background.white};
