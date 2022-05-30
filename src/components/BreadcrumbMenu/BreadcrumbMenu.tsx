@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useParams, matchPath } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import {
   navLinkStyles,
@@ -10,23 +10,7 @@ import {
   BreadcrumbContainer,
   MenuIcon,
 } from './BreadcrumbMenu.styled';
-
-const DynamicBreadcrumb = () => {
-  const { id } = useParams();
-  return <span>{id}</span>;
-};
-
-const routes = [
-  { path: '/', breadcrumb: 'Home' },
-  { path: '/admin', breadcrumb: null },
-  { path: '/admin/cohorts/:id', breadcrumb: DynamicBreadcrumb },
-];
-
-const excludePaths = ['/', '/admin/cohorts/:id'];
-
-const isRouteExcluded = (pathname: string) => {
-  return excludePaths.find((path) => matchPath({ path }, pathname));
-};
+import { isRouteExcluded, routes } from './utils';
 
 const Breadcrumbs = () => {
   const breadcrumbs = useBreadcrumbs(routes);
