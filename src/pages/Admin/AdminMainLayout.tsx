@@ -14,6 +14,13 @@ const Container = styled.div`
   background: ${({ theme }) => theme.background.secondary}; ;
 `;
 
+const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-basis: 1 auto;
+  width: 80vw;
+`;
+
 type AdminContextType = { cohorts: Cohort[] | null };
 
 export const AdminMainLayout = () => {
@@ -41,8 +48,10 @@ export const AdminMainLayout = () => {
     <div>
       <Container>
         <AdminNavbar />
-        <BreadcrumbMenu />
-        <Outlet context={{ cohorts: cohortsList }} />
+        <Section>
+          <BreadcrumbMenu />
+          <Outlet context={{ cohorts: cohortsList }} />
+        </Section>
       </Container>
     </div>
   );
