@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import { NavLink, useParams, matchPath } from 'react-router-dom';
+=======
+import { NavLink } from 'react-router-dom';
+>>>>>>> d4bd83d7a49bbaa0fac408f799525ffebe6133d7
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import {
   navLinkStyles,
@@ -10,6 +14,7 @@ import {
   BreadcrumbContainer,
   MenuIcon,
 } from './BreadcrumbMenu.styled';
+<<<<<<< HEAD
 
 const DynamicBreadcrumb = () => {
   const { id } = useParams();
@@ -27,6 +32,9 @@ const excludePaths = ['/', '/admin/cohorts/:id'];
 const isRouteExcluded = (pathname: string) => {
   return excludePaths.find((path) => matchPath({ path }, pathname));
 };
+=======
+import { isRouteExcluded, routes } from './utils';
+>>>>>>> d4bd83d7a49bbaa0fac408f799525ffebe6133d7
 
 const Breadcrumbs = () => {
   const breadcrumbs = useBreadcrumbs(routes);
