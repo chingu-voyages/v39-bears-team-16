@@ -55,8 +55,6 @@ export const BreadcrumbMenu = () => {
       <BreadcrumbContainer>
         <Breadcrumbs />
       </BreadcrumbContainer>
-
-      {/* <Outlet /> */}
     </BreadcrumbArea>
   );
 };
