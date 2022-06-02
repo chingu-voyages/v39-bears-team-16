@@ -7,7 +7,7 @@ import {
   AuthContainer,
   AuthCard,
   AuthHead,
-  TwitterIcon,
+  GithubIcon,
   AuthSub,
   AuthForm,
   AuthField,
@@ -17,6 +17,7 @@ import {
   PasswordIcon,
   AuthButton,
   AuthRedirectLink,
+  CookieRequest,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
@@ -57,7 +58,7 @@ const SignUp = () => {
     <AuthContainer>
       <AuthCard>
         <AuthHead>Sign Up</AuthHead>
-        <TwitterIcon />
+        <GithubIcon />
         <AuthSub>or use your email to register</AuthSub>
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
@@ -96,6 +97,7 @@ const SignUp = () => {
         </AuthForm>
         <AuthSub>Already have an account?</AuthSub>
         <AuthRedirectLink to="/sign-in">Login Here</AuthRedirectLink>
+        <CookieRequest>Please enable cookies to stay signed in.</CookieRequest>
       </AuthCard>
     </AuthContainer>
   );

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FaUserAlt, FaTwitterSquare } from 'react-icons/fa';
+import { FaUserAlt, FaGithubSquare } from 'react-icons/fa';
 import { MdSchool } from 'react-icons/md';
 import { HiMail } from 'react-icons/hi';
 import { RiLockPasswordFill } from 'react-icons/ri';
@@ -35,13 +35,14 @@ export const AuthHead = styled.h1`
   font-weight: 300;
   margin: 0;
   font-size: 3.5rem;
+  padding-bottom: 0.145em;
 `;
 const iconStyles = {
   fontSize: '1rem',
   margin: '0 20px',
   color: 'black',
 };
-export const TwitterIcon = styled(FaTwitterSquare)`
+export const GithubIcon = styled(FaGithubSquare)`
   color: ${({ theme }) => theme.color.black};
   font-size: 3rem;
   margin: 0 auto;
@@ -156,4 +157,9 @@ export const AuthForgetHead = styled.h2`
   color: ${({ theme }) => theme.color.black};
   font-size: 2rem;
   font-weight: 200;
+`;
+
+export const CookieRequest = styled.p`
+  font-size: 0.75em;
+  align-items: baseline;
 `;
