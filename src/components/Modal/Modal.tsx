@@ -21,7 +21,7 @@ export const Modal = ({
   isOpen,
   hide,
   modalContent,
-  TitleText,
+  titleText,
 }: ModalProps) => {
   const modal = (
     <div>
