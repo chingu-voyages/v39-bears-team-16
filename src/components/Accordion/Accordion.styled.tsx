@@ -12,7 +12,8 @@ export const StyledAccordionWrapper = styled.section`
 export const StyledClassHeaderWrapper = styled.section`
   display: flex;
   justify-content: space-between;
-
+  border-bottom: 0.01rem grey ridge;
+  padding: 0.5rem;
   .expanded {
     transform: rotate(0deg);
     transition: all 0.3s ease-out;
@@ -28,3 +29,5 @@ export const ExpandArrow = styled(MdExpandMore)`
   margin: 0 10px;
   font-size: 3rem;
 `;
+
+export const Appear = styled.div``;

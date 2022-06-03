@@ -73,6 +73,7 @@ export const AddClassWrapper = styled.section`
 export const EditClassIcon = styled(RiEditBoxFill)`
   ${iconStyles}
   margin-right: 20px;
+  margin-top: 2rem;
   color: ${({ theme }) => theme.color.yellow};
   font-size: 2rem;
 `;

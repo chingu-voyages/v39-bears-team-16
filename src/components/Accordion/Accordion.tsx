@@ -10,6 +10,7 @@ import {
   StyledAccordionWrapper,
   StyledClassHeaderWrapper,
   ExpandArrow,
+  Appear,
 } from './Accordion.styled';
 
 interface AccordionProps {
@@ -17,7 +18,7 @@ interface AccordionProps {
   children: ReactNode;
 }
 
-const Example = ({ header, children }: AccordionProps) => {
+const AccordionWrapper = ({ header, children }: AccordionProps) => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
   return (
@@ -36,11 +37,15 @@ const Example = ({ header, children }: AccordionProps) => {
           </AccordionItemHeading>
 
           {/* accordion content */}
-          <AccordionItemPanel>{children}</AccordionItemPanel>
+          <AccordionItemPanel>
+            <Appear className={expanded ? 'closed' : 'expanded'}>
+              {children}
+            </Appear>
+          </AccordionItemPanel>
         </AccordionItem>
       </Accordion>
     </StyledAccordionWrapper>
   );
 };
 
-export default Example;
+export default AccordionWrapper;

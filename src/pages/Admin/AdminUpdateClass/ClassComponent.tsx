@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { MdExpandMore } from 'react-icons/md';
+import React from 'react';
 
 import {
   StyledClassContainer,
@@ -15,7 +14,7 @@ import {
   TrashIcon,
 } from './ClassComponent.styled';
 import { ClassComponentData } from '../../../api/ClassComponentData';
-import Example from '../../../components/Accordion/Accordion';
+import AccordionWrapper from '../../../components/Accordion/Accordion';
 
 interface ClassComponentDataProps {
   id: string;
@@ -46,7 +45,9 @@ const ClassComponent = () => {
       {ClassComponentData.map((item) => (
         <div key={item.id}>
           <EditClassIcon />
-          <Example header={getHeaderComponent(item as ClassComponentDataProps)}>
+          <AccordionWrapper
+            header={getHeaderComponent(item as ClassComponentDataProps)}
+          >
             {/* accordion content */}
 
             {item.content?.map((innerElement) => (
@@ -60,7 +61,7 @@ const ClassComponent = () => {
                 </StyledClassItemsContainer>
               </div>
             ))}
-          </Example>
+          </AccordionWrapper>
         </div>
       ))}
     </StyledClassContainer>
