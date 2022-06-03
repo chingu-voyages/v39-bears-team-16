@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 
 import {
@@ -13,16 +13,11 @@ import {
 export interface ModalProps {
   isOpen: boolean;
   hide: () => void;
-  modalContent: JSX.Element;
   titleText: string;
+  children: ReactNode;
 }
 
-export const Modal = ({
-  isOpen,
-  hide,
-  modalContent,
-  titleText,
-}: ModalProps) => {
+export const Modal = ({ isOpen, hide, titleText, children }: ModalProps) => {
   const modal = (
     <div>
       <Fade />
@@ -34,16 +29,14 @@ export const Modal = ({
       >
         <TitleContainer>
           <Title>{titleText}</Title>
-          <CloseButton
-            type="button"
-            data-dismiss="modal"
-            aria-label="Close"
-            onClick={hide}
-          >
-            X
-          </CloseButton>
         </TitleContainer>
-        <Content>{modalContent}</Content>
+        <CloseButton
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+          onClick={hide}
+        />
+        <Content>{children}</Content>
       </Container>
     </div>
   );

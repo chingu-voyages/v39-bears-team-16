@@ -20,9 +20,6 @@ import { Modal } from '../../../components/Modal/Modal';
 const AdminUpdateClass = () => {
   const { isOpen, toggle } = useModal();
 
-  const content = (
-    <div>Hello, This is where you will add New Class content</div>
-  );
   return (
     <SyllabusContainer>
       <SyllabusHeadlineWrapper>
@@ -34,12 +31,9 @@ const AdminUpdateClass = () => {
         <AddClassButton type="button" onClick={toggle}>
           + New Class
         </AddClassButton>
-        <Modal
-          titleText="Add New Class"
-          isOpen={isOpen}
-          hide={toggle}
-          modalContent={content}
-        />
+        <Modal titleText="Add New Class" isOpen={isOpen} hide={toggle}>
+          Hello, This is where you will add New Class content
+        </Modal>
       </SyllabusHeadlineWrapper>
       <Line />
       <Classes>

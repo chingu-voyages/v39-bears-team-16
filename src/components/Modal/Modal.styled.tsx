@@ -32,13 +32,14 @@ export const Container = styled.div`
 export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 0;
 `;
 
 export const Title = styled.div`
   color: ${({ theme }) => theme.color.black};
   font-weight: 150;
   margin: 0;
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-left: 10px;
 `;
 
@@ -50,5 +51,9 @@ export const Content = styled.div`
 export const CloseButton = styled(AiOutlineCloseCircle)`
   ${iconStyles}
   margin: 0 10px;
-  color: ${({ theme }) => theme.color.red};
+  color: ${({ theme }) => theme.color.black};
+  font-size: 3.5rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 `;
