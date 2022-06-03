@@ -24,7 +24,7 @@ const AdminCohortsPage = () => {
             handleClick={() => navigate(`/admin/cohorts/${_id}`)}
             isAdmin
             {...cohortData}
-          />
+          />  
         ))}
         <StyledAddCohortCard>
           <BsPlusCircle color="white" fontSize="5em" />

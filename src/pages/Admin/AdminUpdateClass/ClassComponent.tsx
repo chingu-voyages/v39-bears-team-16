@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 import { MdExpandMore } from 'react-icons/md';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemHeading,
-  AccordionItemButton,
-  AccordionItemPanel,
-} from 'react-accessible-accordion';
+
 import {
   StyledClassContainer,
-  StyledAccordionWrapper,
   StyledClassHeaderWrapper,
   ClassDate,
   ClassDescription,
@@ -22,8 +15,9 @@ import {
   TrashIcon,
 } from './ClassComponent.styled';
 import { ClassComponentData } from '../../../api/ClassComponentData';
+import Example from '../../../components/Accordion/Accordion';
 
-interface ClassComponentData {
+interface ClassComponentDataProps {
   id: string;
   date: string;
   title: string;
@@ -31,60 +25,42 @@ interface ClassComponentData {
   content?: [];
 }
 
-const ClassComponent = () => {
-  const [expanded, setExpanded] = useState<boolean>();
+const getHeaderComponent = (item: ClassComponentDataProps) => {
+  return (
+    <StyledClassHeaderWrapper>
+      <article>
+        <ClassDate>{item.date}</ClassDate>
+        <ClassTitleWrapper>
+          <ClassTitle>{item.title}</ClassTitle>
+          <TrashIcon />
+        </ClassTitleWrapper>
+        <ClassDescription>{item.classDescription}</ClassDescription>
+      </article>
+    </StyledClassHeaderWrapper>
+  );
+};
 
+const ClassComponent = () => {
   return (
     <StyledClassContainer>
       {ClassComponentData.map((item) => (
         <div key={item.id}>
           <EditClassIcon />
-          <StyledAccordionWrapper>
-            <Accordion allowZeroExpanded>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  {/* accordion header */}
-                  <AccordionItemButton>
-                    <StyledClassHeaderWrapper
-                      onClick={() => {
-                        setExpanded(!expanded);
-                      }}
-                    >
-                      <article>
-                        <ClassDate>{item.date}</ClassDate>
-                        <ClassTitleWrapper>
-                          <ClassTitle>{item.title}</ClassTitle>
-                          <TrashIcon />
-                        </ClassTitleWrapper>
-                        <ClassDescription>
-                          {item.classDescription}
-                        </ClassDescription>
-                      </article>
+          <Example header={getHeaderComponent(item as ClassComponentDataProps)}>
+            {/* accordion content */}
 
-                      <MdExpandMore
-                        className={expanded ? 'closed' : 'expanded'}
-                      />
-                    </StyledClassHeaderWrapper>
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-
-                {/* accordion content */}
-                <AccordionItemPanel>
-                  {item.content?.map((innerElement) => (
-                    <div key={innerElement}>
-                      <StyledClassItemsContainer>
-                        <StyledClassItem>
-                          <EditClassContentIcon />
-                          <TrashIcon />
-                          <span>{innerElement}</span>
-                        </StyledClassItem>
-                      </StyledClassItemsContainer>
-                    </div>
-                  ))}
-                </AccordionItemPanel>
-              </AccordionItem>
-            </Accordion>
-          </StyledAccordionWrapper>
+            {item.content?.map((innerElement) => (
+              <div key={innerElement}>
+                <StyledClassItemsContainer>
+                  <StyledClassItem>
+                    <EditClassContentIcon />
+                    <TrashIcon />
+                    <span>{innerElement}</span>
+                  </StyledClassItem>
+                </StyledClassItemsContainer>
+              </div>
+            ))}
+          </Example>
         </div>
       ))}
     </StyledClassContainer>

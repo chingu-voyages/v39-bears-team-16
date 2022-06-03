@@ -10,18 +10,26 @@ import ResetPassword from './pages/ResetPassword/ResetPassword';
 import AdminRoutes from './pages/Admin/AdminRoutes';
 import StudentRoutes from './pages/Student/StudentRoutes';
 
+// Temporary Routes
+
+import AdminUpdateClass from './pages/Admin/AdminUpdateClass/AdminUpdateClass';
+import Example from './components/Accordion/Accordion';
+
 const App = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<Navigate to="sign-in" replace />} />
+        {/* <Route path="/" element={<Navigate to="sign-in" replace />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="reset-password/:token" element={<ResetPassword />} />
         <Route path="admin/*" element={<AdminRoutes />} />
-        <Route path="student/*" element={<StudentRoutes />} />
+        <Route path="student/*" element={<StudentRoutes />} /> */}
+
+        {/* temporary Routes  */}
+        <Route path="/" element={<AdminUpdateClass />} />
       </Routes>
     </ThemeProvider>
   );
