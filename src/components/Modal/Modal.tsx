@@ -8,13 +8,13 @@ import {
   CloseButton,
   Content,
   Fade,
-} from './Modal.style';
+} from './Modal.styled';
 
 export interface ModalProps {
   isOpen: boolean;
   hide: () => void;
   modalContent: JSX.Element;
-  TitleText: string;
+  titleText: string;
 }
 
 export const Modal = ({
@@ -28,12 +28,12 @@ export const Modal = ({
       <Fade />
       <Container
         aria-modal
-        aria-labelledby={TitleText}
+        aria-labelledby={titleText}
         tabIndex={-1}
         role="dialog"
       >
         <TitleContainer>
-          <Title>{TitleText}</Title>
+          <Title>{titleText}</Title>
           <CloseButton
             type="button"
             data-dismiss="modal"

@@ -35,7 +35,7 @@ const AdminUpdateClass = () => {
           + New Class
         </AddClassButton>
         <Modal
-          TitleText="Add New Class"
+          titleText="Add New Class"
           isOpen={isOpen}
           hide={toggle}
           modalContent={content}
