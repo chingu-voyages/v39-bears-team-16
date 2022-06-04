@@ -9,10 +9,19 @@ import {
   StyledCohortCardsContainer,
 } from './AdminCohortsPage.styled';
 import { Cohort } from '../../../types';
+// import { AddNewCohortForm } from './AddNewCohortForm';
+// import { Modal } from '../../../components/Modal/Modal';
+// import { Button, PrimaryButton } from '../../../components/Button';
 
 const AdminCohortsPage = () => {
   const { cohorts } = useAdminContext();
   const navigate = useNavigate();
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const handleCloseModal = () => {
+  //   // call add cohort api here
+  //   setIsModalOpen(false);
+  // };
 
   return (
     <CohortsPageContainer>
@@ -26,10 +35,22 @@ const AdminCohortsPage = () => {
             {...cohortData}
           />
         ))}
+
+        {/* <StyledAddCohortCard onClick={() => setIsModalOpen(true)}> */}
         <StyledAddCohortCard>
           <BsPlusCircle color="white" fontSize="5em" />
         </StyledAddCohortCard>
       </StyledCohortCardsContainer>
+      {/* <Modal
+        modalTitle="Add New Cohort"
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        contentLabel="Add new cohort"
+        primaryAction={<PrimaryButton>Submit</PrimaryButton>}
+        secondaryAction={<Button>Cancel</Button>}
+      >
+        <AddNewCohortForm />
+      </Modal> */}
     </CohortsPageContainer>
   );
 };
