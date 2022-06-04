@@ -38,9 +38,7 @@ const AccordionWrapper = ({ header, children }: AccordionProps) => {
 
           {/* accordion content */}
           <AccordionItemPanel>
-            <Appear className={expanded ? 'closed' : 'expanded'}>
-              {children}
-            </Appear>
+            <Appear>{children}</Appear>
           </AccordionItemPanel>
         </AccordionItem>
       </Accordion>
