@@ -11,9 +11,6 @@ import {
   SyllabusHeadlineWrapper,
 } from './AdminUpdateClass.styled';
 import ClassComponent from './ClassComponent';
-
-// Modal Component
-
 import { useModal } from '../../../components/Modal/useModal';
 import { Modal } from '../../../components/Modal/Modal';
 
