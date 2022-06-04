@@ -8,6 +8,7 @@ import { iconStyles, StyledDateString } from './styles';
 export const StyledClassContainer = styled.section`
   display: flex;
   width: 100%;
+  flex-direction: column;
 `;
 
 export const StyledAccordionWrapper = styled.section`
@@ -19,6 +20,15 @@ export const StyledAccordionWrapper = styled.section`
 export const StyledClassHeaderWrapper = styled.section`
   display: flex;
   justify-content: space-between;
+
+  .expanded {
+    transform: rotate(0deg);
+    transition: all 0.3s ease-out;
+  }
+  .closed {
+    transform: rotate(180deg);
+    transition: all 0.3s ease-out;
+  }
 `;
 
 export const ClassDate = styled(StyledDateString)`
@@ -63,6 +73,7 @@ export const AddClassWrapper = styled.section`
 export const EditClassIcon = styled(RiEditBoxFill)`
   ${iconStyles}
   margin-right: 20px;
+  margin-top: 2rem;
   color: ${({ theme }) => theme.color.yellow};
   font-size: 2rem;
 `;

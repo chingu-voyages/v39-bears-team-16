@@ -1,10 +1,7 @@
 import React from 'react';
-import { MdExpandMore } from 'react-icons/md';
+
 import {
-  AddClassContentIcon,
-  AddClassWrapper,
   StyledClassContainer,
-  StyledAccordionWrapper,
   StyledClassHeaderWrapper,
   ClassDate,
   ClassDescription,
@@ -16,41 +13,57 @@ import {
   StyledClassItemsContainer,
   TrashIcon,
 } from './ClassComponent.styled';
+import { ClassComponentData } from '../../../api/ClassComponentData';
+import AccordionWrapper from '../../../components/Accordion/Accordion';
+
+interface ClassComponentDataProps {
+  id: string;
+  date: string;
+  title: string;
+  classDescription: string;
+  content?: [];
+}
+
+const getHeaderComponent = (item: ClassComponentDataProps) => {
+  return (
+    <StyledClassHeaderWrapper>
+      <article>
+        <ClassDate>{item.date}</ClassDate>
+        <ClassTitleWrapper>
+          <ClassTitle>{item.title}</ClassTitle>
+          <TrashIcon />
+        </ClassTitleWrapper>
+        <ClassDescription>{item.classDescription}</ClassDescription>
+      </article>
+    </StyledClassHeaderWrapper>
+  );
+};
 
 const ClassComponent = () => {
   return (
     <StyledClassContainer>
-      <EditClassIcon />
-      <StyledAccordionWrapper>
-        {/* accordion header */}
-        <StyledClassHeaderWrapper>
-          <article>
-            <ClassDate>March,10th,2022</ClassDate>
-            <ClassTitleWrapper>
-              <ClassTitle>Class 1: Introduction</ClassTitle>
-              <TrashIcon />
-            </ClassTitleWrapper>
-            <ClassDescription>
-              In this course, you will learn about JavaScript data types,
-              built-in methods, and variables.
-            </ClassDescription>
-          </article>
-          <MdExpandMore />
-        </StyledClassHeaderWrapper>
+      {ClassComponentData.map((item) => (
+        <div key={item.id}>
+          <EditClassIcon />
+          <AccordionWrapper
+            header={getHeaderComponent(item as ClassComponentDataProps)}
+          >
+            {/* accordion content */}
 
-        {/* accordion content */}
-        <StyledClassItemsContainer>
-          <StyledClassItem>
-            <EditClassContentIcon />
-            <TrashIcon />
-            <span>Stream</span>
-          </StyledClassItem>
-          <AddClassWrapper>
-            <AddClassContentIcon />
-            Add new content
-          </AddClassWrapper>
-        </StyledClassItemsContainer>
-      </StyledAccordionWrapper>
+            {item.content?.map((innerElement) => (
+              <div key={innerElement}>
+                <StyledClassItemsContainer>
+                  <StyledClassItem>
+                    <EditClassContentIcon />
+                    <TrashIcon />
+                    <span>{innerElement}</span>
+                  </StyledClassItem>
+                </StyledClassItemsContainer>
+              </div>
+            ))}
+          </AccordionWrapper>
+        </div>
+      ))}
     </StyledClassContainer>
   );
 };
