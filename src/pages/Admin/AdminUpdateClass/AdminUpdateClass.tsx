@@ -13,6 +13,7 @@ import {
 import ClassComponent from './ClassComponent';
 import { useModal } from '../../../components/Modal/useModal';
 import { Modal } from '../../../components/Modal/Modal';
+import { PrimaryButton } from '../../../components/Button';
 
 const AdminUpdateClass = () => {
   const { isOpen, toggle } = useModal();
@@ -28,7 +29,12 @@ const AdminUpdateClass = () => {
         <AddClassButton type="button" onClick={toggle}>
           + New Class
         </AddClassButton>
-        <Modal titleText="Add New Class" isOpen={isOpen} hide={toggle}>
+        <Modal
+          titleText="Add New Class"
+          isOpen={isOpen}
+          hide={toggle}
+          primaryAction={<PrimaryButton onClick={toggle}>Submit</PrimaryButton>}
+        >
           Hello, This is where you will add New Class content
         </Modal>
       </SyllabusHeadlineWrapper>

@@ -8,41 +8,17 @@ import {
   StyledAddCohortCard,
   StyledCohortCardsContainer,
 } from './AdminCohortsPage.styled';
-import { Cohort, ErrorMessageType } from '../../../types';
-import {
-  adminCreateCohort,
-  AdminCreateCohortProps,
-} from '../../../api/adminCreateCohort';
-import { getAdminCohorts } from '../../../api/getAdminCohorts';
+import { Cohort } from '../../../types';
 import { getCsrfToken } from '../../../api/getCsrfToken';
-// import { AddNewCohortForm } from './AddNewCohortForm';
-// import { Modal } from '../../../components/Modal/Modal';
-// import { Button, PrimaryButton } from '../../../components/Button';
+import { AddNewCohortModal } from './AddNewCohortModal';
+import { useModal } from '../../../components/Modal/useModal';
 
 const AdminCohortsPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
   const { cohorts } = useAdminContext();
   const [cohortsList, setCohortsList] = useState<Cohort[] | null>(cohorts);
   const navigate = useNavigate();
-  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const handleCloseModal = () => {
-  //   // call add cohort api here
-  //   setIsModalOpen(false);
-  // };
-
-  const addNewCohort = async (payload: AdminCreateCohortProps) => {
-    try {
-      await adminCreateCohort(payload);
-      const { data } = await getAdminCohorts();
-      setIsModalOpen(false);
-      setCohortsList(data);
-    } catch (error) {
-      const { msg } = error as ErrorMessageType;
-      setErrorMessage(msg);
-    }
-  };
+  const { isOpen: isModalOpen, toggle } = useModal();
 
   useEffect(() => {
     getCsrfToken();
@@ -61,30 +37,15 @@ const AdminCohortsPage = () => {
             {...cohortData}
           />
         ))}
-        <StyledAddCohortCard
-          onClick={() =>
-            addNewCohort({
-              name: 'cohort testing',
-              startDate: '2022-01-03',
-              endDate: '2022-04-30',
-            })
-          }
-        >
+        <StyledAddCohortCard onClick={toggle}>
           <BsPlusCircle color="white" fontSize="5em" />
         </StyledAddCohortCard>
-        {isModalOpen && <div>Modal</div>}
-        {errorMessage && <div>{errorMessage}</div>}
       </StyledCohortCardsContainer>
-      {/* <Modal
-        modalTitle="Add New Cohort"
+      <AddNewCohortModal
         isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        contentLabel="Add new cohort"
-        primaryAction={<PrimaryButton>Submit</PrimaryButton>}
-        secondaryAction={<Button>Cancel</Button>}
-      >
-        <AddNewCohortForm />
-      </Modal> */}
+        toggle={toggle}
+        setCohortsList={setCohortsList}
+      />
     </CohortsPageContainer>
   );
 };

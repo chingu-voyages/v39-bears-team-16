@@ -8,18 +8,28 @@ import {
   CloseButton,
   Content,
   Fade,
+  StyledActionContainer,
 } from './Modal.styled';
 
 export interface ModalProps {
   isOpen: boolean;
-  hide: () => void;
+  hide(): void;
   titleText: string;
+  primaryAction: ReactNode;
+  secondaryAction?: ReactNode | undefined;
   children: ReactNode;
 }
 
-export const Modal = ({ isOpen, hide, titleText, children }: ModalProps) => {
+export const Modal = ({
+  isOpen,
+  hide,
+  titleText,
+  primaryAction,
+  secondaryAction,
+  children,
+}: ModalProps) => {
   const modal = (
-    <div>
+    <>
       <Fade />
       <Container
         aria-modal
@@ -37,8 +47,12 @@ export const Modal = ({ isOpen, hide, titleText, children }: ModalProps) => {
           onClick={hide}
         />
         <Content>{children}</Content>
+        <StyledActionContainer>
+          {secondaryAction}
+          {primaryAction}
+        </StyledActionContainer>
       </Container>
-    </div>
+    </>
   );
 
   return isOpen ? ReactDOM.createPortal(modal, document.body) : null;
