@@ -97,7 +97,7 @@ const SignUp = () => {
         </AuthForm>
         <AuthSub>Already have an account?</AuthSub>
         <AuthRedirectLink to="/sign-in">Login Here</AuthRedirectLink>
-        <CookieRequest>Please enable cookies to stay signed in.</CookieRequest>
+        <CookieRequest>Please make sure cookies are enabled.</CookieRequest>
       </AuthCard>
     </AuthContainer>
   );
