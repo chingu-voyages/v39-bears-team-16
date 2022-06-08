@@ -58,7 +58,10 @@ const SignUp = () => {
     <AuthContainer>
       <AuthCard>
         <AuthHead>Sign Up</AuthHead>
-        <GithubIcon />
+        <a href="http://localhost:5000/auth/github">
+          {' '}
+          <GithubIcon />
+        </a>
         <AuthSub>or use your email to register</AuthSub>
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
