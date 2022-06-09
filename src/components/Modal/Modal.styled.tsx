@@ -39,12 +39,11 @@ export const Title = styled.div`
   color: ${({ theme }) => theme.color.black};
   font-weight: 150;
   margin: 0;
-  font-size: 3rem;
-  margin-left: 10px;
+  font-size: 2rem;
 `;
 
 export const Content = styled.div`
-  padding: 2rem;
+  padding: 2rem 0;
   color: ${({ theme }) => theme.color.black};
 `;
 
@@ -52,7 +51,7 @@ export const CloseButton = styled(AiOutlineCloseCircle)`
   ${iconStyles}
   margin: 0 10px;
   color: ${({ theme }) => theme.color.black};
-  font-size: 3.5rem;
+  font-size: 2rem;
   position: absolute;
   right: 1rem;
   top: 1rem;

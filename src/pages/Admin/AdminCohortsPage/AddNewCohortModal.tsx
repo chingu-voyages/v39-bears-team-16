@@ -1,5 +1,6 @@
-import React, { FormHTMLAttributes, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
 
 import { Input, InputField } from '../../../components/Input';
 import { Modal } from '../../../components/Modal/Modal';
@@ -10,7 +11,11 @@ import {
 } from '../../../api/adminCreateCohort';
 import { getAdminCohorts } from '../../../api/getAdminCohorts';
 import { Cohort, ErrorMessageType } from '../../../types';
-import { StyledErrorMessage } from '../../../components/ErrorMessage';
+import {
+  FormErrorMessages,
+  StyledErrorMessage,
+} from '../../../components/ErrorMessage';
+import { cohortValidationRules } from '../../../utilities/validation';
 
 export interface AddNewCohortModalProps {
   isOpen: boolean;
@@ -24,7 +29,7 @@ const defaultCohortValues = {
   endDate: '',
 };
 
-const StyledForm = styled.div`
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -35,76 +40,76 @@ export const AddNewCohortModal = ({
   toggle,
   setCohortsList,
 }: AddNewCohortModalProps) => {
-  const [values, setValues] = useState(defaultCohortValues);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
 
-  const addNewCohort = async (payload: AdminCreateCohortProps) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors: formErrors },
+  } = useForm<AdminCreateCohortProps>();
+
+  const handleCloseModal = () => {
+    toggle();
+    reset(defaultCohortValues);
+  };
+
+  const onSubmit = async (payload: AdminCreateCohortProps) => {
     try {
       await adminCreateCohort(payload);
       const { data } = await getAdminCohorts();
       setCohortsList(data);
-      setValues(defaultCohortValues);
+      handleCloseModal();
     } catch (error) {
-      const { msg } = error as ErrorMessageType;
-      setErrorMessage(msg);
+      setErrorMessages(error as ErrorMessageType[]);
     }
-  };
-
-  const handleSubmit = () => {
-    addNewCohort(values);
-    toggle();
-  };
-
-  const handleChange = (value: string, fieldName: string) => {
-    setValues({
-      ...values,
-      [fieldName]: value || '',
-    });
   };
 
   return (
     <Modal
       titleText="Add New Cohort"
       isOpen={isOpen}
-      hide={toggle}
+      hide={handleCloseModal}
       primaryAction={
-        <PrimaryButton onClick={handleSubmit}>Submit</PrimaryButton>
+        <PrimaryButton type="submit" form="add-cohort-form">
+          Submit
+        </PrimaryButton>
       }
-      secondaryAction={<Button onClick={toggle}>Cancel</Button>}
+      secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
     >
-      <StyledForm>
+      <StyledForm id="add-cohort-form" onSubmit={handleSubmit(onSubmit)}>
         <InputField htmlFor="name">
           <span>Cohort Name</span>
           <Input
             type="text"
             id="name"
             placeholder="Enter Cohort Name"
-            value={values.name}
-            onChange={(e) => handleChange(e.target.value, 'name')}
+            {...register('name', cohortValidationRules.name)}
           />
         </InputField>
-        <InputField htmlFor="name">
+        <InputField htmlFor="start-date">
           <span>Start Date</span>
           <Input
-            type="text"
+            type="date"
             id="start-date"
-            placeholder="YYYY-MM-DD"
-            value={values.startDate}
-            onChange={(e) => handleChange(e.target.value, 'startDate')}
+            {...register('startDate', cohortValidationRules.startDate)}
           />
         </InputField>
-        <InputField htmlFor="name">
+        <InputField htmlFor="end-date">
           <span>End Date</span>
           <Input
-            type="text"
+            type="date"
             id="end-date"
-            placeholder="YYYY-MM-DD"
-            value={values.endDate}
-            onChange={(e) => handleChange(e.target.value, 'endDate')}
+            {...register('endDate', cohortValidationRules.endDate)}
           />
         </InputField>
+        {Object.keys(formErrors).length > 0 && (
+          <FormErrorMessages errors={formErrors} />
+        )}
+        {errorMessages?.map(({ msg }) => (
+          <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
+        ))}
       </StyledForm>
-      {errorMessage && <StyledErrorMessage>{errorMessage}</StyledErrorMessage>}
     </Modal>
   );
 };

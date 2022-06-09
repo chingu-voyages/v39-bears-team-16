@@ -1,4 +1,5 @@
 import { RegisterOptions } from 'react-hook-form';
+
 export interface ValidationRuleProp {
   [x: string]: RegisterOptions;
 }

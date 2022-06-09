@@ -61,7 +61,7 @@ const ForgotPassword = () => {
             <AuthInput
               type="email"
               placeholder="email"
-              {...register('email', { ...authValidationRules.email })}
+              {...register('email', authValidationRules.email)}
             />
           </AuthField>
           {Object.keys(formErrors).length > 0 && (

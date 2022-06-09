@@ -69,7 +69,7 @@ const SignIn = () => {
             <AuthInput
               type="text"
               placeholder="email"
-              {...register('email', { ...authValidationRules.email })}
+              {...register('email', authValidationRules.email)}
             />
           </AuthField>
 
@@ -78,7 +78,7 @@ const SignIn = () => {
             <AuthInput
               type="password"
               placeholder="password"
-              {...register('password', { ...authValidationRules.password })}
+              {...register('password', authValidationRules.password)}
             />
           </AuthField>
 

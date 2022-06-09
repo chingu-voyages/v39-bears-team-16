@@ -27,6 +27,17 @@ const options: Intl.DateTimeFormatOptions = {
   day: 'numeric',
 };
 
+const getFormattedDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const day = date.getUTCDate();
+  const month = date.getUTCMonth();
+  const year = date.getUTCFullYear();
+
+  return new Intl.DateTimeFormat(lang, options).format(
+    new Date(year, month, day)
+  );
+};
+
 const CohortCard = ({
   name,
   startDate,
@@ -34,11 +45,8 @@ const CohortCard = ({
   handleClick,
   isAdmin = false,
 }: CohortCardProps) => {
-  const formattedStartDate = new Date(startDate).toLocaleDateString(
-    lang,
-    options
-  );
-  const formattedEndDate = new Date(endDate).toLocaleDateString(lang, options);
+  const formattedStartDate = getFormattedDate(startDate);
+  const formattedEndDate = getFormattedDate(endDate);
   const cohortDate = `(${formattedStartDate} - ${formattedEndDate})`;
   return (
     <CardContainer onClick={handleClick}>
