@@ -38,9 +38,3 @@ export const BreadcrumbContainer = styled.span`
   font-size: 0.75em;
   color: ${({ theme }) => theme.background.white};
 `;
-
-export const MenuIcon = styled(HiMenuAlt3)`
-  transform: scale(2);
-  margin: 0.175em;
-  color: white;
-`;

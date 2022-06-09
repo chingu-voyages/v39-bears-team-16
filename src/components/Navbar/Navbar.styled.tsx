@@ -10,7 +10,6 @@ import { RiLogoutCircleLine } from 'react-icons/ri';
 export const NavbarContainer = styled.div`
   background-color: ${({ theme }) => theme.background.primary};
   width: 250px;
-  height: 100%;
   color: white;
   padding: 1em;
   display: flex;

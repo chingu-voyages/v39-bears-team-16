@@ -8,7 +8,6 @@ import {
   CohortContainer,
   CohortDash,
   BreadcrumbContainer,
-  MenuIcon,
 } from './BreadcrumbMenu.styled';
 import { isRouteExcluded, routes } from './utils';
 
@@ -48,9 +47,7 @@ export const BreadcrumbMenu = () => {
     <BreadcrumbArea>
       <CohortContainer>
         <CohortDash>Cohort 1: Dashboard</CohortDash>
-        <CohortDash>
-          <MenuIcon />
-        </CohortDash>
+        <CohortDash></CohortDash>
       </CohortContainer>
       <BreadcrumbContainer>
         <Breadcrumbs />
