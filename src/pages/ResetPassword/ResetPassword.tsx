@@ -20,7 +20,7 @@ import {
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
 import { ErrorMessageType } from '../../types';
-import { getValidationRules } from '../../utilities/auth';
+import { authValidationRules } from '../../utilities/validation';
 
 interface ResetPasswordInputs {
   email: string;
@@ -64,7 +64,7 @@ const ResetPassword = () => {
             <AuthInput
               type="email"
               placeholder="email"
-              {...register('email', { ...getValidationRules('email') })}
+              {...register('email', authValidationRules.email)}
             />
           </AuthField>
 
@@ -73,9 +73,7 @@ const ResetPassword = () => {
             <AuthInput
               type="password"
               placeholder="new password"
-              {...register('newPassword', {
-                ...getValidationRules('newPassword'),
-              })}
+              {...register('newPassword', authValidationRules.newPassword)}
             />
           </AuthField>
 
@@ -84,9 +82,10 @@ const ResetPassword = () => {
             <AuthInput
               type="password"
               placeholder="confirm new password"
-              {...register('passwordConfirmation', {
-                ...getValidationRules('passwordConfirmation'),
-              })}
+              {...register(
+                'passwordConfirmation',
+                authValidationRules.passwordConfirmation
+              )}
             />
           </AuthField>
           {Object.keys(formErrors).length > 0 && (

@@ -20,7 +20,7 @@ import {
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
 import { ErrorMessageType } from '../../types';
-import { getValidationRules } from '../../utilities/auth';
+import { authValidationRules } from '../../utilities/validation';
 
 interface ForgotPasswordFormInputs {
   email: string;
@@ -61,7 +61,7 @@ const ForgotPassword = () => {
             <AuthInput
               type="email"
               placeholder="email"
-              {...register('email', { ...getValidationRules('email') })}
+              {...register('email', { ...authValidationRules.email })}
             />
           </AuthField>
           {Object.keys(formErrors).length > 0 && (

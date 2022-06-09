@@ -23,7 +23,7 @@ import {
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
 import { ErrorMessageType } from '../../types';
-import { getValidationRules } from '../../utilities/auth';
+import { authValidationRules } from '../../utilities/validation';
 
 interface SignUpFormInputs {
   name: string;
@@ -65,7 +65,7 @@ const SignUp = () => {
             <AuthInput
               type="text"
               placeholder="name"
-              {...register('name', { ...getValidationRules('name') })}
+              {...register('name', authValidationRules.name)}
             />
           </AuthField>
 
@@ -74,7 +74,7 @@ const SignUp = () => {
             <AuthInput
               type="email"
               placeholder="email"
-              {...register('email', { ...getValidationRules('email') })}
+              {...register('email', authValidationRules.email)}
             />
           </AuthField>
 
@@ -83,7 +83,7 @@ const SignUp = () => {
             <AuthInput
               type="password"
               placeholder="password"
-              {...register('password', { ...getValidationRules('password') })}
+              {...register('password', authValidationRules.password)}
             />
           </AuthField>
 

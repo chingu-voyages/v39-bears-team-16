@@ -1,3 +1,7 @@
+import { RegisterOptions } from 'react-hook-form';
+export interface ValidationRuleProp {
+  [x: string]: RegisterOptions;
+}
 export interface ErrorMessageType {
   msg: string;
   value?: string;
