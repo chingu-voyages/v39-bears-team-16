@@ -11,7 +11,8 @@ import { getCsrfToken } from '../../api/getCsrfToken';
 const Container = styled.div`
   width: 100%;
   display: flex;
-  background: ${({ theme }) => theme.background.secondary}; ;
+  min-height: 100vh;
+  background: ${({ theme }) => theme.background.secondary};
 `;
 
 const Section = styled.section`
