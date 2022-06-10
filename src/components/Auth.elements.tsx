@@ -10,8 +10,9 @@ import { Link } from 'react-router-dom';
 import { Input } from './Input';
 
 export const AuthContainer = styled.section`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  overflow: hidden;
   background: ${({ theme }) => theme.background.secondary};
   display: flex;
   justify-content: center;
@@ -24,10 +25,9 @@ export const AuthCard = styled.section`
   justify-content: center;
   align-content: center;
   text-align: center;
-  gap: 1rem;
+  gap: 1.5rem;
   border-radius: 20px;
-  padding: 3rem;
-  margin: 10px;
+  padding: 2.5rem 3rem;
   color: ${({ theme }) => theme.color.secondary};
   background: ${({ theme }) => theme.background.white};
   min-width: 400px;
@@ -37,7 +37,7 @@ export const AuthHead = styled.h1`
   color: ${({ theme }) => theme.color.black};
   font-weight: 300;
   margin: 0;
-  font-size: 3.5rem;
+  font-size: 3rem;
 `;
 
 const iconStyles = {
@@ -96,6 +96,12 @@ export const AuthSub = styled.h2`
   font-weight: 100;
 `;
 
+export const AuthSpan = styled.span`
+  color: ${({ theme }) => theme.color.black};
+  font-size: 1rem;
+  font-weight: 200;
+`;
+
 export const AuthForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -105,7 +111,7 @@ export const AuthForm = styled.form`
 export const AuthField = styled.div`
   border-radius: 10px;
   background: ${({ theme }) => theme.background.grey};
-  opacity: 50%;
+  opacity: 0.7;
   color: ${({ theme }) => theme.color.primary};
   display: flex;
   justify-content: space-around;
@@ -115,6 +121,10 @@ export const AuthField = styled.div`
 
 export const AuthInput = styled(Input)`
   border: none;
+  &::placeholder {
+    color: ${({ theme }) => theme.color.black};
+    opacity: 1;
+  }
 `;
 
 export const AuthButton = styled.button`
@@ -129,10 +139,16 @@ export const AuthButton = styled.button`
   cursor: pointer;
 `;
 
+export const AuthFoot = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const AuthRedirectLink = styled(Link)`
   color: ${({ theme }) => theme.color.teal};
   text-decoration: none;
-  font-weight: 200;
 `;
 
 export const AuthProgramContainer = styled.section`
