@@ -5,15 +5,15 @@ import { getCsrfToken } from '../../api/getCsrfToken';
 import {
   AuthContainer,
   AuthCard,
-  AuthForgetHead,
   KeyIcon,
-  AuthSub,
   AuthForm,
   AuthField,
   AuthInput,
   EmailIcon,
   AuthButton,
   AuthRedirectLink,
+  AuthSpan,
+  AuthHead,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
@@ -52,13 +52,11 @@ const ForgotPassword = () => {
   return (
     <AuthContainer>
       <AuthCard>
-        <AuthForgetHead>
-          Yo! Forgot your <br /> password again?!
-        </AuthForgetHead>
+        <AuthHead>Forgot Password</AuthHead>
         <KeyIcon />
-        <AuthSub>
-          No worries! <br /> Enter your email and we will send you a reset
-        </AuthSub>
+        <AuthSpan>
+          Enter your email and we will send you a reset password link
+        </AuthSpan>
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <EmailIcon />
@@ -68,15 +66,16 @@ const ForgotPassword = () => {
               {...register('email', { ...getValidationRules('email') })}
             />
           </AuthField>
-          <FormErrorMessages errors={formErrors} />
+          {Object.keys(formErrors).length > 0 && (
+            <FormErrorMessages errors={formErrors} />
+          )}
 
           {errorMessages?.map(({ msg, param }) => (
             <StyledErrorMessage key={param}>{msg}</StyledErrorMessage>
           ))}
-          <AuthButton type="submit">SEND REQUEST</AuthButton>
+          <AuthButton type="submit">Send Reset Link</AuthButton>
         </AuthForm>
-        <AuthSub>Try again?</AuthSub>
-        <AuthRedirectLink to="/sign-in">Login Here</AuthRedirectLink>
+        <AuthRedirectLink to="/sign-in">Try again?</AuthRedirectLink>
         {showSuccessMessage && <p>Check your email for the next steps</p>}
       </AuthCard>
     </AuthContainer>

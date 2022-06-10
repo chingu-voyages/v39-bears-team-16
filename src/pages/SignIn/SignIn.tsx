@@ -86,10 +86,9 @@ const SignIn = () => {
             <FormErrorMessages errors={formErrors} />
           )}
 
-          {errorMessages !== null &&
-            errorMessages.map(({ msg }) => (
-              <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
-            ))}
+          {errorMessages?.map(({ msg }) => (
+            <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
+          ))}
 
           <AuthButton type="submit">Sign In</AuthButton>
         </AuthForm>
@@ -102,7 +101,7 @@ const SignIn = () => {
           <AuthSpan>or</AuthSpan>
 
           <AuthRedirectLink to="/sign-up">
-            Create a New Account
+            Create a new account
           </AuthRedirectLink>
         </AuthFoot>
       </AuthCard>

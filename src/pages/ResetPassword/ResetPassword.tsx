@@ -6,7 +6,6 @@ import { resetPassword } from '../../api/resetPassword';
 import {
   AuthContainer,
   AuthCard,
-  AuthForgetHead,
   KeySuccessIcon,
   AuthForm,
   AuthField,
@@ -14,6 +13,7 @@ import {
   AuthButton,
   PasswordIcon,
   EmailIcon,
+  AuthHead,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
@@ -55,9 +55,7 @@ const ResetPassword = () => {
   return (
     <AuthContainer>
       <AuthCard>
-        <AuthForgetHead>
-          Create a new <br /> password
-        </AuthForgetHead>
+        <AuthHead>Reset Password</AuthHead>
         <KeySuccessIcon />
 
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
@@ -91,12 +89,14 @@ const ResetPassword = () => {
               })}
             />
           </AuthField>
-          <FormErrorMessages errors={formErrors} />
+          {Object.keys(formErrors).length > 0 && (
+            <FormErrorMessages errors={formErrors} />
+          )}
 
           {errorMessages?.map(({ msg }) => (
             <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
           ))}
-          <AuthButton type="submit">CHANGE PASSWORD</AuthButton>
+          <AuthButton type="submit">Change Password</AuthButton>
         </AuthForm>
       </AuthCard>
     </AuthContainer>

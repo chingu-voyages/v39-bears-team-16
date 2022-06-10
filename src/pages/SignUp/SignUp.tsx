@@ -8,7 +8,6 @@ import {
   AuthCard,
   AuthHead,
   TwitterIcon,
-  AuthSub,
   AuthForm,
   AuthField,
   UserIcon,
@@ -17,6 +16,7 @@ import {
   PasswordIcon,
   AuthButton,
   AuthRedirectLink,
+  AuthSpan,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
@@ -58,7 +58,7 @@ const SignUp = () => {
       <AuthCard>
         <AuthHead>Sign Up</AuthHead>
         <TwitterIcon />
-        <AuthSub>or use your email to register</AuthSub>
+        <AuthSpan>or use your email to register</AuthSpan>
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <UserIcon />
@@ -86,16 +86,21 @@ const SignUp = () => {
               {...register('password', { ...getValidationRules('password') })}
             />
           </AuthField>
-          <FormErrorMessages errors={formErrors} />
+
+          {Object.keys(formErrors).length > 0 && (
+            <FormErrorMessages errors={formErrors} />
+          )}
 
           {errorMessages?.map(({ msg }) => (
             <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
           ))}
 
-          <AuthButton type="submit">SIGN UP</AuthButton>
+          <AuthButton type="submit">Sign Up</AuthButton>
         </AuthForm>
-        <AuthSub>Already have an account?</AuthSub>
-        <AuthRedirectLink to="/sign-in">Login Here</AuthRedirectLink>
+
+        <AuthRedirectLink to="/sign-in">
+          Already have an account?
+        </AuthRedirectLink>
       </AuthCard>
     </AuthContainer>
   );
