@@ -47,7 +47,6 @@ export const BreadcrumbMenu = () => {
     <BreadcrumbArea>
       <CohortContainer>
         <CohortDash>Cohort 1: Dashboard</CohortDash>
-        <CohortDash></CohortDash>
       </CohortContainer>
       <BreadcrumbContainer>
         <Breadcrumbs />
