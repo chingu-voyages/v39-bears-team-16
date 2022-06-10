@@ -111,7 +111,7 @@ export const AuthForm = styled.form`
 export const AuthField = styled.div`
   border-radius: 10px;
   background: ${({ theme }) => theme.background.grey};
-  opacity: 0.7;
+  /* opacity: 0.7; */
   color: ${({ theme }) => theme.color.primary};
   display: flex;
   justify-content: space-around;
