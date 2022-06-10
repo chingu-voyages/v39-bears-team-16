@@ -14,8 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "jsx": "react-jsx"
   },
   "include": ["src", "src/styles/AuthButton.tsx"]
 }
