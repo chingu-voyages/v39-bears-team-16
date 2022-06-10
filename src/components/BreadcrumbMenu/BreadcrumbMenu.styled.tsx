@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { HiMenuAlt3 } from 'react-icons/hi';
 
 export const navLinkStyles = {
   color: 'white',
