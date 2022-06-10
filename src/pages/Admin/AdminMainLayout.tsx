@@ -27,6 +27,7 @@ type AdminContextType = { cohorts: Cohort[] | null };
 
 export const AdminMainLayout = () => {
   const [cohortsList, setCohortsList] = useState<Cohort[]>([]);
+
   // const navigate = useNavigate();
 
   const fetchAdminCohorts = useCallback(async () => {

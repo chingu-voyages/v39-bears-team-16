@@ -17,6 +17,11 @@ export interface ModalProps {
   children: ReactNode;
 }
 
+const handleClick = (hide: () => void) => {
+  hide();
+  window.location.reload();
+};
+
 export const Modal = ({ isOpen, hide, titleText, children }: ModalProps) => {
   const modal = (
     <div>
@@ -34,7 +39,9 @@ export const Modal = ({ isOpen, hide, titleText, children }: ModalProps) => {
           type="button"
           data-dismiss="modal"
           aria-label="Close"
-          onClick={hide}
+          onClick={() => {
+            handleClick(hide);
+          }}
         />
         <Content>{children}</Content>
       </Container>

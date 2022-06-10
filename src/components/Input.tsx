@@ -18,8 +18,9 @@ export const InputField = styled.label`
   display: flex;
   gap: 1em;
   align-items: center;
+  padding: 0.5rem;
 
   span {
-    width: 35%;
+    width: 40%;
   }
 `;

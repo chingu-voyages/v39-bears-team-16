@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useState, useCallback, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import {
   AddClassButton,
   Classes,
@@ -13,6 +13,22 @@ import {
 import ClassComponent from './ClassComponent';
 import { useModal } from '../../../components/Modal/useModal';
 import { Modal } from '../../../components/Modal/Modal';
+import { ErrorMessageType } from '../../../types';
+import { ERROR_MESSAGES } from '../../../utilities/constants';
+import {
+  adminCreateClass,
+  AdminCreateClassProps,
+  getAdminClass,
+} from '../../../api/getAdminClasses';
+import { AddNewClassForm } from './AddNewClass';
+
+interface ClassComponentDataProps {
+  _id: string;
+  date: string;
+  name: string;
+  subject: string;
+  classworks?: [];
+}
 
 const AdminUpdateClass = () => {
   const { isOpen, toggle } = useModal();
@@ -29,7 +45,7 @@ const AdminUpdateClass = () => {
           + New Class
         </AddClassButton>
         <Modal titleText="Add New Class" isOpen={isOpen} hide={toggle}>
-          Hello, This is where you will add New Class content
+          <AddNewClassForm />
         </Modal>
       </SyllabusHeadlineWrapper>
       <Line />
