@@ -10,8 +10,9 @@ import { Link } from 'react-router-dom';
 import { Input } from './Input';
 
 export const AuthContainer = styled.section`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  overflow: hidden;
   background: ${({ theme }) => theme.background.secondary};
   display: flex;
   justify-content: center;
@@ -19,39 +20,37 @@ export const AuthContainer = styled.section`
 `;
 
 export const AuthCard = styled.section`
+  min-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   text-align: center;
-  gap: 1rem;
+  gap: 1.5rem;
   border-radius: 20px;
-  padding: 3rem;
-  margin: 10px;
+  padding: 2.5rem 3rem;
   color: ${({ theme }) => theme.color.secondary};
   background: ${({ theme }) => theme.background.white};
-  min-width: 400px;
 `;
 
 export const AuthHead = styled.h1`
   color: ${({ theme }) => theme.color.black};
-  font-weight: 300;
+  font-weight: 500;
   margin: 0;
-  font-size: 3.5rem;
+  font-size: 3rem;
+  line-height: 1;
 `;
-
-const iconStyles = {
-  fontSize: '1rem',
-  margin: '0 20px',
-  color: 'black',
-};
 
 export const TwitterIcon = styled(FaTwitterSquare)`
   color: ${({ theme }) => theme.color.black};
   font-size: 3rem;
-  margin: 0 auto;
   cursor: pointer;
 `;
+
+const iconStyles = {
+  margin: '0 1.5em',
+  color: 'black',
+};
 
 export const UserIcon = styled(FaUserAlt)`
   ${iconStyles}
@@ -90,10 +89,10 @@ export const KeySuccessIcon = styled(KeyIcon)`
   background: ${({ theme }) => theme.background.teal};
 `;
 
-export const AuthSub = styled.h2`
+export const AuthSpan = styled.span`
   color: ${({ theme }) => theme.color.black};
-  font-size: 1rem;
-  font-weight: 100;
+  font-size: 1.25rem;
+  font-weight: 200;
 `;
 
 export const AuthForm = styled.form`
@@ -104,8 +103,7 @@ export const AuthForm = styled.form`
 
 export const AuthField = styled.div`
   border-radius: 10px;
-  background: ${({ theme }) => theme.background.grey};
-  opacity: 50%;
+  background: rgba(168, 168, 168, 0.25);
   color: ${({ theme }) => theme.color.primary};
   display: flex;
   justify-content: space-around;
@@ -115,6 +113,10 @@ export const AuthField = styled.div`
 
 export const AuthInput = styled(Input)`
   border: none;
+  &::placeholder {
+    color: ${({ theme }) => theme.color.black};
+    opacity: 1;
+  }
 `;
 
 export const AuthButton = styled.button`
@@ -129,10 +131,16 @@ export const AuthButton = styled.button`
   cursor: pointer;
 `;
 
+export const AuthFoot = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const AuthRedirectLink = styled(Link)`
   color: ${({ theme }) => theme.color.teal};
   text-decoration: none;
-  font-weight: 200;
 `;
 
 export const AuthProgramContainer = styled.section`

@@ -9,7 +9,6 @@ import {
   AuthCard,
   AuthHead,
   TwitterIcon,
-  AuthSub,
   AuthForm,
   AuthField,
   AuthInput,
@@ -17,6 +16,8 @@ import {
   PasswordIcon,
   AuthButton,
   AuthRedirectLink,
+  AuthSpan,
+  AuthFoot,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
@@ -57,8 +58,11 @@ const SignIn = () => {
     <AuthContainer>
       <AuthCard>
         <AuthHead>Sign In</AuthHead>
+
         <TwitterIcon />
-        <AuthSub>or use your email to login</AuthSub>
+
+        <AuthSpan>or use your email to login</AuthSpan>
+
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <EmailIcon />
@@ -78,19 +82,28 @@ const SignIn = () => {
             />
           </AuthField>
 
-          <FormErrorMessages errors={formErrors} />
+          {Object.keys(formErrors).length > 0 && (
+            <FormErrorMessages errors={formErrors} />
+          )}
 
           {errorMessages?.map(({ msg }) => (
             <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
           ))}
 
-          <AuthButton type="submit">SIGN IN</AuthButton>
+          <AuthButton type="submit">Sign In</AuthButton>
         </AuthForm>
-        <AuthSub>Forget your password?</AuthSub>
-        <AuthRedirectLink to="/forgot-password">Click Here</AuthRedirectLink>
-        or
-        <AuthSub>Create Account</AuthSub>
-        <AuthRedirectLink to="/sign-up">Click Here</AuthRedirectLink>
+
+        <AuthFoot>
+          <AuthRedirectLink to="/forgot-password">
+            Forgot your password?
+          </AuthRedirectLink>
+
+          <AuthSpan>or</AuthSpan>
+
+          <AuthRedirectLink to="/sign-up">
+            Create a new account
+          </AuthRedirectLink>
+        </AuthFoot>
       </AuthCard>
     </AuthContainer>
   );
