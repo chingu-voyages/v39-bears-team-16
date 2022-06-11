@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ERROR_MESSAGES } from '../utilities/constants';
 
 const api = axios.create({
-  baseURL: process.env.BASE_URL,
+  baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

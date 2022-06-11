@@ -54,9 +54,7 @@ const ForgotPassword = () => {
       <AuthCard>
         <AuthHead>Forgot Password</AuthHead>
         <KeyIcon />
-        <AuthSpan>
-          Enter your email and we will send you a reset password link
-        </AuthSpan>
+        <AuthSpan>Enter your email to get a password reset link.</AuthSpan>
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <EmailIcon />
@@ -76,7 +74,7 @@ const ForgotPassword = () => {
           <AuthButton type="submit">Send Reset Link</AuthButton>
         </AuthForm>
         <AuthRedirectLink to="/sign-in">Try again?</AuthRedirectLink>
-        {showSuccessMessage && <p>Check your email for the next steps</p>}
+        {showSuccessMessage && <p>Check your email for the next steps.</p>}
       </AuthCard>
     </AuthContainer>
   );
