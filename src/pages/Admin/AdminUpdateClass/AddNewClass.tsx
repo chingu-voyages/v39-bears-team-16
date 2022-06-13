@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Input, InputField } from '../../../components/Input';
 import { ErrorMessageType } from '../../../types';
-import { ERROR_MESSAGES } from '../../../utilities/constants';
 import {
   adminCreateClass,
   AdminCreateClassProps,
-  getAdminClass,
 } from '../../../api/getAdminClasses';
-import { PrimaryButton } from '../../../components/Button';
+
+import {
+  FormErrorMessages,
+  StyledErrorMessage,
+} from '../../../components/ErrorMessage';
+import { StyledSuccessMessage } from '../../../components/SuccessMessage';
 
 const StyledForm = styled.div`
   display: flex;
@@ -18,30 +21,36 @@ const StyledForm = styled.div`
   gap: 1em;
 `;
 
-interface InputProps {
-  example: string;
-  exampleRequired: string;
-}
+const classValidationRules = {
+  name: {
+    required: 'Class Title is required',
+  },
+  subject: {
+    required: 'Class Description is required',
+  },
+  date: {
+    required: 'Date is required',
+  },
+};
 
 export const AddNewClassForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    control,
     formState: { errors },
-  } = useForm<any>();
+  } = useForm<AdminCreateClassProps>();
 
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
+  const [success, setSuccess] = useState<boolean>(false);
   const { id } = useParams();
-  console.log(id);
 
   const onSubmit = async (payload: AdminCreateClassProps) => {
     try {
       await adminCreateClass(payload, id);
-      const { data } = await getAdminClass(id);
-      console.log(data, 'in Post call');
+      setSuccess(true);
     } catch (error) {
-      console.log(error, 'error');
+      setErrorMessages(error as ErrorMessageType[]);
+      setSuccess(false);
     }
   };
 
@@ -54,9 +63,7 @@ export const AddNewClassForm = () => {
             type="text"
             id="name"
             placeholder="Enter Class Title"
-            {...register('name', {
-              required: 'Please enter your Class Title.',
-            })}
+            {...register('name', classValidationRules.name)}
           />
         </InputField>
         <InputField htmlFor="subject">
@@ -65,7 +72,7 @@ export const AddNewClassForm = () => {
             type="text"
             id="subject"
             placeholder="Enter Class description"
-            {...register('subject')}
+            {...register('subject', classValidationRules.subject)}
           />
         </InputField>
         <InputField htmlFor="date">
@@ -74,13 +81,20 @@ export const AddNewClassForm = () => {
             type="text"
             id="date"
             placeholder="yyyy-mm-dd"
-            {...register('date')}
+            {...register('date', classValidationRules.date)}
           />
         </InputField>
 
-        <PrimaryButton type="submit" form="addClassForm">
-          Submit
-        </PrimaryButton>
+        {success ? (
+          <StyledSuccessMessage>The Class has been added</StyledSuccessMessage>
+        ) : null}
+
+        {Object.keys(errors).length > 0 && (
+          <FormErrorMessages errors={errors} />
+        )}
+        {errorMessages?.map(({ msg }) => (
+          <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
+        ))}
       </form>
     </StyledForm>
   );

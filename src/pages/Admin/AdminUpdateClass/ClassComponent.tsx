@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+
 import dateFormat from 'dateformat';
 import {
   StyledClassContainer,
@@ -9,17 +9,12 @@ import {
   ClassTitle,
   AddClassContentIcon,
   ClassTitleWrapper,
-  EditClassContentIcon,
   EditClassIcon,
   StyledClassItem,
   StyledClassItemsContainer,
   TrashIcon,
 } from './ClassComponent.styled';
 import AccordionWrapper from '../../../components/Accordion/Accordion';
-import { ErrorMessageType } from '../../../types';
-import { ERROR_MESSAGES } from '../../../utilities/constants';
-import { getAdminClass } from '../../../api/getAdminClasses';
-import { getCsrfToken } from '../../../api/getCsrfToken';
 
 interface ClassComponentDataProps {
   _id: string;
@@ -27,6 +22,10 @@ interface ClassComponentDataProps {
   name: string;
   subject: string;
   classworks?: [];
+}
+
+interface classesProps {
+  classes: ClassComponentDataProps[] | undefined;
 }
 
 const getHeaderComponent = (item: ClassComponentDataProps) => {
@@ -44,38 +43,16 @@ const getHeaderComponent = (item: ClassComponentDataProps) => {
   );
 };
 
-const ClassComponent = () => {
-  const [classes, setClasses] = useState<ClassComponentDataProps[]>();
-  const { id } = useParams();
-
-  const fetchAdminClasses = useCallback(async () => {
-    try {
-      const res = await getAdminClass(id);
-      setClasses(res.data);
-    } catch (error) {
-      const errors = error as ErrorMessageType[];
-      console.log(errors);
-      if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
-        // navigate('/sign-in', { replace: true });
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    getCsrfToken();
-    fetchAdminClasses();
-  }, [fetchAdminClasses]);
-
+const ClassComponent = ({ classes }: classesProps) => {
   // const classWorkDetails = (innerElement: any, index: any) => {
   //   if (innerElement.body) {
   //     return <span>{innerElement.body}</span>;
   //   }
   //   return null;
   // };
-
   return (
     <StyledClassContainer>
-      {classes?.map((item) => (
+      {classes?.map((item: ClassComponentDataProps) => (
         // eslint-disable-next-line no-underscore-dangle
         <div key={item._id}>
           <EditClassIcon />

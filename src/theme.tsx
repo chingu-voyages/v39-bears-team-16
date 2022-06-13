@@ -13,6 +13,7 @@ export const darkTheme = {
     grey: '#6D6D6D',
     white: '#FFFFFF',
     yellow: '#FFC700',
+    green: '#90ee90',
   },
   background: {
     primary: '#30304D',

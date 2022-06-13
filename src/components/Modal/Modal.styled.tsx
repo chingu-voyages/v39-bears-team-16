@@ -40,13 +40,10 @@ export const Title = styled.div`
   font-weight: 150;
   margin: 0;
   font-size: 2rem;
-  margin-left: 10px;
 `;
 
 export const Content = styled.div`
-  margin: auto;
   padding: 2rem 0;
-  display: block;
   color: ${({ theme }) => theme.color.black};
 `;
 
@@ -58,4 +55,13 @@ export const CloseButton = styled(AiOutlineCloseCircle)`
   position: absolute;
   right: 1rem;
   top: 1rem;
+`;
+
+export const StyledActionContainer = styled.div`
+  display: flex;
+  gap: 1em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1.5em;
 `;
