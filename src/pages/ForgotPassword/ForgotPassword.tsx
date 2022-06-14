@@ -7,7 +7,7 @@ import {
   AuthCard,
   AuthForgetHead,
   KeyIcon,
-  AuthSub,
+  AuthSpan,
   AuthForm,
   AuthField,
   AuthInput,
@@ -56,9 +56,9 @@ const ForgotPassword = () => {
           Yo! Forgot your <br /> password again?!
         </AuthForgetHead>
         <KeyIcon />
-        <AuthSub>
+        <AuthSpan>
           No worries! <br /> Enter your email and we will send you a reset
-        </AuthSub>
+        </AuthSpan>
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <EmailIcon />
@@ -75,7 +75,7 @@ const ForgotPassword = () => {
           ))}
           <AuthButton type="submit">SEND REQUEST</AuthButton>
         </AuthForm>
-        <AuthSub>Try again?</AuthSub>
+        <AuthSpan>Try again?</AuthSpan>
         <AuthRedirectLink to="/sign-in">Login Here</AuthRedirectLink>
         {showSuccessMessage && <p>Check your email for the next steps</p>}
       </AuthCard>

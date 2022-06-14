@@ -9,7 +9,7 @@ import {
   AuthCard,
   AuthHead,
   GithubIcon,
-  AuthSub,
+  AuthSpan,
   AuthForm,
   AuthField,
   AuthInput,
@@ -18,6 +18,7 @@ import {
   AuthButton,
   AuthRedirectLink,
   CookieRequest,
+  CloseIcon,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
@@ -25,6 +26,7 @@ import {
 } from '../../components/ErrorMessage';
 import { ErrorMessageType } from '../../types';
 import { getValidationRules } from '../../utilities/auth';
+import { GITHUB_AUTH_URL } from '../../utilities/constants';
 
 interface SignInFormInputs {
   email: string;
@@ -57,12 +59,15 @@ const SignIn = () => {
   return (
     <AuthContainer>
       <AuthCard>
+        <CookieRequest>
+          <CloseIcon />
+          Please ensure cookies are enabled.
+        </CookieRequest>
         <AuthHead>Sign In</AuthHead>
-        <a href="http://localhost:5000/auth/github">
-          {' '}
+        <a href={GITHUB_AUTH_URL}>
           <GithubIcon />
         </a>
-        <AuthSub>or use your email to login</AuthSub>
+        <AuthSpan>or use your email to login</AuthSpan>
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <EmailIcon />
@@ -90,12 +95,11 @@ const SignIn = () => {
 
           <AuthButton type="submit">SIGN IN</AuthButton>
         </AuthForm>
-        <AuthSub>Forget your password?</AuthSub>
+        <AuthSpan>Forget your password?</AuthSpan>
         <AuthRedirectLink to="/forgot-password">Click Here</AuthRedirectLink>
         or
-        <AuthSub>Create Account</AuthSub>
+        <AuthSpan>Create Account</AuthSpan>
         <AuthRedirectLink to="/sign-up">Click Here</AuthRedirectLink>
-        <CookieRequest>Please make sure cookies are enabled.</CookieRequest>
       </AuthCard>
     </AuthContainer>
   );

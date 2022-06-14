@@ -3,43 +3,47 @@ import { FaUserAlt, FaGithubSquare } from 'react-icons/fa';
 import { MdSchool } from 'react-icons/md';
 import { HiMail } from 'react-icons/hi';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import { AiOutlineOrderedList } from 'react-icons/ai';
+import { AiOutlineOrderedList, AiFillCloseCircle } from 'react-icons/ai';
 import { VscKey } from 'react-icons/vsc';
 
 import { Link } from 'react-router-dom';
 
 export const AuthContainer = styled.section`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  overflow: hidden;
   background: ${({ theme }) => theme.background.secondary};
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 export const AuthCard = styled.section`
+  min-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   text-align: center;
-  gap: 1rem;
+  gap: 1.5rem;
   border-radius: 20px;
-  padding: 3rem;
+  padding: 2.5rem 3rem;
   margin: 10px;
   color: ${({ theme }) => theme.color.secondary};
   background: ${({ theme }) => theme.background.white};
   min-width: 400px;
+  position: relative;
 `;
 export const AuthHead = styled.h1`
   color: ${({ theme }) => theme.color.black};
-  font-weight: 300;
+  font-weight: 500;
   margin: 0;
-  font-size: 3.5rem;
-  padding-bottom: 0.145em;
+  font-size: 3rem;
+  line-height: 1;
+  /* padding-bottom: 0.145em; */
 `;
 const iconStyles = {
   fontSize: '1rem',
-  margin: '0 20px',
+  margin: '0 1.5em',
   color: 'black',
 };
 export const GithubIcon = styled(FaGithubSquare)`
@@ -78,10 +82,14 @@ export const KeyIcon = styled(VscKey)`
 export const KeySuccessIcon = styled(KeyIcon)`
   background: ${({ theme }) => theme.background.teal};
 `;
-export const AuthSub = styled.h2`
+export const CloseIcon = styled(AiFillCloseCircle)`
+  color: black;
+  margin-right: 0.5em;
+`;
+export const AuthSpan = styled.span`
   color: ${({ theme }) => theme.color.black};
-  font-size: 1rem;
-  font-weight: 100;
+  font-size: 1.25rem;
+  font-weight: 200;
 `;
 export const AuthForm = styled.form`
   display: flex;
@@ -90,7 +98,7 @@ export const AuthForm = styled.form`
 `;
 export const AuthField = styled.div`
   border-radius: 10px;
-  background: ${({ theme }) => theme.background.grey};
+  background: rgba(168, 168, 168, 0.25);
   opacity: 50%;
   color: ${({ theme }) => theme.color.primary};
   display: flex;
@@ -99,14 +107,10 @@ export const AuthField = styled.div`
   height: 3rem;
 `;
 export const AuthInput = styled.input`
-  background: none;
   border: none;
-  height: 100%;
-  color: ${({ theme }) => theme.color.black};
-  font-weight: 200;
-  :focus {
-    outline: none;
-    font-weight: 300;
+  &::placeholder {
+    color: ${({ theme }) => theme.color.black};
+    opacity: 1;
   }
 `;
 export const AuthButton = styled.button`
@@ -159,7 +163,15 @@ export const AuthForgetHead = styled.h2`
   font-weight: 200;
 `;
 
-export const CookieRequest = styled.p`
-  font-size: 0.75em;
-  align-items: baseline;
+export const CookieRequest = styled.span`
+  font-size: 1em;
+  display: inline-block;
+  padding: 0.65em 2.5em;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  background-color: rgba(253, 126, 20, 0.85);
+  border-radius: 15px;
+  color: ${({ theme }) => theme.color.black};
 `;
