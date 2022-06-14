@@ -19,8 +19,8 @@ export const Container = styled.div`
   z-index: 5;
   margin: auto;
   outline: 0;
-  width: 40rem;
-  height: 40rem;
+  width: 30rem;
+  height: 25rem;
   color: ${({ theme }) => theme.color.secondary};
   background: ${({ theme }) => theme.background.white};
   border-radius: 10px;
@@ -39,12 +39,11 @@ export const Title = styled.div`
   color: ${({ theme }) => theme.color.black};
   font-weight: 150;
   margin: 0;
-  font-size: 3rem;
-  margin-left: 10px;
+  font-size: 2rem;
 `;
 
 export const Content = styled.div`
-  margin: auto;
+  padding: 2rem 0;
   color: ${({ theme }) => theme.color.black};
 `;
 
@@ -52,8 +51,17 @@ export const CloseButton = styled(AiOutlineCloseCircle)`
   ${iconStyles}
   margin: 0 10px;
   color: ${({ theme }) => theme.color.black};
-  font-size: 3.5rem;
+  font-size: 2rem;
   position: absolute;
   right: 1rem;
   top: 1rem;
+`;
+
+export const StyledActionContainer = styled.div`
+  display: flex;
+  gap: 1em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1.5em;
 `;

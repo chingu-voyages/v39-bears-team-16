@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BsPlusCircle } from 'react-icons/bs';
 import { useAdminContext } from '../AdminMainLayout';
@@ -9,24 +9,26 @@ import {
   StyledCohortCardsContainer,
 } from './AdminCohortsPage.styled';
 import { Cohort } from '../../../types';
-// import { AddNewCohortForm } from './AddNewCohortForm';
-// import { Modal } from '../../../components/Modal/Modal';
-// import { Button, PrimaryButton } from '../../../components/Button';
+import { getCsrfToken } from '../../../api/getCsrfToken';
+import { AddNewCohortModal } from './AddNewCohortModal';
+import { useModal } from '../../../components/Modal/useModal';
 
 const AdminCohortsPage = () => {
   const { cohorts } = useAdminContext();
+  const [cohortsList, setCohortsList] = useState<Cohort[] | null>(cohorts);
   const navigate = useNavigate();
-  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const handleCloseModal = () => {
-  //   // call add cohort api here
-  //   setIsModalOpen(false);
-  // };
+  const { isOpen: isModalOpen, toggle } = useModal();
+
+  useEffect(() => {
+    getCsrfToken();
+    setCohortsList(cohorts);
+  }, [cohorts]);
 
   return (
     <CohortsPageContainer>
       <StyledCohortCardsContainer>
-        {cohorts?.map(({ _id, ...cohortData }: Cohort) => (
+        {cohortsList?.map(({ _id, ...cohortData }: Cohort) => (
           <CohortCard
             _id={_id}
             key={_id}
@@ -35,22 +37,15 @@ const AdminCohortsPage = () => {
             {...cohortData}
           />
         ))}
-
-        {/* <StyledAddCohortCard onClick={() => setIsModalOpen(true)}> */}
-        <StyledAddCohortCard>
+        <StyledAddCohortCard onClick={toggle}>
           <BsPlusCircle color="white" fontSize="5em" />
         </StyledAddCohortCard>
       </StyledCohortCardsContainer>
-      {/* <Modal
-        modalTitle="Add New Cohort"
+      <AddNewCohortModal
         isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        contentLabel="Add new cohort"
-        primaryAction={<PrimaryButton>Submit</PrimaryButton>}
-        secondaryAction={<Button>Cancel</Button>}
-      >
-        <AddNewCohortForm />
-      </Modal> */}
+        toggle={toggle}
+        setCohortsList={setCohortsList}
+      />
     </CohortsPageContainer>
   );
 };
