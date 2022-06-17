@@ -14,7 +14,6 @@ import {
   StyledErrorMessage,
 } from '../../../components/ErrorMessage';
 import { StyledSuccessMessage } from '../../../components/SuccessMessage';
-import { useModal } from '../../../components/Modal/useModal';
 
 const StyledForm = styled.form`
   display: flex;
@@ -48,14 +47,14 @@ export const AddNewClassWorkForm = ({ classId }: classIDProps) => {
 
   const onSubmit = async (payload: AdminCreateClassWorkProps) => {
     try {
-      const res = await adminCreateClassWorks(payload, classId, id);
+      await adminCreateClassWorks(payload, classId, id);
       setSuccess(true);
     } catch (error) {
       setErrorMessages(error as ErrorMessageType[]);
       setSuccess(false);
     }
   };
-  console.log(success);
+
   return (
     <StyledForm id="addClassWork" onSubmit={handleSubmit(onSubmit)}>
       <InputField htmlFor="name">
