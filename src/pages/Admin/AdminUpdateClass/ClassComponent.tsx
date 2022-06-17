@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import dateFormat from 'dateformat';
 import {
   StyledClassContainer,
   StyledClassHeaderWrapper,
@@ -15,6 +14,13 @@ import {
   TrashIcon,
 } from './ClassComponent.styled';
 import AccordionWrapper from '../../../components/Accordion/Accordion';
+import { useModal } from '../../../components/Modal/useModal';
+import { Modal } from '../../../components/Modal/Modal';
+import { Button, PrimaryButton } from '../../../components/Button';
+import { AddNewClassWorkForm } from './AddNewClassWorkForm';
+import { getFormattedDate } from '../../../utilities/dateFormat';
+
+/* eslint no-underscore-dangle: 0 */
 
 interface ClassComponentDataProps {
   _id: string;
@@ -32,7 +38,7 @@ const getHeaderComponent = (item: ClassComponentDataProps) => {
   return (
     <StyledClassHeaderWrapper>
       <article>
-        <ClassDate>{dateFormat(`${item.date}`, 'mmmm dS, yyyy')}</ClassDate>
+        <ClassDate>{getFormattedDate(item.date)}</ClassDate>
         <ClassTitleWrapper>
           <ClassTitle>{item.name}</ClassTitle>
           <TrashIcon />
@@ -44,16 +50,32 @@ const getHeaderComponent = (item: ClassComponentDataProps) => {
 };
 
 const ClassComponent = ({ classes }: classesProps) => {
+  const { isOpen, toggle } = useModal();
+  const [ClassID, setClassID] = useState<string | undefined>();
+
+  const handleClick = (classId: string | undefined) => {
+    toggle();
+    setClassID(classId);
+  };
+
+  const handleCloseModal = () => {
+    toggle();
+  };
+
   // const classWorkDetails = (innerElement: any, index: any) => {
   //   if (innerElement.body) {
-  //     return <span>{innerElement.body}</span>;
+  //     return (
+  //       <>
+  //         <div> {innerElement.name}</div>
+  //         <div>{innerElement.body}</div>
+  //       </>
+  //     );
   //   }
   //   return null;
   // };
   return (
     <StyledClassContainer>
       {classes?.map((item: ClassComponentDataProps) => (
-        // eslint-disable-next-line no-underscore-dangle
         <div key={item._id}>
           <EditClassIcon />
           <AccordionWrapper
@@ -62,11 +84,12 @@ const ClassComponent = ({ classes }: classesProps) => {
             {/* accordion content */}
 
             {/* {item.classworks?.map((innerElement, index) => (
-              <div key={index}>
+              <div key={`${item._id}-${index}`}>
                 <StyledClassItemsContainer>
                   <StyledClassItem>
                     <EditClassContentIcon />
                     <TrashIcon />
+
                     {classWorkDetails(innerElement, index)}
                   </StyledClassItem>
                 </StyledClassItemsContainer>
@@ -74,9 +97,33 @@ const ClassComponent = ({ classes }: classesProps) => {
             ))} */}
 
             <StyledClassItemsContainer>
-              <StyledClassItem>
-                <AddClassContentIcon /> Add Resources
+              <StyledClassItem
+                onClick={() => {
+                  handleClick(item._id);
+                }}
+              >
+                <AddClassContentIcon />
+                Add Resources
               </StyledClassItem>
+              <Modal
+                titleText="Add New Class Work"
+                isOpen={isOpen}
+                hide={toggle}
+                primaryAction={
+                  <PrimaryButton
+                    type="submit"
+                    form="addClassWork"
+                    onClick={toggle}
+                  >
+                    Submit
+                  </PrimaryButton>
+                }
+                secondaryAction={
+                  <Button onClick={handleCloseModal}>Cancel</Button>
+                }
+              >
+                <AddNewClassWorkForm classId={ClassID} />
+              </Modal>
             </StyledClassItemsContainer>
           </AccordionWrapper>
         </div>

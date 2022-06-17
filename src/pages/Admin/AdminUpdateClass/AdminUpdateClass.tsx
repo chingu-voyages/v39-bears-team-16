@@ -12,13 +12,12 @@ import {
 } from './AdminUpdateClass.styled';
 import ClassComponent from './ClassComponent';
 import { useModal } from '../../../components/Modal/useModal';
-import { Modal } from '../../../components/Modal/Modal';
+
 import { ErrorMessageType } from '../../../types';
 import { ERROR_MESSAGES } from '../../../utilities/constants';
 import { getAdminClass } from '../../../api/getAdminClasses';
 import { AddNewClassForm } from './AddNewClass';
 import { getCsrfToken } from '../../../api/getCsrfToken';
-import { Button, PrimaryButton } from '../../../components/Button';
 
 interface ClassComponentDataProps {
   _id: string;
@@ -64,7 +63,13 @@ const AdminUpdateClass = () => {
         <AddClassButton type="button" onClick={toggle}>
           + New Class
         </AddClassButton>
-        <Modal
+
+        <AddNewClassForm
+          isOpen={isOpen}
+          toggle={toggle}
+          handleClose={handleCloseModal}
+        />
+        {/* <Modal
           titleText="Add New Class"
           isOpen={isOpen}
           hide={toggle}
@@ -76,7 +81,7 @@ const AdminUpdateClass = () => {
           secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
         >
           <AddNewClassForm />
-        </Modal>
+        </Modal> */}
       </SyllabusHeadlineWrapper>
       <Line />
       <Classes>

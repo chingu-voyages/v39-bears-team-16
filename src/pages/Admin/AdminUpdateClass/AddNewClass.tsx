@@ -13,50 +13,73 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../../components/ErrorMessage';
-import { StyledSuccessMessage } from '../../../components/SuccessMessage';
 
-const StyledForm = styled.div`
+import { Modal } from '../../../components/Modal/Modal';
+import { Button, PrimaryButton } from '../../../components/Button';
+import { classValidationRules } from '../../../utilities/classValidation';
+
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1em;
 `;
 
-const classValidationRules = {
-  name: {
-    required: 'Class Title is required',
-  },
-  subject: {
-    required: 'Class Description is required',
-  },
-  date: {
-    required: 'Date is required',
-  },
+const defaultClassValues = {
+  name: '',
+  startDate: '',
+  endDate: '',
 };
 
-export const AddNewClassForm = () => {
+interface AddNewClassFormProps {
+  isOpen: boolean;
+  toggle(): void;
+  handleClose(): void;
+}
+
+export const AddNewClassForm = ({
+  isOpen,
+  toggle,
+  handleClose,
+}: AddNewClassFormProps) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<AdminCreateClassProps>();
 
   const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
-  const [success, setSuccess] = useState<boolean>(false);
   const { id } = useParams();
 
-  const onSubmit = async (payload: AdminCreateClassProps) => {
+  const handleCancelModal = () => {
+    toggle();
+    reset(defaultClassValues);
+  };
+
+  const onSubmit = async (data: AdminCreateClassProps) => {
     try {
-      await adminCreateClass(payload, id);
-      setSuccess(true);
+      await adminCreateClass(data, id);
+
+      reset(defaultClassValues);
+      handleClose();
     } catch (error) {
       setErrorMessages(error as ErrorMessageType[]);
-      setSuccess(false);
     }
   };
 
   return (
-    <StyledForm>
-      <form id="addClassForm" onSubmit={handleSubmit(onSubmit)}>
+    <Modal
+      titleText="Add New Class"
+      isOpen={isOpen}
+      hide={toggle}
+      primaryAction={
+        <PrimaryButton type="submit" form="addClassForm">
+          Submit
+        </PrimaryButton>
+      }
+      secondaryAction={<Button onClick={handleCancelModal}>Cancel</Button>}
+    >
+      <StyledForm id="addClassForm" onSubmit={handleSubmit(onSubmit)}>
         <InputField htmlFor="name">
           <span>Class Title</span>
           <Input
@@ -78,16 +101,12 @@ export const AddNewClassForm = () => {
         <InputField htmlFor="date">
           <span>Date</span>
           <Input
-            type="text"
+            type="date"
             id="date"
             placeholder="yyyy-mm-dd"
             {...register('date', classValidationRules.date)}
           />
         </InputField>
-
-        {success ? (
-          <StyledSuccessMessage>The Class has been added</StyledSuccessMessage>
-        ) : null}
 
         {Object.keys(errors).length > 0 && (
           <FormErrorMessages errors={errors} />
@@ -95,7 +114,7 @@ export const AddNewClassForm = () => {
         {errorMessages?.map(({ msg }) => (
           <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
         ))}
-      </form>
-    </StyledForm>
+      </StyledForm>
+    </Modal>
   );
 };

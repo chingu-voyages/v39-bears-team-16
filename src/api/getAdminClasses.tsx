@@ -10,6 +10,11 @@ export interface AdminCreateClassProps {
   date: string;
 }
 
+export interface AdminCreateClassWorkProps {
+  name: string;
+  body: string;
+}
+
 export const adminCreateClass = (
   { name, subject, date }: AdminCreateClassProps,
   id: string | undefined
@@ -18,5 +23,17 @@ export const adminCreateClass = (
     name,
     subject,
     date,
+  });
+};
+
+export const adminCreateClassWorks = (
+  { name, body }: AdminCreateClassWorkProps,
+  classId: string | undefined,
+  id: string | undefined
+) => {
+  return api.post(`/admin/cohorts/${id}/classes/${classId}/classworks/create`, {
+    classId,
+    name,
+    body,
   });
 };
