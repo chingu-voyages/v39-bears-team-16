@@ -7,7 +7,6 @@ import { ErrorMessageType } from '../../../types';
 import {
   adminCreateClassWorks,
   AdminCreateClassWorkProps,
-  getAdminClass,
 } from '../../../api/getAdminClasses';
 
 import {
@@ -54,19 +53,14 @@ export const AddNewClassWorkForm = ({
     handleSubmit,
     reset,
     formState: { errors },
-    watch,
   } = useForm<AdminCreateClassWorkProps>();
 
   const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
   const { id } = useParams();
-  const formData = watch('body');
 
   const onSubmitNewClassWork = async (payload: AdminCreateClassWorkProps) => {
     try {
       await adminCreateClassWorks(payload, classId, id);
-
-      const data = await getAdminClass(id);
-
       reset(defaultClassWorkValues);
     } catch (error) {
       setErrorMessages(error as ErrorMessageType[]);
