@@ -6,6 +6,7 @@ import { Cohort, ErrorMessageType } from '../../types';
 import { ERROR_MESSAGES } from '../../utilities/constants';
 import AdminNavbar from './AdminNavbar';
 import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
+import { getCsrfToken } from '../../api/getCsrfToken';
 
 const Container = styled.div`
   width: 100%;
@@ -42,6 +43,7 @@ export const AdminMainLayout = () => {
   }, []);
 
   useEffect(() => {
+    getCsrfToken();
     fetchAdminCohorts();
   }, [fetchAdminCohorts]);
 

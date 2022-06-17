@@ -9,7 +9,6 @@ import {
   StyledCohortCardsContainer,
 } from './AdminCohortsPage.styled';
 import { Cohort } from '../../../types';
-import { getCsrfToken } from '../../../api/getCsrfToken';
 import { AddNewCohortModal } from './AddNewCohortModal';
 import { useModal } from '../../../components/Modal/useModal';
 
@@ -21,7 +20,6 @@ const AdminCohortsPage = () => {
   const { isOpen: isModalOpen, toggle } = useModal();
 
   useEffect(() => {
-    getCsrfToken();
     setCohortsList(cohorts);
   }, [cohorts]);
 
