@@ -7,13 +7,16 @@ import { ErrorMessageType } from '../../../types';
 import {
   adminCreateClassWorks,
   AdminCreateClassWorkProps,
+  getAdminClass,
 } from '../../../api/getAdminClasses';
 
 import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../../components/ErrorMessage';
-import { StyledSuccessMessage } from '../../../components/SuccessMessage';
+import { Modal } from '../../../components/Modal/Modal';
+
+import { Button, PrimaryButton } from '../../../components/Button';
 
 const StyledForm = styled.form`
   display: flex;
@@ -30,62 +33,96 @@ const classWorkValidationRules = {
   },
 };
 
-interface classIDProps {
+const defaultClassWorkValues = {
+  name: '',
+  body: '',
+};
+
+interface AddNewClassWorkFormProps {
   classId: string | undefined;
+  isOpen: boolean;
+  toggle(): void;
 }
 
-export const AddNewClassWorkForm = ({ classId }: classIDProps) => {
+export const AddNewClassWorkForm = ({
+  classId,
+  isOpen,
+  toggle,
+}: AddNewClassWorkFormProps) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
+    watch,
   } = useForm<AdminCreateClassWorkProps>();
 
   const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
-  const [success, setSuccess] = useState<boolean>(false);
   const { id } = useParams();
+  const formData = watch('body');
 
-  const onSubmit = async (payload: AdminCreateClassWorkProps) => {
+  const onSubmitNewClassWork = async (payload: AdminCreateClassWorkProps) => {
     try {
       await adminCreateClassWorks(payload, classId, id);
-      setSuccess(true);
+
+      const data = await getAdminClass(id);
+
+      reset(defaultClassWorkValues);
     } catch (error) {
       setErrorMessages(error as ErrorMessageType[]);
-      setSuccess(false);
     }
+  };
+  const handleCancelModal = () => {
+    toggle();
+    reset(defaultClassWorkValues);
   };
 
   return (
-    <StyledForm id="addClassWork" onSubmit={handleSubmit(onSubmit)}>
-      <InputField htmlFor="name">
-        <span>Classwork Type</span>
-        <Input
-          type="text"
-          id="name"
-          placeholder="Enter Class Title"
-          {...register('name', classWorkValidationRules.name)}
-        />
-      </InputField>
-      <InputField htmlFor="body">
-        <span>Classwork Link</span>
-        <Input
-          type="text"
-          id="body"
-          placeholder="Enter Class description"
-          {...register('body', classWorkValidationRules.body)}
-        />
-      </InputField>
+    <Modal
+      titleText="Add New Class Work Form"
+      isOpen={isOpen}
+      hide={toggle}
+      primaryAction={
+        <PrimaryButton type="submit" form="addClassWork">
+          Submit
+        </PrimaryButton>
+      }
+      secondaryAction={<Button onClick={handleCancelModal}>Cancel</Button>}
+    >
+      <StyledForm
+        id="addClassWork"
+        onSubmit={(e) => {
+          handleSubmit(onSubmitNewClassWork)(e);
+        }}
+      >
+        <InputField htmlFor="name">
+          <span>Classwork Type</span>
+          <Input
+            type="text"
+            id="name"
+            placeholder="Enter Class Title"
+            {...register('name', classWorkValidationRules.name)}
+          />
+        </InputField>
 
-      {success ? (
-        <StyledSuccessMessage>
-          The ClassWork has been added
-        </StyledSuccessMessage>
-      ) : null}
+        <InputField htmlFor="body">
+          <span>Classwork Link</span>
 
-      {Object.keys(errors).length > 0 && <FormErrorMessages errors={errors} />}
-      {errorMessages?.map(({ msg }) => (
-        <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
-      ))}
-    </StyledForm>
+          <Input
+            type="text"
+            id="body"
+            placeholder="Enter Class description"
+            {...register('body', classWorkValidationRules.body)}
+          />
+        </InputField>
+
+        {Object.keys(errors).length > 0 && (
+          <FormErrorMessages errors={errors} />
+        )}
+        {errorMessages?.map(({ msg }) => (
+          <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
+        ))}
+      </StyledForm>
+    </Modal>
   );
 };

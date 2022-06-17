@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-
+import uuid from 'react-uuid';
 import {
   StyledClassContainer,
   StyledClassHeaderWrapper,
   ClassDate,
+  EditClassContentIcon,
   ClassDescription,
   ClassTitle,
   AddClassContentIcon,
@@ -15,8 +16,6 @@ import {
 } from './ClassComponent.styled';
 import AccordionWrapper from '../../../components/Accordion/Accordion';
 import { useModal } from '../../../components/Modal/useModal';
-import { Modal } from '../../../components/Modal/Modal';
-import { Button, PrimaryButton } from '../../../components/Button';
 import { AddNewClassWorkForm } from './AddNewClassWorkForm';
 import { getFormattedDate } from '../../../utilities/dateFormat';
 
@@ -32,6 +31,11 @@ interface ClassComponentDataProps {
 
 interface classesProps {
   classes: ClassComponentDataProps[] | undefined;
+}
+
+interface classesWorkProps {
+  name: string;
+  body: string;
 }
 
 const getHeaderComponent = (item: ClassComponentDataProps) => {
@@ -58,21 +62,17 @@ const ClassComponent = ({ classes }: classesProps) => {
     setClassID(classId);
   };
 
-  const handleCloseModal = () => {
-    toggle();
+  const classWorkDetails = (innerElement: classesWorkProps) => {
+    if (innerElement.body) {
+      return (
+        <>
+          <div> {innerElement.name}</div>
+          <div>{innerElement.body}</div>
+        </>
+      );
+    }
+    return null;
   };
-
-  // const classWorkDetails = (innerElement: any, index: any) => {
-  //   if (innerElement.body) {
-  //     return (
-  //       <>
-  //         <div> {innerElement.name}</div>
-  //         <div>{innerElement.body}</div>
-  //       </>
-  //     );
-  //   }
-  //   return null;
-  // };
   return (
     <StyledClassContainer>
       {classes?.map((item: ClassComponentDataProps) => (
@@ -83,18 +83,18 @@ const ClassComponent = ({ classes }: classesProps) => {
           >
             {/* accordion content */}
 
-            {/* {item.classworks?.map((innerElement, index) => (
-              <div key={`${item._id}-${index}`}>
+            {item.classworks?.map((innerElement) => (
+              <div key={uuid()}>
                 <StyledClassItemsContainer>
                   <StyledClassItem>
                     <EditClassContentIcon />
                     <TrashIcon />
 
-                    {classWorkDetails(innerElement, index)}
+                    {classWorkDetails(innerElement)}
                   </StyledClassItem>
                 </StyledClassItemsContainer>
               </div>
-            ))} */}
+            ))}
 
             <StyledClassItemsContainer>
               <StyledClassItem
@@ -105,25 +105,12 @@ const ClassComponent = ({ classes }: classesProps) => {
                 <AddClassContentIcon />
                 Add Resources
               </StyledClassItem>
-              <Modal
-                titleText="Add New Class Work"
+
+              <AddNewClassWorkForm
                 isOpen={isOpen}
-                hide={toggle}
-                primaryAction={
-                  <PrimaryButton
-                    type="submit"
-                    form="addClassWork"
-                    onClick={toggle}
-                  >
-                    Submit
-                  </PrimaryButton>
-                }
-                secondaryAction={
-                  <Button onClick={handleCloseModal}>Cancel</Button>
-                }
-              >
-                <AddNewClassWorkForm classId={ClassID} />
-              </Modal>
+                toggle={toggle}
+                classId={ClassID}
+              />
             </StyledClassItemsContainer>
           </AccordionWrapper>
         </div>
