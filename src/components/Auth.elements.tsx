@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { FaUserAlt, FaTwitterSquare } from 'react-icons/fa';
+import { FaUserAlt, FaGithubSquare } from 'react-icons/fa';
 import { MdSchool } from 'react-icons/md';
 import { HiMail } from 'react-icons/hi';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import { AiOutlineOrderedList } from 'react-icons/ai';
+import { AiOutlineOrderedList, AiFillCloseCircle } from 'react-icons/ai';
 import { VscKey } from 'react-icons/vsc';
 
 import { Link } from 'react-router-dom';
@@ -41,16 +41,16 @@ export const AuthHead = styled.h1`
   line-height: 1;
 `;
 
-export const TwitterIcon = styled(FaTwitterSquare)`
+const iconStyles = {
+  fontSize: '1rem',
+  margin: '0 1.5em',
+  color: 'black',
+};
+export const GithubIcon = styled(FaGithubSquare)`
   color: ${({ theme }) => theme.color.black};
   font-size: 3rem;
   cursor: pointer;
 `;
-
-const iconStyles = {
-  margin: '0 1.5em',
-  color: 'black',
-};
 
 export const UserIcon = styled(FaUserAlt)`
   ${iconStyles}
@@ -87,6 +87,11 @@ export const KeyIcon = styled(VscKey)`
 
 export const KeySuccessIcon = styled(KeyIcon)`
   background: ${({ theme }) => theme.background.teal};
+`;
+
+export const CloseIcon = styled(AiFillCloseCircle)`
+  color: black;
+  margin-right: 0.5em;
 `;
 
 export const AuthSpan = styled.span`
@@ -164,4 +169,17 @@ export const AuthForgetHead = styled.h2`
   color: ${({ theme }) => theme.color.black};
   font-size: 2rem;
   font-weight: 200;
+`;
+
+export const CookieRequest = styled.span`
+  font-size: 1em;
+  display: inline-block;
+  padding: 0.65em 2.5em;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  background-color: rgba(253, 126, 20, 0.85);
+  border-radius: 15px;
+  color: ${({ theme }) => theme.color.black};
 `;

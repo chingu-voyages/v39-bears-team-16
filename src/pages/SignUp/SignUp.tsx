@@ -7,7 +7,7 @@ import {
   AuthContainer,
   AuthCard,
   AuthHead,
-  TwitterIcon,
+  GithubIcon,
   AuthForm,
   AuthField,
   UserIcon,
@@ -16,6 +16,8 @@ import {
   PasswordIcon,
   AuthButton,
   AuthRedirectLink,
+  CookieRequest,
+  CloseIcon,
   AuthSpan,
 } from '../../components/Auth.elements';
 import {
@@ -24,6 +26,7 @@ import {
 } from '../../components/ErrorMessage';
 import { ErrorMessageType } from '../../types';
 import { authValidationRules } from '../../utilities/validation';
+import { GITHUB_AUTH_URL } from '../../utilities/constants';
 
 interface SignUpFormInputs {
   name: string;
@@ -56,8 +59,16 @@ const SignUp = () => {
   return (
     <AuthContainer>
       <AuthCard>
+        <CookieRequest>
+          <CloseIcon />
+          Please ensure cookies are enabled.
+        </CookieRequest>
         <AuthHead>Sign Up</AuthHead>
-        <TwitterIcon />
+
+        <a href={GITHUB_AUTH_URL}>
+          <GithubIcon />
+        </a>
+
         <AuthSpan>or use your email to register</AuthSpan>
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
