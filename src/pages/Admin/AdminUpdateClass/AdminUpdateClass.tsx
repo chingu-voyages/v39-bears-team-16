@@ -17,7 +17,6 @@ import { ErrorMessageType } from '../../../types';
 import { ERROR_MESSAGES } from '../../../utilities/constants';
 import { getAdminClass } from '../../../api/getAdminClasses';
 import { AddNewClassForm } from './AddNewClassModal';
-import { getCsrfToken } from '../../../api/getCsrfToken';
 
 interface ClassComponentDataProps {
   _id: string;
@@ -47,7 +46,6 @@ const AdminUpdateClass = () => {
     fetchAdminClasses();
   };
   useEffect(() => {
-    getCsrfToken();
     fetchAdminClasses();
   }, [fetchAdminClasses]);
 
@@ -68,19 +66,6 @@ const AdminUpdateClass = () => {
           toggle={toggle}
           handleClose={handleCloseModal}
         />
-        {/* <Modal
-          titleText="Add New Class"
-          isOpen={isOpen}
-          hide={toggle}
-          primaryAction={
-            <PrimaryButton type="submit" form="addClassForm">
-              Submit
-            </PrimaryButton>
-          }
-          secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
-        >
-          <AddNewClassForm />
-        </Modal> */}
       </SyllabusHeadlineWrapper>
       <Line />
       <Classes>
