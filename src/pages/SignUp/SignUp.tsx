@@ -112,7 +112,6 @@ const SignUp = () => {
         <AuthRedirectLink to="/sign-in">
           Already have an account?
         </AuthRedirectLink>
-
       </AuthCard>
     </AuthContainer>
   );

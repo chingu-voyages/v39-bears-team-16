@@ -111,7 +111,6 @@ const SignIn = () => {
             Create a new account
           </AuthRedirectLink>
         </AuthFoot>
-
       </AuthCard>
     </AuthContainer>
   );
