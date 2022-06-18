@@ -4,6 +4,7 @@ import { Card } from '../../../components/Card';
 export const CohortsPageContainer = styled.div`
   width: 100%;
   padding: 4em;
+  overflow: auto;
 `;
 
 export const StyledCohortCardsContainer = styled.div`

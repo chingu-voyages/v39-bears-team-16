@@ -9,7 +9,6 @@ import {
   AuthCard,
   AuthHead,
   GithubIcon,
-  AuthSpan,
   AuthForm,
   AuthField,
   AuthInput,
@@ -19,13 +18,15 @@ import {
   AuthRedirectLink,
   CookieRequest,
   CloseIcon,
+  AuthSpan,
+  AuthFoot,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
 import { ErrorMessageType } from '../../types';
-import { getValidationRules } from '../../utilities/auth';
+import { authValidationRules } from '../../utilities/validation';
 import { GITHUB_AUTH_URL } from '../../utilities/constants';
 
 interface SignInFormInputs {
@@ -68,13 +69,14 @@ const SignIn = () => {
           <GithubIcon />
         </a>
         <AuthSpan>or use your email to login</AuthSpan>
+
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <EmailIcon />
             <AuthInput
               type="text"
               placeholder="email"
-              {...register('email', { ...getValidationRules('email') })}
+              {...register('email', authValidationRules.email)}
             />
           </AuthField>
 
@@ -83,23 +85,33 @@ const SignIn = () => {
             <AuthInput
               type="password"
               placeholder="password"
-              {...register('password', { ...getValidationRules('password') })}
+              {...register('password', authValidationRules.password)}
             />
           </AuthField>
 
-          <FormErrorMessages errors={formErrors} />
+          {Object.keys(formErrors).length > 0 && (
+            <FormErrorMessages errors={formErrors} />
+          )}
 
           {errorMessages?.map(({ msg }) => (
             <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
           ))}
 
-          <AuthButton type="submit">SIGN IN</AuthButton>
+          <AuthButton type="submit">Sign In</AuthButton>
         </AuthForm>
-        <AuthSpan>Forget your password?</AuthSpan>
-        <AuthRedirectLink to="/forgot-password">Click Here</AuthRedirectLink>
-        or
-        <AuthSpan>Create Account</AuthSpan>
-        <AuthRedirectLink to="/sign-up">Click Here</AuthRedirectLink>
+
+        <AuthFoot>
+          <AuthRedirectLink to="/forgot-password">
+            Forgot your password?
+          </AuthRedirectLink>
+
+          <AuthSpan>or</AuthSpan>
+
+          <AuthRedirectLink to="/sign-up">
+            Create a new account
+          </AuthRedirectLink>
+        </AuthFoot>
+
       </AuthCard>
     </AuthContainer>
   );

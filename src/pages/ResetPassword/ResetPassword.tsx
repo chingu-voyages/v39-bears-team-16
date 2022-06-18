@@ -6,7 +6,6 @@ import { resetPassword } from '../../api/resetPassword';
 import {
   AuthContainer,
   AuthCard,
-  AuthForgetHead,
   KeySuccessIcon,
   AuthForm,
   AuthField,
@@ -14,13 +13,14 @@ import {
   AuthButton,
   PasswordIcon,
   EmailIcon,
+  AuthHead,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
 import { ErrorMessageType } from '../../types';
-import { getValidationRules } from '../../utilities/auth';
+import { authValidationRules } from '../../utilities/validation';
 
 interface ResetPasswordInputs {
   email: string;
@@ -55,9 +55,7 @@ const ResetPassword = () => {
   return (
     <AuthContainer>
       <AuthCard>
-        <AuthForgetHead>
-          Create a new <br /> password
-        </AuthForgetHead>
+        <AuthHead>Reset Password</AuthHead>
         <KeySuccessIcon />
 
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
@@ -66,7 +64,7 @@ const ResetPassword = () => {
             <AuthInput
               type="email"
               placeholder="email"
-              {...register('email', { ...getValidationRules('email') })}
+              {...register('email', authValidationRules.email)}
             />
           </AuthField>
 
@@ -75,9 +73,7 @@ const ResetPassword = () => {
             <AuthInput
               type="password"
               placeholder="new password"
-              {...register('newPassword', {
-                ...getValidationRules('newPassword'),
-              })}
+              {...register('newPassword', authValidationRules.newPassword)}
             />
           </AuthField>
 
@@ -86,17 +82,20 @@ const ResetPassword = () => {
             <AuthInput
               type="password"
               placeholder="confirm new password"
-              {...register('passwordConfirmation', {
-                ...getValidationRules('passwordConfirmation'),
-              })}
+              {...register(
+                'passwordConfirmation',
+                authValidationRules.passwordConfirmation
+              )}
             />
           </AuthField>
-          <FormErrorMessages errors={formErrors} />
+          {Object.keys(formErrors).length > 0 && (
+            <FormErrorMessages errors={formErrors} />
+          )}
 
           {errorMessages?.map(({ msg }) => (
             <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
           ))}
-          <AuthButton type="submit">CHANGE PASSWORD</AuthButton>
+          <AuthButton type="submit">Change Password</AuthButton>
         </AuthForm>
       </AuthCard>
     </AuthContainer>

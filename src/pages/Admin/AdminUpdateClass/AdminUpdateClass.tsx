@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   AddClassButton,
   Classes,
@@ -10,8 +11,13 @@ import {
   SyllabusHeadlineWrapper,
 } from './AdminUpdateClass.styled';
 import ClassComponent from './ClassComponent';
+import { useModal } from '../../../components/Modal/useModal';
+import { Modal } from '../../../components/Modal/Modal';
+import { PrimaryButton } from '../../../components/Button';
 
 const AdminUpdateClass = () => {
+  const { isOpen, toggle } = useModal();
+
   return (
     <SyllabusContainer>
       <SyllabusHeadlineWrapper>
@@ -20,7 +26,17 @@ const AdminUpdateClass = () => {
           <SyllabusDate>(March 1st, 2022 - December 1st, 2022)</SyllabusDate>
           <DateIcon />
         </SyllabusHeadline>
-        <AddClassButton type="button">+ New Class</AddClassButton>
+        <AddClassButton type="button" onClick={toggle}>
+          + New Class
+        </AddClassButton>
+        <Modal
+          titleText="Add New Class"
+          isOpen={isOpen}
+          hide={toggle}
+          primaryAction={<PrimaryButton onClick={toggle}>Submit</PrimaryButton>}
+        >
+          Hello, This is where you will add New Class content
+        </Modal>
       </SyllabusHeadlineWrapper>
       <Line />
       <Classes>

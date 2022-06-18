@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BsPlusCircle } from 'react-icons/bs';
 import { useAdminContext } from '../AdminMainLayout';
@@ -9,15 +9,24 @@ import {
   StyledCohortCardsContainer,
 } from './AdminCohortsPage.styled';
 import { Cohort } from '../../../types';
+import { AddNewCohortModal } from './AddNewCohortModal';
+import { useModal } from '../../../components/Modal/useModal';
 
 const AdminCohortsPage = () => {
   const { cohorts } = useAdminContext();
+  const [cohortsList, setCohortsList] = useState<Cohort[] | null>(cohorts);
   const navigate = useNavigate();
+
+  const { isOpen: isModalOpen, toggle } = useModal();
+
+  useEffect(() => {
+    setCohortsList(cohorts);
+  }, [cohorts]);
 
   return (
     <CohortsPageContainer>
       <StyledCohortCardsContainer>
-        {cohorts?.map(({ _id, ...cohortData }: Cohort) => (
+        {cohortsList?.map(({ _id, ...cohortData }: Cohort) => (
           <CohortCard
             _id={_id}
             key={_id}
@@ -26,10 +35,15 @@ const AdminCohortsPage = () => {
             {...cohortData}
           />
         ))}
-        <StyledAddCohortCard>
+        <StyledAddCohortCard onClick={toggle}>
           <BsPlusCircle color="white" fontSize="5em" />
         </StyledAddCohortCard>
       </StyledCohortCardsContainer>
+      <AddNewCohortModal
+        isOpen={isModalOpen}
+        toggle={toggle}
+        setCohortsList={setCohortsList}
+      />
     </CohortsPageContainer>
   );
 };

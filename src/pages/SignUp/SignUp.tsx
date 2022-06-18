@@ -8,7 +8,6 @@ import {
   AuthCard,
   AuthHead,
   GithubIcon,
-  AuthSpan,
   AuthForm,
   AuthField,
   UserIcon,
@@ -19,13 +18,14 @@ import {
   AuthRedirectLink,
   CookieRequest,
   CloseIcon,
+  AuthSpan,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
 import { ErrorMessageType } from '../../types';
-import { getValidationRules } from '../../utilities/auth';
+import { authValidationRules } from '../../utilities/validation';
 import { GITHUB_AUTH_URL } from '../../utilities/constants';
 
 interface SignUpFormInputs {
@@ -64,9 +64,11 @@ const SignUp = () => {
           Please ensure cookies are enabled.
         </CookieRequest>
         <AuthHead>Sign Up</AuthHead>
+
         <a href={GITHUB_AUTH_URL}>
           <GithubIcon />
         </a>
+
         <AuthSpan>or use your email to register</AuthSpan>
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
@@ -74,7 +76,7 @@ const SignUp = () => {
             <AuthInput
               type="text"
               placeholder="name"
-              {...register('name', { ...getValidationRules('name') })}
+              {...register('name', authValidationRules.name)}
             />
           </AuthField>
 
@@ -83,7 +85,7 @@ const SignUp = () => {
             <AuthInput
               type="email"
               placeholder="email"
-              {...register('email', { ...getValidationRules('email') })}
+              {...register('email', authValidationRules.email)}
             />
           </AuthField>
 
@@ -92,19 +94,25 @@ const SignUp = () => {
             <AuthInput
               type="password"
               placeholder="password"
-              {...register('password', { ...getValidationRules('password') })}
+              {...register('password', authValidationRules.password)}
             />
           </AuthField>
-          <FormErrorMessages errors={formErrors} />
+
+          {Object.keys(formErrors).length > 0 && (
+            <FormErrorMessages errors={formErrors} />
+          )}
 
           {errorMessages?.map(({ msg }) => (
             <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
           ))}
 
-          <AuthButton type="submit">SIGN UP</AuthButton>
+          <AuthButton type="submit">Sign Up</AuthButton>
         </AuthForm>
-        <AuthSpan>Already have an account?</AuthSpan>
-        <AuthRedirectLink to="/sign-in">Login Here</AuthRedirectLink>
+
+        <AuthRedirectLink to="/sign-in">
+          Already have an account?
+        </AuthRedirectLink>
+
       </AuthCard>
     </AuthContainer>
   );

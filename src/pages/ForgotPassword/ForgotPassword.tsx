@@ -5,22 +5,22 @@ import { getCsrfToken } from '../../api/getCsrfToken';
 import {
   AuthContainer,
   AuthCard,
-  AuthForgetHead,
   KeyIcon,
-  AuthSpan,
   AuthForm,
   AuthField,
   AuthInput,
   EmailIcon,
   AuthButton,
   AuthRedirectLink,
+  AuthSpan,
+  AuthHead,
 } from '../../components/Auth.elements';
 import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
 import { ErrorMessageType } from '../../types';
-import { getValidationRules } from '../../utilities/auth';
+import { authValidationRules } from '../../utilities/validation';
 
 interface ForgotPasswordFormInputs {
   email: string;
@@ -52,32 +52,29 @@ const ForgotPassword = () => {
   return (
     <AuthContainer>
       <AuthCard>
-        <AuthForgetHead>
-          Yo! Forgot your <br /> password again?!
-        </AuthForgetHead>
+        <AuthHead>Forgot Password</AuthHead>
         <KeyIcon />
-        <AuthSpan>
-          No worries! <br /> Enter your email and we will send you a reset
-        </AuthSpan>
+        <AuthSpan>Enter your email to get a password reset link.</AuthSpan>
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthField>
             <EmailIcon />
             <AuthInput
               type="email"
               placeholder="email"
-              {...register('email', { ...getValidationRules('email') })}
+              {...register('email', authValidationRules.email)}
             />
           </AuthField>
-          <FormErrorMessages errors={formErrors} />
+          {Object.keys(formErrors).length > 0 && (
+            <FormErrorMessages errors={formErrors} />
+          )}
 
           {errorMessages?.map(({ msg, param }) => (
             <StyledErrorMessage key={param}>{msg}</StyledErrorMessage>
           ))}
-          <AuthButton type="submit">SEND REQUEST</AuthButton>
+          <AuthButton type="submit">Send Reset Link</AuthButton>
         </AuthForm>
-        <AuthSpan>Try again?</AuthSpan>
-        <AuthRedirectLink to="/sign-in">Login Here</AuthRedirectLink>
-        {showSuccessMessage && <p>Check your email for the next steps</p>}
+        <AuthRedirectLink to="/sign-in">Try again?</AuthRedirectLink>
+        {showSuccessMessage && <p>Check your email for the next steps.</p>}
       </AuthCard>
     </AuthContainer>
   );

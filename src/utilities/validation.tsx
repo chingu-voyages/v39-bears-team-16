@@ -1,10 +1,6 @@
-import { RegisterOptions } from 'react-hook-form';
+import { ValidationRuleProp } from '../types';
 
-interface ValidationRuleProp {
-  [x: string]: RegisterOptions;
-}
-
-const validationRules: ValidationRuleProp = {
+export const authValidationRules: ValidationRuleProp = {
   name: {
     required: 'Name is required',
     maxLength: {
@@ -42,6 +38,14 @@ const validationRules: ValidationRuleProp = {
   },
 };
 
-export const getValidationRules = (field: string) => {
-  return validationRules[field] ?? {};
+export const cohortValidationRules = {
+  name: {
+    required: 'Name is required',
+  },
+  startDate: {
+    required: 'Start Date is required',
+  },
+  endDate: {
+    required: 'End Date is required',
+  },
 };
