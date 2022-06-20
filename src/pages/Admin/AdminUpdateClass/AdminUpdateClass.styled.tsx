@@ -5,10 +5,10 @@ import { iconStyles, StyledDateString } from './styles';
 export const SyllabusContainer = styled.section`
   display: flex;
   flex-direction: column;
-  width: 80%;
-  margin: 50px;
-  padding: 50px;
-  border-radius: 10px;
+  max-width: 100%;
+  margin: 1.5em;
+  padding: 1.5em;
+  border-radius: 1em;
   color: ${({ theme }) => theme.color.primary};
   background: ${({ theme }) => theme.background.primary};
 `;

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { HiMenuAlt3 } from 'react-icons/hi';
 
 export const navLinkStyles = {
   color: 'white',
@@ -37,10 +36,4 @@ export const BreadcrumbContainer = styled.span`
   padding-left: 1.5em;
   font-size: 0.75em;
   color: ${({ theme }) => theme.background.white};
-`;
-
-export const MenuIcon = styled(HiMenuAlt3)`
-  transform: scale(2);
-  margin: 0.175em;
-  color: white;
 `;
