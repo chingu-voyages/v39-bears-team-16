@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { uid } from 'react-uid';
+import { v4 as uuidv4 } from 'uuid';
 import {
   StyledClassContainer,
   StyledClassHeaderWrapper,
@@ -59,8 +59,8 @@ const ClassComponent = ({ classes, handleClose }: classesProps) => {
   const [ClassID, setClassID] = useState<string | undefined>();
 
   const handleClick = (classId: string | undefined) => {
-    toggle();
     setClassID(classId);
+    toggle();
   };
 
   const classWorkDetails = (innerElement: classesWorkProps) => {
@@ -85,7 +85,7 @@ const ClassComponent = ({ classes, handleClose }: classesProps) => {
             {/* accordion content */}
 
             {item.classworks?.map((innerElement) => (
-              <div key={uid(innerElement)}>
+              <div key={uuidv4()}>
                 <StyledClassItemsContainer>
                   <StyledClassItem>
                     <EditClassContentIcon />
