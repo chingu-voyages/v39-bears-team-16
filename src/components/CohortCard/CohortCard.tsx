@@ -14,29 +14,12 @@ import {
   CohortImg,
 } from './CohortCard.styled';
 import { Cohort } from '../../types';
+import { getFormattedDate } from '../../utilities/dateFormat';
 
 interface CohortCardProps extends Cohort {
   handleClick(): void;
   isAdmin?: boolean;
 }
-
-const lang = 'en-us';
-const options: Intl.DateTimeFormatOptions = {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-};
-
-const getFormattedDate = (dateString: string) => {
-  const date = new Date(dateString);
-  const day = date.getUTCDate();
-  const month = date.getUTCMonth();
-  const year = date.getUTCFullYear();
-
-  return new Intl.DateTimeFormat(lang, options).format(
-    new Date(year, month, day)
-  );
-};
 
 const CohortCard = ({
   name,

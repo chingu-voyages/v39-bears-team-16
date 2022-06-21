@@ -62,7 +62,6 @@ export const StyledClassItemsContainer = styled.ul`
 export const StyledClassItem = styled.li`
   list-style-type: none;
   display: flex;
-  align-items: center;
 `;
 
 export const AddClassWrapper = styled.section`
@@ -92,4 +91,9 @@ export const TrashIcon = styled(BiTrash)`
 export const AddClassContentIcon = styled(MdAdd)`
   ${iconStyles}
   color: ${({ theme }) => theme.color.yellow};
+`;
+
+export const MaterialLists = styled.div`
+  margin: 2rem;
+  width: 15rem;
 `;

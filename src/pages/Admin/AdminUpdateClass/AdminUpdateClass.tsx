@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useState, useEffect, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import {
   AddClassButton,
   Classes,
@@ -12,11 +12,42 @@ import {
 } from './AdminUpdateClass.styled';
 import ClassComponent from './ClassComponent';
 import { useModal } from '../../../components/Modal/useModal';
-import { Modal } from '../../../components/Modal/Modal';
-import { PrimaryButton } from '../../../components/Button';
+
+import { ErrorMessageType } from '../../../types';
+import { ERROR_MESSAGES } from '../../../utilities/constants';
+import { getAdminClass } from '../../../api/getAdminClasses';
+import { AddNewClassForm } from './AddNewClassModal';
+
+interface ClassComponentDataProps {
+  _id: string;
+  date: string;
+  name: string;
+  subject: string;
+  classworks?: [];
+}
 
 const AdminUpdateClass = () => {
   const { isOpen, toggle } = useModal();
+  const [classes, setClasses] = useState<ClassComponentDataProps[]>();
+  const { id } = useParams();
+
+  const fetchAdminClasses = useCallback(async () => {
+    try {
+      const res = await getAdminClass(id);
+      setClasses(res.data);
+    } catch (error) {
+      const errors = error as ErrorMessageType[];
+      if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
+        // navigate('/sign-in', { replace: true });
+      }
+    }
+  }, [id]);
+  const handleCloseModal = () => {
+    fetchAdminClasses();
+  };
+  useEffect(() => {
+    fetchAdminClasses();
+  }, [fetchAdminClasses]);
 
   return (
     <SyllabusContainer>
@@ -29,18 +60,16 @@ const AdminUpdateClass = () => {
         <AddClassButton type="button" onClick={toggle}>
           + New Class
         </AddClassButton>
-        <Modal
-          titleText="Add New Class"
+
+        <AddNewClassForm
           isOpen={isOpen}
-          hide={toggle}
-          primaryAction={<PrimaryButton onClick={toggle}>Submit</PrimaryButton>}
-        >
-          Hello, This is where you will add New Class content
-        </Modal>
+          toggle={toggle}
+          handleClose={handleCloseModal}
+        />
       </SyllabusHeadlineWrapper>
       <Line />
       <Classes>
-        <ClassComponent />
+        <ClassComponent classes={classes} handleClose={handleCloseModal} />
       </Classes>
     </SyllabusContainer>
   );

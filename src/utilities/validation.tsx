@@ -49,3 +49,24 @@ export const cohortValidationRules = {
     required: 'End Date is required',
   },
 };
+
+export const classValidationRules = {
+  name: {
+    required: 'Class Title is required',
+  },
+  subject: {
+    required: 'Class Description is required',
+  },
+  date: {
+    required: 'Date is required',
+  },
+};
+
+export const classWorkValidationRules = {
+  name: {
+    required: 'Class Type is required',
+  },
+  body: {
+    required: 'Class Description is required',
+  },
+};
