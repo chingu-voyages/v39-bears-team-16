@@ -9,6 +9,16 @@ import SignIn from './pages/SignIn/SignIn';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import AdminRoutes from './pages/Admin/AdminRoutes';
+<<<<<<< HEAD
+=======
+import StudentRoutes from './pages/Student/StudentRoutes';
+import MemberLayout from './pages/MemberLayout';
+import HomeMainLayout from './pages/Home/HomeMainLayout';
+import HomeFeatured from './pages/Home/HomeFeatured';
+import HomeEnrolled from './pages/Home/HomeEnrolled';
+import EditorPlans from './pages/Editor/EditorPlans';
+import EditorClasses from './pages/Editor/EditorClasses';
+>>>>>>> 6a6737f (add routing home and editor)
 
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -28,6 +38,21 @@ const App = () => {
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="reset-password/:token" element={<ResetPassword />} />
         <Route path="/*" element={<AdminRoutes />} />
+        
+        {/* NEW ROUTES FOR NEW LAYOUT */}
+        <Route path="member" element={<MemberLayout />}>
+          <Route path="home" element={<HomeMainLayout />}>
+            <Route path="featured" element={<HomeFeatured />} />
+            <Route path="enrolled" element={<HomeEnrolled />} />
+            <Route index element={<Navigate to="featured" replace />} />
+          </Route>
+          {/* <Route path="enroll/plans/:id" element={<EnrollPlanPage />} /> */}
+          <Route path="editor" element={<EditorPlans />}>
+            <Route path="editor/plans/:id" element={<EditorClasses />} />
+            <Route index element={<Navigate to="plans" replace />} />
+          </Route>
+          <Route index element={<Navigate to="home" replace />} />
+        </Route>
       </Routes>
     </ThemeProvider>
   );
