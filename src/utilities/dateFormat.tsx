@@ -11,7 +11,5 @@ export const getFormattedDate = (dateString: string) => {
   const month = date.getUTCMonth();
   const year = date.getUTCFullYear();
 
-  return new Intl.DateTimeFormat(lang, options).format(
-    new Date(year, month, day)
-  );
+  return new Intl.DateTimeFormat(lang, options).format(new Date());
 };
