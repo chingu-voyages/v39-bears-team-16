@@ -10,7 +10,7 @@ import {
   AdminCreateCohortProps,
 } from '../../../api/adminCreateCohort';
 import { getAdminCohorts } from '../../../api/getAdminCohorts';
-import { Cohort, ErrorMessageType } from '../../../types';
+import { CohortInterface, ErrorMessageInterface } from '../../../types';
 import {
   FormErrorMessages,
   StyledErrorMessage,
@@ -20,7 +20,7 @@ import { cohortValidationRules } from '../../../utilities/validation';
 export interface AddNewCohortModalProps {
   isOpen: boolean;
   toggle(): void;
-  setCohortsList(value: Cohort[]): void;
+  setCohortsList(value: CohortInterface[]): void;
 }
 
 const defaultCohortValues = {
@@ -40,7 +40,9 @@ export const AddNewCohortModal = ({
   toggle,
   setCohortsList,
 }: AddNewCohortModalProps) => {
-  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
+    []
+  );
 
   const {
     register,
@@ -61,7 +63,7 @@ export const AddNewCohortModal = ({
       setCohortsList(data);
       handleCloseModal();
     } catch (error) {
-      setErrorMessages(error as ErrorMessageType[]);
+      setErrorMessages(error as ErrorMessageInterface[]);
     }
   };
 

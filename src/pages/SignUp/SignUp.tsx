@@ -24,7 +24,7 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import { ErrorMessageType } from '../../types';
+import { ErrorMessageInterface } from '../../types';
 import { authValidationRules } from '../../utilities/validation';
 import { GITHUB_AUTH_URL } from '../../utilities/constants';
 
@@ -40,7 +40,9 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors: formErrors },
   } = useForm<SignUpFormInputs>();
-  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
+    []
+  );
   const navigate = useNavigate();
 
   const onSubmit = async (payload: SignUpFormInputs) => {
@@ -48,7 +50,7 @@ const SignUp = () => {
       await registerUser(payload);
       navigate('/sign-in', { replace: true });
     } catch (error) {
-      setErrorMessages(error as ErrorMessageType[]);
+      setErrorMessages(error as ErrorMessageInterface[]);
     }
   };
 

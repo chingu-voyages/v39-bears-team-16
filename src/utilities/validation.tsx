@@ -1,6 +1,6 @@
-import { ValidationRuleProp } from '../types';
+import { ValidationRuleInterface } from '../types';
 
-export const authValidationRules: ValidationRuleProp = {
+export const authValidationRules: ValidationRuleInterface = {
   name: {
     required: 'Name is required',
     maxLength: {

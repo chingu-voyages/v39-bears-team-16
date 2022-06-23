@@ -35,12 +35,3 @@ export const darkTheme = {
 
 // Light theme color
 export const lightTheme = {};
-
-export interface ThemeTypes {
-  color: {
-    [x: string]: string;
-  };
-  background: {
-    [x: string]: string;
-  };
-}

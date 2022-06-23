@@ -19,7 +19,7 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import { ErrorMessageType } from '../../types';
+import { ErrorMessageInterface } from '../../types';
 import { authValidationRules } from '../../utilities/validation';
 
 interface ResetPasswordInputs {
@@ -36,7 +36,9 @@ const ResetPassword = () => {
     formState: { errors: formErrors },
   } = useForm<ResetPasswordInputs>();
 
-  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
+    []
+  );
   const navigate = useNavigate();
 
   const onSubmit = async (payload: ResetPasswordInputs) => {
@@ -44,7 +46,7 @@ const ResetPassword = () => {
       await resetPassword({ ...payload, token });
       navigate('/sign-in', { replace: true });
     } catch (error) {
-      setErrorMessages(error as ErrorMessageType[]);
+      setErrorMessages(error as ErrorMessageInterface[]);
     }
   };
 

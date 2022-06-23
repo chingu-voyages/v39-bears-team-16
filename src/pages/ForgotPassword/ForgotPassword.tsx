@@ -19,7 +19,7 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
-import { ErrorMessageType } from '../../types';
+import { ErrorMessageInterface } from '../../types';
 import { authValidationRules } from '../../utilities/validation';
 
 interface ForgotPasswordFormInputs {
@@ -27,7 +27,9 @@ interface ForgotPasswordFormInputs {
 }
 
 const ForgotPassword = () => {
-  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
+    []
+  );
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const {
@@ -41,7 +43,7 @@ const ForgotPassword = () => {
       await forgotPassword(payload);
       setShowSuccessMessage(true);
     } catch (error) {
-      setErrorMessages(error as ErrorMessageType[]);
+      setErrorMessages(error as ErrorMessageInterface[]);
     }
   };
 

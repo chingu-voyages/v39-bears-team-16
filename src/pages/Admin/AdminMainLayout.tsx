@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Outlet, useOutletContext } from 'react-router-dom';
 import styled from 'styled-components';
 import { getAdminCohorts } from '../../api/getAdminCohorts';
-import { Cohort, ErrorMessageType } from '../../types';
+import { CohortInterface, ErrorMessageInterface } from '../../types';
 import { ERROR_MESSAGES } from '../../utilities/constants';
 import AdminNavbar from './AdminNavbar';
 import { BreadcrumbMenu } from '../../components/BreadcrumbMenu/BreadcrumbMenu';
@@ -24,10 +24,10 @@ const Section = styled.section`
   margin: 0 auto;
 `;
 
-type AdminContextType = { cohorts: Cohort[] | null };
+type AdminContextType = { cohorts: CohortInterface[] | null };
 
 export const AdminMainLayout = () => {
-  const [cohortsList, setCohortsList] = useState<Cohort[]>([]);
+  const [cohortsList, setCohortsList] = useState<CohortInterface[]>([]);
   // const navigate = useNavigate();
 
   const fetchAdminCohorts = useCallback(async () => {
@@ -35,7 +35,7 @@ export const AdminMainLayout = () => {
       const res = await getAdminCohorts();
       setCohortsList(res.data);
     } catch (error) {
-      const errors = error as ErrorMessageType[];
+      const errors = error as ErrorMessageInterface[];
       if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
         // navigate('/sign-in', { replace: true });
       }

@@ -8,13 +8,15 @@ import {
   StyledAddCohortCard,
   StyledCohortCardsContainer,
 } from './AdminCohortsPage.styled';
-import { Cohort } from '../../../types';
+import { CohortInterface } from '../../../types';
 import { AddNewCohortModal } from './AddNewCohortModal';
 import { useModal } from '../../../components/Modal/useModal';
 
 const AdminCohortsPage = () => {
   const { cohorts } = useAdminContext();
-  const [cohortsList, setCohortsList] = useState<Cohort[] | null>(cohorts);
+  const [cohortsList, setCohortsList] = useState<CohortInterface[] | null>(
+    cohorts
+  );
   const navigate = useNavigate();
 
   const { isOpen: isModalOpen, toggle } = useModal();
@@ -26,7 +28,7 @@ const AdminCohortsPage = () => {
   return (
     <CohortsPageContainer>
       <StyledCohortCardsContainer>
-        {cohortsList?.map(({ _id, ...cohortData }: Cohort) => (
+        {cohortsList?.map(({ _id, ...cohortData }: CohortInterface) => (
           <CohortCard
             _id={_id}
             key={_id}

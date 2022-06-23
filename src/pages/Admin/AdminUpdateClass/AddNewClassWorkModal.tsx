@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Input, InputField } from '../../../components/Input';
-import { ErrorMessageType } from '../../../types';
+import { ErrorMessageInterface } from '../../../types';
 import {
   adminCreateClassWorks,
   AdminCreateClassWorkProps,
@@ -48,7 +48,9 @@ export const AddNewClassWorkForm = ({
     formState: { errors },
   } = useForm<AdminCreateClassWorkProps>();
 
-  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
+    []
+  );
   const { id } = useParams();
 
   const onSubmitNewClassWork = async (payload: AdminCreateClassWorkProps) => {
@@ -58,7 +60,7 @@ export const AddNewClassWorkForm = ({
       handleClose();
       toggle();
     } catch (error) {
-      setErrorMessages(error as ErrorMessageType[]);
+      setErrorMessages(error as ErrorMessageInterface[]);
     }
   };
   const handleCancelModal = () => {

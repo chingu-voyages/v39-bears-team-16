@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Input, InputField } from '../../../components/Input';
-import { ErrorMessageType } from '../../../types';
+import { ErrorMessageInterface } from '../../../types';
 import {
   adminCreateClass,
   AdminCreateClassProps,
@@ -48,7 +48,9 @@ export const AddNewClassForm = ({
     formState: { errors },
   } = useForm<AdminCreateClassProps>();
 
-  const [errorMessages, setErrorMessages] = useState<ErrorMessageType[]>([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
+    []
+  );
   const { id } = useParams();
 
   const handleCancelModal = () => {
@@ -64,7 +66,7 @@ export const AddNewClassForm = ({
       handleClose();
       toggle();
     } catch (error) {
-      setErrorMessages(error as ErrorMessageType[]);
+      setErrorMessages(error as ErrorMessageInterface[]);
     }
   };
 

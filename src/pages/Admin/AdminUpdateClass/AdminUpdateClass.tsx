@@ -13,7 +13,7 @@ import {
 import ClassComponent from './ClassComponent';
 import { useModal } from '../../../components/Modal/useModal';
 
-import { ErrorMessageType } from '../../../types';
+import { ErrorMessageInterface } from '../../../types';
 import { ERROR_MESSAGES } from '../../../utilities/constants';
 import { getAdminClass } from '../../../api/getAdminClasses';
 import { AddNewClassForm } from './AddNewClassModal';
@@ -36,7 +36,7 @@ const AdminUpdateClass = () => {
       const res = await getAdminClass(id);
       setClasses(res.data);
     } catch (error) {
-      const errors = error as ErrorMessageType[];
+      const errors = error as ErrorMessageInterface[];
       if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
         // navigate('/sign-in', { replace: true });
       }
