@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { BsPlusCircle } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import CohortCard from '../../components/CohortCard/CohortCard';
-import { Cohort } from '../../types';
-import { AddNewCohortModal } from '../Admin/AdminCohortsPage/AddNewCohortModal';
+import { CohortInterface } from '../../types';
+import { AddNewCohortModal } from '../Member/AdminCohortsPage/AddNewCohortModal';
 import {
   EditorPlansPageContainer,
   StyledPlanCardsContainer,
@@ -27,7 +27,7 @@ const EditorPlans = () => {
   return (
     <EditorPlansPageContainer>
       <StyledPlanCardsContainer>
-        {plans?.map(({ _id, ...cohortData }: Cohort) => (
+        {plans?.map(({ _id, ...cohortData }: CohortInterface) => (
           <CohortCard
             _id={_id}
             key={_id}

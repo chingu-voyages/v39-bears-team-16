@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { forgotPassword } from '../../api/forgotPassword';
-import { getCsrfToken } from '../../api/getCsrfToken';
+import { forgotPassword } from '../api/forgotPassword';
+import { getCsrfToken } from '../api/getCsrfToken';
 import {
   AuthContainer,
   AuthCard,
@@ -14,13 +14,13 @@ import {
   AuthRedirectLink,
   AuthSpan,
   AuthHead,
-} from '../../components/Auth.elements';
+} from '../components/Auth.elements';
 import {
   FormErrorMessages,
   StyledErrorMessage,
-} from '../../components/ErrorMessage';
-import { ErrorMessageInterface } from '../../types';
-import { authValidationRules } from '../../utilities/validation';
+} from '../components/ErrorMessage';
+import { ErrorMessageInterface } from '../types';
+import { authValidationRules } from '../utilities/validation';
 
 interface ForgotPasswordFormInputs {
   email: string;

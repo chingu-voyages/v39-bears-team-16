@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { iconStyles } from '../../pages/Admin/AdminUpdateClass/styles';
+import { iconStyles } from '../../pages/Member/AdminUpdateClass/styles';
 
 export const Fade = styled.div`
   position: fixed;

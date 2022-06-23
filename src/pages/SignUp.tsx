@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { getCsrfToken } from '../../api/getCsrfToken';
-import { registerUser } from '../../api/register';
+import { getCsrfToken } from '../api/getCsrfToken';
+import { registerUser } from '../api/register';
 import {
   AuthContainer,
   AuthCard,
@@ -19,14 +19,14 @@ import {
   CookieRequest,
   CloseIcon,
   AuthSpan,
-} from '../../components/Auth.elements';
+} from '../components/Auth.elements';
 import {
   FormErrorMessages,
   StyledErrorMessage,
-} from '../../components/ErrorMessage';
-import { ErrorMessageInterface } from '../../types';
-import { authValidationRules } from '../../utilities/validation';
-import { GITHUB_AUTH_URL } from '../../utilities/constants';
+} from '../components/ErrorMessage';
+import { ErrorMessageInterface } from '../types';
+import { authValidationRules } from '../utilities/validation';
+import { GITHUB_AUTH_URL } from '../utilities/constants';
 
 interface SignUpFormInputs {
   name: string;

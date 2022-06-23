@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { MdExpandMore } from 'react-icons/md';
 
-import { iconStyles } from '../../pages/Admin/AdminUpdateClass/styles';
+import { iconStyles } from '../../pages/Member/AdminUpdateClass/styles';
 
 export const StyledAccordionWrapper = styled.section`
   display: flex;

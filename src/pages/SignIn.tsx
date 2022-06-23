@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { getCsrfToken } from '../../api/getCsrfToken';
-import { login } from '../../api/login';
-import { logout } from '../../api/logout';
+import { getCsrfToken } from '../api/getCsrfToken';
+import { login } from '../api/login';
+import { logout } from '../api/logout';
 import {
   AuthContainer,
   AuthCard,
@@ -20,14 +20,14 @@ import {
   CloseIcon,
   AuthSpan,
   AuthFoot,
-} from '../../components/Auth.elements';
+} from '../components/Auth.elements';
 import {
   FormErrorMessages,
   StyledErrorMessage,
-} from '../../components/ErrorMessage';
-import { ErrorMessageInterface } from '../../types';
-import { authValidationRules } from '../../utilities/validation';
-import { GITHUB_AUTH_URL } from '../../utilities/constants';
+} from '../components/ErrorMessage';
+import { ErrorMessageInterface } from '../types';
+import { authValidationRules } from '../utilities/validation';
+import { GITHUB_AUTH_URL } from '../utilities/constants';
 
 interface SignInFormInputs {
   email: string;

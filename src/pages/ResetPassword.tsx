@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getCsrfToken } from '../../api/getCsrfToken';
-import { resetPassword } from '../../api/resetPassword';
+import { getCsrfToken } from '../api/getCsrfToken';
+import { resetPassword } from '../api/resetPassword';
 import {
   AuthContainer,
   AuthCard,
@@ -14,13 +14,13 @@ import {
   PasswordIcon,
   EmailIcon,
   AuthHead,
-} from '../../components/Auth.elements';
+} from '../components/Auth.elements';
 import {
   FormErrorMessages,
   StyledErrorMessage,
-} from '../../components/ErrorMessage';
-import { ErrorMessageInterface } from '../../types';
-import { authValidationRules } from '../../utilities/validation';
+} from '../components/ErrorMessage';
+import { ErrorMessageInterface } from '../types';
+import { authValidationRules } from '../utilities/validation';
 
 interface ResetPasswordInputs {
   email: string;
