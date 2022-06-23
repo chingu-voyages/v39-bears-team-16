@@ -8,7 +8,7 @@ import AdminCohortsPage from './AdminCohortsPage/AdminCohortsPage';
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path="cohorts" element={<AdminMainLayout />}>
+      <Route path="plans" element={<AdminMainLayout />}>
         <Route index element={<AdminCohortsPage />} />
         <Route path=":id">
           <Route path="dashboard" element={<AdminDashboard />} />

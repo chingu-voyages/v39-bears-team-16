@@ -34,7 +34,7 @@ interface SignInFormInputs {
   password: string;
 }
 
-const SignIn = () => {
+const SignIn = ({ setCookie }) => {
   const {
     register,
     handleSubmit,
@@ -44,13 +44,21 @@ const SignIn = () => {
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
   );
+
   const navigate = useNavigate();
 
   const onSubmit = async (payload: SignInFormInputs) => {
     try {
-      const res = await login(payload);
-      const redirectUrl = res?.data?.isAdmin ? '/admin' : '/student';
-      navigate(redirectUrl, { replace: true });
+      const { data } = await login(payload);
+      const { name, email, profilePicture, location, isAdmin } = data;
+
+      setCookie('name', name, { path: '/' });
+      setCookie('email', email, { path: '/' });
+      setCookie('profilePicture', profilePicture, { path: '/' });
+      setCookie('location', location, { path: '/' });
+      setCookie('isAdmin', isAdmin, { path: '/' });
+
+      navigate(isAdmin ? '/admin' : '/student', { replace: true });
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);
     }
