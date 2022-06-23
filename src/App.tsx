@@ -15,10 +15,11 @@ import HomeEnrolled from './pages/Home/HomeEnrolled';
 import EditorPlans from './pages/Editor/EditorPlans';
 import EditorClasses from './pages/Editor/EditorClasses';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const UserContext = createContext<any | null>(null);
 
 const App = () => {
-  const [cookies, setCookie, removeCookie] = useCookies([
+  const [cookies, setCookie] = useCookies([
     'name',
     'email',
     'profilePicture',

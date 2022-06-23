@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BsPlusCircle } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import CohortCard from '../../components/CohortCard/CohortCard';
 import { CohortInterface } from '../../types';
-import { AddNewCohortModal } from '../Member/AdminCohortsPage/AddNewCohortModal';
+// import { AddNewCohortModal } from '../Member/AdminCohortsPage/AddNewCohortModal';
 import {
   EditorPlansPageContainer,
   StyledPlanCardsContainer,
