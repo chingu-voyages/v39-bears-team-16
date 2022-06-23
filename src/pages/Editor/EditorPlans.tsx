@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { BsPlusCircle } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { getPlans } from '../../api/getPlans';
 import CohortCard from '../../components/CohortCard/CohortCard';
 import { CohortInterface } from '../../types';
 import { AddNewCohortModal } from '../Member/AdminCohortsPage/AddNewCohortModal';
@@ -10,19 +11,23 @@ import {
   StyledAddPlanCard,
 } from './EditorPlans.styled';
 
-const plans = [
-  {
-    _id: 'test1',
-    name: 'test1',
-    startDate: '10-10-2021',
-    endDate: '10-12-2021',
-  },
-];
-
 const EditorPlans = () => {
-  // const [plans, setPlans] = useState([]);
+  const [plans, setPlans] = useState<CohortInterface[]>([]);
 
   const navigate = useNavigate();
+
+  const fetchPlans = useCallback(async () => {
+    try {
+      const res = await getPlans();
+      setPlans(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchPlans();
+  }, [fetchPlans]);
 
   return (
     <EditorPlansPageContainer>
@@ -31,7 +36,9 @@ const EditorPlans = () => {
           <CohortCard
             _id={_id}
             key={_id}
-            handleClick={() => navigate(`/admin/cohorts/${_id}`)}
+            handleClick={() =>
+              navigate(`/member/editor/plans/${_id}`, { replace: true })
+            }
             isAdmin
             {...cohortData}
           />

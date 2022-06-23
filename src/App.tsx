@@ -43,12 +43,14 @@ const App = () => {
           }
         >
           <Route path="home" element={<Home />}>
-            <Route path="featured" element={<HomeFeatured />} />
             <Route path="enrolled" element={<HomeEnrolled />} />
-            <Route index element={<Navigate to="featured" replace />} />
+            <Route path="featured" element={<HomeFeatured />} />
+            {/* TODO: add route for /enrolled/plans/:id and /featured/plans/:id */}
+            <Route index element={<Navigate to="enrolled" replace />} />
           </Route>
-          <Route path="editor" element={<EditorPlans />}>
-            <Route path="editor/plans/:id" element={<EditorClasses />} />
+          <Route path="editor">
+            <Route path="plans" element={<EditorPlans />} />
+            <Route path="plans/:id" element={<EditorClasses />} />
             <Route index element={<Navigate to="plans" replace />} />
           </Route>
           <Route index element={<Navigate to="home" replace />} />
