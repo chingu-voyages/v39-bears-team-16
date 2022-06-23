@@ -9,7 +9,7 @@ import {
   adminCreateCohort,
   AdminCreateCohortProps,
 } from '../../../api/adminCreateCohort';
-import { getAdminCohorts } from '../../../api/getAdminCohorts';
+import { getPlans } from '../../../api/getPlans';
 import { CohortInterface, ErrorMessageInterface } from '../../../types';
 import {
   FormErrorMessages,
@@ -59,7 +59,7 @@ export const AddNewCohortModal = ({
   const onSubmit = async (payload: AdminCreateCohortProps) => {
     try {
       await adminCreateCohort(payload);
-      const { data } = await getAdminCohorts();
+      const { data } = await getPlans();
       setCohortsList(data);
       handleCloseModal();
     } catch (error) {

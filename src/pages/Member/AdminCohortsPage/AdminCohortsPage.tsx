@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BsPlusCircle } from 'react-icons/bs';
-import { useAdminContext } from '../AdminMainLayout';
 import CohortCard from '../../../components/CohortCard/CohortCard';
 import {
   CohortsPageContainer,
@@ -11,19 +10,22 @@ import {
 import { CohortInterface } from '../../../types';
 import { AddNewCohortModal } from './AddNewCohortModal';
 import { useModal } from '../../../components/Modal/useModal';
+import { getPlans } from '../../../api/getPlans';
 
 const AdminCohortsPage = () => {
-  const { cohorts } = useAdminContext();
-  const [cohortsList, setCohortsList] = useState<CohortInterface[] | null>(
-    cohorts
-  );
+  const [cohortsList, setCohortsList] = useState<CohortInterface[]>();
   const navigate = useNavigate();
 
   const { isOpen: isModalOpen, toggle } = useModal();
 
   useEffect(() => {
-    setCohortsList(cohorts);
-  }, [cohorts]);
+    const fetchPlans = async () => {
+      const { data } = await getPlans();
+      setCohortsList(data);
+    };
+
+    fetchPlans();
+  }, []);
 
   return (
     <CohortsPageContainer>

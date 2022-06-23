@@ -2,8 +2,7 @@ import React from 'react';
 import { useMatch, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { logout } from '../../api/logout';
-import MenuItem from '../../components/Navbar/MenuItem';
-import Navbar from '../../components/Navbar/Navbar';
+import MenuItem from './MenuItem';
 import {
   NameLogo,
   Avatar,
@@ -13,7 +12,8 @@ import {
   UpdateIcon,
   LogoutIcon,
   UserInfoContainer,
-} from '../../components/Navbar/Navbar.styled';
+  SidebarContainer,
+} from './Sidebar.styled';
 
 const Line = styled.div`
   width: 100%;
@@ -23,12 +23,13 @@ const Line = styled.div`
   border-radius: 1em;
 `;
 
-const AdminNavbar = () => {
+const Sidebar = () => {
   const isCohortPage = useMatch({
     path: '/admin/cohorts',
     end: true,
     caseSensitive: false,
   });
+
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const AdminNavbar = () => {
   };
 
   return (
-    <Navbar>
+    <SidebarContainer>
       <NameLogo>NAME/LOGO</NameLogo>
       <Line />
       <UserInfoContainer>
@@ -75,9 +76,9 @@ const AdminNavbar = () => {
         <LogoutIcon />
         Logout
       </MenuItem>
-    </Navbar>
+    </SidebarContainer>
   );
 };
 // Logout onClick should call logout() from utilities/auth.tsx
 
-export default AdminNavbar;
+export default Sidebar;

@@ -8,9 +8,8 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
-import AdminRoutes from './pages/Member/AdminRoutes';
-import MemberLayout from './pages/MemberLayout';
-import HomeMainLayout from './pages/Home/HomeMainLayout';
+import MemberLayout from './pages/Member/MemberLayout';
+import Home from './pages/Home/Home';
 import HomeFeatured from './pages/Home/HomeFeatured';
 import HomeEnrolled from './pages/Home/HomeEnrolled';
 import EditorPlans from './pages/Editor/EditorPlans';
@@ -33,16 +32,12 @@ const App = () => {
         <Route path="sign-in" element={<SignIn setCookie={setCookie} />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="reset-password/:token" element={<ResetPassword />} />
-        <Route path="/*" element={<AdminRoutes />} />
-
-        {/* NEW ROUTES FOR NEW LAYOUT */}
         <Route path="member" element={<MemberLayout />}>
-          <Route path="home" element={<HomeMainLayout />}>
+          <Route path="home" element={<Home />}>
             <Route path="featured" element={<HomeFeatured />} />
             <Route path="enrolled" element={<HomeEnrolled />} />
             <Route index element={<Navigate to="featured" replace />} />
           </Route>
-          {/* <Route path="enroll/plans/:id" element={<EnrollPlanPage />} /> */}
           <Route path="editor" element={<EditorPlans />}>
             <Route path="editor/plans/:id" element={<EditorClasses />} />
             <Route index element={<Navigate to="plans" replace />} />

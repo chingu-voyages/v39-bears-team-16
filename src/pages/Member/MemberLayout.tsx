@@ -1,29 +1,26 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import TopNavbar from '../components/Navbar/TopNavbar';
+import Navbar from '../../components/Navbar/Navbar';
 
-const Container = styled.div`
+const StyledMemberLayout = styled.div`
   width: 100%;
-  display: flex;
   min-height: 100vh;
   background: ${({ theme }) => theme.background.secondary};
 `;
 
 const Section = styled.section`
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  margin-top: 64px;
 `;
 
 const MemberLayout = () => {
   return (
-    <Container>
+    <StyledMemberLayout>
+      <Navbar />
       <Section>
-        <TopNavbar />
         <Outlet />
       </Section>
-    </Container>
+    </StyledMemberLayout>
   );
 };
 
