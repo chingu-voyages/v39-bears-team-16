@@ -7,7 +7,7 @@ interface RegisterProps {
 }
 
 export const registerUser = ({ name, email, password }: RegisterProps) => {
-  return api.post('/register', {
+  return api.post('/sign-up', {
     name,
     email,
     password,
