@@ -11,6 +11,15 @@ export const StyledNavbar = styled.nav`
   background-color: ${({ theme }) => theme.background.primary};
   color: ${({ theme }) => theme.background.white};
 
+  display: grid;
+  grid-template-columns: 10% 1fr 10%;
+  align-items: center;
+`;
+
+export const StyledNavbarSection = styled.div`
   display: flex;
   align-items: center;
+  justify-content: start;
+
+  gap: 2em;
 `;

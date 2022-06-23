@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { useCookies } from 'react-cookie';
@@ -14,6 +14,8 @@ import HomeFeatured from './pages/Home/HomeFeatured';
 import HomeEnrolled from './pages/Home/HomeEnrolled';
 import EditorPlans from './pages/Editor/EditorPlans';
 import EditorClasses from './pages/Editor/EditorClasses';
+
+export const UserContext = createContext<any | null>(null);
 
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -32,7 +34,14 @@ const App = () => {
         <Route path="sign-in" element={<SignIn setCookie={setCookie} />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="reset-password/:token" element={<ResetPassword />} />
-        <Route path="member" element={<MemberLayout />}>
+        <Route
+          path="member"
+          element={
+            <UserContext.Provider value={cookies}>
+              <MemberLayout />{' '}
+            </UserContext.Provider>
+          }
+        >
           <Route path="home" element={<Home />}>
             <Route path="featured" element={<HomeFeatured />} />
             <Route path="enrolled" element={<HomeEnrolled />} />

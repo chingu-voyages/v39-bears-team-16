@@ -5,8 +5,6 @@ import { NavLink, NavLinkProps } from 'react-router-dom';
 const activeStyle = {
   color: 'white',
   fontWeight: '600',
-  width: '12em',
-  height: '3em',
 };
 
 const MenuItem = ({ style, ...props }: NavLinkProps) => (
@@ -20,6 +18,7 @@ const MenuItem = ({ style, ...props }: NavLinkProps) => (
 );
 
 const StyledMenuItem = styled(MenuItem)`
+  position: relative;
   text-decoration: none;
   color: white;
   display: flex;

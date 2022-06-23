@@ -58,7 +58,7 @@ const SignIn = ({ setCookie }) => {
       setCookie('location', location, { path: '/' });
       setCookie('isAdmin', isAdmin, { path: '/' });
 
-      navigate(isAdmin ? '/admin' : '/student', { replace: true });
+      navigate('/member', { replace: true });
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);
     }

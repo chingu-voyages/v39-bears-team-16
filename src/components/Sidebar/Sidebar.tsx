@@ -2,7 +2,7 @@ import React from 'react';
 import { useMatch, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { logout } from '../../api/logout';
-import MenuItem from './MenuItem';
+import MenuItem from '../MenuItem/MenuItem';
 import {
   NameLogo,
   Avatar,
