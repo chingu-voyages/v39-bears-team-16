@@ -4,7 +4,7 @@ import { Card } from '../Card';
 
 export const CardContainer = styled(Card)`
   position: relative;
-  background: ${({ theme }) => theme.background.grey};
+  background: ${({ theme }) => theme.background.white};
 `;
 
 export const CohortInfoWrapper = styled.section`
@@ -20,15 +20,13 @@ export const CohortInfo = styled.section`
   padding: 15px;
 `;
 export const CohortId = styled.p`
-  color: ${({ theme }) => theme.color.primary};
+  // color: ${({ theme }) => theme.color.primary};
   font-size: 1.1rem;
   font-weight: 700;
 `;
 export const CohortDate = styled.p`
-  color: ${({ theme }) => theme.color.primary};
+  // color: ${({ theme }) => theme.color.primary};
   font-size: 0.7rem;
-  font-weight: 100;
-  font-style: italic;
 `;
 export const CohortImg = styled.img`
   position: absolute;
