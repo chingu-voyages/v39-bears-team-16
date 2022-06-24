@@ -44,7 +44,6 @@ const CohortCard = ({
         </CohortInfo>
         <CohortImg src={cohortCard1} alt="" />
       </CohortInfoWrapper>
-      {/* Cohort Nav */}
       <CohortNav>
         <MdOutlineSpaceDashboard />
         <FiEdit />

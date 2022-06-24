@@ -16,6 +16,7 @@ const plans = [
     name: 'test1',
     startDate: '10-10-2021',
     endDate: '10-12-2021',
+    thumbnail: '',
   },
 ];
 

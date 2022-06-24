@@ -3,7 +3,8 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import { Card } from '../Card';
 
 export const CardContainer = styled(Card)`
-  background: ${({ theme }) => theme.background.violet};
+  position: relative;
+  background: ${({ theme }) => theme.background.grey};
 `;
 
 export const CohortInfoWrapper = styled.section`
@@ -11,7 +12,6 @@ export const CohortInfoWrapper = styled.section`
   border-radius: 10px;
   width: 100%;
   height: 75%;
-  background: ${({ theme }) => theme.background.violet};
 `;
 export const CohortInfo = styled.section`
   display: flex;
@@ -46,6 +46,9 @@ export const CohortNav = styled.section`
   align-items: center;
 `;
 export const OptionIcon = styled(BsThreeDotsVertical)`
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
   outline: 1px white solid;
   color: white;
   border-radius: 50%;

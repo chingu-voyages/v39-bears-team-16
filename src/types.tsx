@@ -14,6 +14,7 @@ export interface CohortInterface {
   name: string;
   startDate: string;
   endDate: string;
+  thumbnail: string;
 }
 
 export interface ThemeInterface {
