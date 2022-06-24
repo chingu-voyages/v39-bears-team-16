@@ -1,8 +1,25 @@
 import React from 'react';
-import { StyledHome } from './Home.styled';
+import { Outlet } from 'react-router-dom';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import { StyledHome, StyledMainSection } from './Home.styled';
+
+// const Line = styled.div`
+//   width: 100%;
+//   height: 1.5px;
+//   background: ${({ theme }) => theme.background.white};
+//   opacity: 30%;
+//   border-radius: 1em;
+// `;
 
 const Home = () => {
-  return <StyledHome>Home</StyledHome>;
+  return (
+    <StyledHome>
+      <Sidebar />
+      <StyledMainSection>
+        <Outlet />
+      </StyledMainSection>
+    </StyledHome>
+  );
 };
 
 export default Home;

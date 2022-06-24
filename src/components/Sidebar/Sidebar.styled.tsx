@@ -9,12 +9,16 @@ import { RiLogoutCircleLine } from 'react-icons/ri';
 // should be styled and updated later
 export const SidebarContainer = styled.div`
   background-color: ${({ theme }) => theme.background.primary};
-  width: 250px;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 15em;
   color: white;
-  padding: 1em;
+  padding: 1em 2em;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
+  flex-direction: column;
+  gap: 1em;
+  min-height: calc(100vh - 64px);
 `;
 export const NameLogo = styled.p`
   font-weight: bold;

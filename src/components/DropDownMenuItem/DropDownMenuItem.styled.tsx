@@ -6,7 +6,7 @@ export const StyledDropDownMenuItem = styled.div`
   background-color: ${({ theme }) => theme.background.primary};
 `;
 
-export const StlyedDropDownMenuItemHeader = styled.div`
+export const StyledDropDownMenuItemHeader = styled.div`
   position: relative;
   width: 100%;
   padding: 0.5em;

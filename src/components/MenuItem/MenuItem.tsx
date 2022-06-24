@@ -23,6 +23,7 @@ const StyledMenuItem = styled(MenuItem)`
   color: white;
   display: flex;
   align-items: center;
+  gap: 0.5em;
 `;
 
 export default StyledMenuItem;

@@ -6,3 +6,7 @@ export const StyledHome = styled.section`
   height: 200px;
   background-color: ${({ theme }) => theme.background.white};
 `;
+
+export const StyledMainSection = styled.section`
+  margin-left: 15em;
+`;

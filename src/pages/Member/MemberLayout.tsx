@@ -5,12 +5,14 @@ import Navbar from '../../components/Navbar/Navbar';
 
 const StyledMemberLayout = styled.div`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   background: ${({ theme }) => theme.background.secondary};
 `;
 
 const Section = styled.section`
   margin-top: 64px;
+  overflow: auto;
 `;
 
 const MemberLayout = () => {

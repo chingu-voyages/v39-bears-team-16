@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   StlyedDropDownMenuItemBody,
-  StlyedDropDownMenuItemHeader,
+  StyledDropDownMenuItemHeader,
   StyledDropDownMenuItem,
 } from './DropDownMenuItem.styled';
 
@@ -18,7 +18,7 @@ const DropDownMenuItem = ({
 }: DropDownMenuItemProps) => {
   return (
     <StyledDropDownMenuItem>
-      <StlyedDropDownMenuItemHeader>{header}</StlyedDropDownMenuItemHeader>
+      <StyledDropDownMenuItemHeader>{header}</StyledDropDownMenuItemHeader>
       <StlyedDropDownMenuItemBody>
         {isOpen && <div>{children}</div>}
       </StlyedDropDownMenuItemBody>
