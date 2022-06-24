@@ -10,10 +10,10 @@ import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import MemberLayout from './pages/Member/MemberLayout';
 import Home from './pages/Home/Home';
-import HomeFeatured from './pages/Home/HomeFeatured';
-import HomeEnrolled from './pages/Home/HomeEnrolled';
 import EditorPlans from './pages/Editor/EditorPlans';
 import EditorClasses from './pages/Editor/EditorClasses';
+import HomeEnrolled from './pages/Home/Enrolled/HomeEnrolled';
+import HomeFeatured from './pages/Home/Featured/HomeFeatured';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const UserContext = createContext<any | null>(null);
@@ -46,7 +46,7 @@ const App = () => {
           <Route path="home" element={<Home />}>
             <Route path="enrolled" element={<HomeEnrolled />} />
             <Route path="featured" element={<HomeFeatured />} />
-            {/* TODO: add route for /enrolled/plans/:id and /featured/plans/:id */}
+            <Route path="plans/:planId" />
             <Route index element={<Navigate to="enrolled" replace />} />
           </Route>
           <Route path="editor">
