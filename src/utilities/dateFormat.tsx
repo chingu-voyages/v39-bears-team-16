@@ -12,6 +12,8 @@ export const getFormattedDate = (dateString: string) => {
   const year = date.getUTCFullYear();
 
   return new Intl.DateTimeFormat(lang, options).format(
-    new Date(year, month, day)
+    process.env.NODE_ENV === 'production'
+      ? new Date(day, month, year)
+      : new Date()
   );
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { iconStyles } from '../../pages/Admin/AdminUpdateClass/styles';
+import { iconStyles } from '../../pages/Member/AdminUpdateClass/styles';
 
 export const Fade = styled.div`
   position: fixed;
@@ -22,7 +22,7 @@ export const Container = styled.div`
   width: 30rem;
   height: 25rem;
   color: ${({ theme }) => theme.color.secondary};
-  background: ${({ theme }) => theme.background.white};
+  background: ${({ theme }) => theme.color.white};
   border-radius: 10px;
   display: flex;
   flex-direction: column;

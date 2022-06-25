@@ -3,7 +3,8 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import { Card } from '../Card';
 
 export const CardContainer = styled(Card)`
-  background: ${({ theme }) => theme.background.violet};
+  position: relative;
+  background: ${({ theme }) => theme.color.blue};
 `;
 
 export const CohortInfoWrapper = styled.section`
@@ -11,7 +12,6 @@ export const CohortInfoWrapper = styled.section`
   border-radius: 10px;
   width: 100%;
   height: 75%;
-  background: ${({ theme }) => theme.background.violet};
 `;
 export const CohortInfo = styled.section`
   display: flex;
@@ -20,15 +20,13 @@ export const CohortInfo = styled.section`
   padding: 15px;
 `;
 export const CohortId = styled.p`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.white};
   font-size: 1.1rem;
   font-weight: 700;
 `;
 export const CohortDate = styled.p`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.white};
   font-size: 0.7rem;
-  font-weight: 100;
-  font-style: italic;
 `;
 export const CohortImg = styled.img`
   position: absolute;
@@ -40,12 +38,16 @@ export const CohortNav = styled.section`
   width: 100%;
   height: 25%;
   border-radius: 0 0 10px 10px;
-  background: ${({ theme }) => theme.background.white};
+  background: ${({ theme }) => theme.color.white};
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border: 1px solid ${({ theme }) => theme.color.grey};
 `;
 export const OptionIcon = styled(BsThreeDotsVertical)`
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
   outline: 1px white solid;
   color: white;
   border-radius: 50%;

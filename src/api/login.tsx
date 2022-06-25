@@ -6,7 +6,7 @@ interface LoginProps {
 }
 
 export const login = ({ email, password }: LoginProps) => {
-  return api.post('/login', {
+  return api.post('/sign-in', {
     email,
     password,
   });

@@ -13,10 +13,10 @@ import {
   OptionIcon,
   CohortImg,
 } from './CohortCard.styled';
-import { Cohort } from '../../types';
+import { CohortInterface } from '../../types';
 import { getFormattedDate } from '../../utilities/dateFormat';
 
-interface CohortCardProps extends Cohort {
+interface CohortCardProps extends CohortInterface {
   handleClick(): void;
   isAdmin?: boolean;
 }
@@ -44,7 +44,6 @@ const CohortCard = ({
         </CohortInfo>
         <CohortImg src={cohortCard1} alt="" />
       </CohortInfoWrapper>
-      {/* Cohort Nav */}
       <CohortNav>
         <MdOutlineSpaceDashboard />
         <FiEdit />
