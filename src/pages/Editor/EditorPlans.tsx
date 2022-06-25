@@ -40,7 +40,7 @@ const EditorPlans = () => {
           />
         ))}
         <StyledAddPlanCard>
-          <BsPlusCircle color="white" fontSize="5em" />
+          <BsPlusCircle color="#212D40" fontSize="5em" />
         </StyledAddPlanCard>
       </StyledPlanCardsContainer>
       {/* <AddNewCohortModal

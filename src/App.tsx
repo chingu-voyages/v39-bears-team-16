@@ -46,7 +46,6 @@ const App = () => {
           <Route path="home" element={<Home />}>
             <Route path="enrolled" element={<HomeEnrolled />} />
             <Route path="featured" element={<HomeFeatured />} />
-            <Route path="plans/:planId" />
             <Route index element={<Navigate to="enrolled" replace />} />
           </Route>
           <Route path="editor">
@@ -54,6 +53,7 @@ const App = () => {
             <Route path="plans/:id" element={<EditorClasses />} />
             <Route index element={<Navigate to="plans" replace />} />
           </Route>
+          <Route path="plans/:planId" />
           <Route index element={<Navigate to="home" replace />} />
         </Route>
       </Routes>

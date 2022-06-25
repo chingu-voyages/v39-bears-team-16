@@ -9,12 +9,11 @@ export const StyledNavbar = styled.nav`
   height: 64px;
   padding: 0 1em;
 
-  background-color: ${({ theme }) => theme.background.primary};
-  color: ${({ theme }) => theme.background.white};
-  border-bottom: 1px solid ${({ theme }) => theme.background.white};
+  background-color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.white};
 
   display: grid;
-  grid-template-columns: 10% 1fr 10%;
+  grid-template-columns: 20% 1fr 10%;
   align-items: center;
 `;
 
@@ -24,4 +23,10 @@ export const StyledNavbarSection = styled.div`
   justify-content: start;
 
   gap: 2em;
+
+  img {
+    max-width: 100%;
+    height: 40px;
+    object-fit: contain;
+  }
 `;

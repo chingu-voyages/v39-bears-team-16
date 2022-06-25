@@ -6,7 +6,7 @@ import { StyledHome, StyledMainSection } from './Home.styled';
 // const Line = styled.div`
 //   width: 100%;
 //   height: 1.5px;
-//   background: ${({ theme }) => theme.background.white};
+//   background: ${({ theme }) => theme.color.white};
 //   opacity: 30%;
 //   border-radius: 1em;
 // `;

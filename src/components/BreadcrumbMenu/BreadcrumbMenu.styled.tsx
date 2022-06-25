@@ -10,14 +10,14 @@ export const activeStyle = {
 };
 
 export const BreadcrumbArea = styled.div`
-  background: ${({ theme }) => theme.background.primary};
+  background: ${({ theme }) => theme.color.primary};
   margin: 1.5em;
   height: 90px;
   border-radius: 1em;
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  color: ${({ theme }) => theme.background.white};
+  color: ${({ theme }) => theme.color.white};
 `;
 
 export const CohortContainer = styled.section`
@@ -26,7 +26,7 @@ export const CohortContainer = styled.section`
 `;
 
 export const CohortDash = styled.section`
-  color: ${({ theme }) => theme.background.white};
+  color: ${({ theme }) => theme.color.white};
   margin: 1em;
   font-size: 0.85em;
   font-weight: 600;
@@ -35,5 +35,5 @@ export const CohortDash = styled.section`
 export const BreadcrumbContainer = styled.span`
   padding-left: 1.5em;
   font-size: 0.75em;
-  color: ${({ theme }) => theme.background.white};
+  color: ${({ theme }) => theme.color.white};
 `;

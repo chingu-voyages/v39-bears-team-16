@@ -5,6 +5,8 @@ export const CohortsPageContainer = styled.div`
   width: 100%;
   padding: 4em;
   overflow: auto;
+  background-color: ${({ theme }) => theme.color.white};
+  height: calc(100vh - 64px);
 `;
 
 export const StyledCohortCardsContainer = styled.div`

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Input = styled.input`
   background: none;
-  border: 1px solid ${({ theme }) => theme.background.black};
+  border: 1px solid ${({ theme }) => theme.color.black};
   border-radius: 4px;
   min-height: 30px;
   width: 11rem;

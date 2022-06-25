@@ -28,7 +28,7 @@ const HomeEnrolled = () => {
           <CohortCard
             _id={_id}
             key={_id}
-            handleClick={() => navigate(`/plans/${_id}`)}
+            handleClick={() => navigate(`/member/plans/${_id}`)}
             isAdmin
             {...cohortData}
           />

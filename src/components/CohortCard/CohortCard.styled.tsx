@@ -4,7 +4,7 @@ import { Card } from '../Card';
 
 export const CardContainer = styled(Card)`
   position: relative;
-  background: ${({ theme }) => theme.background.white};
+  background: ${({ theme }) => theme.color.blue};
 `;
 
 export const CohortInfoWrapper = styled.section`
@@ -20,12 +20,12 @@ export const CohortInfo = styled.section`
   padding: 15px;
 `;
 export const CohortId = styled.p`
-  // color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.white};
   font-size: 1.1rem;
   font-weight: 700;
 `;
 export const CohortDate = styled.p`
-  // color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.white};
   font-size: 0.7rem;
 `;
 export const CohortImg = styled.img`
@@ -38,10 +38,11 @@ export const CohortNav = styled.section`
   width: 100%;
   height: 25%;
   border-radius: 0 0 10px 10px;
-  background: ${({ theme }) => theme.background.white};
+  background: ${({ theme }) => theme.color.white};
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border: 1px solid ${({ theme }) => theme.color.grey};
 `;
 export const OptionIcon = styled(BsThreeDotsVertical)`
   position: absolute;

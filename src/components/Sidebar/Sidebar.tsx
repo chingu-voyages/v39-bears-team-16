@@ -1,21 +1,20 @@
 import React from 'react';
-import MenuItem from '../MenuItem/MenuItem';
+import { LightMenuItem } from '../MenuItem';
 import { HomeIcon, DashboardIcon, SidebarContainer } from './Sidebar.styled';
 
 const Sidebar = () => {
   return (
     <SidebarContainer>
-      <MenuItem to="featured">
+      <LightMenuItem to="featured" menuItemTheme="light">
         <HomeIcon />
         Featured
-      </MenuItem>
-      <MenuItem to="enrolled">
+      </LightMenuItem>
+      <LightMenuItem to="enrolled" menuItemTheme="light">
         <DashboardIcon />
         Enrolled
-      </MenuItem>
+      </LightMenuItem>
     </SidebarContainer>
   );
 };
-// Logout onClick should call logout() from utilities/auth.tsx
 
 export default Sidebar;

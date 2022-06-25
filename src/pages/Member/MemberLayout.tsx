@@ -7,7 +7,7 @@ const StyledMemberLayout = styled.div`
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: ${({ theme }) => theme.background.secondary};
+  background: ${({ theme }) => theme.color.secondary};
 `;
 
 const Section = styled.section`

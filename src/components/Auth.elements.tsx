@@ -8,12 +8,13 @@ import { VscKey } from 'react-icons/vsc';
 
 import { Link } from 'react-router-dom';
 import { Input } from './Input';
+import { Button } from './Button';
 
 export const AuthContainer = styled.section`
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: ${({ theme }) => theme.background.secondary};
+  background: ${({ theme }) => theme.color.primary};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +31,7 @@ export const AuthCard = styled.section`
   border-radius: 20px;
   padding: 2.5rem 3rem;
   color: ${({ theme }) => theme.color.secondary};
-  background: ${({ theme }) => theme.background.white};
+  background: ${({ theme }) => theme.color.white};
 `;
 
 export const AuthHead = styled.h1`
@@ -79,14 +80,14 @@ export const CohortIcon = styled(AiOutlineOrderedList)`
 export const KeyIcon = styled(VscKey)`
   font-size: 3.5rem;
   margin: 0 auto;
-  background: ${({ theme }) => theme.background.orange};
+  background: ${({ theme }) => theme.color.orange};
   color: ${({ theme }) => theme.color.primary};
   border-radius: 50%;
   padding: 5px;
 `;
 
 export const KeySuccessIcon = styled(KeyIcon)`
-  background: ${({ theme }) => theme.background.teal};
+  background: ${({ theme }) => theme.color.green};
 `;
 
 export const CloseIcon = styled(AiFillCloseCircle)`
@@ -95,7 +96,7 @@ export const CloseIcon = styled(AiFillCloseCircle)`
 `;
 
 export const AuthSpan = styled.span`
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.primary};
   font-size: 1.25rem;
   font-weight: 200;
 `;
@@ -119,21 +120,21 @@ export const AuthField = styled.div`
 export const AuthInput = styled(Input)`
   border: none;
   &::placeholder {
-    color: ${({ theme }) => theme.color.black};
+    color: ${({ theme }) => theme.color.primary};
     opacity: 1;
   }
 `;
 
-export const AuthButton = styled.button`
+export const AuthButton = styled(Button)`
+  border: 2px solid ${({ theme }) => theme.color.primary};
   border-radius: 10px;
-  background: ${({ theme }) => theme.background.teal};
-  color: ${({ theme }) => theme.color.primary};
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 3rem;
-  border: none;
-  cursor: pointer;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.primary};
+    color: ${({ theme }) => theme.color.white};
+    border: none;
+  }
 `;
 
 export const AuthFoot = styled.div`
@@ -144,31 +145,12 @@ export const AuthFoot = styled.div`
 `;
 
 export const AuthRedirectLink = styled(Link)`
-  color: ${({ theme }) => theme.color.teal};
-  text-decoration: none;
-`;
-
-export const AuthProgramContainer = styled.section`
-  display: flex;
-  gap: 20px;
-`;
-
-export const AuthProgramField = styled.div`
-  border-radius: 10px;
-  background: ${({ theme }) => theme.background.grey};
-  opacity: 50%;
   color: ${({ theme }) => theme.color.primary};
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 3rem;
-  width: 50%;
-`;
+  text-decoration: none;
 
-export const AuthForgetHead = styled.h2`
-  color: ${({ theme }) => theme.color.black};
-  font-size: 2rem;
-  font-weight: 200;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const CookieRequest = styled.span`

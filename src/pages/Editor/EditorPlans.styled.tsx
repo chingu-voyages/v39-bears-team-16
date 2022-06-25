@@ -16,5 +16,5 @@ export const StyledPlanCardsContainer = styled.div`
 export const StyledAddPlanCard = styled(Card)`
   align-items: center;
   justify-content: center;
-  border: 3px solid white;
+  border: 3px solid #212d40;
 `;

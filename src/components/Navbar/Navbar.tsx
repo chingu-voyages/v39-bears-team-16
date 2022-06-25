@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../api/logout';
-import MenuItem from '../MenuItem/MenuItem';
+import { DarkMenuItem, LightMenuItem } from '../MenuItem';
 import { LogoutIcon } from '../Sidebar/Sidebar.styled';
 import { StyledNavbar, StyledNavbarSection } from './Navbar.styled';
 import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
 import { UserContext } from '../../App';
+import logo from '../../assets/sail-logo/vector/default-monochrome.svg';
 
 const Navbar = () => {
   const user = useContext(UserContext);
@@ -19,10 +20,16 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <StyledNavbarSection>Logo</StyledNavbarSection>
       <StyledNavbarSection>
-        <MenuItem to="/member/home">Home</MenuItem>
-        <MenuItem to="/member/editor">Editor</MenuItem>
+        <img src={logo} alt="logo" />
+      </StyledNavbarSection>
+      <StyledNavbarSection>
+        <DarkMenuItem to="/member/home" menuItemTheme="dark">
+          Home
+        </DarkMenuItem>
+        <DarkMenuItem to="/member/editor" menuItemTheme="dark">
+          Editor
+        </DarkMenuItem>
       </StyledNavbarSection>
       <StyledNavbarSection>
         <DropDownMenuItem
@@ -34,10 +41,14 @@ const Navbar = () => {
           }
           isOpen
         >
-          <MenuItem to="/sign-in" onClick={() => handleLogout()}>
+          <LightMenuItem
+            to="/sign-in"
+            menuItemTheme="light"
+            onClick={() => handleLogout()}
+          >
             <LogoutIcon />
             Logout
-          </MenuItem>
+          </LightMenuItem>
         </DropDownMenuItem>
       </StyledNavbarSection>
     </StyledNavbar>

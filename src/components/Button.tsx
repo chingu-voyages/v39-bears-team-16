@@ -1,38 +1,37 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  border-radius: 5px;
-  background-color: ${({ theme }) => theme.background.white};
+  border-radius: 3px;
+  background-color: ${({ theme }) => theme.color.white};
   padding: 0.5em 1.5em;
   box-shadow: none;
-  border: 1px solid black;
+  border: none;
   transition: 0.3s;
   cursor: pointer;
 
   &:hover {
-    background-color: black;
-    color: white;
+    background-color: ${({ theme }) => theme.color.secondary};
     cursor: pointer;
   }
 `;
 
 export const PrimaryButton = styled(Button)`
-  background-color: ${({ theme }) => theme.background.green};
+  background-color: ${({ theme }) => theme.color.green};
   color: white;
 
   &:hover {
-    background-color: ${({ theme }) => theme.background.darkGreen};
-    color: white;
+    background-color: ${({ theme }) => theme.color.darkGreen};
+    color: ${({ theme }) => theme.color.white};
     cursor: pointer;
   }
 `;
 
 export const WarningButton = styled(Button)`
-  background-color: ${({ theme }) => theme.background.red};
+  background-color: ${({ theme }) => theme.color.red};
 
   &:hover {
-    background-color: ${({ theme }) => theme.background.darkRed};
-    color: white;
+    background-color: ${({ theme }) => theme.color.darkRed};
+    color: ${({ theme }) => theme.color.white};
     cursor: pointer;
   }
 `;
