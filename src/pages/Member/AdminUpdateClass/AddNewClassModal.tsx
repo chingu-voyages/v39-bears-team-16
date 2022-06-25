@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { Input, InputField } from '../../../components/Input';
+import { Input, InputField, TextArea } from '../../../components/Input';
 import { ErrorMessageInterface } from '../../../types';
-import {
-  adminCreateClass,
-  AdminCreateClassProps,
-} from '../../../api/getAdminClasses';
+import { createClass, CreateClassProps } from '../../../api/getPlanClasses';
 
 import {
   FormErrorMessages,
@@ -46,7 +43,7 @@ export const AddNewClassForm = ({
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<AdminCreateClassProps>();
+  } = useForm<CreateClassProps>();
 
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
@@ -58,9 +55,9 @@ export const AddNewClassForm = ({
     reset(defaultClassValues);
   };
 
-  const onSubmit = async (data: AdminCreateClassProps) => {
+  const onSubmit = async (data: CreateClassProps) => {
     try {
-      await adminCreateClass(data, id);
+      await createClass(data, id);
 
       reset(defaultClassValues);
       handleClose();
@@ -94,20 +91,10 @@ export const AddNewClassForm = ({
         </InputField>
         <InputField htmlFor="subject">
           <span>Class Description</span>
-          <Input
-            type="text"
-            id="subject"
+          <TextArea
+            id="description"
             placeholder="Enter Class description"
-            {...register('subject', classValidationRules.subject)}
-          />
-        </InputField>
-        <InputField htmlFor="date">
-          <span>Date</span>
-          <Input
-            type="date"
-            id="date"
-            placeholder="yyyy-mm-dd"
-            {...register('date', classValidationRules.date)}
+            {...register('description', classValidationRules.description)}
           />
         </InputField>
 

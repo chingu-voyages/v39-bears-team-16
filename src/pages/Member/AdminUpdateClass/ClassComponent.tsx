@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import {
   StyledClassContainer,
   StyledClassHeaderWrapper,
-  ClassDate,
   EditClassContentIcon,
   ClassDescription,
   ClassTitle,
@@ -17,7 +16,6 @@ import {
 import AccordionWrapper from '../../../components/Accordion/Accordion';
 import { useModal } from '../../../components/Modal/useModal';
 import { AddNewClassWorkForm } from './AddNewClassWorkModal';
-import { getFormattedDate } from '../../../utilities/dateFormat';
 
 /* eslint no-underscore-dangle: 0 */
 
@@ -42,19 +40,17 @@ interface classesWorkProps {
 const getHeaderComponent = (item: ClassComponentDataProps) => {
   return (
     <StyledClassHeaderWrapper>
-      <article>
-        <ClassDate>{getFormattedDate(item.date)}</ClassDate>
-        <ClassTitleWrapper>
-          <ClassTitle>{item.name}</ClassTitle>
-          <TrashIcon />
-        </ClassTitleWrapper>
-        <ClassDescription>{item.subject}</ClassDescription>
-      </article>
+      <ClassTitleWrapper>
+        <ClassTitle>{item.name}</ClassTitle>
+        <EditClassIcon />
+        <TrashIcon />
+      </ClassTitleWrapper>
+      <ClassDescription>{item.subject}</ClassDescription>
     </StyledClassHeaderWrapper>
   );
 };
 
-const ClassComponent = ({ classes, handleClose }: classesProps) => {
+const ClassComponent = ({ classes = [], handleClose }: classesProps) => {
   const { isOpen, toggle } = useModal();
   const [ClassID, setClassID] = useState<string | undefined>();
 
@@ -78,7 +74,6 @@ const ClassComponent = ({ classes, handleClose }: classesProps) => {
     <StyledClassContainer>
       {classes?.map((item: ClassComponentDataProps) => (
         <div key={item._id}>
-          <EditClassIcon />
           <AccordionWrapper
             header={getHeaderComponent(item as ClassComponentDataProps)}
           >

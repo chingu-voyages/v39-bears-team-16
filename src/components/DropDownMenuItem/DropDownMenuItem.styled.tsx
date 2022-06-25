@@ -12,13 +12,12 @@ export const StyledDropDownMenuItemHeader = styled.div`
   padding: 0.5em;
   display: flex;
   gap: 0.5em;
+  cursor: pointer;
 `;
 
 export const StlyedDropDownMenuItemBody = styled.div`
   position: absolute;
   width: 100%;
-  background-color: ${({ theme }) => theme.color.white};
-  border: 1px solid ${({ theme }) => theme.color.secondary};
+  background-color: #ffffff;
   border-radius: 5px;
-  box-shadow: 2px 2px 3px ${({ theme }) => theme.color.grey};
 `;

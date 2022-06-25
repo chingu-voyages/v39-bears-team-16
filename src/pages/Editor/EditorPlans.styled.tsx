@@ -5,6 +5,7 @@ export const EditorPlansPageContainer = styled.div`
   width: 100%;
   padding: 4em;
   overflow: auto;
+  height: calc(100vh - 64px);
 `;
 
 export const StyledPlanCardsContainer = styled.div`

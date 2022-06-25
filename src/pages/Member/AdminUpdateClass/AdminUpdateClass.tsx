@@ -3,10 +3,8 @@ import { useParams } from 'react-router-dom';
 import {
   AddClassButton,
   Classes,
-  DateIcon,
   Line,
   SyllabusContainer,
-  SyllabusDate,
   SyllabusHeadline,
   SyllabusHeadlineWrapper,
 } from './AdminUpdateClass.styled';
@@ -15,7 +13,7 @@ import { useModal } from '../../../components/Modal/useModal';
 
 import { ErrorMessageInterface } from '../../../types';
 import { ERROR_MESSAGES } from '../../../utilities/constants';
-import { getAdminClass } from '../../../api/getAdminClasses';
+import { getPlanClasses } from '../../../api/getPlanClasses';
 import { AddNewClassForm } from './AddNewClassModal';
 
 interface ClassComponentDataProps {
@@ -28,13 +26,13 @@ interface ClassComponentDataProps {
 
 const AdminUpdateClass = () => {
   const { isOpen, toggle } = useModal();
-  const [classes, setClasses] = useState<ClassComponentDataProps[]>();
+  const [classes, setClasses] = useState<ClassComponentDataProps[]>([]);
   const { id } = useParams();
 
   const fetchAdminClasses = useCallback(async () => {
     try {
-      const res = await getAdminClass(id);
-      setClasses(res.data);
+      const res = await getPlanClasses(id);
+      setClasses(res.data.length ? res.data : []);
     } catch (error) {
       const errors = error as ErrorMessageInterface[];
       if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
@@ -52,11 +50,7 @@ const AdminUpdateClass = () => {
   return (
     <SyllabusContainer>
       <SyllabusHeadlineWrapper>
-        <SyllabusHeadline>
-          Syllabus
-          <SyllabusDate>(March 1st, 2022 - December 1st, 2022)</SyllabusDate>
-          <DateIcon />
-        </SyllabusHeadline>
+        <SyllabusHeadline>Syllabus</SyllabusHeadline>
         <AddClassButton type="button" onClick={toggle}>
           + New Class
         </AddClassButton>

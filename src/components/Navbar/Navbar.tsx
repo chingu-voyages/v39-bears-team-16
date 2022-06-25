@@ -39,7 +39,6 @@ const Navbar = () => {
               <span>{user.name}</span>
             </>
           }
-          isOpen
         >
           <LightMenuItem
             to="/sign-in"

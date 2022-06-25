@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 import { Input, InputField } from '../../../components/Input';
 import { ErrorMessageInterface } from '../../../types';
 import {
-  adminCreateClassWorks,
-  AdminCreateClassWorkProps,
-} from '../../../api/getAdminClasses';
+  createClassWorks,
+  CreateClassWorkProps,
+} from '../../../api/getPlanClasses';
 
 import {
   FormErrorMessages,
@@ -46,16 +46,16 @@ export const AddNewClassWorkForm = ({
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<AdminCreateClassWorkProps>();
+  } = useForm<CreateClassWorkProps>();
 
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
   );
   const { id } = useParams();
 
-  const onSubmitNewClassWork = async (payload: AdminCreateClassWorkProps) => {
+  const onSubmitNewClassWork = async (payload: CreateClassWorkProps) => {
     try {
-      await adminCreateClassWorks(payload, classId, id);
+      await createClassWorks(payload, classId, id);
       reset(defaultClassWorkValues);
       handleClose();
       toggle();

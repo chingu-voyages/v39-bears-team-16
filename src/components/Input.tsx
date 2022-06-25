@@ -24,3 +24,18 @@ export const InputField = styled.label`
     width: 35%;
   }
 `;
+
+export const TextArea = styled.textarea`
+  background: none;
+  border: 1px solid ${({ theme }) => theme.color.black};
+  border-radius: 4px;
+  min-height: 30px;
+  width: 11rem;
+  color: ${({ theme }) => theme.color.black};
+  font-weight: 300;
+  padding-left: 8px;
+
+  :focus {
+    outline: none;
+  }
+`;

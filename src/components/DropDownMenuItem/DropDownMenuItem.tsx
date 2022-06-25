@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StlyedDropDownMenuItemBody,
   StyledDropDownMenuItemHeader,
@@ -8,17 +8,21 @@ import {
 interface DropDownMenuItemProps {
   header: JSX.Element;
   children: JSX.Element;
-  isOpen: boolean;
+  isOpen?: boolean;
 }
 
 const DropDownMenuItem = ({
   header,
   children,
-  isOpen,
+  isOpen: dropdownIsOpen,
 }: DropDownMenuItemProps) => {
+  const [isOpen, setIsOpen] = useState(dropdownIsOpen);
+
   return (
     <StyledDropDownMenuItem>
-      <StyledDropDownMenuItemHeader>{header}</StyledDropDownMenuItemHeader>
+      <StyledDropDownMenuItemHeader onClick={() => setIsOpen(!isOpen)}>
+        {header}
+      </StyledDropDownMenuItemHeader>
       <StlyedDropDownMenuItemBody>
         {isOpen && <div>{children}</div>}
       </StlyedDropDownMenuItemBody>

@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { BsCalendarDate } from 'react-icons/bs';
-import { iconStyles, StyledDateString } from './styles';
 
 export const SyllabusContainer = styled.section`
   display: flex;
@@ -10,7 +8,6 @@ export const SyllabusContainer = styled.section`
   padding: 1.5em;
   border-radius: 1em;
   color: ${({ theme }) => theme.color.primary};
-  background: ${({ theme }) => theme.color.primary};
 `;
 
 export const Line = styled.div`
@@ -31,11 +28,6 @@ export const SyllabusHeadline = styled.h1`
   font-weight: 500;
 `;
 
-export const SyllabusDate = styled(StyledDateString)`
-  font-size: 1rem;
-  margin: 0 10px;
-`;
-
 export const Classes = styled.section`
   display: flex;
   justify-content: space-between;
@@ -48,19 +40,12 @@ export const AddClassButton = styled.button`
   width: 120px;
   height: 40px;
   border-radius: 10px;
-  font-weight: 400;
   cursor: pointer;
-  border-color: white;
+  border-color: ${({ theme }) => theme.color.primary};
 
   &:hover {
     border: none;
-    background-color: ${({ theme }) => theme.color.yellow};
-    color: ${({ theme }) => theme.color.primary};
+    background-color: ${({ theme }) => theme.color.primary};
+    color: ${({ theme }) => theme.color.white};
   }
-`;
-
-export const DateIcon = styled(BsCalendarDate)`
-  ${iconStyles}
-  opacity: 100%;
-  color: ${({ theme }) => theme.color.primary};
 `;

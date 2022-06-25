@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { BsPlusCircle } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { getPlans } from '../../api/getPlans';
 import CohortCard from '../../components/CohortCard/CohortCard';
-import { CohortInterface } from '../../types';
+import { CohortInterface, ErrorMessageInterface } from '../../types';
+import { ERROR_MESSAGES } from '../../utilities/constants';
 // import { AddNewCohortModal } from '../Member/AdminCohortsPage/AddNewCohortModal';
 import {
   EditorPlansPageContainer,
@@ -10,20 +12,25 @@ import {
   StyledAddPlanCard,
 } from './EditorPlans.styled';
 
-const plans = [
-  {
-    _id: 'test1',
-    name: 'test1',
-    startDate: '10-10-2021',
-    endDate: '10-12-2021',
-    thumbnail: '',
-  },
-];
-
 const EditorPlans = () => {
-  // const [plans, setPlans] = useState([]);
-
+  const [plans, setPlans] = useState([]);
   const navigate = useNavigate();
+
+  const fetchPlans = useCallback(async () => {
+    try {
+      const res = await getPlans();
+      setPlans(res.data);
+    } catch (error) {
+      const errors = error as ErrorMessageInterface[];
+      if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
+        // navigate('/sign-in', { replace: true });
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchPlans();
+  }, [fetchPlans]);
 
   return (
     <EditorPlansPageContainer>

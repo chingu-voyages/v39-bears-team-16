@@ -54,7 +54,7 @@ export const classValidationRules = {
   name: {
     required: 'Class Title is required',
   },
-  subject: {
+  description: {
     required: 'Class Description is required',
   },
   date: {
