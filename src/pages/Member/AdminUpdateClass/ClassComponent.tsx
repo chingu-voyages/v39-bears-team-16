@@ -31,13 +31,18 @@ interface classesProps {
   handleClose(): void;
 }
 
+interface headerProps {
+  item: ClassComponentDataProps;
+  handleClose(): void;
+}
+
 interface classesWorkProps {
   name: string;
   body: string;
 }
 
-const getHeaderComponent = (item: ClassComponentDataProps) => {
-  return <ClassHeaderComponent item={item} />;
+const getHeaderComponent = ({ item, handleClose }: headerProps) => {
+  return <ClassHeaderComponent item={item} handleClose={handleClose} />;
 };
 
 const ClassComponent = ({ classes = [], handleClose }: classesProps) => {
@@ -65,9 +70,7 @@ const ClassComponent = ({ classes = [], handleClose }: classesProps) => {
     <StyledClassContainer>
       {classes?.map((item: ClassComponentDataProps) => (
         <div key={item._id}>
-          <AccordionWrapper
-            header={getHeaderComponent(item as ClassComponentDataProps)}
-          >
+          <AccordionWrapper header={getHeaderComponent({ item, handleClose })}>
             {/* accordion content */}
 
             {item.classworks?.map((innerElement) => (

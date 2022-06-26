@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { deleteClass } from '../../../api/apiPlanClass';
 
 import { Modal } from '../../../components/Modal/Modal';
 import { Button, PrimaryButton } from '../../../components/Button';
+import { ErrorMessageInterface } from '../../../types';
+import { StyledErrorMessage } from '../../../components/ErrorMessage';
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +28,7 @@ interface deleteClassProps {
   classID: string;
   isOpen: boolean;
   toggle(): void;
+  handleClose(): void;
 }
 
 export const DeleteClassModal = ({
@@ -33,10 +36,20 @@ export const DeleteClassModal = ({
   classID,
   isOpen,
   toggle,
+  handleClose,
 }: deleteClassProps) => {
-  const handleSubmit = () => {
-    deleteClass(classID);
-    toggle();
+  const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
+    []
+  );
+
+  const handleSubmit = async () => {
+    try {
+      await deleteClass(classID);
+      handleClose();
+      toggle();
+    } catch (error) {
+      setErrorMessages(error as ErrorMessageInterface[]);
+    }
   };
   const handleCancelModal = () => {
     toggle();
@@ -56,6 +69,9 @@ export const DeleteClassModal = ({
           <span>{`${className}?`}</span>
         </Text>
       </Container>
+      {errorMessages?.map(({ msg }) => (
+        <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
+      ))}
     </Modal>
   );
 };

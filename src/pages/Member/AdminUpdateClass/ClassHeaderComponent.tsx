@@ -21,9 +21,13 @@ interface itemProps {
 }
 interface ClassComponentDataProps {
   item: itemProps;
+  handleClose(): void;
 }
 
-const ClassHeaderComponent = ({ item }: ClassComponentDataProps) => {
+const ClassHeaderComponent = ({
+  handleClose,
+  item,
+}: ClassComponentDataProps) => {
   const { isOpen, toggle } = useModal();
 
   return (
@@ -41,6 +45,7 @@ const ClassHeaderComponent = ({ item }: ClassComponentDataProps) => {
           classID={item._id}
           isOpen={isOpen}
           toggle={toggle}
+          handleClose={handleClose}
         />
       </ClassTitleWrapper>
       <ClassDescription>{item.subject}</ClassDescription>
