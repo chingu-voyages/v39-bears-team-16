@@ -1,9 +1,5 @@
 import api from './api';
 
-export const getPlanClasses = (id: string | undefined) => {
-  return api.get(`/plans/${id}/classes`);
-};
-
 export interface CreateClassProps {
   name: string;
   description: string;
@@ -14,6 +10,12 @@ export interface CreateClassWorkProps {
   body: string;
 }
 
+// Class Apis
+
+export const getPlanClasses = (id: string | undefined) => {
+  return api.get(`/plans/${id}/classes`);
+};
+
 export const createClass = (
   { name, description }: CreateClassProps,
   id: string | undefined
@@ -23,6 +25,15 @@ export const createClass = (
     description,
   });
 };
+
+export const deleteClass = (
+  // id: string | undefined,
+  classId: string | undefined
+) => {
+  return api.delete(`/classes/${classId}`);
+};
+
+// ClassWorks
 
 export const createClassWorks = (
   { name, body }: CreateClassWorkProps,

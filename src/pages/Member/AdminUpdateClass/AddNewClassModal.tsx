@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Input, InputField, TextArea } from '../../../components/Input';
 import { ErrorMessageInterface } from '../../../types';
-import { createClass, CreateClassProps } from '../../../api/getPlanClasses';
+import { createClass, CreateClassProps } from '../../../api/apiPlanClass';
 
 import {
   FormErrorMessages,

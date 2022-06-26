@@ -13,7 +13,7 @@ import { useModal } from '../../../components/Modal/useModal';
 
 import { ErrorMessageInterface } from '../../../types';
 import { ERROR_MESSAGES } from '../../../utilities/constants';
-import { getPlanClasses } from '../../../api/getPlanClasses';
+import { getPlanClasses } from '../../../api/apiPlanClass';
 import { AddNewClassForm } from './AddNewClassModal';
 
 interface ClassComponentDataProps {

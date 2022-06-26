@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
 import {
   StyledClassContainer,
-  StyledClassHeaderWrapper,
   EditClassContentIcon,
-  ClassDescription,
-  ClassTitle,
   AddClassContentIcon,
-  ClassTitleWrapper,
-  EditClassIcon,
   StyledClassItem,
   StyledClassItemsContainer,
   TrashIcon,
 } from './ClassComponent.styled';
 import AccordionWrapper from '../../../components/Accordion/Accordion';
 import { useModal } from '../../../components/Modal/useModal';
+
 import { AddNewClassWorkForm } from './AddNewClassWorkModal';
+
+import ClassHeaderComponent from './ClassHeaderComponent';
 
 /* eslint no-underscore-dangle: 0 */
 
@@ -38,16 +37,7 @@ interface classesWorkProps {
 }
 
 const getHeaderComponent = (item: ClassComponentDataProps) => {
-  return (
-    <StyledClassHeaderWrapper>
-      <ClassTitleWrapper>
-        <ClassTitle>{item.name}</ClassTitle>
-        <EditClassIcon />
-        <TrashIcon />
-      </ClassTitleWrapper>
-      <ClassDescription>{item.subject}</ClassDescription>
-    </StyledClassHeaderWrapper>
-  );
+  return <ClassHeaderComponent item={item} />;
 };
 
 const ClassComponent = ({ classes = [], handleClose }: classesProps) => {
@@ -70,6 +60,7 @@ const ClassComponent = ({ classes = [], handleClose }: classesProps) => {
     }
     return null;
   };
+
   return (
     <StyledClassContainer>
       {classes?.map((item: ClassComponentDataProps) => (
