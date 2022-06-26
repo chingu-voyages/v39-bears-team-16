@@ -17,17 +17,19 @@ const Text = styled.h4`
   align-items: center;
 
   span {
-    width: 35%;
+    font-size: 1.5rem;
   }
 `;
 
 interface deleteClassProps {
+  className: string;
   classID: string;
   isOpen: boolean;
   toggle(): void;
 }
 
 export const DeleteClassModal = ({
+  className,
   classID,
   isOpen,
   toggle,
@@ -42,14 +44,17 @@ export const DeleteClassModal = ({
 
   return (
     <Modal
-      titleText=""
+      titleText={className}
       isOpen={isOpen}
       hide={toggle}
       primaryAction={<PrimaryButton onClick={handleSubmit}>Yes</PrimaryButton>}
       secondaryAction={<Button onClick={handleCancelModal}>No</Button>}
     >
       <Container>
-        <Text>Are you Sure you want to delete ? </Text>
+        <Text>
+          Are you sure you want to delete
+          <span>{`${className}?`}</span>
+        </Text>
       </Container>
     </Modal>
   );

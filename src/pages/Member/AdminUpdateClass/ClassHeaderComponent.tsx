@@ -36,7 +36,12 @@ const ClassHeaderComponent = ({ item }: ClassComponentDataProps) => {
             toggle();
           }}
         />
-        <DeleteClassModal classID={item._id} isOpen={isOpen} toggle={toggle} />
+        <DeleteClassModal
+          className={item.name}
+          classID={item._id}
+          isOpen={isOpen}
+          toggle={toggle}
+        />
       </ClassTitleWrapper>
       <ClassDescription>{item.subject}</ClassDescription>
     </StyledClassHeaderWrapper>
