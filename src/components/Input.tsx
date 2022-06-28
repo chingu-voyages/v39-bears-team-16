@@ -17,12 +17,8 @@ export const Input = styled.input`
 
 export const InputField = styled.label`
   display: flex;
-  gap: 1em;
-  align-items: center;
-
-  span {
-    width: 35%;
-  }
+  gap: 0.5em;
+  flex-direction: column;
 `;
 
 export const TextArea = styled.textarea`

@@ -20,7 +20,6 @@ export const Container = styled.div`
   margin: auto;
   outline: 0;
   width: 50%;
-  height: 25rem;
   background: ${({ theme }) => theme.color.white};
   border-radius: 10px;
   display: flex;

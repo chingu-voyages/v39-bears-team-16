@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 
 import { Input, InputField, TextArea } from '../../components/Input';
 import { Modal } from '../../components/Modal/Modal';
 import { Button, SuccessButton } from '../../components/Button';
-import { AddUpdatePlanProps, getPlans } from '../../api/plans';
-import { PlanInterface, ErrorMessageInterface } from '../../types';
 import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../components/ErrorMessage';
+import { Form } from '../../components/Form';
+import { AddUpdatePlanProps, getPlans } from '../../api/plans';
+import { PlanInterface, ErrorMessageInterface } from '../../types';
 import { planValidationRules } from '../../utilities/validation';
 
 export interface EditorPlanModalProps {
@@ -25,12 +25,6 @@ const defaultPlanValues = {
   name: '',
   description: '',
 };
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-`;
 
 export const EditorPlanModal = ({
   isOpen,
@@ -80,7 +74,7 @@ export const EditorPlanModal = ({
       }
       secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
     >
-      <StyledForm id="add-update-plan-form" onSubmit={handleSubmit(onSubmit)}>
+      <Form id="add-update-plan-form" onSubmit={handleSubmit(onSubmit)}>
         <InputField htmlFor="name">
           <span>Plan Name</span>
           <Input
@@ -104,7 +98,7 @@ export const EditorPlanModal = ({
         {errorMessages?.map(({ msg }) => (
           <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
         ))}
-      </StyledForm>
+      </Form>
     </Modal>
   );
 };
