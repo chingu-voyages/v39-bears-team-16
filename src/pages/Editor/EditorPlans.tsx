@@ -1,19 +1,21 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { BsPlusCircle } from 'react-icons/bs';
+import { FaPlus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { getPlans } from '../../api/getPlans';
+import { addNewPlan, getPlans } from '../../api/plans';
+import { PrimaryButton } from '../../components/Button';
 import PlanCard from '../../components/PlanCard/PlanCard';
+import { useModal } from '../../components/Modal/useModal';
 import { PlanInterface, ErrorMessageInterface } from '../../types';
 import { ERROR_MESSAGES } from '../../utilities/constants';
-// import { AddNewCohortModal } from '../Member/AdminCohortsPage/AddNewCohortModal';
+import { EditorPlanModal } from './EditorPlanModal';
 import {
   EditorPlansPageContainer,
   StyledPlanCardsContainer,
-  StyledAddPlanCard,
 } from './EditorPlans.styled';
 
 const EditorPlans = () => {
-  const [plans, setPlans] = useState([]);
+  const [plans, setPlans] = useState<PlanInterface[]>([]);
+  const { isOpen, toggle } = useModal();
   const navigate = useNavigate();
 
   const fetchPlans = useCallback(async () => {
@@ -34,27 +36,35 @@ const EditorPlans = () => {
 
   return (
     <EditorPlansPageContainer>
+      <PrimaryButton onClick={toggle}>
+        <FaPlus />
+        Add New Plan
+      </PrimaryButton>
       <StyledPlanCardsContainer>
+<<<<<<< HEAD
         {plans?.map(({ _id, ...cohortData }: PlanInterface) => (
           <PlanCard
+=======
+        {plans?.map(({ _id, ...planData }: PlanInterface) => (
+          <CohortCard
+>>>>>>> 8ecd61a (add plan, modal, home page styling fixes)
             _id={_id}
             key={_id}
             handleClick={() =>
               navigate(`/member/editor/plans/${_id}`, { replace: true })
             }
             isAdmin
-            {...cohortData}
+            {...planData}
           />
         ))}
-        <StyledAddPlanCard>
-          <BsPlusCircle color="#212D40" fontSize="5em" />
-        </StyledAddPlanCard>
       </StyledPlanCardsContainer>
-      {/* <AddNewCohortModal
-        isOpen={isModalOpen}
+      <EditorPlanModal
+        submitCallback={addNewPlan}
+        type="add"
+        isOpen={isOpen}
         toggle={toggle}
-        setCohortsList={setCohortsList}
-      /> */}
+        setPlans={setPlans}
+      />
     </EditorPlansPageContainer>
   );
 };

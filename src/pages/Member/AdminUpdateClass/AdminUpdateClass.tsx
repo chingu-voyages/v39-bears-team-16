@@ -1,20 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import { FaPlus } from 'react-icons/fa';
 import {
-  AddClassButton,
   Classes,
   Line,
   SyllabusContainer,
   SyllabusHeadline,
   SyllabusHeadlineWrapper,
 } from './AdminUpdateClass.styled';
+import { AddNewClassForm } from './AddNewClassModal';
 import ClassComponent from './ClassComponent';
 import { useModal } from '../../../components/Modal/useModal';
 
 import { ErrorMessageInterface } from '../../../types';
 import { ERROR_MESSAGES } from '../../../utilities/constants';
 import { getPlanClasses } from '../../../api/getPlanClasses';
-import { AddNewClassForm } from './AddNewClassModal';
+import { PrimaryButton } from '../../../components/Button';
 
 interface ClassComponentDataProps {
   _id: string;
@@ -51,9 +52,9 @@ const AdminUpdateClass = () => {
     <SyllabusContainer>
       <SyllabusHeadlineWrapper>
         <SyllabusHeadline>Syllabus</SyllabusHeadline>
-        <AddClassButton type="button" onClick={toggle}>
-          + New Class
-        </AddClassButton>
+        <PrimaryButton onClick={toggle}>
+          <FaPlus /> New Class
+        </PrimaryButton>
 
         <AddNewClassForm
           isOpen={isOpen}

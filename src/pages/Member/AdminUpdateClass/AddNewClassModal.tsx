@@ -12,7 +12,7 @@ import {
 } from '../../../components/ErrorMessage';
 
 import { Modal } from '../../../components/Modal/Modal';
-import { Button, PrimaryButton } from '../../../components/Button';
+import { Button, SuccessButton } from '../../../components/Button';
 import { classValidationRules } from '../../../utilities/validation';
 
 const StyledForm = styled.form`
@@ -73,9 +73,9 @@ export const AddNewClassForm = ({
       isOpen={isOpen}
       hide={toggle}
       primaryAction={
-        <PrimaryButton type="submit" form="addClassForm">
+        <SuccessButton type="submit" form="addClassForm">
           Submit
-        </PrimaryButton>
+        </SuccessButton>
       }
       secondaryAction={<Button onClick={handleCancelModal}>Cancel</Button>}
     >

@@ -38,15 +38,12 @@ export const authValidationRules: ValidationRuleInterface = {
   },
 };
 
-export const cohortValidationRules = {
+export const planValidationRules = {
   name: {
-    required: 'Name is required',
+    required: 'Plan name is required',
   },
-  startDate: {
-    required: 'Start Date is required',
-  },
-  endDate: {
-    required: 'End Date is required',
+  description: {
+    required: 'Plan description is required',
   },
 };
 
@@ -56,9 +53,6 @@ export const classValidationRules = {
   },
   description: {
     required: 'Class Description is required',
-  },
-  date: {
-    required: 'Date is required',
   },
 };
 

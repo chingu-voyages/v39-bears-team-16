@@ -19,9 +19,8 @@ export const Container = styled.div`
   z-index: 5;
   margin: auto;
   outline: 0;
-  width: 30rem;
+  width: 50%;
   height: 25rem;
-  color: ${({ theme }) => theme.color.secondary};
   background: ${({ theme }) => theme.color.white};
   border-radius: 10px;
   display: flex;
@@ -35,16 +34,19 @@ export const TitleContainer = styled.div`
   margin: 0;
 `;
 
-export const Title = styled.div`
+export const Title = styled.h2`
   color: ${({ theme }) => theme.color.black};
-  font-weight: 150;
   margin: 0;
-  font-size: 2rem;
 `;
 
 export const Content = styled.div`
   padding: 2rem 0;
   color: ${({ theme }) => theme.color.black};
+
+  input,
+  textarea {
+    width: 100%;
+  }
 `;
 
 export const CloseButton = styled(AiOutlineCloseCircle)`
@@ -64,4 +66,5 @@ export const StyledActionContainer = styled.div`
   bottom: 0;
   right: 0;
   padding: 1.5em;
+  flex-wrap: wrap;
 `;
