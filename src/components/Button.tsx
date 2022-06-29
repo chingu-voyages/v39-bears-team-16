@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Button = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5em;
   border-radius: 3px;
   background-color: ${({ theme }) => theme.color.white};
