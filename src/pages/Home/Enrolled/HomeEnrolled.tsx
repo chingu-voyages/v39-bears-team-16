@@ -24,13 +24,13 @@ const HomeEnrolled = () => {
   return (
     <CohortsPageContainer>
       <StyledCohortCardsContainer>
-        {plans?.map(({ _id, ...cohortData }: PlanInterface) => (
+        {plans?.map(({ _id, ...planData }: PlanInterface) => (
           <PlanCard
             _id={_id}
             key={_id}
             handleClick={() => navigate(`/member/plans/${_id}`)}
             isAdmin
-            {...cohortData}
+            {...planData}
           />
         ))}
       </StyledCohortCardsContainer>

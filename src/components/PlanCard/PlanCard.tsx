@@ -18,16 +18,7 @@ interface PlanCardProps extends PlanInterface {
   isAdmin?: boolean;
 }
 
-const PlanCard = ({
-  name,
-  startDate,
-  endDate,
-  handleClick,
-  isAdmin = false,
-}: PlanCardProps) => {
-  const formattedStartDate = getFormattedDate(startDate);
-  const formattedEndDate = getFormattedDate(endDate);
-  const planDate = `(${formattedStartDate} - ${formattedEndDate})`;
+const PlanCard = ({ name, handleClick, isAdmin = false }: PlanCardProps) => {
   return (
     <CardContainer onClick={handleClick}>
       {/* Plan Info */}
@@ -35,7 +26,6 @@ const PlanCard = ({
         <PlanInfo>
           <div>
             <PlanId>{name}</PlanId>
-            <PlanDate>{planDate}</PlanDate>
           </div>
           {isAdmin ? <OptionIcon /> : null}
         </PlanInfo>

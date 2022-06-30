@@ -12,8 +12,6 @@ export interface ErrorMessageInterface {
 export interface PlanInterface {
   _id: string;
   name: string;
-  startDate: string;
-  endDate: string;
   thumbnail: string;
 }
 
