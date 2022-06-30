@@ -9,7 +9,7 @@ export interface ErrorMessageInterface {
   param?: string;
 }
 
-export interface CohortInterface {
+export interface PlanInterface {
   _id: string;
   name: string;
   startDate: string;

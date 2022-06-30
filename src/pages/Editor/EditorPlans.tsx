@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { BsPlusCircle } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import { getPlans } from '../../api/getPlans';
-import CohortCard from '../../components/CohortCard/CohortCard';
-import { CohortInterface, ErrorMessageInterface } from '../../types';
+import PlanCard from '../../components/PlanCard/PlanCard';
+import { PlanInterface, ErrorMessageInterface } from '../../types';
 import { ERROR_MESSAGES } from '../../utilities/constants';
 // import { AddNewCohortModal } from '../Member/AdminCohortsPage/AddNewCohortModal';
 import {
@@ -35,8 +35,8 @@ const EditorPlans = () => {
   return (
     <EditorPlansPageContainer>
       <StyledPlanCardsContainer>
-        {plans?.map(({ _id, ...cohortData }: CohortInterface) => (
-          <CohortCard
+        {plans?.map(({ _id, ...cohortData }: PlanInterface) => (
+          <PlanCard
             _id={_id}
             key={_id}
             handleClick={() =>

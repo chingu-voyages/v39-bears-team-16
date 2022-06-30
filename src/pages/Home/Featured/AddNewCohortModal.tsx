@@ -10,7 +10,7 @@ import {
   AdminCreateCohortProps,
 } from '../../../api/adminCreateCohort';
 import { getPlans } from '../../../api/getPlans';
-import { CohortInterface, ErrorMessageInterface } from '../../../types';
+import { PlanInterface, ErrorMessageInterface } from '../../../types';
 import {
   FormErrorMessages,
   StyledErrorMessage,
@@ -20,7 +20,7 @@ import { cohortValidationRules } from '../../../utilities/validation';
 export interface AddNewCohortModalProps {
   isOpen: boolean;
   toggle(): void;
-  setCohortsList(value: CohortInterface[]): void;
+  setCohortsList(value: PlanInterface[]): void;
 }
 
 const defaultCohortValues = {
