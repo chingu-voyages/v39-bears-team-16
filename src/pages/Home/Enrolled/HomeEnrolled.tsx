@@ -22,17 +22,10 @@ const HomeEnrolled = () => {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <CohortsPageContainer>
-      <StyledCohortCardsContainer>
-        {plans?.map(({ _id, ...planData }: PlanInterface) => (
-          <PlanCard
-=======
     <HomePlansPageContainer>
       <StyledPlanCardsContainer>
-        {plans?.map(({ _id, ...cohortData }: PlanInterface) => (
-          <CohortCard
->>>>>>> 8ecd61a (add plan, modal, home page styling fixes)
+        {plans?.map(({ _id, ...planData }: PlanInterface) => (
+          <PlanCard
             _id={_id}
             key={_id}
             handleClick={() => navigate(`/member/plans/${_id}`)}

@@ -13,10 +13,10 @@ import {
   OptionIcon,
   CohortImg,
 } from './CohortCard.styled';
-import { PlanInterface } from '../../types';
+import { CohortInterface } from '../../types';
 import { getFormattedDate } from '../../utilities/dateFormat';
 
-interface CohortCardProps extends PlanInterface {
+interface CohortCardProps extends CohortInterface {
   handleClick(): void;
   isAdmin?: boolean;
 }
