@@ -17,13 +17,8 @@ export const addNewPlan = ({ name, description }: AddUpdatePlanProps) => {
   });
 };
 
-export const updatePlan = ({
-  name,
-  description,
-  planId,
-}: AddUpdatePlanProps) => {
-  return api.post(`/plans/${planId}`, {
-    name,
-    description,
+export const updatePlan = ({ planId, ...rest }: AddUpdatePlanProps) => {
+  return api.put(`/plans/${planId}`, {
+    ...rest,
   });
 };

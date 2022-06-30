@@ -15,7 +15,8 @@ const HomeEnrolled = () => {
   useEffect(() => {
     const fetchPlans = async () => {
       const { data } = await getPlans();
-      setPlans(data);
+      const visiblePlans = data.filter(({ visibility }) => visibility === true);
+      setPlans(visiblePlans);
     };
 
     fetchPlans();
