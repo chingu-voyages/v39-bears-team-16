@@ -73,7 +73,7 @@ export const EditorPlanModal = ({
     if (name !== '' || description !== '') {
       reset({ name, description });
     }
-  }, []);
+  }, [reset, name, description]);
 
   const titleText = type === 'add' ? 'Add New Plan' : 'Update Plan';
 

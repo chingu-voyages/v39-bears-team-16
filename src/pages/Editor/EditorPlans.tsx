@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { addNewPlan, getPlans, updatePlan } from '../../api/plans';
+import { addNewPlan, getPlans } from '../../api/plans';
 import { UserContext } from '../../App';
 import { PrimaryButton } from '../../components/Button';
 import PlanCard from '../../components/PlanCard/PlanCard';
