@@ -5,13 +5,11 @@ import {
   PlanInfoWrapper,
   PlanInfo,
   PlanId,
-  PlanDate,
   PlanNav,
   OptionIcon,
   PlanImg,
 } from './PlanCard.styled';
 import { PlanInterface } from '../../types';
-import { getFormattedDate } from '../../utilities/dateFormat';
 
 interface PlanCardProps extends PlanInterface {
   handleClick(): void;
