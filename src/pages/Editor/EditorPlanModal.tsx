@@ -4,7 +4,7 @@ import { AxiosResponse } from 'axios';
 
 import { Input, InputField, TextArea } from '../../components/Input';
 import { Modal } from '../../components/Modal/Modal';
-import { Button, SuccessButton } from '../../components/Button';
+import { Button, PrimaryButton } from '../../components/Button';
 import {
   FormErrorMessages,
   StyledErrorMessage,
@@ -81,11 +81,11 @@ export const EditorPlanModal = ({
     <Modal
       titleText={titleText}
       isOpen={isOpen}
-      hide={handleCloseModal}
+      onCloseModal={handleCloseModal}
       primaryAction={
-        <SuccessButton type="submit" form="add-update-plan-form">
+        <PrimaryButton type="submit" form="add-update-plan-form">
           Submit
-        </SuccessButton>
+        </PrimaryButton>
       }
       secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
     >

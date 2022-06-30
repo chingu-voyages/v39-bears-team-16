@@ -11,7 +11,7 @@ import {
 } from '../../../components/ErrorMessage';
 import { Form } from '../../../components/Form';
 import { Modal } from '../../../components/Modal/Modal';
-import { Button, SuccessButton } from '../../../components/Button';
+import { Button, PrimaryButton } from '../../../components/Button';
 import { classValidationRules } from '../../../utilities/validation';
 
 const defaultClassValues = {
@@ -64,11 +64,11 @@ export const AddNewClassForm = ({
     <Modal
       titleText="Add New Class"
       isOpen={isOpen}
-      hide={toggle}
+      onCloseModal={toggle}
       primaryAction={
-        <SuccessButton type="submit" form="addClassForm">
+        <PrimaryButton type="submit" form="addClassForm">
           Submit
-        </SuccessButton>
+        </PrimaryButton>
       }
       secondaryAction={<Button onClick={handleCancelModal}>Cancel</Button>}
     >

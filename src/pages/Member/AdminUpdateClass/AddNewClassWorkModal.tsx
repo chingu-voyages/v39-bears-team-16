@@ -66,7 +66,7 @@ export const AddNewClassWorkForm = ({
     <Modal
       titleText="Add New Class Work Form"
       isOpen={isOpen}
-      hide={toggle}
+      onCloseModal={toggle}
       primaryAction={
         <PrimaryButton type="submit" form="addClassWork">
           Submit
