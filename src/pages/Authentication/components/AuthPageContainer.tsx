@@ -6,7 +6,7 @@ export const AuthContainer = styled.section`
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: ${({ theme }) => theme.color.white};
+  background: ${({ theme }) => theme.color.subtleWhite};
   display: flex;
   align-items: center;
   justify-content: space-around;

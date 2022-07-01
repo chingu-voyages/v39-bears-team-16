@@ -10,6 +10,7 @@ export const GithubIcon = styled(FaGithub)`
 `;
 
 export const ThirdPartyLoginButton = styled(Button)`
+  background-color: ${({ theme }) => theme.color.white};
   border: 1px solid ${({ theme }) => theme.color.primary};
   border-radius: 4px;
   height: 2.5em;

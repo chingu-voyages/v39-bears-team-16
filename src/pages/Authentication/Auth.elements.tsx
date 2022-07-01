@@ -17,7 +17,6 @@ export const AuthCard = styled.section`
   gap: 1.5em;
   border-radius: 8px;
   padding: 2em;
-  color: ${({ theme }) => theme.color.white};
   background: ${({ theme }) => theme.color.white};
   border: 2px solid ${({ theme }) => theme.color.secondary};
 `;
