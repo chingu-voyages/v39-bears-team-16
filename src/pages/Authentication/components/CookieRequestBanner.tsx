@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { CloseIcon } from './AuthenticationIcons';
 
@@ -18,10 +18,14 @@ export const CookieRequest = styled.span`
 `;
 
 export const CookieRequestBanner = () => {
+  const [showBanner, setShowBanner] = useState(true);
+
+  if (!showBanner) return null;
+
   return (
     <CookieRequest>
       Please ensure cookies are enabled.
-      <CloseIcon />
+      <CloseIcon onClick={() => setShowBanner(false)} />
     </CookieRequest>
   );
 };
