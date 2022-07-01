@@ -7,7 +7,7 @@ import {
 import { RiLogoutCircleLine } from 'react-icons/ri';
 
 export const SidebarContainer = styled.div`
-  background-color: ${({ theme }) => theme.color.secondary};
+  background-color: ${({ theme }) => theme.color.white};
   position: absolute;
   top: 64px;
   left: 0;

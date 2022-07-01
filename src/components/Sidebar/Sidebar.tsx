@@ -1,18 +1,18 @@
 import React from 'react';
-import { LightMenuItem } from '../MenuItem';
+import { HighlightMenuItem } from '../MenuItem';
 import { HomeIcon, DashboardIcon, SidebarContainer } from './Sidebar.styled';
 
 const Sidebar = () => {
   return (
     <SidebarContainer>
-      <LightMenuItem to="featured" menuItemTheme="light">
-        <HomeIcon />
-        Featured
-      </LightMenuItem>
-      <LightMenuItem to="enrolled" menuItemTheme="light">
+      <HighlightMenuItem to="enrolled" menuItemTheme="highlight">
         <DashboardIcon />
         Enrolled
-      </LightMenuItem>
+      </HighlightMenuItem>
+      <HighlightMenuItem to="featured" menuItemTheme="highlight">
+        <HomeIcon />
+        Featured
+      </HighlightMenuItem>
     </SidebarContainer>
   );
 };
