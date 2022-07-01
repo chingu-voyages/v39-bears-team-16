@@ -12,8 +12,10 @@ export const darkTheme = {
     grey: '#dfe3e7',
     white: '#f5f5f5',
     yellow: '#d1a103',
-    green: '#2CA58D',
-    darkGreen: '#0c8560',
+    green: '#0c8560',
+    darkGreen: '#085d43',
+    lightPrimary: '#232e50',
+    darkPrimary: '#070e25',
   },
 };
 

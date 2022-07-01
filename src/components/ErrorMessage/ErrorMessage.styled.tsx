@@ -8,4 +8,7 @@ export const ErrorMessageList = styled.ul`
 
 export const StyledErrorMessage = styled.p`
   color: ${({ theme }) => theme.color.red};
+  text-align: left;
+  margin: 0.5em 0 0 0;
+  font-size: 0.8rem;
 `;
