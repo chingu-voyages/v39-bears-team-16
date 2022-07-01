@@ -2,7 +2,7 @@
 export const darkTheme = {
   color: {
     primary: '#0b173d',
-    secondary: '#e5e5e5',
+    secondary: '#e7e8ec',
     teal: '#2CA58D',
     blue: '#4377C1',
     orange: '#FD7E14',
@@ -16,7 +16,6 @@ export const darkTheme = {
     darkGreen: '#085d43',
     lightPrimary: '#232e50',
     darkPrimary: '#070e25',
-    lightGrey: '#e7e8ec',
   },
 };
 

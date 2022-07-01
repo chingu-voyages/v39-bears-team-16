@@ -1,16 +1,16 @@
 import React from 'react';
 import { HighlightMenuItem } from '../MenuItem';
-import { HomeIcon, DashboardIcon, SidebarContainer } from './Sidebar.styled';
+import { FeaturedIcon, EnrolledIcon, SidebarContainer } from './Sidebar.styled';
 
 const Sidebar = () => {
   return (
     <SidebarContainer>
       <HighlightMenuItem to="enrolled" menuItemTheme="highlight">
-        <DashboardIcon />
+        <EnrolledIcon />
         Enrolled
       </HighlightMenuItem>
       <HighlightMenuItem to="featured" menuItemTheme="highlight">
-        <HomeIcon />
+        <FeaturedIcon />
         Featured
       </HighlightMenuItem>
     </SidebarContainer>

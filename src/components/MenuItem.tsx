@@ -8,7 +8,7 @@ interface MenuItemInterface extends NavLinkProps {
 
 const highlightActiveStyle = (theme) => ({
   fontWeight: '700',
-  backgroundColor: 'rgba(200,200,200,0.5)',
+  backgroundColor: 'rgba(	231, 232, 236, 0.8)',
   borderLeft: `6px solid ${theme.color.primary}`,
 });
 
@@ -46,9 +46,10 @@ export const HighlightMenuItem = styled(MenuItem)`
   gap: 0.5em;
   width: 100%;
   padding: 0.75em;
+  border-left: 6px solid transparent;
 
   &:hover {
-    font-weight: 700;
+    background-color: rgba(231, 232, 236, 0.4);
   }
 `;
 

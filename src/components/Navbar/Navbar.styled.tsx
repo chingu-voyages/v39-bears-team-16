@@ -13,7 +13,7 @@ export const StyledNavbar = styled.nav`
   color: ${({ theme }) => theme.color.primary};
 
   display: grid;
-  grid-template-columns: 20% 1fr 10%;
+  grid-template-columns: 15em 1fr 10%;
   align-items: center;
   border-bottom: 1px solid ${({ theme }) => theme.color.grey};
 `;
