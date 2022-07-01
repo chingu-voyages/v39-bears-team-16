@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { CloseIcon } from './AuthenticationIcons';
+import { AiFillCloseCircle } from 'react-icons/ai';
+
+export const CloseIcon = styled(AiFillCloseCircle)`
+  color: ${({ theme }) => theme.color.white};
+  cursor: pointer;
+  margin-right: 0.5em;
+`;
 
 export const CookieRequest = styled.span`
   font-size: 0.9rem;
