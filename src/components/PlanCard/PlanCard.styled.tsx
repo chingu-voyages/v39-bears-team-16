@@ -4,53 +4,52 @@ import { Card } from '../Card';
 
 export const CardContainer = styled(Card)`
   position: relative;
-  background: ${({ theme }) => theme.color.blue};
+  border-radius: 0;
+  background: ${({ theme }) => theme.color.primary};
+  border: 1.75px solid ${({ theme }) => theme.color.grey};
 `;
-
-export const CohortInfoWrapper = styled.section`
+export const PlanInfoWrapper = styled.section`
   position: relative;
-  border-radius: 10px;
   width: 100%;
   height: 75%;
+  border-bottom: 1.75px solid ${({ theme }) => theme.color.grey};
 `;
-export const CohortInfo = styled.section`
+export const PlanInfo = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
 `;
-export const CohortId = styled.p`
+export const PlanId = styled.p`
   color: ${({ theme }) => theme.color.white};
   font-size: 1.1rem;
   font-weight: 700;
 `;
-export const CohortDate = styled.p`
+export const PlanDate = styled.p`
   color: ${({ theme }) => theme.color.white};
   font-size: 0.7rem;
 `;
-export const CohortImg = styled.img`
+export const PlanImg = styled.img`
   position: absolute;
   bottom: 0;
   right: 0;
   width: 100px;
+  padding: 8px;
 `;
-export const CohortNav = styled.section`
+export const PlanNav = styled.section`
   width: 100%;
   height: 25%;
-  border-radius: 0 0 10px 10px;
   background: ${({ theme }) => theme.color.white};
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid ${({ theme }) => theme.color.grey};
+  border: 1.75px solid ${({ theme }) => theme.color.grey};
 `;
 export const OptionIcon = styled(BsThreeDotsVertical)`
   position: absolute;
   top: 0.5em;
   right: 0.5em;
-  outline: 1px white solid;
   color: white;
-  border-radius: 50%;
   padding: 2px;
   font-size: 1.5rem;
 `;

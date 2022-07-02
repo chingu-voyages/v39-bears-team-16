@@ -4,7 +4,7 @@ export const darkTheme = {
     primary: '#0b173d',
     secondary: '#e5e5e5',
     teal: '#2CA58D',
-    blue: '#4381C1',
+    blue: '#4377C1',
     orange: '#FD7E14',
     red: '#EE2D21',
     darkRed: '#A31910',

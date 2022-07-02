@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CohortCard from '../../../components/CohortCard/CohortCard';
+import PlanCard from '../../../components/PlanCard/PlanCard';
 import {
   CohortsPageContainer,
   StyledCohortCardsContainer,
 } from './AdminCohortsPage.styled';
-import { CohortInterface } from '../../../types';
+import { PlanInterface } from '../../../types';
 import { getPlans } from '../../../api/getPlans';
 
 const HomeEnrolled = () => {
-  const [plans, setPlans] = useState<CohortInterface[]>();
+  const [plans, setPlans] = useState<PlanInterface[]>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,13 +24,13 @@ const HomeEnrolled = () => {
   return (
     <CohortsPageContainer>
       <StyledCohortCardsContainer>
-        {plans?.map(({ _id, ...cohortData }: CohortInterface) => (
-          <CohortCard
+        {plans?.map(({ _id, ...planData }: PlanInterface) => (
+          <PlanCard
             _id={_id}
             key={_id}
             handleClick={() => navigate(`/member/plans/${_id}`)}
             isAdmin
-            {...cohortData}
+            {...planData}
           />
         ))}
       </StyledCohortCardsContainer>
