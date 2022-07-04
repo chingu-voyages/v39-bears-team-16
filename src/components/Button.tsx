@@ -20,7 +20,7 @@ export const Button = styled.button`
 `;
 
 export const PrimaryButton = styled(Button)`
-  background-color: none;
+  background-color: transparent;
   color: ${({ theme }) => theme.color.primary};
   border: 1px solid ${({ theme }) => theme.color.primary};
 
