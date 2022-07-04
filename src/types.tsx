@@ -19,7 +19,4 @@ export interface ThemeInterface {
   color: {
     [x: string]: string;
   };
-  background: {
-    [x: string]: string;
-  };
 }

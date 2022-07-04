@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Input, InputField, TextArea } from '../../../components/Input';
@@ -10,16 +9,10 @@ import {
   FormErrorMessages,
   StyledErrorMessage,
 } from '../../../components/ErrorMessage';
-
+import { Form } from '../../../components/Form';
 import { Modal } from '../../../components/Modal/Modal';
 import { Button, PrimaryButton } from '../../../components/Button';
 import { classValidationRules } from '../../../utilities/validation';
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-`;
 
 const defaultClassValues = {
   name: '',
@@ -71,7 +64,7 @@ export const AddNewClassForm = ({
     <Modal
       titleText="Add New Class"
       isOpen={isOpen}
-      hide={toggle}
+      onCloseModal={toggle}
       primaryAction={
         <PrimaryButton type="submit" form="addClassForm">
           Submit
@@ -79,7 +72,7 @@ export const AddNewClassForm = ({
       }
       secondaryAction={<Button onClick={handleCancelModal}>Cancel</Button>}
     >
-      <StyledForm id="addClassForm" onSubmit={handleSubmit(onSubmit)}>
+      <Form id="addClassForm" onSubmit={handleSubmit(onSubmit)}>
         <InputField htmlFor="name">
           <span>Class Title</span>
           <Input
@@ -93,7 +86,7 @@ export const AddNewClassForm = ({
           <span>Class Description</span>
           <TextArea
             id="description"
-            placeholder="Enter Class description"
+            placeholder="Enter Class Description"
             {...register('description', classValidationRules.description)}
           />
         </InputField>
@@ -104,7 +97,7 @@ export const AddNewClassForm = ({
         {errorMessages?.map(({ msg }) => (
           <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
         ))}
-      </StyledForm>
+      </Form>
     </Modal>
   );
 };

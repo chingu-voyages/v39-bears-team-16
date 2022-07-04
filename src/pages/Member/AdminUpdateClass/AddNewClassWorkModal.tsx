@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Input, InputField } from '../../../components/Input';
@@ -14,14 +13,9 @@ import {
   StyledErrorMessage,
 } from '../../../components/ErrorMessage';
 import { Modal } from '../../../components/Modal/Modal';
+import { Form } from '../../../components/Form';
 import { Button, PrimaryButton } from '../../../components/Button';
 import { classWorkValidationRules } from '../../../utilities/validation';
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-`;
 
 const defaultClassWorkValues = {
   name: '',
@@ -72,7 +66,7 @@ export const AddNewClassWorkForm = ({
     <Modal
       titleText="Add New Class Work Form"
       isOpen={isOpen}
-      hide={toggle}
+      onCloseModal={toggle}
       primaryAction={
         <PrimaryButton type="submit" form="addClassWork">
           Submit
@@ -80,7 +74,7 @@ export const AddNewClassWorkForm = ({
       }
       secondaryAction={<Button onClick={handleCancelModal}>Cancel</Button>}
     >
-      <StyledForm
+      <Form
         id="addClassWork"
         onSubmit={(e) => {
           handleSubmit(onSubmitNewClassWork)(e);
@@ -102,7 +96,7 @@ export const AddNewClassWorkForm = ({
           <Input
             type="text"
             id="body"
-            placeholder="Enter Class description"
+            placeholder="Enter Classwork resource"
             {...register('body', classWorkValidationRules.body)}
           />
         </InputField>
@@ -113,7 +107,7 @@ export const AddNewClassWorkForm = ({
         {errorMessages?.map(({ msg }) => (
           <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
         ))}
-      </StyledForm>
+      </Form>
     </Modal>
   );
 };

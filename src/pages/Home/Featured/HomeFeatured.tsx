@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PlanCard from '../../../components/PlanCard/PlanCard';
-import {
-  CohortsPageContainer,
-  StyledCohortCardsContainer,
-} from './AdminCohortsPage.styled';
 import { PlanInterface } from '../../../types';
-import { getPlans } from '../../../api/getPlans';
+import { getPlans } from '../../../api/plans';
+import {
+  HomePlansPageContainer,
+  StyledPlanCardsContainer,
+} from '../Home.styled';
 
 const HomeEnrolled = () => {
   const [plans, setPlans] = useState<PlanInterface[]>();
@@ -15,15 +15,16 @@ const HomeEnrolled = () => {
   useEffect(() => {
     const fetchPlans = async () => {
       const { data } = await getPlans();
-      setPlans(data);
+      const visiblePlans = data.filter(({ visibility }) => visibility === true);
+      setPlans(visiblePlans);
     };
 
     fetchPlans();
   }, []);
 
   return (
-    <CohortsPageContainer>
-      <StyledCohortCardsContainer>
+    <HomePlansPageContainer>
+      <StyledPlanCardsContainer>
         {plans?.map(({ _id, ...planData }: PlanInterface) => (
           <PlanCard
             _id={_id}
@@ -33,8 +34,8 @@ const HomeEnrolled = () => {
             {...planData}
           />
         ))}
-      </StyledCohortCardsContainer>
-    </CohortsPageContainer>
+      </StyledPlanCardsContainer>
+    </HomePlansPageContainer>
   );
 };
 

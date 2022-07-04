@@ -33,19 +33,3 @@ export const Classes = styled.section`
   justify-content: space-between;
   margin-top: 50px;
 `;
-
-export const AddClassButton = styled.button`
-  background: none;
-  color: ${({ theme }) => theme.color.primary};
-  width: 120px;
-  height: 40px;
-  border-radius: 10px;
-  cursor: pointer;
-  border-color: ${({ theme }) => theme.color.primary};
-
-  &:hover {
-    border: none;
-    background-color: ${({ theme }) => theme.color.primary};
-    color: ${({ theme }) => theme.color.white};
-  }
-`;

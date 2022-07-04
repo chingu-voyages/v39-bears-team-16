@@ -1,19 +1,20 @@
 import React, { ReactNode } from 'react';
-import ReactDOM from 'react-dom';
+import ReactModal from 'react-modal';
+import { useTheme } from 'styled-components';
+import { ThemeInterface } from '../../types';
 
 import {
-  Container,
   TitleContainer,
   Title,
   CloseButton,
   Content,
-  Fade,
   StyledActionContainer,
+  useModalStyles,
 } from './Modal.styled';
 
 export interface ModalProps {
   isOpen: boolean;
-  hide(): void;
+  onCloseModal(): void;
   titleText: string;
   primaryAction: ReactNode;
   secondaryAction?: ReactNode | undefined;
@@ -22,38 +23,36 @@ export interface ModalProps {
 
 export const Modal = ({
   isOpen,
-  hide,
+  onCloseModal,
   titleText,
   primaryAction,
   secondaryAction,
   children,
 }: ModalProps) => {
-  const modal = (
-    <>
-      <Fade />
-      <Container
-        aria-modal
-        aria-labelledby={titleText}
-        tabIndex={-1}
-        role="dialog"
-      >
-        <TitleContainer>
-          <Title>{titleText}</Title>
-        </TitleContainer>
-        <CloseButton
-          type="button"
-          data-dismiss="modal"
-          aria-label="Close"
-          onClick={hide}
-        />
-        <Content>{children}</Content>
-        <StyledActionContainer>
-          {secondaryAction}
-          {primaryAction}
-        </StyledActionContainer>
-      </Container>
-    </>
-  );
+  const theme = useTheme();
+  const styles = useModalStyles(theme as ThemeInterface);
 
-  return isOpen ? ReactDOM.createPortal(modal, document.body) : null;
+  return (
+    <ReactModal
+      isOpen={isOpen}
+      contentLabel={titleText}
+      onRequestClose={onCloseModal}
+      style={styles}
+    >
+      <TitleContainer>
+        <Title>{titleText}</Title>
+      </TitleContainer>
+      <CloseButton
+        type="button"
+        data-dismiss="modal"
+        aria-label="Close"
+        onClick={onCloseModal}
+      />
+      <Content>{children}</Content>
+      <StyledActionContainer>
+        {secondaryAction}
+        {primaryAction}
+      </StyledActionContainer>
+    </ReactModal>
+  );
 };
