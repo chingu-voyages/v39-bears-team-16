@@ -1,8 +1,8 @@
 import React from 'react';
-import AdminUpdateClass from './Classes/EditorUpdateClass';
+import EditorUpdateClass from './Classes/EditorUpdateClass';
 
 const EditorClasses = () => {
-  return <AdminUpdateClass />;
+  return <EditorUpdateClass />;
 };
 
 export default EditorClasses;

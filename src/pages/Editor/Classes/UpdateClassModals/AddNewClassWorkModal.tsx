@@ -6,7 +6,7 @@ import { ErrorMessageInterface } from '../../../../types';
 import {
   createClassWorks,
   CreateClassWorkProps,
-} from '../../../../api/getPlanClasses';
+} from '../../../../api/classes';
 
 import {
   FormErrorMessages,

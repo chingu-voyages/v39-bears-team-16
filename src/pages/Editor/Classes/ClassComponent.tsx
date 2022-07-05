@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
 import {
   StyledClassContainer,
-  StyledClassHeaderWrapper,
   EditClassContentIcon,
-  ClassDescription,
-  ClassTitle,
   AddClassContentIcon,
-  ClassTitleWrapper,
-  EditClassIcon,
   StyledClassItem,
   StyledClassItemsContainer,
   TrashIcon,
 } from './ClassComponent.styled';
 import AccordionWrapper from '../../../components/Accordion/Accordion';
 import { useModal } from '../../../components/Modal/useModal';
+
 import { AddNewClassWorkForm } from './UpdateClassModals/AddNewClassWorkModal';
+
+import ClassHeaderComponent from './ClassHeaderComponent';
 
 /* eslint no-underscore-dangle: 0 */
 
@@ -29,7 +28,12 @@ interface ClassComponentDataProps {
 
 interface classesProps {
   classes: ClassComponentDataProps[] | undefined;
-  handleClose(): void;
+  fetchClasses(): void;
+}
+
+interface headerProps {
+  item: ClassComponentDataProps;
+  fetchClasses(): void;
 }
 
 interface classesWorkProps {
@@ -37,20 +41,11 @@ interface classesWorkProps {
   body: string;
 }
 
-const getHeaderComponent = (item: ClassComponentDataProps) => {
-  return (
-    <StyledClassHeaderWrapper>
-      <ClassTitleWrapper>
-        <ClassTitle>{item.name}</ClassTitle>
-        <EditClassIcon />
-        <TrashIcon />
-      </ClassTitleWrapper>
-      <ClassDescription>{item.subject}</ClassDescription>
-    </StyledClassHeaderWrapper>
-  );
+const getHeaderComponent = ({ item, fetchClasses }: headerProps) => {
+  return <ClassHeaderComponent item={item} handleClose={fetchClasses} />;
 };
 
-const ClassComponent = ({ classes = [], handleClose }: classesProps) => {
+const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
   const { isOpen, toggle } = useModal();
   const [ClassID, setClassID] = useState<string | undefined>();
 
@@ -70,13 +65,12 @@ const ClassComponent = ({ classes = [], handleClose }: classesProps) => {
     }
     return null;
   };
+
   return (
     <StyledClassContainer>
       {classes?.map((item: ClassComponentDataProps) => (
         <div key={item._id}>
-          <AccordionWrapper
-            header={getHeaderComponent(item as ClassComponentDataProps)}
-          >
+          <AccordionWrapper header={getHeaderComponent({ item, fetchClasses })}>
             {/* accordion content */}
 
             {item.classworks?.map((innerElement) => (
@@ -105,7 +99,7 @@ const ClassComponent = ({ classes = [], handleClose }: classesProps) => {
                 isOpen={isOpen}
                 toggle={toggle}
                 classId={ClassID}
-                handleClose={handleClose}
+                handleClose={fetchClasses}
               />
             </StyledClassItemsContainer>
           </AccordionWrapper>

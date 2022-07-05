@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Input, InputField, TextArea } from '../../../../components/Input';
 import { ErrorMessageInterface } from '../../../../types';
-import { createClass, CreateClassProps } from '../../../../api/getPlanClasses';
+import { createClass, CreateClassProps } from '../../../../api/classes';
 
 import {
   FormErrorMessages,
@@ -23,13 +23,13 @@ const defaultClassValues = {
 interface AddNewClassFormProps {
   isOpen: boolean;
   toggle(): void;
-  handleClose(): void;
+  fetchClasses(): void;
 }
 
 export const AddNewClassForm = ({
   isOpen,
   toggle,
-  handleClose,
+  fetchClasses,
 }: AddNewClassFormProps) => {
   const {
     register,
@@ -53,7 +53,7 @@ export const AddNewClassForm = ({
       await createClass(data, id);
 
       reset(defaultClassValues);
-      handleClose();
+      fetchClasses();
       toggle();
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);

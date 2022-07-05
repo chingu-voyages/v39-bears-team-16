@@ -14,7 +14,7 @@ import { useModal } from '../../../components/Modal/useModal';
 
 import { ErrorMessageInterface } from '../../../types';
 import { ERROR_MESSAGES } from '../../../utilities/constants';
-import { getPlanClasses } from '../../../api/getPlanClasses';
+import { getPlanClasses } from '../../../api/classes';
 import { PrimaryButton } from '../../../components/Button';
 
 interface ClassComponentDataProps {
@@ -25,12 +25,12 @@ interface ClassComponentDataProps {
   classworks?: [];
 }
 
-const AdminUpdateClass = () => {
+const EditorUpdateClass = () => {
   const { isOpen, toggle } = useModal();
   const [classes, setClasses] = useState<ClassComponentDataProps[]>([]);
   const { id } = useParams();
 
-  const fetchAdminClasses = useCallback(async () => {
+  const fetchClasses = useCallback(async () => {
     try {
       const res = await getPlanClasses(id);
       setClasses(res.data.length ? res.data : []);
@@ -41,12 +41,10 @@ const AdminUpdateClass = () => {
       }
     }
   }, [id]);
-  const handleCloseModal = () => {
-    fetchAdminClasses();
-  };
+
   useEffect(() => {
-    fetchAdminClasses();
-  }, [fetchAdminClasses]);
+    fetchClasses();
+  }, [fetchClasses]);
 
   return (
     <SyllabusContainer>
@@ -59,15 +57,15 @@ const AdminUpdateClass = () => {
         <AddNewClassForm
           isOpen={isOpen}
           toggle={toggle}
-          handleClose={handleCloseModal}
+          fetchClasses={fetchClasses}
         />
       </SyllabusHeadlineWrapper>
       <Line />
       <Classes>
-        <ClassComponent classes={classes} handleClose={handleCloseModal} />
+        <ClassComponent classes={classes} fetchClasses={fetchClasses} />
       </Classes>
     </SyllabusContainer>
   );
 };
 
-export default AdminUpdateClass;
+export default EditorUpdateClass;
