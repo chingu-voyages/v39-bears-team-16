@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { ThemeInterface } from '../../types';
-import { iconStyles } from '../../pages/Member/AdminUpdateClass/styles';
+import { iconStyles } from '../../pages/Editor/Classes/styles';
 
 export const useModalStyles = (theme: ThemeInterface) => {
   return {

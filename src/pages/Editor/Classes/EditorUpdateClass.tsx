@@ -7,8 +7,8 @@ import {
   SyllabusContainer,
   SyllabusHeadline,
   SyllabusHeadlineWrapper,
-} from './AdminUpdateClass.styled';
-import { AddNewClassForm } from './AddNewClassModal';
+} from './EditorUpdateClass.styled';
+import { AddNewClassForm } from './UpdateClassModals/AddNewClassModal';
 import ClassComponent from './ClassComponent';
 import { useModal } from '../../../components/Modal/useModal';
 

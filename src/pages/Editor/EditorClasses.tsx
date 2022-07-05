@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminUpdateClass from '../Member/AdminUpdateClass/AdminUpdateClass';
+import AdminUpdateClass from './Classes/EditorUpdateClass';
 
 const EditorClasses = () => {
   return <AdminUpdateClass />;

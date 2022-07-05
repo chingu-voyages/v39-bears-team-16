@@ -15,7 +15,7 @@ import {
 } from './ClassComponent.styled';
 import AccordionWrapper from '../../../components/Accordion/Accordion';
 import { useModal } from '../../../components/Modal/useModal';
-import { AddNewClassWorkForm } from './AddNewClassWorkModal';
+import { AddNewClassWorkForm } from './UpdateClassModals/AddNewClassWorkModal';
 
 /* eslint no-underscore-dangle: 0 */
 
