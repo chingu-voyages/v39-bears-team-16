@@ -1,36 +1,43 @@
 import React from 'react';
 import planCard1 from '../../assets/img/plan-card-1.png';
+import { PlanInterface } from '../../types';
+import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
 import {
   Card,
-  CardTopNav,
   PlanInfoWrapper,
-  PlanInfo,
-  PlanId,
   PlanNav,
   OptionIcon,
   HeartIcon,
   HeartDisplay,
   PlanDescription,
   PlanImg,
+  PlanCardHeader,
 } from './PlanCard.styled';
-import { PlanInterface } from '../../types';
 
 interface PlanCardProps extends PlanInterface {
   handleClick(): void;
+  dropdownOptions?: JSX.Element;
 }
 
-const PlanCard = ({ name, handleClick, description }: PlanCardProps) => {
+const PlanCard = ({
+  name,
+  handleClick,
+  description,
+  dropdownOptions,
+}: PlanCardProps) => {
+  console.log('dropdownOptions', dropdownOptions);
   return (
-    <Card onClick={handleClick}>
-      <CardTopNav>
-        <div>
-          <PlanId>{name}</PlanId>
-        </div>
-        <PlanInfo>
-          <OptionIcon />
-        </PlanInfo>
-      </CardTopNav>
-      <PlanInfoWrapper>
+    <Card>
+      {/* Plan Info */}
+      <PlanCardHeader>
+        <span>{name}</span>
+        {dropdownOptions ? (
+          <DropDownMenuItem header={<OptionIcon />}>
+            {dropdownOptions}
+          </DropDownMenuItem>
+        ) : null}
+      </PlanCardHeader>
+      <PlanInfoWrapper onClick={handleClick}>
         <PlanImg src={planCard1} alt="" />
       </PlanInfoWrapper>
       <PlanDescription>{description}</PlanDescription>

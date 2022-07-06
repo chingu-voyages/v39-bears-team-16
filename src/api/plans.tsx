@@ -30,3 +30,7 @@ export const updatePlan = ({ planId, ...rest }: AddUpdatePlanProps) => {
     ...rest,
   });
 };
+
+export const deletePlan = ({ planId }) => {
+  return api.delete(`/plans/${planId}`);
+};

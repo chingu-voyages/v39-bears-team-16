@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { logout } from '../../api/logout';
-import { UnderlineMenuItem, HighlightMenuItem } from '../MenuItem';
-import { LogoutIcon } from '../Sidebar/Sidebar.styled';
+import { UnderlineMenuItem } from '../MenuItem';
 import {
   MenuItemWrapper,
   StyledNavbar,
   StyledNavbarSection,
+  LogoutIcon,
 } from './Navbar.styled';
 import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
 import { UserContext } from '../../App';
 import logo from '../../assets/sail-logo/vector/default-monochrome-primary.svg';
+import { StyledDropdownItem } from '../DropDownMenuItem/DropDownMenuItem.styled';
 
 const Navbar = () => {
   const user = useContext(UserContext);
@@ -50,14 +51,10 @@ const Navbar = () => {
             </>
           }
         >
-          <HighlightMenuItem
-            to="/sign-in"
-            menuItemTheme="highlight"
-            onClick={() => handleLogout()}
-          >
+          <StyledDropdownItem onClick={() => handleLogout()}>
             <LogoutIcon />
             Logout
-          </HighlightMenuItem>
+          </StyledDropdownItem>
         </DropDownMenuItem>
       </StyledNavbarSection>
     </StyledNavbar>

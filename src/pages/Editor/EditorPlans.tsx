@@ -13,6 +13,7 @@ import {
   EditorPlansPageContainer,
   StyledPlanCardsContainer,
 } from './EditorPlans.styled';
+import { StyledDropdownItem } from '../../components/DropDownMenuItem/DropDownMenuItem.styled';
 
 const EditorPlans = () => {
   // const user = useContext(UserContext);
@@ -62,14 +63,36 @@ const EditorPlans = () => {
             key={planId}
             handleClick={() => {
               navigate(`/member/editor/plans/${planId}`, { replace: true });
-              // TODO: to be put inside dropdown item "Edit" in PlanCard
-              // toggle();
-              // setModalData({
-              //   type: EditorModalTypes.Update,
-              //   submitCallback: (payload) => updatePlan({ ...payload, planId }),
-              //   ...planData,
-              // });
             }}
+            dropdownOptions={
+              <div>
+                <StyledDropdownItem
+                  onClick={() => {
+                    toggle();
+                    setModalData({
+                      type: EditorModalTypes.Update,
+                      submitCallback: (payload) =>
+                        updatePlan({ ...payload, planId }),
+                      ...planData,
+                    });
+                  }}
+                >
+                  Edit
+                </StyledDropdownItem>
+                <StyledDropdownItem
+                  onClick={() => {
+                    toggle();
+                    setModalData({
+                      type: EditorModalTypes.Delete,
+                      submitCallback: () => deletePlan({ planId }),
+                      ...planData,
+                    });
+                  }}
+                >
+                  Delete
+                </StyledDropdownItem>
+              </div>
+            }
             {...planData}
           />
         ))}

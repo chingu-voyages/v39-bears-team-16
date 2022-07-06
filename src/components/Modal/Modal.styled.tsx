@@ -1,9 +1,13 @@
 import styled from 'styled-components';
+import ReactModal from 'react-modal';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { ThemeInterface } from '../../types';
 import { iconStyles } from '../../pages/Member/AdminUpdateClass/styles';
 
-export const useModalStyles = (theme: ThemeInterface) => {
+export const useModalStyles = (
+  theme: ThemeInterface,
+  customStyles: ReactModal.Styles
+) => {
   return {
     overlay: {
       position: 'fixed',
@@ -13,6 +17,7 @@ export const useModalStyles = (theme: ThemeInterface) => {
       bottom: 0,
       backgroundColor: 'rgba(0, 0, 0, 0.7)',
       zIndex: 20,
+      ...customStyles?.overlay,
     },
     content: {
       position: 'absolute',
@@ -31,6 +36,7 @@ export const useModalStyles = (theme: ThemeInterface) => {
       display: 'flex',
       flexDirection: 'column',
       minHeight: '28rem',
+      ...customStyles?.content,
     },
   } as ReactModal.Styles;
 };

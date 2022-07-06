@@ -4,7 +4,7 @@ import { AxiosResponse } from 'axios';
 
 import { Input, InputField, TextArea } from '../../components/Input';
 import { Modal } from '../../components/Modal/Modal';
-import { Button, PrimaryButton } from '../../components/Button';
+import { Button, PrimaryButton, WarningButton } from '../../components/Button';
 import {
   FormErrorMessages,
   StyledErrorMessage,
@@ -17,7 +17,23 @@ import { planValidationRules } from '../../utilities/validation';
 export enum EditorModalTypes {
   Add = 'add',
   Update = 'update',
+  Delete = 'delete',
 }
+
+const modalText = {
+  [EditorModalTypes.Add]: {
+    titleText: 'Add New Plan',
+    submit: 'Submit',
+  },
+  [EditorModalTypes.Update]: {
+    titleText: 'Update Plan',
+    submit: 'Submit',
+  },
+  [EditorModalTypes.Add]: {
+    titleText: 'Delete Plan',
+    submit: 'Delete',
+  },
+};
 export interface EditorPlanModalProps {
   isOpen: boolean;
   toggle(): void;
@@ -32,6 +48,25 @@ export interface EditorPlanModalProps {
 const defaultPlanValues = {
   name: '',
   description: '',
+};
+
+const DeletePlanModal = ({ onSubmit, name, isOpen, handleCloseModal }) => {
+  return (
+    <Modal
+      titleText="Delete Plan"
+      isOpen={isOpen}
+      onCloseModal={handleCloseModal}
+      primaryAction={
+        <WarningButton type="submit" onClick={onSubmit}>
+          Delete
+        </WarningButton>
+      }
+      secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
+      customStyles={{ content: { minHeight: 'fit-content' } }}
+    >
+      Are you sure you want to delete <strong>{name}</strong>?
+    </Modal>
+  );
 };
 
 export const EditorPlanModal = ({
@@ -75,11 +110,16 @@ export const EditorPlanModal = ({
     }
   }, [reset, name, description]);
 
-  const titleText = type === 'add' ? 'Add New Plan' : 'Update Plan';
-
-  return (
+  return type === EditorModalTypes.Delete ? (
+    <DeletePlanModal
+      onSubmit={onSubmit}
+      name={name}
+      isOpen={isOpen}
+      handleCloseModal={handleCloseModal}
+    />
+  ) : (
     <Modal
-      titleText={titleText}
+      titleText={type === EditorModalTypes.Add ? 'Add New Plan' : 'Update Plan'}
       isOpen={isOpen}
       onCloseModal={handleCloseModal}
       primaryAction={

@@ -14,29 +14,27 @@ export const CardTopNav = styled.section`
   justify-content: space-between;
   background: ${({ theme }) => theme.color.white};
 `;
+
+export const PlanCardHeader = styled.section`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: ${({ theme }) => theme.color.primary};
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding-left: 1em;
+`;
+
 export const PlanInfoWrapper = styled.section`
   background: ${({ theme }) => theme.color.primary};
   position: relative;
   width: 100%;
-  height: 50%;
+  height: 75%;
+  background: ${({ theme }) => theme.color.primary};
   border-bottom: 1.75px solid ${({ theme }) => theme.color.grey};
 `;
-export const PlanInfo = styled.section`
-  padding: 1em;
-  align-items: center;
-`;
-export const PlanId = styled.p`
-  font-size: 1.3rem;
-  font-weight: 600;
-  padding-left: 0.25em;
-  overflow: hidden;
-  white-space: wrap;
-  text-overflow: ellipsis;
-`;
-export const PlanDate = styled.p`
-  color: ${({ theme }) => theme.color.white};
-  font-size: 0.7rem;
-`;
+
 export const PlanImg = styled.img`
   position: absolute;
   bottom: 0;
@@ -44,6 +42,7 @@ export const PlanImg = styled.img`
   width: 100px;
   padding: 0.625em;
 `;
+
 export const PlanNav = styled.section`
   width: 100%;
   height: 10%;
@@ -51,8 +50,8 @@ export const PlanNav = styled.section`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 1.5em;
 `;
+
 export const OptionIcon = styled(BsThreeDotsVertical)`
   color: ${({ theme }) => theme.color.primary};
   padding: 0.125em;

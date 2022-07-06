@@ -14,7 +14,7 @@ interface DropDownMenuItemProps {
 const DropDownMenuItem = ({
   header,
   children,
-  isOpen: dropdownIsOpen,
+  isOpen: dropdownIsOpen = false,
 }: DropDownMenuItemProps) => {
   const [isOpen, setIsOpen] = useState(dropdownIsOpen);
 
