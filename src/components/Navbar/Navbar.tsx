@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { logout } from '../../api/logout';
-import { DarkMenuItem, LightMenuItem } from '../MenuItem';
+import { UnderlineMenuItem, HighlightMenuItem } from '../MenuItem';
 import { LogoutIcon } from '../Sidebar/Sidebar.styled';
-import { StyledNavbar, StyledNavbarSection } from './Navbar.styled';
+import {
+  MenuItemWrapper,
+  StyledNavbar,
+  StyledNavbarSection,
+} from './Navbar.styled';
 import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
 import { UserContext } from '../../App';
-import logo from '../../assets/sail-logo/vector/default-monochrome.svg';
+import logo from '../../assets/sail-logo/vector/default-monochrome-primary.svg';
 
 const Navbar = () => {
   const user = useContext(UserContext);
@@ -21,15 +25,21 @@ const Navbar = () => {
   return (
     <StyledNavbar>
       <StyledNavbarSection>
-        <img src={logo} alt="logo" />
+        <Link to="/member/home">
+          <img src={logo} alt="logo" />
+        </Link>
       </StyledNavbarSection>
       <StyledNavbarSection>
-        <DarkMenuItem to="/member/home" menuItemTheme="dark">
-          Home
-        </DarkMenuItem>
-        <DarkMenuItem to="/member/editor" menuItemTheme="dark">
-          Editor
-        </DarkMenuItem>
+        <MenuItemWrapper>
+          <UnderlineMenuItem to="/member/home" menuItemTheme="underline">
+            Home
+          </UnderlineMenuItem>
+        </MenuItemWrapper>
+        <MenuItemWrapper>
+          <UnderlineMenuItem to="/member/editor" menuItemTheme="underline">
+            Editor
+          </UnderlineMenuItem>
+        </MenuItemWrapper>
       </StyledNavbarSection>
       <StyledNavbarSection>
         <DropDownMenuItem
@@ -40,14 +50,14 @@ const Navbar = () => {
             </>
           }
         >
-          <LightMenuItem
+          <HighlightMenuItem
             to="/sign-in"
-            menuItemTheme="light"
+            menuItemTheme="highlight"
             onClick={() => handleLogout()}
           >
             <LogoutIcon />
             Logout
-          </LightMenuItem>
+          </HighlightMenuItem>
         </DropDownMenuItem>
       </StyledNavbarSection>
     </StyledNavbar>

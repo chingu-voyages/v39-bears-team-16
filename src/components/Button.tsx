@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Button = styled.button`
   display: flex;
   align-items: center;
+  gap: 0.7em;
   justify-content: center;
-  gap: 0.5em;
   border-radius: 3px;
   background-color: ${({ theme }) => theme.color.white};
   padding: 0.5em 1.5em;
@@ -20,7 +20,7 @@ export const Button = styled.button`
 `;
 
 export const PrimaryButton = styled(Button)`
-  background-color: none;
+  background-color: transparent;
   color: ${({ theme }) => theme.color.primary};
   border: 1px solid ${({ theme }) => theme.color.primary};
 
@@ -38,7 +38,6 @@ export const SuccessButton = styled(Button)`
   &:hover {
     background-color: ${({ theme }) => theme.color.darkGreen};
     color: ${({ theme }) => theme.color.white};
-    cursor: pointer;
   }
 `;
 
@@ -48,6 +47,16 @@ export const WarningButton = styled(Button)`
   &:hover {
     background-color: ${({ theme }) => theme.color.darkRed};
     color: ${({ theme }) => theme.color.white};
-    cursor: pointer;
+  }
+`;
+
+export const InvertPrimaryButton = styled(Button)`
+  background-color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.white};
+  // border: 2px solid ${({ theme }) => theme.color.primary};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.darkPrimary};
+    color: ${({ theme }) => theme.color.white};
   }
 `;

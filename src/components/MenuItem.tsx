@@ -3,27 +3,27 @@ import styled, { useTheme } from 'styled-components';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 
 interface MenuItemInterface extends NavLinkProps {
-  menuItemTheme: 'light' | 'dark';
+  menuItemTheme: 'underline' | 'highlight';
 }
 
-const lightActiveStyle = (theme) => ({
+const highlightActiveStyle = (theme) => ({
   fontWeight: '700',
-  backgroundColor: 'rgba(200,200,200,0.5)',
+  backgroundColor: 'rgba(	231, 232, 236, 0.8)',
   borderLeft: `6px solid ${theme.color.primary}`,
 });
 
-const darkActiveStyle = (theme) => ({
+const underlineActiveStyle = (theme) => ({
   fontWeight: '700',
-  borderBottom: `2px solid ${theme.color.yellow}`,
+  borderBottom: `4px solid ${theme.color.yellow}`,
 });
 
 const MenuItem = ({ style, menuItemTheme, ...props }: MenuItemInterface) => {
   const theme = useTheme();
 
   const activeStyle =
-    menuItemTheme === 'light'
-      ? lightActiveStyle(theme)
-      : darkActiveStyle(theme);
+    menuItemTheme === 'highlight'
+      ? highlightActiveStyle(theme)
+      : underlineActiveStyle(theme);
 
   return (
     <NavLink
@@ -36,7 +36,7 @@ const MenuItem = ({ style, menuItemTheme, ...props }: MenuItemInterface) => {
   );
 };
 
-export const LightMenuItem = styled(MenuItem)`
+export const HighlightMenuItem = styled(MenuItem)`
   position: relative;
   text-decoration: none;
   font-size: 1.1rem;
@@ -46,19 +46,21 @@ export const LightMenuItem = styled(MenuItem)`
   gap: 0.5em;
   width: 100%;
   padding: 0.75em;
+  border-left: 6px solid transparent;
 
   &:hover {
-    font-weight: 700;
+    background-color: rgba(231, 232, 236, 0.4);
   }
 `;
 
-export const DarkMenuItem = styled(MenuItem)`
+export const UnderlineMenuItem = styled(MenuItem)`
   text-decoration: none;
   font-size: 1.1rem;
-  color: ${({ theme }) => theme.color.white};
-  padding-bottom: 0.2em;
+  color: ${({ theme }) => theme.color.primary};
+  padding: 0.9em;
 
   &:hover {
-    font-weight: 700;
+    background-color: ${({ theme }) => theme.color.secondary};
+    border-top-radius: 4px;
   }
 `;

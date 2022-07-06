@@ -1,13 +1,10 @@
 import styled from 'styled-components';
-import { HiOutlineHome } from 'react-icons/hi';
-import {
-  BsReverseLayoutTextWindowReverse,
-  BsBoxArrowInDown,
-} from 'react-icons/bs';
+import { BsFillBookmarkStarFill } from 'react-icons/bs';
 import { RiLogoutCircleLine } from 'react-icons/ri';
+import { MdExplore } from 'react-icons/md';
 
 export const SidebarContainer = styled.div`
-  background-color: ${({ theme }) => theme.color.secondary};
+  background-color: ${({ theme }) => theme.color.white};
   position: absolute;
   top: 64px;
   left: 0;
@@ -16,7 +13,6 @@ export const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 64px);
-  border-right: 1px solid ${({ theme }) => theme.color.grey};
 `;
 
 const iconStyles = {
@@ -25,15 +21,14 @@ const iconStyles = {
   color: '#0b173d',
 };
 
-export const HomeIcon = styled(HiOutlineHome)`
+export const FeaturedIcon = styled(MdExplore)`
   ${iconStyles}
 `;
-export const DashboardIcon = styled(BsReverseLayoutTextWindowReverse)`
+
+export const EnrolledIcon = styled(BsFillBookmarkStarFill)`
   ${iconStyles};
 `;
-export const UpdateIcon = styled(BsBoxArrowInDown)`
-  ${iconStyles}
-`;
+
 export const LogoutIcon = styled(RiLogoutCircleLine)`
   ${iconStyles}
 `;

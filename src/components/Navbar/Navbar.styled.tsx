@@ -9,12 +9,13 @@ export const StyledNavbar = styled.nav`
   height: 64px;
   padding: 0 1em;
 
-  background-color: ${({ theme }) => theme.color.primary};
-  color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.primary};
 
   display: grid;
-  grid-template-columns: 20% 1fr 10%;
+  grid-template-columns: 15em 1fr 10%;
   align-items: center;
+  border-bottom: 1px solid ${({ theme }) => theme.color.grey};
 `;
 
 export const StyledNavbarSection = styled.div`
@@ -22,11 +23,15 @@ export const StyledNavbarSection = styled.div`
   align-items: center;
   justify-content: start;
 
-  gap: 2em;
+  gap: 1em;
 
   img {
     max-width: 100%;
-    height: 40px;
+    height: 2rem;
     object-fit: contain;
   }
+`;
+
+export const MenuItemWrapper = styled.div`
+  width: 4rem;
 `;
