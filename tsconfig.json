@@ -15,9 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "noImplicitAny": false,
-    "jsx": "react-jsx",
-    "baseUrl": "src"
+    "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src", "src/styles/AuthButton.tsx"]
 }
-//, "src/styles/AuthButton.tsx"
