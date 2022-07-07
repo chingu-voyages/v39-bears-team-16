@@ -3,11 +3,8 @@ import { Button } from '../Button';
 
 export const StyledDropDownMenuItem = styled.div`
   position: relative;
-<<<<<<< HEAD
   width: 100%;
   background-color: ${({ theme }) => theme.color.white};
-=======
->>>>>>> 0b9c971 (dropdown menu item, edit, delete plan)
 `;
 
 export const StyledDropDownMenuItemHeader = styled.div`
