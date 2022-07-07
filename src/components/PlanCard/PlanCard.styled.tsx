@@ -8,6 +8,10 @@ export const CardContainer = styled(Card)`
   background: ${({ theme }) => theme.color.primary};
   border: 1.75px solid ${({ theme }) => theme.color.grey};
 `;
+export const CardTopNav = styled.section`
+  height: 25%;
+  background: ${({ theme }) => theme.color.white};
+`;
 export const PlanInfoWrapper = styled.section`
   position: relative;
   width: 100%;
@@ -21,9 +25,13 @@ export const PlanInfo = styled.section`
   padding: 15px;
 `;
 export const PlanId = styled.p`
-  color: ${({ theme }) => theme.color.white};
-  font-size: 1.1rem;
+  color: ${({ theme }) => theme.color.primary};
+  font-size: 1.4rem;
   font-weight: 700;
+  padding-left: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 export const PlanDate = styled.p`
   color: ${({ theme }) => theme.color.white};
@@ -40,16 +48,17 @@ export const PlanNav = styled.section`
   width: 100%;
   height: 25%;
   background: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.primary};
+  font-size: 0.5em;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1.75px solid ${({ theme }) => theme.color.grey};
 `;
 export const OptionIcon = styled(BsThreeDotsVertical)`
   position: absolute;
   top: 0.5em;
   right: 0.5em;
-  color: white;
+  color: ${({ theme }) => theme.color.primary};
   padding: 2px;
   font-size: 1.5rem;
 `;

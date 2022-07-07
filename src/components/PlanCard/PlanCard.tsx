@@ -2,6 +2,7 @@ import React from 'react';
 import planCard1 from '../../assets/img/plan-card-1.png';
 import {
   CardContainer,
+  CardTopNav,
   PlanInfoWrapper,
   PlanInfo,
   PlanId,
@@ -20,16 +21,16 @@ const PlanCard = ({ name, handleClick, isAdmin = false }: PlanCardProps) => {
   return (
     <CardContainer onClick={handleClick}>
       {/* Plan Info */}
+      <CardTopNav>
+        <div>
+          <PlanId>{name}</PlanId>
+        </div>
+        <PlanInfo>{isAdmin ? <OptionIcon /> : null}</PlanInfo>
+      </CardTopNav>
       <PlanInfoWrapper>
-        <PlanInfo>
-          <div>
-            <PlanId>{name}</PlanId>
-          </div>
-          {isAdmin ? <OptionIcon /> : null}
-        </PlanInfo>
         <PlanImg src={planCard1} alt="" />
       </PlanInfoWrapper>
-      <PlanNav>{/* Placeholder for icons */}</PlanNav>
+      <PlanNav>{/* Placeholder for description */}</PlanNav>
     </CardContainer>
   );
 };
