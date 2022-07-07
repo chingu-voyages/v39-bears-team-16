@@ -3,7 +3,6 @@ import { Button } from '../Button';
 
 export const StyledDropDownMenuItem = styled.div`
   position: relative;
-  width: 100%;
   background-color: ${({ theme }) => theme.color.white};
 `;
 
