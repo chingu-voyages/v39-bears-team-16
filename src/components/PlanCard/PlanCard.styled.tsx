@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { BsThreeDotsVertical, BsHeart } from 'react-icons/bs';
-import { Card } from '../Card';
 
-export const CardContainer = styled(Card)`
+export const Card = styled.div`
   position: relative;
   border-radius: 0;
   background: ${({ theme }) => theme.color.white};

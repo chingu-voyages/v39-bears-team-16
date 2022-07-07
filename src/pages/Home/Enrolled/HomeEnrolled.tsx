@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PlanCard from '../../../components/PlanCard/PlanCard';
 import { PlanInterface } from '../../../types';
-import { getPlans } from '../../../api/plans';
+import { getEnrolledPlans } from '../../../api/plans';
 import {
   HomePlansPageContainer,
   StyledPlanCardsContainer,
@@ -14,8 +14,9 @@ const HomeEnrolled = () => {
 
   useEffect(() => {
     const fetchPlans = async () => {
-      const { data } = await getPlans();
-      setPlans(data);
+      const { data } = await getEnrolledPlans();
+      const visiblePlans = data.plans.filter(({ visible }) => visible);
+      setPlans(visiblePlans);
     };
 
     fetchPlans();

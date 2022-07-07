@@ -1,7 +1,7 @@
 import React from 'react';
 import planCard1 from '../../assets/img/plan-card-1.png';
 import {
-  CardContainer,
+  Card,
   CardTopNav,
   PlanInfoWrapper,
   PlanInfo,
@@ -21,7 +21,7 @@ interface PlanCardProps extends PlanInterface {
 
 const PlanCard = ({ name, handleClick, description }: PlanCardProps) => {
   return (
-    <CardContainer onClick={handleClick}>
+    <Card onClick={handleClick}>
       <CardTopNav>
         <div>
           <PlanId>{name}</PlanId>
@@ -38,7 +38,7 @@ const PlanCard = ({ name, handleClick, description }: PlanCardProps) => {
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>
-    </CardContainer>
+    </Card>
   );
 };
 

@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { addNewPlan, getPlans } from '../../api/plans';
-import { UserContext } from '../../App';
+import { addNewPlan, getOwnedPlans } from '../../api/plans';
+// import { UserContext } from '../../App';
 import { PrimaryButton } from '../../components/Button';
 import PlanCard from '../../components/PlanCard/PlanCard';
 import { useModal } from '../../components/Modal/useModal';
@@ -15,29 +15,27 @@ import {
 } from './EditorPlans.styled';
 
 const EditorPlans = () => {
-  const { isOpen, toggle } = useModal();
-  const user = useContext(UserContext);
+  // const user = useContext(UserContext);
   const navigate = useNavigate();
   const [plans, setPlans] = useState<PlanInterface[]>([]);
   const [modalData, setModalData] = useState({
     type: EditorModalTypes.Add,
     submitCallback: (payload) => addNewPlan(payload),
   });
+  const { isOpen, toggle } = useModal();
 
   const fetchEditorPlans = useCallback(async () => {
     try {
-      const { data } = await getPlans();
-      const plansCreatedByUser = data.filter(
-        ({ createdBy }) => createdBy === user.email
-      );
-      setPlans(plansCreatedByUser);
+      const { data } = await getOwnedPlans();
+
+      setPlans(data.plans);
     } catch (error) {
       const errors = error as ErrorMessageInterface[];
       if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
         // navigate('/sign-in', { replace: true });
       }
     }
-  }, [user.email]);
+  }, []);
 
   useEffect(() => {
     fetchEditorPlans();

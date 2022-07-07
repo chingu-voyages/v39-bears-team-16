@@ -1,6 +1,5 @@
 export * from './Accordion';
 export * from './Button';
-export * from './Card';
 export * from './DropDownMenuItem';
 export * from './ErrorMessage';
 export * from './Input';
