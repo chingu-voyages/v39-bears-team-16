@@ -33,15 +33,17 @@ const PlanCard = ({
         <div>
           <PlanId>{name}</PlanId>
         </div>
-        <PlanInfo>{isAdmin ? <OptionIcon /> : null}</PlanInfo>
+        <PlanInfo>
+          <OptionIcon />
+        </PlanInfo>
       </CardTopNav>
       <PlanInfoWrapper>
         <PlanImg src={planCard1} alt="" />
       </PlanInfoWrapper>
+      <PlanDescription>{description}</PlanDescription>
       <PlanNav>
         <HeartIcon />
         <HeartDisplay>182</HeartDisplay>
-        <PlanDescription>{description}</PlanDescription>
         {/* Placeholder for description */}
       </PlanNav>
     </CardContainer>

@@ -12,16 +12,18 @@ export const CardTopNav = styled.section`
   height: 25%;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   background: ${({ theme }) => theme.color.white};
 `;
 export const PlanInfoWrapper = styled.section`
   position: relative;
   width: 100%;
-  height: 75%;
+  height: 50%;
   border-bottom: 1.75px solid ${({ theme }) => theme.color.grey};
 `;
 export const PlanInfo = styled.section`
   padding: 15px;
+  align-items: center;
 `;
 export const PlanId = styled.p`
   color: ${({ theme }) => theme.color.primary};
@@ -50,8 +52,9 @@ export const PlanNav = styled.section`
   color: ${({ theme }) => theme.color.primary};
   font-size: 0.5em;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
+  padding: 10px;
 `;
 export const OptionIcon = styled(BsThreeDotsVertical)`
   position: absolute;
@@ -60,23 +63,25 @@ export const OptionIcon = styled(BsThreeDotsVertical)`
   color: ${({ theme }) => theme.color.primary};
   padding: 2px;
   font-size: 1.5rem;
+  margin: 2px;
 `;
 export const HeartIcon = styled(BsHeart)`
   color: ${({ theme }) => theme.color.primary};
   padding: 2px;
   font-size: 1.5rem;
+  margin-right: 4px;
 `;
 export const HeartDisplay = styled.section`
   color: ${({ theme }) => theme.color.primary};
   font-size: 0.8rem;
-  max-width: 10%;
 `;
 export const PlanDescription = styled.section`
-  font-size: 0.8rem;
+  font-size: 1rem;
+  background: ${({ theme }) => theme.color.white};
   color: ${({ theme }) => theme.color.primary};
   overflow: hidden;
   white-space: nowrap;
+  max-height: 15%;
   text-overflow: ellipsis;
-  max-width: 70%;
-  max-height: 90%;
+  padding: 2px;
 `;
