@@ -13,6 +13,7 @@ export interface PlanInterface {
   _id: string;
   name: string;
   thumbnail: string;
+  description: string;
 }
 
 export interface ThemeInterface {

@@ -8,6 +8,9 @@ import {
   PlanId,
   PlanNav,
   OptionIcon,
+  HeartIcon,
+  HeartDisplay,
+  PlanDescription,
   PlanImg,
 } from './PlanCard.styled';
 import { PlanInterface } from '../../types';
@@ -17,7 +20,12 @@ interface PlanCardProps extends PlanInterface {
   isAdmin?: boolean;
 }
 
-const PlanCard = ({ name, handleClick, isAdmin = false }: PlanCardProps) => {
+const PlanCard = ({
+  name,
+  handleClick,
+  isAdmin = false,
+  description,
+}: PlanCardProps) => {
   return (
     <CardContainer onClick={handleClick}>
       {/* Plan Info */}
@@ -30,7 +38,12 @@ const PlanCard = ({ name, handleClick, isAdmin = false }: PlanCardProps) => {
       <PlanInfoWrapper>
         <PlanImg src={planCard1} alt="" />
       </PlanInfoWrapper>
-      <PlanNav>{/* Placeholder for description */}</PlanNav>
+      <PlanNav>
+        <HeartIcon />
+        <HeartDisplay>182</HeartDisplay>
+        <PlanDescription>{description}</PlanDescription>
+        {/* Placeholder for description */}
+      </PlanNav>
     </CardContainer>
   );
 };
