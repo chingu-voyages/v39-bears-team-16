@@ -1,22 +1,22 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { addNewPlan, getOwnedPlans } from '../../api/plans';
-// import { UserContext } from '../../App';
-import { PrimaryButton } from '../../components/Button';
-import PlanCard from '../../components/PlanCard/PlanCard';
-import { useModal } from '../../components/Modal/useModal';
-import { PlanInterface, ErrorMessageInterface } from '../../types';
-import { ERROR_MESSAGES } from '../../utilities/constants';
+import { addNewPlan, getOwnedPlans, updatePlan, deletePlan } from 'api/plans';
+import {
+  PlanCard,
+  StyledDropdownItem,
+  PrimaryButton,
+  useModal,
+} from 'components';
+import { PlanInterface, ErrorMessageInterface } from 'types';
+import { ERROR_MESSAGES } from 'utilities/constants';
 import { EditorModalTypes, EditorPlanModal } from './EditorPlanModal';
 import {
   EditorPlansPageContainer,
   StyledPlanCardsContainer,
 } from './EditorPlans.styled';
-import { StyledDropdownItem } from '../../components/DropDownMenuItem/DropDownMenuItem.styled';
 
 const EditorPlans = () => {
-  // const user = useContext(UserContext);
   const navigate = useNavigate();
   const [plans, setPlans] = useState<PlanInterface[]>([]);
   const [modalData, setModalData] = useState({
@@ -37,6 +37,25 @@ const EditorPlans = () => {
       }
     }
   }, []);
+
+  const toggleVisibility = useCallback(
+    async (plan) => {
+      try {
+        await updatePlan({
+          ...plan,
+          visible: !plan.visible,
+        });
+
+        fetchEditorPlans();
+      } catch (error) {
+        const errors = error as ErrorMessageInterface[];
+        if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
+          // navigate('/sign-in', { replace: true });
+        }
+      }
+    },
+    [fetchEditorPlans]
+  );
 
   useEffect(() => {
     fetchEditorPlans();
@@ -90,6 +109,11 @@ const EditorPlans = () => {
                   }}
                 >
                   Delete
+                </StyledDropdownItem>
+                <StyledDropdownItem
+                  onClick={() => toggleVisibility({ planId, ...planData })}
+                >
+                  {planData.visible ? 'Make private' : 'Make public'}
                 </StyledDropdownItem>
               </div>
             }

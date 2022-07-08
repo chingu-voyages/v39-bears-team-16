@@ -14,6 +14,7 @@ export interface PlanInterface {
   name: string;
   thumbnail: string;
   description: string;
+  visible: boolean;
 }
 
 export interface ThemeInterface {

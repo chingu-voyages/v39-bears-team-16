@@ -37,7 +37,7 @@ export const AuthHead = styled.h1`
   color: ${({ theme }) => theme.color.primary};
   font-weight: 500;
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 1;
 `;
 

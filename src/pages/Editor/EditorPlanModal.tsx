@@ -20,20 +20,6 @@ export enum EditorModalTypes {
   Delete = 'delete',
 }
 
-const modalText = {
-  [EditorModalTypes.Add]: {
-    titleText: 'Add New Plan',
-    submit: 'Submit',
-  },
-  [EditorModalTypes.Update]: {
-    titleText: 'Update Plan',
-    submit: 'Submit',
-  },
-  [EditorModalTypes.Add]: {
-    titleText: 'Delete Plan',
-    submit: 'Delete',
-  },
-};
 export interface EditorPlanModalProps {
   isOpen: boolean;
   toggle(): void;

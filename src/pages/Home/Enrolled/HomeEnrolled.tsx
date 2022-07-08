@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PlanCard from '../../../components/PlanCard/PlanCard';
-import { PlanInterface } from '../../../types';
-import { getEnrolledPlans } from '../../../api/plans';
+import { PlanCard, StyledDropdownItem } from 'components';
+import { PlanInterface } from 'types';
+import { getEnrolledPlans } from 'api/plans';
 import {
   HomePlansPageContainer,
   StyledPlanCardsContainer,
@@ -30,6 +30,7 @@ const HomeEnrolled = () => {
             _id={_id}
             key={_id}
             handleClick={() => navigate(`/member/plans/${_id}`)}
+            dropdownOptions={<StyledDropdownItem>Unenroll</StyledDropdownItem>}
             {...planData}
           />
         ))}

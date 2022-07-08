@@ -22,8 +22,8 @@ export const PlanCardHeader = styled.section`
 
   color: ${({ theme }) => theme.color.primary};
   font-size: 1.1rem;
-  font-weight: 700;
-  padding-left: 1em;
+  font-weight: 600;
+  padding: 1em;
 `;
 
 export const PlanInfoWrapper = styled.section`

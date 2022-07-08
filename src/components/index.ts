@@ -6,4 +6,5 @@ export * from './Input';
 export * from './MenuItem';
 export * from './Modal';
 export * from './Navbar';
+export * from './PlanCard';
 export * from './Sidebar';

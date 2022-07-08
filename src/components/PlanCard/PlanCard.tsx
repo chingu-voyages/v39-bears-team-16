@@ -19,13 +19,12 @@ interface PlanCardProps extends PlanInterface {
   dropdownOptions?: JSX.Element;
 }
 
-const PlanCard = ({
+export const PlanCard = ({
   name,
   handleClick,
   description,
   dropdownOptions,
 }: PlanCardProps) => {
-  console.log('dropdownOptions', dropdownOptions);
   return (
     <Card>
       {/* Plan Info */}
@@ -48,5 +47,3 @@ const PlanCard = ({
     </Card>
   );
 };
-
-export default PlanCard;
