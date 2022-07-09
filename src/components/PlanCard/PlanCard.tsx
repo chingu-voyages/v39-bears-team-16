@@ -20,12 +20,7 @@ interface PlanCardProps extends PlanInterface {
   isAdmin?: boolean;
 }
 
-const PlanCard = ({
-  name,
-  handleClick,
-  isAdmin = false,
-  description,
-}: PlanCardProps) => {
+const PlanCard = ({ name, handleClick, description }: PlanCardProps) => {
   return (
     <CardContainer onClick={handleClick}>
       {/* Plan Info */}
