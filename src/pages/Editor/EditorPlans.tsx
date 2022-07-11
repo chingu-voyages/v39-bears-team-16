@@ -72,7 +72,6 @@ const EditorPlans = () => {
               //   ...planData,
               // });
             }}
-            isAdmin
             {...planData}
           />
         ))}

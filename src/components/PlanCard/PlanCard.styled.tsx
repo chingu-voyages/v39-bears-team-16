@@ -5,7 +5,7 @@ import { Card } from '../Card';
 export const CardContainer = styled(Card)`
   position: relative;
   border-radius: 0;
-  background: ${({ theme }) => theme.color.primary};
+  background: ${({ theme }) => theme.color.white};
   border: 1px solid ${({ theme }) => theme.color.primary};
 `;
 export const CardTopNav = styled.section`
@@ -16,6 +16,7 @@ export const CardTopNav = styled.section`
   background: ${({ theme }) => theme.color.white};
 `;
 export const PlanInfoWrapper = styled.section`
+  background: ${({ theme }) => theme.color.primary};
   position: relative;
   width: 100%;
   height: 50%;
@@ -26,7 +27,6 @@ export const PlanInfo = styled.section`
   align-items: center;
 `;
 export const PlanId = styled.p`
-  color: ${({ theme }) => theme.color.primary};
   font-size: 1.3rem;
   font-weight: 600;
   padding-left: 6px;
@@ -48,13 +48,11 @@ export const PlanImg = styled.img`
 export const PlanNav = styled.section`
   width: 100%;
   height: 25%;
-  background: ${({ theme }) => theme.color.white};
-  color: ${({ theme }) => theme.color.primary};
-  font-size: 0.5em;
+  font-size: 0.5rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 10px;
+  padding: 1em;
 `;
 export const OptionIcon = styled(BsThreeDotsVertical)`
   position: absolute;
@@ -77,7 +75,6 @@ export const HeartDisplay = styled.section`
 `;
 export const PlanDescription = styled.section`
   font-size: 1rem;
-  background: ${({ theme }) => theme.color.white};
   color: ${({ theme }) => theme.color.primary};
   overflow: hidden;
   white-space: nowrap;

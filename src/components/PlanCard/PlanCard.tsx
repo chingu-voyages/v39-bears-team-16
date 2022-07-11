@@ -17,13 +17,11 @@ import { PlanInterface } from '../../types';
 
 interface PlanCardProps extends PlanInterface {
   handleClick(): void;
-  isAdmin?: boolean;
 }
 
 const PlanCard = ({ name, handleClick, description }: PlanCardProps) => {
   return (
     <CardContainer onClick={handleClick}>
-      {/* Plan Info */}
       <CardTopNav>
         <div>
           <PlanId>{name}</PlanId>
@@ -39,7 +37,6 @@ const PlanCard = ({ name, handleClick, description }: PlanCardProps) => {
       <PlanNav>
         <HeartIcon />
         <HeartDisplay>182</HeartDisplay>
-        {/* Placeholder for description */}
       </PlanNav>
     </CardContainer>
   );
