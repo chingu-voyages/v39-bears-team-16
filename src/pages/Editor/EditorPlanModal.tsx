@@ -5,10 +5,7 @@ import { AxiosResponse } from 'axios';
 import { Input, InputField, TextArea } from '../../components/Input';
 import { Modal } from '../../components/Modal/Modal';
 import { Button, PrimaryButton, WarningButton } from '../../components/Button';
-import {
-  FormErrorMessages,
-  StyledErrorMessage,
-} from '../../components/ErrorMessage';
+import { StyledErrorMessage } from '../../components/ErrorMessage';
 import { Form } from '../../components/Form';
 import { AddUpdatePlanProps } from '../../api/plans';
 import { ErrorMessageInterface } from '../../types';
@@ -116,26 +113,38 @@ export const EditorPlanModal = ({
       secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
     >
       <Form id="add-update-plan-form" onSubmit={handleSubmit(onSubmit)}>
-        <InputField htmlFor="name">
-          <span>Plan Name</span>
-          <Input
-            type="text"
-            id="name"
-            placeholder="Enter Plan Name"
-            {...register('name', planValidationRules.name)}
-          />
-        </InputField>
-        <InputField htmlFor="description">
-          <span>Plan Description</span>
-          <TextArea
-            id="description"
-            placeholder="Enter some description about the plan"
-            {...register('description', planValidationRules.description)}
-          />
-        </InputField>
-        {Object.keys(formErrors).length > 0 && (
-          <FormErrorMessages errors={formErrors} />
-        )}
+        <div>
+          <InputField htmlFor="name">
+            <span>Plan Name</span>
+            <Input
+              type="text"
+              id="name"
+              placeholder="Enter Plan Name"
+              {...register('name', planValidationRules.name)}
+              hasError={Boolean(formErrors.name?.message)}
+            />
+          </InputField>
+          {formErrors.name?.message ? (
+            <StyledErrorMessage>{formErrors.name?.message}</StyledErrorMessage>
+          ) : null}
+        </div>
+
+        <div>
+          <InputField htmlFor="description">
+            <span>Plan Description</span>
+            <TextArea
+              id="description"
+              placeholder="Enter some description about the plan"
+              {...register('description', planValidationRules.description)}
+              hasError={Boolean(formErrors.description?.message)}
+            />
+          </InputField>
+          {formErrors.description?.message ? (
+            <StyledErrorMessage>
+              {formErrors.description?.message}
+            </StyledErrorMessage>
+          ) : null}
+        </div>
         {errorMessages?.map(({ msg }) => (
           <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
         ))}

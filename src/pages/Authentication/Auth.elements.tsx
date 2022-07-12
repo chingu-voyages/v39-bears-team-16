@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Input, InvertPrimaryButton } from 'components';
-
-interface AuthFieldProps {
-  hasError?: boolean;
-}
+import { InputFieldProps } from 'types';
 
 export const AuthCard = styled.section`
   position: relative;
@@ -55,7 +52,7 @@ export const AuthForm = styled.form`
   width: 90%;
 `;
 
-export const AuthField = styled.div<AuthFieldProps>`
+export const AuthField = styled.div<InputFieldProps>`
   border-radius: 4px;
   border: 1px solid ${({ theme }) => theme.color.primary};
   border-color: ${({ hasError, theme }) => hasError && theme.color.red};

@@ -22,3 +22,7 @@ export interface ThemeInterface {
     [x: string]: string;
   };
 }
+
+export interface InputFieldProps {
+  hasError?: boolean;
+}
