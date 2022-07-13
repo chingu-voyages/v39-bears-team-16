@@ -36,7 +36,7 @@ const PlanCard = ({ name, handleClick, description }: PlanCardProps) => {
       <PlanDescription>{description}</PlanDescription>
       <PlanNav>
         <HeartIcon />
-        <HeartDisplay>182</HeartDisplay>
+        <HeartDisplay />
       </PlanNav>
     </CardContainer>
   );
