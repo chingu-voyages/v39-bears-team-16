@@ -23,13 +23,13 @@ export const PlanInfoWrapper = styled.section`
   border-bottom: 1.75px solid ${({ theme }) => theme.color.grey};
 `;
 export const PlanInfo = styled.section`
-  padding: 15px;
+  padding: 1em;
   align-items: center;
 `;
 export const PlanId = styled.p`
   font-size: 1.3rem;
   font-weight: 600;
-  padding-left: 6px;
+  padding-left: 0.25em;
   overflow: hidden;
   white-space: wrap;
   text-overflow: ellipsis;
@@ -43,7 +43,7 @@ export const PlanImg = styled.img`
   bottom: 0;
   right: 0;
   width: 100px;
-  padding: 8px;
+  padding: 0.625em;
 `;
 export const PlanNav = styled.section`
   width: 100%;
@@ -56,7 +56,7 @@ export const PlanNav = styled.section`
 `;
 export const OptionIcon = styled(BsThreeDotsVertical)`
   color: ${({ theme }) => theme.color.primary};
-  padding: 2px;
+  padding: 0.125em;
   font-size: 1.5rem;
   margin: 2px;
 `;
@@ -77,5 +77,5 @@ export const PlanDescription = styled.section`
   white-space: nowrap;
   height: 20%;
   text-overflow: ellipsis;
-  padding: 2px;
+  padding: 0.125em;
 `;
