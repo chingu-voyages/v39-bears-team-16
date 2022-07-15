@@ -30,7 +30,6 @@ const HomeEnrolled = () => {
             _id={_id}
             key={_id}
             handleClick={() => navigate(`/member/plans/${_id}`)}
-            isAdmin
             {...planData}
           />
         ))}

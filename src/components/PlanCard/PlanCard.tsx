@@ -2,34 +2,42 @@ import React from 'react';
 import planCard1 from '../../assets/img/plan-card-1.png';
 import {
   CardContainer,
+  CardTopNav,
   PlanInfoWrapper,
   PlanInfo,
   PlanId,
   PlanNav,
   OptionIcon,
+  HeartIcon,
+  HeartDisplay,
+  PlanDescription,
   PlanImg,
 } from './PlanCard.styled';
 import { PlanInterface } from '../../types';
 
 interface PlanCardProps extends PlanInterface {
   handleClick(): void;
-  isAdmin?: boolean;
 }
 
-const PlanCard = ({ name, handleClick, isAdmin = false }: PlanCardProps) => {
+const PlanCard = ({ name, handleClick, description }: PlanCardProps) => {
   return (
     <CardContainer onClick={handleClick}>
-      {/* Plan Info */}
-      <PlanInfoWrapper>
+      <CardTopNav>
+        <div>
+          <PlanId>{name}</PlanId>
+        </div>
         <PlanInfo>
-          <div>
-            <PlanId>{name}</PlanId>
-          </div>
-          {isAdmin ? <OptionIcon /> : null}
+          <OptionIcon />
         </PlanInfo>
+      </CardTopNav>
+      <PlanInfoWrapper>
         <PlanImg src={planCard1} alt="" />
       </PlanInfoWrapper>
-      <PlanNav>{/* Placeholder for icons */}</PlanNav>
+      <PlanDescription>{description}</PlanDescription>
+      <PlanNav>
+        <HeartIcon />
+        <HeartDisplay />
+      </PlanNav>
     </CardContainer>
   );
 };
