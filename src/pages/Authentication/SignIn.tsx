@@ -70,7 +70,7 @@ const SignIn = ({ setCookie }) => {
         <CookieRequestBanner />
         <AuthHeaderWrapper>
           <img src={logo} alt="sail-logo" />
-          <AuthHead>Log in to Sail</AuthHead>
+          <AuthHead>Log in</AuthHead>
         </AuthHeaderWrapper>
         <GithubLoginButton />
 

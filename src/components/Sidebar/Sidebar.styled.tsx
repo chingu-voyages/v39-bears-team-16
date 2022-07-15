@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { BsFillBookmarkStarFill } from 'react-icons/bs';
-import { RiLogoutCircleLine } from 'react-icons/ri';
+import { BsFillBookmarkStarFill, BsBoxArrowInDown } from 'react-icons/bs';
 import { MdExplore } from 'react-icons/md';
 
 export const SidebarContainer = styled.div`
@@ -28,7 +27,6 @@ export const FeaturedIcon = styled(MdExplore)`
 export const EnrolledIcon = styled(BsFillBookmarkStarFill)`
   ${iconStyles};
 `;
-
-export const LogoutIcon = styled(RiLogoutCircleLine)`
+export const UpdateIcon = styled(BsBoxArrowInDown)`
   ${iconStyles}
 `;

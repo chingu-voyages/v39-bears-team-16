@@ -1,3 +1,4 @@
+import { RiLogoutCircleLine } from 'react-icons/ri';
 import styled from 'styled-components';
 
 export const StyledNavbar = styled.nav`
@@ -34,4 +35,7 @@ export const StyledNavbarSection = styled.div`
 
 export const MenuItemWrapper = styled.div`
   width: 4rem;
+`;
+export const LogoutIcon = styled(RiLogoutCircleLine)`
+  font-size: 1.3rem;
 `;

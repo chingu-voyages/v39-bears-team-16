@@ -4,11 +4,8 @@ import { AxiosResponse } from 'axios';
 
 import { Input, InputField, TextArea } from '../../components/Input';
 import { Modal } from '../../components/Modal/Modal';
-import { Button, PrimaryButton } from '../../components/Button';
-import {
-  FormErrorMessages,
-  StyledErrorMessage,
-} from '../../components/ErrorMessage';
+import { Button, PrimaryButton, WarningButton } from '../../components/Button';
+import { StyledErrorMessage } from '../../components/ErrorMessage';
 import { Form } from '../../components/Form';
 import { AddUpdatePlanProps } from '../../api/plans';
 import { ErrorMessageInterface } from '../../types';
@@ -17,7 +14,9 @@ import { planValidationRules } from '../../utilities/validation';
 export enum EditorModalTypes {
   Add = 'add',
   Update = 'update',
+  Delete = 'delete',
 }
+
 export interface EditorPlanModalProps {
   isOpen: boolean;
   toggle(): void;
@@ -32,6 +31,25 @@ export interface EditorPlanModalProps {
 const defaultPlanValues = {
   name: '',
   description: '',
+};
+
+const DeletePlanModal = ({ onSubmit, name, isOpen, handleCloseModal }) => {
+  return (
+    <Modal
+      titleText="Delete Plan"
+      isOpen={isOpen}
+      onCloseModal={handleCloseModal}
+      primaryAction={
+        <WarningButton type="submit" onClick={onSubmit}>
+          Delete
+        </WarningButton>
+      }
+      secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
+      customStyles={{ content: { minHeight: 'fit-content' } }}
+    >
+      Are you sure you want to delete <strong>{name}</strong>?
+    </Modal>
+  );
 };
 
 export const EditorPlanModal = ({
@@ -75,11 +93,16 @@ export const EditorPlanModal = ({
     }
   }, [reset, name, description]);
 
-  const titleText = type === 'add' ? 'Add New Plan' : 'Update Plan';
-
-  return (
+  return type === EditorModalTypes.Delete ? (
+    <DeletePlanModal
+      onSubmit={onSubmit}
+      name={name}
+      isOpen={isOpen}
+      handleCloseModal={handleCloseModal}
+    />
+  ) : (
     <Modal
-      titleText={titleText}
+      titleText={type === EditorModalTypes.Add ? 'Add New Plan' : 'Update Plan'}
       isOpen={isOpen}
       onCloseModal={handleCloseModal}
       primaryAction={
@@ -90,26 +113,38 @@ export const EditorPlanModal = ({
       secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
     >
       <Form id="add-update-plan-form" onSubmit={handleSubmit(onSubmit)}>
-        <InputField htmlFor="name">
-          <span>Plan Name</span>
-          <Input
-            type="text"
-            id="name"
-            placeholder="Enter Plan Name"
-            {...register('name', planValidationRules.name)}
-          />
-        </InputField>
-        <InputField htmlFor="description">
-          <span>Plan Description</span>
-          <TextArea
-            id="description"
-            placeholder="Enter some description about the plan"
-            {...register('description', planValidationRules.description)}
-          />
-        </InputField>
-        {Object.keys(formErrors).length > 0 && (
-          <FormErrorMessages errors={formErrors} />
-        )}
+        <div>
+          <InputField htmlFor="name">
+            <span>Plan Name</span>
+            <Input
+              type="text"
+              id="name"
+              placeholder="Enter Plan Name"
+              {...register('name', planValidationRules.name)}
+              hasError={Boolean(formErrors.name?.message)}
+            />
+          </InputField>
+          {formErrors.name?.message ? (
+            <StyledErrorMessage>{formErrors.name?.message}</StyledErrorMessage>
+          ) : null}
+        </div>
+
+        <div>
+          <InputField htmlFor="description">
+            <span>Plan Description</span>
+            <TextArea
+              id="description"
+              placeholder="Enter some description about the plan"
+              {...register('description', planValidationRules.description)}
+              hasError={Boolean(formErrors.description?.message)}
+            />
+          </InputField>
+          {formErrors.description?.message ? (
+            <StyledErrorMessage>
+              {formErrors.description?.message}
+            </StyledErrorMessage>
+          ) : null}
+        </div>
         {errorMessages?.map(({ msg }) => (
           <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
         ))}

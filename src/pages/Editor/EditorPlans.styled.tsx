@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export const EditorPlansPageContainer = styled.div`
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 2em 4em;
-  overflow: auto;
+  overflow: hidden;
   height: calc(100vh - 64px);
 `;
 

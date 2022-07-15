@@ -6,7 +6,7 @@ export const darkTheme = {
     teal: '#2CA58D',
     blue: '#4377C1',
     orange: '#FD7E14',
-    red: '#EE2D21',
+    red: '#d82c0d',
     darkRed: '#A31910',
     black: '#0d1117',
     pureBlack: '#000000',

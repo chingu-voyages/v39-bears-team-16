@@ -19,6 +19,7 @@ export interface ModalProps {
   primaryAction: ReactNode;
   secondaryAction?: ReactNode | undefined;
   children: ReactNode;
+  customStyles?: ReactModal.Styles;
 }
 
 export const Modal = ({
@@ -28,9 +29,13 @@ export const Modal = ({
   primaryAction,
   secondaryAction,
   children,
+  customStyles,
 }: ModalProps) => {
   const theme = useTheme();
-  const styles = useModalStyles(theme as ThemeInterface);
+  const styles = useModalStyles(
+    theme as ThemeInterface,
+    customStyles as ReactModal.Styles
+  );
 
   return (
     <ReactModal
