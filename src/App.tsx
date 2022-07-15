@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { useCookies } from 'react-cookie';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { darkTheme } from './theme';
 import { GlobalStyle } from './global-style';
 import SignUp from './pages/Authentication/SignUp';
@@ -15,7 +16,7 @@ import EditorPlans from './pages/Editor/EditorPlans';
 import EditorClasses from './pages/Editor/EditorClasses';
 import HomeEnrolled from './pages/Home/Enrolled/HomeEnrolled';
 import HomeFeatured from './pages/Home/Featured/HomeFeatured';
-import 'react-toastify/dist/ReactToastify.css';
+import PlanClassesComponent from './pages/Home/PlanClassesComponent';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const UserContext = createContext<any | null>(null);
@@ -56,7 +57,7 @@ const App = () => {
             <Route path="plans/:id" element={<EditorClasses />} />
             <Route index element={<Navigate to="plans" replace />} />
           </Route>
-          <Route path="plans/:planId" />
+          <Route path="plans/:planId" element={<PlanClassesComponent />} />
           <Route index element={<Navigate to="home" replace />} />
         </Route>
       </Routes>
