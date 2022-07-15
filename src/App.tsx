@@ -14,6 +14,7 @@ import EditorPlans from './pages/Editor/EditorPlans';
 import EditorClasses from './pages/Editor/EditorClasses';
 import HomeEnrolled from './pages/Home/Enrolled/HomeEnrolled';
 import HomeFeatured from './pages/Home/Featured/HomeFeatured';
+import PlanClassesComponent from './pages/Home/PlanClassesComponent';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const UserContext = createContext<any | null>(null);
@@ -53,7 +54,7 @@ const App = () => {
             <Route path="plans/:id" element={<EditorClasses />} />
             <Route index element={<Navigate to="plans" replace />} />
           </Route>
-          <Route path="plans/:planId" />
+          <Route path="plans/:planId" element={<PlanClassesComponent />} />
           <Route index element={<Navigate to="home" replace />} />
         </Route>
       </Routes>
