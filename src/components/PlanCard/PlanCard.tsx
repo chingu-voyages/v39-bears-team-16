@@ -3,7 +3,8 @@ import planCard1 from '../../assets/img/plan-card-1.png';
 import { PlanInterface } from '../../types';
 import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
 import {
-  Card,
+  CardContainer,
+  CardTopNav,
   PlanInfoWrapper,
   PlanNav,
   OptionIcon,
@@ -11,7 +12,6 @@ import {
   HeartDisplay,
   PlanDescription,
   PlanImg,
-  PlanCardHeader,
 } from './PlanCard.styled';
 
 interface PlanCardProps extends PlanInterface {
@@ -26,16 +26,16 @@ export const PlanCard = ({
   dropdownOptions,
 }: PlanCardProps) => {
   return (
-    <Card>
+    <CardContainer>
       {/* Plan Info */}
-      <PlanCardHeader>
+      <CardTopNav>
         <span>{name}</span>
         {dropdownOptions ? (
           <DropDownMenuItem header={<OptionIcon />}>
             {dropdownOptions}
           </DropDownMenuItem>
         ) : null}
-      </PlanCardHeader>
+      </CardTopNav>
       <PlanInfoWrapper onClick={handleClick}>
         <PlanImg src={planCard1} alt="" />
       </PlanInfoWrapper>
@@ -44,6 +44,6 @@ export const PlanCard = ({
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>
-    </Card>
+    </CardContainer>
   );
 };
