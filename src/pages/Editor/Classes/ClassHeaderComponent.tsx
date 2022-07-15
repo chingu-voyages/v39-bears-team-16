@@ -1,5 +1,5 @@
 import React from 'react';
-import { useModal } from '../../../components/Modal/useModal';
+import { useModal } from 'components/Modal/useModal';
 import {
   StyledClassHeaderWrapper,
   ClassTitleWrapper,
@@ -7,8 +7,8 @@ import {
   EditClassIcon,
   TrashIcon,
   ClassDescription,
-} from './ClassComponent.styled';
-import { DeleteClassModal } from './UpdateClassModals/DeleteClassModal';
+} from 'pages/Editor/Classes/ClassComponent.styled';
+import { DeleteClassModal } from 'pages/Editor/Classes/UpdateClassModals/DeleteClassModal';
 
 /* eslint no-underscore-dangle: 0 */
 

@@ -8,13 +8,13 @@ import {
   StyledClassItem,
   StyledClassItemsContainer,
   TrashIcon,
-} from './ClassComponent.styled';
-import AccordionWrapper from '../../../components/Accordion/Accordion';
-import { useModal } from '../../../components/Modal/useModal';
+} from 'pages/Editor/Classes/ClassComponent.styled';
+import AccordionWrapper from 'components/Accordion/Accordion';
+import { useModal } from 'components/Modal/useModal';
 
-import { AddNewClassWorkForm } from './UpdateClassModals/AddNewClassWorkModal';
+import { AddNewClassWorkForm } from 'pages/Editor/Classes/UpdateClassModals/AddNewClassWorkModal';
 
-import ClassHeaderComponent from './ClassHeaderComponent';
+import ClassHeaderComponent from 'pages/Editor/Classes/ClassHeaderComponent';
 
 /* eslint no-underscore-dangle: 0 */
 

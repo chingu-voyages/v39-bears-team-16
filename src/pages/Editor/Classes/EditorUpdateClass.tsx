@@ -7,15 +7,15 @@ import {
   SyllabusContainer,
   SyllabusHeadline,
   SyllabusHeadlineWrapper,
-} from './EditorUpdateClass.styled';
-import { AddNewClassForm } from './UpdateClassModals/AddNewClassModal';
-import ClassComponent from './ClassComponent';
-import { useModal } from '../../../components/Modal/useModal';
+} from 'pages/Editor/Classes/EditorUpdateClass.styled';
+import { AddNewClassForm } from 'pages/Editor/Classes/UpdateClassModals/AddNewClassModal';
+import ClassComponent from 'pages/Editor/Classes/ClassComponent';
+import { useModal } from 'components/Modal/useModal';
 
-import { ErrorMessageInterface } from '../../../types';
-import { ERROR_MESSAGES } from '../../../utilities/constants';
-import { getPlanClasses } from '../../../api/classes';
-import { PrimaryButton } from '../../../components/Button';
+import { ErrorMessageInterface } from 'types';
+import { ERROR_MESSAGES } from 'utilities/constants';
+import { getPlanClasses } from 'api/classes';
+import { PrimaryButton } from 'components/Button';
 
 interface ClassComponentDataProps {
   _id: string;

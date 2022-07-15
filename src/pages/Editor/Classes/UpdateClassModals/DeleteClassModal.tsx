@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { deleteClass } from '../../../../api/classes';
-
-import { Modal } from '../../../../components/Modal/Modal';
-import { Button, PrimaryButton } from '../../../../components/Button';
-import { ErrorMessageInterface } from '../../../../types';
-import { StyledErrorMessage } from '../../../../components/ErrorMessage';
+import { deleteClass } from 'api/classes';
+import { Modal } from 'components/Modal/Modal';
+import { Button, WarningButton } from 'components/Button';
+import { ErrorMessageInterface } from 'types';
+import { StyledErrorMessage } from 'components/ErrorMessage';
 
 const Container = styled.div`
   display: flex;
@@ -51,17 +50,14 @@ export const DeleteClassModal = ({
       setErrorMessages(error as ErrorMessageInterface[]);
     }
   };
-  const handleCancelModal = () => {
-    toggle();
-  };
 
   return (
     <Modal
       titleText={className}
       isOpen={isOpen}
       onCloseModal={toggle}
-      primaryAction={<PrimaryButton onClick={handleSubmit}>Yes</PrimaryButton>}
-      secondaryAction={<Button onClick={handleCancelModal}>No</Button>}
+      primaryAction={<WarningButton onClick={handleSubmit}>Yes</WarningButton>}
+      secondaryAction={<Button onClick={toggle}>No</Button>}
     >
       <Container>
         <Text>
