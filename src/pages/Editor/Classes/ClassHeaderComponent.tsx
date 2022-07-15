@@ -19,7 +19,7 @@ interface itemProps {
   subject: string;
   classworks?: [];
 }
-interface ClassComponentDataProps {
+interface ClassHeaderComponentProps {
   item: itemProps;
   handleClose(): void;
 }
@@ -27,7 +27,7 @@ interface ClassComponentDataProps {
 const ClassHeaderComponent = ({
   handleClose,
   item,
-}: ClassComponentDataProps) => {
+}: ClassHeaderComponentProps) => {
   const { isOpen, toggle } = useModal();
 
   return (
