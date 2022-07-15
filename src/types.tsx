@@ -9,6 +9,21 @@ export interface ErrorMessageInterface {
   param?: string;
 }
 
+export interface ClassworkInterface {
+  _id: string;
+  name: string;
+  link: string;
+  type: string;
+  description: string;
+  completed: boolean;
+}
+export interface ClassInterface {
+  _id: string;
+  name: string;
+  description: string;
+  classworks: ClassworkInterface[];
+}
+
 export interface PlanInterface {
   _id: string;
   name: string;
