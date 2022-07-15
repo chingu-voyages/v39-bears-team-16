@@ -43,20 +43,20 @@ export const SuccessButton = styled(Button)`
 
 export const WarningButton = styled(Button)`
   background-color: ${({ theme }) => theme.color.red};
+  color: ${({ theme }) => theme.color.white};
 
   &:hover {
     background-color: ${({ theme }) => theme.color.darkRed};
-    color: ${({ theme }) => theme.color.white};
   }
 `;
 
 export const InvertPrimaryButton = styled(Button)`
   background-color: ${({ theme }) => theme.color.primary};
   color: ${({ theme }) => theme.color.white};
-  // border: 2px solid ${({ theme }) => theme.color.primary};
 
   &:hover {
     background-color: ${({ theme }) => theme.color.darkPrimary};
     color: ${({ theme }) => theme.color.white};
+    cursor: pointer;
   }
 `;

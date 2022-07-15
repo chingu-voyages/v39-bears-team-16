@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import { InputFieldProps } from 'types';
 
-export const Input = styled.input`
+export const Input = styled.input<InputFieldProps>`
   background: none;
   border: 1px solid ${({ theme }) => theme.color.black};
+  border-color: ${({ hasError, theme }) => hasError && theme.color.red};
   border-radius: 4px;
   min-height: 40px;
   width: 11rem;
@@ -21,9 +23,10 @@ export const InputField = styled.label`
   flex-direction: column;
 `;
 
-export const TextArea = styled.textarea`
+export const TextArea = styled.textarea<InputFieldProps>`
   background: none;
   border: 1px solid ${({ theme }) => theme.color.black};
+  border-color: ${({ hasError, theme }) => hasError && theme.color.red};
   border-radius: 4px;
   min-height: 8rem;
   width: 11rem;

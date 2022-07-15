@@ -14,10 +14,15 @@ export interface PlanInterface {
   name: string;
   thumbnail: string;
   description: string;
+  visible: boolean;
 }
 
 export interface ThemeInterface {
   color: {
     [x: string]: string;
   };
+}
+
+export interface InputFieldProps {
+  hasError?: boolean;
 }

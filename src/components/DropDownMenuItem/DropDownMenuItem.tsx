@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import useOnClickOutside from 'hooks/useOnClickOutside';
+import React, { useRef, useState } from 'react';
 import {
   StlyedDropDownMenuItemBody,
   StyledDropDownMenuItemHeader,
@@ -14,12 +15,15 @@ interface DropDownMenuItemProps {
 const DropDownMenuItem = ({
   header,
   children,
-  isOpen: dropdownIsOpen,
+  isOpen: dropdownIsOpen = false,
 }: DropDownMenuItemProps) => {
   const [isOpen, setIsOpen] = useState(dropdownIsOpen);
+  const container = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(container.current, () => setIsOpen(false));
 
   return (
-    <StyledDropDownMenuItem>
+    <StyledDropDownMenuItem ref={container}>
       <StyledDropDownMenuItemHeader onClick={() => setIsOpen(!isOpen)}>
         {header}
       </StyledDropDownMenuItemHeader>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PlanCard from '../../../components/PlanCard/PlanCard';
-import { PlanInterface } from '../../../types';
-import { getPlans } from '../../../api/plans';
+import { PlanCard, StyledDropdownItem } from 'components';
+import { PlanInterface } from 'types';
+import { getPlans } from 'api/plans';
 import {
   HomePlansPageContainer,
   StyledPlanCardsContainer,
@@ -15,7 +15,7 @@ const HomeEnrolled = () => {
   useEffect(() => {
     const fetchPlans = async () => {
       const { data } = await getPlans();
-      const visiblePlans = data.filter(({ visibility }) => visibility === true);
+      const visiblePlans = data.plans.filter(({ visible }) => visible);
       setPlans(visiblePlans);
     };
 
@@ -30,6 +30,7 @@ const HomeEnrolled = () => {
             _id={_id}
             key={_id}
             handleClick={() => navigate(`/member/plans/${_id}`)}
+            dropdownOptions={<StyledDropdownItem>Enroll</StyledDropdownItem>}
             {...planData}
           />
         ))}
