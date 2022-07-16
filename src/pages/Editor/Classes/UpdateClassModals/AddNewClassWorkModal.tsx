@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { Input, InputField } from '../../../components/Input';
-import { ErrorMessageInterface } from '../../../types';
-import {
-  createClassWorks,
-  CreateClassWorkProps,
-} from '../../../api/getPlanClasses';
-
-import {
-  FormErrorMessages,
-  StyledErrorMessage,
-} from '../../../components/ErrorMessage';
-import { Modal } from '../../../components/Modal/Modal';
-import { Form } from '../../../components/Form';
-import { Button, PrimaryButton } from '../../../components/Button';
-import { classWorkValidationRules } from '../../../utilities/validation';
+import { Input, InputField } from 'components/Input';
+import { ErrorMessageInterface } from 'types';
+import { createClassWorks, CreateClassWorkProps } from 'api/classes';
+import { FormErrorMessages, StyledErrorMessage } from 'components/ErrorMessage';
+import { Modal } from 'components/Modal/Modal';
+import { Form } from 'components/Form';
+import { Button, PrimaryButton } from 'components/Button';
+import { classWorkValidationRules } from 'utilities/validation';
 
 const defaultClassWorkValues = {
   name: '',
