@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AxiosResponse } from 'axios';
-
+import { toast } from 'react-toastify';
 import { Input, InputField, TextArea } from '../../components/Input';
 import { Modal } from '../../components/Modal/Modal';
 import { Button, PrimaryButton, WarningButton } from '../../components/Button';
@@ -82,8 +82,14 @@ export const EditorPlanModal = ({
       await submitCallback(payload);
       fetchEditorPlans();
       handleCloseModal();
+      toast.success(`Success!`, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);
+      toast.error(`Error.`, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     }
   };
 
