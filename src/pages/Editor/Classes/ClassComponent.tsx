@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import {
@@ -8,13 +8,8 @@ import {
   StyledClassItemsContainer,
 } from 'pages/Editor/Classes/ClassComponent.styled';
 import AccordionWrapper from 'components/Accordion/Accordion';
-import { useModal } from 'components/Modal/useModal';
-
-import { AddNewClassWorkForm } from 'pages/Editor/Classes/UpdateClassModals/AddNewClassWorkModal';
 
 import ClassHeaderComponent from 'pages/Editor/Classes/ClassHeaderComponent';
-import { FaPlus } from 'react-icons/fa';
-import { Button } from 'components';
 import {
   ClassComponentDataProps,
   classesProps,
@@ -28,14 +23,6 @@ const getHeaderComponent = ({ item, fetchClasses }: headerProps) => {
 };
 
 const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
-  const { isOpen, toggle } = useModal();
-  const [ClassID, setClassID] = useState<string | undefined>();
-
-  const handleClick = (classId: string | undefined) => {
-    setClassID(classId);
-    toggle();
-  };
-
   const classWorkDetails = (innerElement: classesWorkProps) => {
     if (innerElement.description) {
       return (
@@ -63,23 +50,6 @@ const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
                 </StyledClassItemsContainer>
               </div>
             ))}
-
-            <StyledClassItemsContainer>
-              <Button
-                onClick={() => {
-                  handleClick(item._id);
-                }}
-              >
-                <FaPlus /> Add New ClassWork
-              </Button>
-
-              <AddNewClassWorkForm
-                isOpen={isOpen}
-                toggle={toggle}
-                classId={ClassID}
-                fetchClasses={fetchClasses}
-              />
-            </StyledClassItemsContainer>
           </AccordionWrapper>
         </div>
       ))}

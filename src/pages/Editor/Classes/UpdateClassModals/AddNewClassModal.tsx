@@ -10,12 +10,6 @@ import { Modal } from 'components/Modal/Modal';
 import { Button, PrimaryButton } from 'components/Button';
 import { classValidationRules } from 'utilities/validation';
 
-const defaultClassValues = {
-  name: '',
-  startDate: '',
-  endDate: '',
-};
-
 export const AddNewClassForm = ({
   isOpen,
   toggle,
@@ -34,15 +28,14 @@ export const AddNewClassForm = ({
   const { id } = useParams();
 
   const handleCancelModal = () => {
+    reset();
     toggle();
-    reset(defaultClassValues);
   };
 
   const onSubmit = async (data: CreateClassProps) => {
     try {
       await createClass(data, id);
-
-      reset(defaultClassValues);
+      reset();
       fetchClasses();
       toggle();
     } catch (error) {

@@ -58,9 +58,9 @@ export const classValidationRules = {
 
 export const classWorkValidationRules = {
   name: {
-    required: 'Class Type is required',
+    required: 'Class Work Type is required',
   },
   description: {
-    required: 'Class Description is required',
+    required: 'Class Work Description is required',
   },
 };
