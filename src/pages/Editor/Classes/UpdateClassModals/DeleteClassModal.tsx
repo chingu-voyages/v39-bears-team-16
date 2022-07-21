@@ -27,7 +27,7 @@ interface deleteClassProps {
   classID: string;
   isOpen: boolean;
   toggle(): void;
-  handleClose(): void;
+  fetchClasses(): void;
 }
 
 export const DeleteClassModal = ({
@@ -35,7 +35,7 @@ export const DeleteClassModal = ({
   classID,
   isOpen,
   toggle,
-  handleClose,
+  fetchClasses,
 }: deleteClassProps) => {
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
@@ -44,7 +44,7 @@ export const DeleteClassModal = ({
   const handleSubmit = async () => {
     try {
       await deleteClass(classID);
-      handleClose();
+      fetchClasses();
       toggle();
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);

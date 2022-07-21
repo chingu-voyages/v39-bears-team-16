@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
 import { Input, InputField } from 'components/Input';
 import { ErrorMessageInterface } from 'types';
 import { createClassWorks, CreateClassWorkProps } from 'api/classes';
@@ -19,14 +18,14 @@ interface AddNewClassWorkFormProps {
   classId: string | undefined;
   isOpen: boolean;
   toggle(): void;
-  handleClose(): void;
+  fetchClasses(): void;
 }
 
 export const AddNewClassWorkForm = ({
   classId,
   isOpen,
   toggle,
-  handleClose,
+  fetchClasses,
 }: AddNewClassWorkFormProps) => {
   const {
     register,
@@ -38,13 +37,12 @@ export const AddNewClassWorkForm = ({
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
   );
-  const { id } = useParams();
 
   const onSubmitNewClassWork = async (payload: CreateClassWorkProps) => {
     try {
       await createClassWorks(payload, classId);
       reset(defaultClassWorkValues);
-      handleClose();
+      fetchClasses();
       toggle();
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);

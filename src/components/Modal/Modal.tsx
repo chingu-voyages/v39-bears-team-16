@@ -10,6 +10,7 @@ import {
   Content,
   StyledActionContainer,
   useModalStyles,
+  useEditModalStyles,
 } from './Modal.styled';
 
 export interface ModalProps {
@@ -20,6 +21,7 @@ export interface ModalProps {
   secondaryAction?: ReactNode | undefined;
   children: ReactNode;
   customStyles?: ReactModal.Styles;
+  className?: string | undefined;
 }
 
 export const Modal = ({
@@ -30,19 +32,21 @@ export const Modal = ({
   secondaryAction,
   children,
   customStyles,
+  className,
 }: ModalProps) => {
   const theme = useTheme();
   const styles = useModalStyles(
     theme as ThemeInterface,
     customStyles as ReactModal.Styles
   );
+  const editModalStyles = useEditModalStyles(theme as ThemeInterface);
 
   return (
     <ReactModal
       isOpen={isOpen}
       contentLabel={titleText}
       onRequestClose={onCloseModal}
-      style={styles}
+      style={className === 'edit' ? editModalStyles : styles}
     >
       <TitleContainer>
         <Title>{titleText}</Title>

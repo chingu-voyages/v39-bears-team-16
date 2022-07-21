@@ -19,9 +19,9 @@ import { PrimaryButton } from 'components/Button';
 
 interface ClassComponentDataProps {
   _id: string;
-  date: string;
+  createdAt: string;
   name: string;
-  subject: string;
+  description: string;
   classworks?: [];
 }
 

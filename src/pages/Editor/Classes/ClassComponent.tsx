@@ -20,9 +20,9 @@ import ClassHeaderComponent from 'pages/Editor/Classes/ClassHeaderComponent';
 
 interface ClassComponentDataProps {
   _id: string;
-  date: string;
+  createdAt: string;
   name: string;
-  subject: string;
+  description: string;
   classworks?: [];
 }
 
@@ -42,7 +42,7 @@ interface classesWorkProps {
 }
 
 const getHeaderComponent = ({ item, fetchClasses }: headerProps) => {
-  return <ClassHeaderComponent item={item} handleClose={fetchClasses} />;
+  return <ClassHeaderComponent item={item} fetchClasses={fetchClasses} />;
 };
 
 const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
@@ -99,7 +99,7 @@ const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
                 isOpen={isOpen}
                 toggle={toggle}
                 classId={ClassID}
-                handleClose={fetchClasses}
+                fetchClasses={fetchClasses}
               />
             </StyledClassItemsContainer>
           </AccordionWrapper>
