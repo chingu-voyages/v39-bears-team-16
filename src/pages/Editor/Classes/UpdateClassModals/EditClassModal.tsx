@@ -18,6 +18,7 @@ import {
   WarningButton,
 } from 'components/Button';
 import { classValidationRules } from 'utilities/validation';
+import { FaPlus } from 'react-icons/fa';
 
 const StyledForm = styled.form`
   display: flex;
@@ -56,13 +57,11 @@ export const EditClassModal = ({
     control,
     setValue,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<CreateClassProps>({
     defaultValues: {
-      classworks: [
-        { name: 'Test CW2', description: 'Test CW 2' },
-        { name: 'Test CW3', description: 'Test CW 3' },
-      ],
+      classworks: item.classworks,
     },
     mode: 'onChange',
   });
@@ -84,20 +83,21 @@ export const EditClassModal = ({
   const handleCancelModal = () => {
     setValue('name', item.name);
     setValue('description', item.description);
+    reset();
     toggle();
   };
 
   const onSubmit = async (data: CreateClassProps) => {
-    console.log(data);
-    // try {
-    //   await editClass(data, item._id);
-    //   fetchClasses();
-    //   toggle();
-    // } catch (error) {
-    //   setErrorMessages(error as ErrorMessageInterface[]);
-    // }
+    try {
+      await editClass(data, item._id);
+      fetchClasses();
+      reset();
+      toggle();
+    } catch (error) {
+      setErrorMessages(error as ErrorMessageInterface[]);
+    }
   };
-  console.log(item);
+
   return (
     <Modal
       className="edit"
@@ -132,31 +132,29 @@ export const EditClassModal = ({
 
         {fields.map((field, index) => {
           return (
-            <div key={field.id}>
-              <section key={field.id}>
-                <input
-                  placeholder="name"
-                  {...register(`classworks.${index}.name` as const, {
-                    required: true,
-                  })}
-                  defaultValue={field.name}
-                />
-                <input
-                  placeholder="description"
-                  {...register(`classworks.${index}.description` as const, {
-                    required: true,
-                  })}
-                  defaultValue={field.description}
-                />
+            <Classworks key={field.id}>
+              <Input
+                placeholder="name"
+                {...register(`classworks.${index}.name` as const, {
+                  required: true,
+                })}
+                defaultValue={field.name}
+              />
+              <Input
+                placeholder="description"
+                {...register(`classworks.${index}.description` as const, {
+                  required: true,
+                })}
+                defaultValue={field.description}
+              />
 
-                <button type="button" onClick={() => remove(index)}>
-                  DELETE
-                </button>
-              </section>
-            </div>
+              <WarningButton type="button" onClick={() => remove(index)}>
+                DELETE
+              </WarningButton>
+            </Classworks>
           );
         })}
-        <button
+        <PrimaryButton
           type="button"
           onClick={() =>
             append({
@@ -165,8 +163,8 @@ export const EditClassModal = ({
             })
           }
         >
-          APPEND
-        </button>
+          <FaPlus /> New Class Work
+        </PrimaryButton>
       </StyledForm>
       {Object.keys(errors).length > 0 && <FormErrorMessages errors={errors} />}
       {errorMessages?.map(({ msg }) => (
