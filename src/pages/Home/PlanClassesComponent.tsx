@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import { getPlanClasses } from 'api/getPlanClasses';
+import { getPlanClasses } from 'api/classes';
 import { ClassInterface } from 'types';
 import { PrimaryButton } from 'components';
 import {
@@ -21,7 +21,8 @@ const PlanClassesComponent = () => {
     try {
       const { data } = await getPlanClasses(planId);
       setClasses(data.classes);
-      setIsEnrolled(data.enroll);
+      const hasProgress = data.classes[0]?.classworks[0]?.progress >= 0;
+      setIsEnrolled(hasProgress);
     } catch (error) {
       console.error(error);
     }
@@ -35,7 +36,7 @@ const PlanClassesComponent = () => {
     <SyllabusContainer>
       <SyllabusHeadlineWrapper>
         <SyllabusHeadline>Syllabus</SyllabusHeadline>
-        <PrimaryButton>Enroll</PrimaryButton>
+        {!isEnrolled && <PrimaryButton>Enroll</PrimaryButton>}
       </SyllabusHeadlineWrapper>
       <Line />
       <Classes>

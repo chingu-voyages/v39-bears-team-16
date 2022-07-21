@@ -38,7 +38,7 @@ interface headerProps {
 
 interface classesWorkProps {
   name: string;
-  body: string;
+  link: string;
 }
 
 const getHeaderComponent = ({ item, fetchClasses }: headerProps) => {
@@ -49,17 +49,20 @@ const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
   const { isOpen, toggle } = useModal();
   const [ClassID, setClassID] = useState<string | undefined>();
 
+  console.log('classesTEST', classes);
+
   const handleClick = (classId: string | undefined) => {
     setClassID(classId);
     toggle();
   };
 
   const classWorkDetails = (innerElement: classesWorkProps) => {
-    if (innerElement.body) {
+    console.log('innerElement', innerElement);
+    if (innerElement.link) {
       return (
         <>
           <div> {innerElement.name}</div>
-          <div>{innerElement.body}</div>
+          <div>{innerElement.link}</div>
         </>
       );
     }
