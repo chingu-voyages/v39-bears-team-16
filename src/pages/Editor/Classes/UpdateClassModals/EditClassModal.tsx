@@ -1,9 +1,9 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React, { useEffect, useState } from 'react';
-import { Control, useFieldArray, useForm, useWatch } from 'react-hook-form';
+import { useFieldArray, useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { v4 as uuidv4 } from 'uuid';
 import { Input, InputField, TextArea } from 'components/Input';
 import { ErrorMessageInterface, EditClassModalProps } from 'types';
 import { CreateClassProps, editClass } from 'api/classes';
@@ -11,12 +11,7 @@ import { CreateClassProps, editClass } from 'api/classes';
 import { FormErrorMessages, StyledErrorMessage } from 'components/ErrorMessage';
 
 import { Modal } from 'components/Modal/Modal';
-import {
-  Button,
-  InvertPrimaryButton,
-  PrimaryButton,
-  WarningButton,
-} from 'components/Button';
+import { Button, PrimaryButton } from 'components/Button';
 import { classValidationRules } from 'utilities/validation';
 import { FaPlus } from 'react-icons/fa';
 import { TrashIcon } from '../ClassComponent.styled';

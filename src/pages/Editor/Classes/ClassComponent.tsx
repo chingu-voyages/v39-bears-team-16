@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {
   StyledClassContainer,
-  AddClassContentIcon,
   ClassworkIcon,
   StyledClassItem,
   StyledClassItemsContainer,
@@ -15,7 +14,7 @@ import { AddNewClassWorkForm } from 'pages/Editor/Classes/UpdateClassModals/AddN
 
 import ClassHeaderComponent from 'pages/Editor/Classes/ClassHeaderComponent';
 import { FaPlus } from 'react-icons/fa';
-import { Button, PrimaryButton } from 'components';
+import { Button } from 'components';
 
 /* eslint no-underscore-dangle: 0 */
 
