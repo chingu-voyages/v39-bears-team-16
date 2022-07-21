@@ -38,7 +38,7 @@ interface headerProps {
 
 interface classesWorkProps {
   name: string;
-  body: string;
+  description: string;
 }
 
 const getHeaderComponent = ({ item, fetchClasses }: headerProps) => {
@@ -55,11 +55,11 @@ const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
   };
 
   const classWorkDetails = (innerElement: classesWorkProps) => {
-    if (innerElement.body) {
+    if (innerElement.description) {
       return (
         <>
           <div> {innerElement.name}</div>
-          <div>{innerElement.body}</div>
+          <div>{innerElement.description}</div>
         </>
       );
     }

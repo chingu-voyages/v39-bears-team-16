@@ -11,7 +11,7 @@ import { classWorkValidationRules } from 'utilities/validation';
 
 const defaultClassWorkValues = {
   name: '',
-  body: '',
+  description: '',
 };
 
 interface AddNewClassWorkFormProps {
@@ -86,9 +86,9 @@ export const AddNewClassWorkForm = ({
 
           <Input
             type="text"
-            id="body"
+            id="description"
             placeholder="Enter Classwork resource"
-            {...register('body', classWorkValidationRules.body)}
+            {...register('description', classWorkValidationRules.description)}
           />
         </InputField>
 

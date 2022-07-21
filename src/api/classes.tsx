@@ -9,7 +9,7 @@ export interface CreateClassProps {
 
 export interface CreateClassWorkProps {
   name: string;
-  body: string;
+  description: string;
 }
 
 // Class Apis
@@ -50,12 +50,12 @@ export const editClass = (
 // ClassWorks
 
 export const createClassWorks = (
-  { name, body }: CreateClassWorkProps,
+  { name, description }: CreateClassWorkProps,
   classId: string | undefined
 ) => {
   return api.post(`classes/${classId}/classworks`, {
     classId,
     name,
-    body,
+    description,
   });
 };
