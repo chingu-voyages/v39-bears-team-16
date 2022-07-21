@@ -3,11 +3,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {
   StyledClassContainer,
-  EditClassContentIcon,
   AddClassContentIcon,
+  ClassworkIcon,
   StyledClassItem,
   StyledClassItemsContainer,
-  TrashIcon,
 } from 'pages/Editor/Classes/ClassComponent.styled';
 import AccordionWrapper from 'components/Accordion/Accordion';
 import { useModal } from 'components/Modal/useModal';
@@ -15,6 +14,8 @@ import { useModal } from 'components/Modal/useModal';
 import { AddNewClassWorkForm } from 'pages/Editor/Classes/UpdateClassModals/AddNewClassWorkModal';
 
 import ClassHeaderComponent from 'pages/Editor/Classes/ClassHeaderComponent';
+import { FaPlus } from 'react-icons/fa';
+import { Button, PrimaryButton } from 'components';
 
 /* eslint no-underscore-dangle: 0 */
 
@@ -58,8 +59,7 @@ const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
     if (innerElement.description) {
       return (
         <>
-          <div> {innerElement.name}</div>
-          <div>{innerElement.description}</div>
+          <ClassworkIcon /> {innerElement.description}
         </>
       );
     }
@@ -77,8 +77,6 @@ const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
               <div key={uuidv4()}>
                 <StyledClassItemsContainer>
                   <StyledClassItem>
-                    <EditClassContentIcon />
-                    <TrashIcon />
                     {classWorkDetails(innerElement)}
                   </StyledClassItem>
                 </StyledClassItemsContainer>
@@ -86,14 +84,13 @@ const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
             ))}
 
             <StyledClassItemsContainer>
-              <StyledClassItem
+              <Button
                 onClick={() => {
                   handleClick(item._id);
                 }}
               >
-                <AddClassContentIcon />
-                Add Resources
-              </StyledClassItem>
+                <FaPlus /> Add New ClassWork
+              </Button>
 
               <AddNewClassWorkForm
                 isOpen={isOpen}

@@ -59,8 +59,9 @@ const ClassHeaderComponent = ({ fetchClasses, item }: ClassHeaderDataProps) => {
           toggle={toggle}
           fetchClasses={fetchClasses}
         />
+        <ClassTitle>{item.name}</ClassTitle>
       </ClassTitleWrapper>
-      <ClassTitle>{item.name}</ClassTitle>
+
       <ClassDescription>{item.description}</ClassDescription>
     </StyledClassHeaderWrapper>
   );

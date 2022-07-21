@@ -19,6 +19,7 @@ import {
 } from 'components/Button';
 import { classValidationRules } from 'utilities/validation';
 import { FaPlus } from 'react-icons/fa';
+import { TrashIcon } from '../ClassComponent.styled';
 
 const StyledForm = styled.form`
   display: flex;
@@ -148,9 +149,7 @@ export const EditClassModal = ({
                 defaultValue={field.description}
               />
 
-              <WarningButton type="button" onClick={() => remove(index)}>
-                DELETE
-              </WarningButton>
+              <TrashIcon type="button" onClick={() => remove(index)} />
             </Classworks>
           );
         })}
