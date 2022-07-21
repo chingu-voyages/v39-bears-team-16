@@ -15,31 +15,13 @@ import { AddNewClassWorkForm } from 'pages/Editor/Classes/UpdateClassModals/AddN
 import ClassHeaderComponent from 'pages/Editor/Classes/ClassHeaderComponent';
 import { FaPlus } from 'react-icons/fa';
 import { Button } from 'components';
-
+import {
+  ClassComponentDataProps,
+  classesProps,
+  headerProps,
+  classesWorkProps,
+} from 'types';
 /* eslint no-underscore-dangle: 0 */
-
-interface ClassComponentDataProps {
-  _id: string;
-  createdAt: string;
-  name: string;
-  description: string;
-  classworks?: [];
-}
-
-interface classesProps {
-  classes: ClassComponentDataProps[] | undefined;
-  fetchClasses(): void;
-}
-
-interface headerProps {
-  item: ClassComponentDataProps;
-  fetchClasses(): void;
-}
-
-interface classesWorkProps {
-  name: string;
-  description: string;
-}
 
 const getHeaderComponent = ({ item, fetchClasses }: headerProps) => {
   return <ClassHeaderComponent item={item} fetchClasses={fetchClasses} />;

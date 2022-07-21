@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ClassHeaderDataProps } from 'types';
 import { useModal } from '../../../components/Modal/useModal';
 import {
   StyledClassHeaderWrapper,
@@ -12,18 +13,6 @@ import { DeleteClassModal } from './UpdateClassModals/DeleteClassModal';
 import { EditClassModal } from './UpdateClassModals/EditClassModal';
 
 /* eslint no-underscore-dangle: 0 */
-
-interface itemProps {
-  _id: string;
-  createdAt: string;
-  name: string;
-  description: string;
-  classworks?: [];
-}
-interface ClassHeaderDataProps {
-  item: itemProps;
-  fetchClasses(): void;
-}
 
 const ClassHeaderComponent = ({ fetchClasses, item }: ClassHeaderDataProps) => {
   const { isOpen, toggle } = useModal();

@@ -31,15 +31,6 @@ const Classworks = styled.div`
     0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
 `;
 
-export const ClassWorkButton = styled(Button)`
-  background-color: ${({ theme }) => theme.color.white};
-  border: 1px solid ${({ theme }) => theme.color.primary};
-  border-radius: 4px;
-  height: 2.5em;
-  color: ${({ theme }) => theme.color.primary};
-  width: 30%;
-`;
-
 /* eslint no-underscore-dangle: 0 */
 
 export const EditClassModal = ({

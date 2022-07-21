@@ -37,7 +37,7 @@ export interface AddNewClassWorkFormProps {
   classId: string | undefined;
   isOpen: boolean;
   toggle(): void;
-  handleClose(): void;
+  fetchClasses(): void;
 }
 
 export interface deleteClassProps {
@@ -61,4 +61,24 @@ export interface EditClassModalProps {
   toggle(): void;
   fetchClasses(): void;
   class?: string | undefined;
+}
+
+export interface classesProps {
+  classes: ClassComponentDataProps[] | undefined;
+  fetchClasses(): void;
+}
+
+export interface headerProps {
+  item: ClassComponentDataProps;
+  fetchClasses(): void;
+}
+
+export interface classesWorkProps {
+  name: string;
+  description: string;
+}
+
+export interface ClassHeaderDataProps {
+  item: ClassComponentDataProps;
+  fetchClasses(): void;
 }

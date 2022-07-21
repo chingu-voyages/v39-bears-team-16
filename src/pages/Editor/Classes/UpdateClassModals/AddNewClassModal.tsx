@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Input, InputField, TextArea } from 'components/Input';
-import { ErrorMessageInterface } from 'types';
+import { ErrorMessageInterface, AddNewClassFormProps } from 'types';
 import { createClass, CreateClassProps } from 'api/classes';
 import { FormErrorMessages, StyledErrorMessage } from 'components/ErrorMessage';
 import { Form } from 'components/Form';
@@ -15,12 +15,6 @@ const defaultClassValues = {
   startDate: '',
   endDate: '',
 };
-
-interface AddNewClassFormProps {
-  isOpen: boolean;
-  toggle(): void;
-  fetchClasses(): void;
-}
 
 export const AddNewClassForm = ({
   isOpen,

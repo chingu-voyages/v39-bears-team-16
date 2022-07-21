@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Input, InputField } from 'components/Input';
-import { ErrorMessageInterface } from 'types';
+import { ErrorMessageInterface, AddNewClassWorkFormProps } from 'types';
 import { createClassWorks, CreateClassWorkProps } from 'api/classes';
 import { FormErrorMessages, StyledErrorMessage } from 'components/ErrorMessage';
 import { Modal } from 'components/Modal/Modal';
@@ -13,13 +13,6 @@ const defaultClassWorkValues = {
   name: '',
   description: '',
 };
-
-interface AddNewClassWorkFormProps {
-  classId: string | undefined;
-  isOpen: boolean;
-  toggle(): void;
-  fetchClasses(): void;
-}
 
 export const AddNewClassWorkForm = ({
   classId,

@@ -12,18 +12,10 @@ import { AddNewClassForm } from 'pages/Editor/Classes/UpdateClassModals/AddNewCl
 import ClassComponent from 'pages/Editor/Classes/ClassComponent';
 import { useModal } from 'components/Modal/useModal';
 
-import { ErrorMessageInterface } from 'types';
+import { ErrorMessageInterface, ClassComponentDataProps } from 'types';
 import { ERROR_MESSAGES } from 'utilities/constants';
 import { getPlanClasses } from 'api/classes';
 import { PrimaryButton } from 'components/Button';
-
-interface ClassComponentDataProps {
-  _id: string;
-  createdAt: string;
-  name: string;
-  description: string;
-  classworks?: [];
-}
 
 const EditorUpdateClass = () => {
   const { isOpen, toggle } = useModal();

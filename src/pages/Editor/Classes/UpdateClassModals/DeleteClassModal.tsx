@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { deleteClass } from 'api/classes';
 import { Modal } from 'components/Modal/Modal';
 import { Button, WarningButton } from 'components/Button';
-import { ErrorMessageInterface } from 'types';
+import { ErrorMessageInterface, deleteClassProps } from 'types';
 import { StyledErrorMessage } from 'components/ErrorMessage';
 
 const Container = styled.div`
@@ -21,14 +21,6 @@ const Text = styled.h4`
     font-weight: bold;
   }
 `;
-
-interface deleteClassProps {
-  className: string;
-  classID: string;
-  isOpen: boolean;
-  toggle(): void;
-  fetchClasses(): void;
-}
 
 export const DeleteClassModal = ({
   className,
