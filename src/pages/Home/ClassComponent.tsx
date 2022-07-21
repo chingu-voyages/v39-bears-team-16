@@ -62,7 +62,7 @@ const ClassComponent = ({ classes, isEnrolled }: ClassComponentProps) => {
                       </StyledClassworkLink>
                       {isEnrolled ? (
                         <StyledMarkDoneButton>
-                          Mark as Done
+                          Mark as Complete
                         </StyledMarkDoneButton>
                       ) : null}
                     </StyledClassworkDetails>
