@@ -42,7 +42,7 @@ export const AddNewClassWorkForm = ({
 
   const onSubmitNewClassWork = async (payload: CreateClassWorkProps) => {
     try {
-      await createClassWorks(payload, classId, id);
+      await createClassWorks(payload, classId);
       reset(defaultClassWorkValues);
       handleClose();
       toggle();
