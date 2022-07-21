@@ -1,7 +1,7 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Control, useFieldArray, useForm, useWatch } from 'react-hook-form';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { Input, InputField, TextArea } from 'components/Input';
@@ -53,11 +53,23 @@ export const EditClassModal = ({
 }: EditClassModalProps) => {
   const {
     register,
+    control,
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm<CreateClassProps>();
-
+  } = useForm<CreateClassProps>({
+    defaultValues: {
+      classworks: [
+        { name: 'Test CW2', description: 'Test CW 2' },
+        { name: 'Test CW3', description: 'Test CW 3' },
+      ],
+    },
+    mode: 'onChange',
+  });
+  const { fields, append, remove } = useFieldArray({
+    name: 'classworks',
+    control,
+  });
   useEffect(() => {
     setValue('name', item.name);
     setValue('description', item.description);
@@ -68,41 +80,22 @@ export const EditClassModal = ({
   );
 
   // ClassWork
-  const [indexes, setIndexes] = useState<any>([]);
-  const [counter, setCounter] = useState(0);
-
-  const addclasswork = () => {
-    setIndexes((prevIndexes: any) => [...prevIndexes, counter]);
-    setCounter((prevCounter) => prevCounter + 1);
-  };
-
-  const removeclasswork = (index) => () => {
-    setIndexes((prevIndexes) => [
-      ...prevIndexes.filter((itemName: any) => itemName !== index),
-    ]);
-    setCounter((prevCounter) => prevCounter - 1);
-  };
-
-  const clearclassworks = () => {
-    setIndexes([]);
-    setCounter(0);
-  };
 
   const handleCancelModal = () => {
     setValue('name', item.name);
     setValue('description', item.description);
-    clearclassworks();
     toggle();
   };
 
   const onSubmit = async (data: CreateClassProps) => {
-    try {
-      await editClass(data, item._id);
-      fetchClasses();
-      toggle();
-    } catch (error) {
-      setErrorMessages(error as ErrorMessageInterface[]);
-    }
+    console.log(data);
+    // try {
+    //   await editClass(data, item._id);
+    //   fetchClasses();
+    //   toggle();
+    // } catch (error) {
+    //   setErrorMessages(error as ErrorMessageInterface[]);
+    // }
   };
   console.log(item);
   return (
@@ -136,6 +129,44 @@ export const EditClassModal = ({
             {...register('description', classValidationRules.description)}
           />
         </InputField>
+
+        {fields.map((field, index) => {
+          return (
+            <div key={field.id}>
+              <section key={field.id}>
+                <input
+                  placeholder="name"
+                  {...register(`classworks.${index}.name` as const, {
+                    required: true,
+                  })}
+                  defaultValue={field.name}
+                />
+                <input
+                  placeholder="description"
+                  {...register(`classworks.${index}.description` as const, {
+                    required: true,
+                  })}
+                  defaultValue={field.description}
+                />
+
+                <button type="button" onClick={() => remove(index)}>
+                  DELETE
+                </button>
+              </section>
+            </div>
+          );
+        })}
+        <button
+          type="button"
+          onClick={() =>
+            append({
+              name: '',
+              description: '',
+            })
+          }
+        >
+          APPEND
+        </button>
       </StyledForm>
       {Object.keys(errors).length > 0 && <FormErrorMessages errors={errors} />}
       {errorMessages?.map(({ msg }) => (
