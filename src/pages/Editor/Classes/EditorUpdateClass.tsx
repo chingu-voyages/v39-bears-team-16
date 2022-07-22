@@ -25,7 +25,7 @@ const EditorUpdateClass = () => {
   const fetchClasses = useCallback(async () => {
     try {
       const { data } = await getPlanClasses(id);
-      setClasses(data.classes);
+      setClasses(data.classes.classes);
     } catch (error) {
       const errors = error as ErrorMessageInterface[];
       if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
