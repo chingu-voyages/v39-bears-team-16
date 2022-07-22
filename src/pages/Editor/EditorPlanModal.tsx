@@ -17,6 +17,21 @@ export enum EditorModalTypes {
   Delete = 'delete',
 }
 
+const toastMsgMap = {
+  add: {
+    success: 'Successfully added the plan!',
+    error: 'Failed to add plan.',
+  },
+  delete: {
+    success: 'Successfully deleted the plan!',
+    error: 'Failed to delete plan.',
+  },
+  update: {
+    success: 'Successfully updated the plan!',
+    error: 'Failed to update plan.',
+  },
+};
+
 export interface EditorPlanModalProps {
   isOpen: boolean;
   toggle(): void;
@@ -82,12 +97,12 @@ export const EditorPlanModal = ({
       await submitCallback(payload);
       fetchEditorPlans();
       handleCloseModal();
-      toast.success(`Success!`, {
+      toast.success(toastMsgMap[type].success, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);
-      toast.error(`Error.`, {
+      toast.error(toastMsgMap[type].error, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
