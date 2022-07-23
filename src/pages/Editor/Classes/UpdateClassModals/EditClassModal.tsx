@@ -14,7 +14,7 @@ import { Modal } from 'components/Modal/Modal';
 import { Button, PrimaryButton } from 'components/Button';
 import { classValidationRules } from 'utilities/validation';
 import { FaPlus } from 'react-icons/fa';
-import { TrashIcon } from '../ClassComponent.styled';
+import { TrashIcon } from 'pages/Editor/Classes/ClassComponent.styled';
 
 const StyledForm = styled.form`
   display: flex;

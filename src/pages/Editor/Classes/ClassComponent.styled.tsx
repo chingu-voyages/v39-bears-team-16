@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { AiOutlineEdit, AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { BiTrash, BiPencil } from 'react-icons/bi';
 import { MdAdd } from 'react-icons/md';
-import { iconStyles } from './styles';
+import { iconStyles } from 'pages/Editor/Classes/styles';
 
 export const StyledClassContainer = styled.section`
   display: flex;

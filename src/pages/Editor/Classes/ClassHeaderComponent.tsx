@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ClassHeaderDataProps } from 'types';
-import { useModal } from '../../../components/Modal/useModal';
+import { useModal } from 'components/Modal/useModal';
+import { EditClassModal } from 'pages/Editor/Classes/UpdateClassModals/EditClassModal';
+import { DeleteClassModal } from 'pages/Editor/Classes/UpdateClassModals/DeleteClassModal';
 import {
   StyledClassHeaderWrapper,
   ClassTitleWrapper,
@@ -9,8 +11,6 @@ import {
   TrashIcon,
   ClassDescription,
 } from './ClassComponent.styled';
-import { DeleteClassModal } from './UpdateClassModals/DeleteClassModal';
-import { EditClassModal } from './UpdateClassModals/EditClassModal';
 
 /* eslint no-underscore-dangle: 0 */
 
