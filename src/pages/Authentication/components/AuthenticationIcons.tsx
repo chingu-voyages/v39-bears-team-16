@@ -10,20 +10,20 @@ export const authIconStyles = {
 
 export const UserIcon = styled(FaUserAlt)`
   ${authIconStyles};
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
 `;
 
 export const EmailIcon = styled(HiMail)`
   ${authIconStyles};
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
 `;
 
 export const PasswordIcon = styled(RiLockPasswordFill)`
   ${authIconStyles};
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
 `;
 
 export const LockIcon = styled(RiLockPasswordFill)`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
   font-size: 3rem;
 `;

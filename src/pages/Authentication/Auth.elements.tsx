@@ -15,7 +15,7 @@ export const AuthCard = styled.section`
   border-radius: 8px;
   padding: 2em;
   background: ${({ theme }) => theme.color.white};
-  border: 2px solid ${({ theme }) => theme.color.secondary};
+  border: 2px solid ${({ theme }) => theme.color.grey};
 `;
 
 export const AuthHeaderWrapper = styled.div`
@@ -31,7 +31,7 @@ export const AuthHeaderWrapper = styled.div`
 `;
 
 export const AuthHead = styled.h1`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
   font-weight: 500;
   margin: 0;
   font-size: 1.8rem;
@@ -39,7 +39,7 @@ export const AuthHead = styled.h1`
 `;
 
 export const AuthSpan = styled.span`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
   font-size: 1rem;
   font-weight: 200;
 `;
@@ -54,9 +54,9 @@ export const AuthForm = styled.form`
 
 export const AuthField = styled.div<InputFieldProps>`
   border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.color.primary};
+  border: 1px solid ${({ theme }) => theme.color.black};
   border-color: ${({ hasError, theme }) => hasError && theme.color.red};
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
   display: flex;
   gap: 1em;
   align-items: center;
@@ -67,7 +67,7 @@ export const AuthInput = styled(Input)`
   border: none;
   width: 100%;
   &::placeholder {
-    color: ${({ theme }) => theme.color.lightPrimary};
+    color: ${({ theme }) => theme.color.black};
     opacity: 1;
   }
 `;
@@ -85,7 +85,7 @@ export const AuthFoot = styled.div`
 `;
 
 export const AuthRedirectLink = styled(Link)`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.blue};
   text-decoration: none;
 
   &:hover {
@@ -95,7 +95,7 @@ export const AuthRedirectLink = styled(Link)`
 
 export const LockIconWrapper = styled.div`
   border-radius: 50%;
-  border: 3px solid ${({ theme }) => theme.color.primary};
+  border: 3px solid ${({ theme }) => theme.color.black};
   display: flex;
   align-items: center;
   justify-content: center;
