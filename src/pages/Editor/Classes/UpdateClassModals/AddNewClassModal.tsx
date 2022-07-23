@@ -2,25 +2,13 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Input, InputField, TextArea } from 'components/Input';
-import { ErrorMessageInterface } from 'types';
+import { ErrorMessageInterface, AddNewClassFormProps } from 'types';
 import { createClass, CreateClassProps } from 'api/classes';
 import { FormErrorMessages, StyledErrorMessage } from 'components/ErrorMessage';
 import { Form } from 'components/Form';
 import { Modal } from 'components/Modal/Modal';
 import { Button, PrimaryButton } from 'components/Button';
 import { classValidationRules } from 'utilities/validation';
-
-const defaultClassValues = {
-  name: '',
-  startDate: '',
-  endDate: '',
-};
-
-interface AddNewClassFormProps {
-  isOpen: boolean;
-  toggle(): void;
-  fetchClasses(): void;
-}
 
 export const AddNewClassForm = ({
   isOpen,
@@ -40,15 +28,14 @@ export const AddNewClassForm = ({
   const { id } = useParams();
 
   const handleCancelModal = () => {
+    reset();
     toggle();
-    reset(defaultClassValues);
   };
 
   const onSubmit = async (data: CreateClassProps) => {
     try {
       await createClass(data, id);
-
-      reset(defaultClassValues);
+      reset();
       fetchClasses();
       toggle();
     } catch (error) {

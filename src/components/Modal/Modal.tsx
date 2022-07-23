@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import ReactModal from 'react-modal';
 import { useTheme } from 'styled-components';
-import { ThemeInterface } from '../../types';
+import { ThemeInterface } from 'types';
 
 import {
   TitleContainer,
@@ -10,7 +10,7 @@ import {
   Content,
   StyledActionContainer,
   useModalStyles,
-} from './Modal.styled';
+} from 'components/Modal/Modal.styled';
 
 export interface ModalProps {
   isOpen: boolean;

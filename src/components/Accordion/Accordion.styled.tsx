@@ -28,7 +28,7 @@ export const StyledClassHeaderWrapper = styled.section`
 export const ExpandArrow = styled(MdExpandMore)`
   ${iconStyles}
   margin: 0 10px;
-  font-size: 2rem;
+  font-size: 30px;
 `;
 
 export const Appear = styled.div``;
