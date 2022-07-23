@@ -8,6 +8,8 @@ export const StyledAccordionWrapper = styled.section`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  border: 1px solid ${({ theme }) => theme.color.grey};
+  border-radius: 10px;
 `;
 
 export const StyledClassHeaderWrapper = styled.section`
