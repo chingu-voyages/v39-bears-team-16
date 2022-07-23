@@ -8,6 +8,7 @@ export const StyledClassContainer = styled.section`
   flex-direction: column;
   background: #ffffff;
   border-radius: 8px;
+  gap: 2em;
 `;
 
 export const StyledAccordionContentWrapper = styled.section`

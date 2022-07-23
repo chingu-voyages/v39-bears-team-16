@@ -20,7 +20,8 @@ const PlanClassesComponent = () => {
   const fetchClasses = useCallback(async () => {
     try {
       const { data } = await getPlanClasses(planId);
-      setClasses(data.classes);
+      console.log('responseTEST', data);
+      setClasses(data.classes.classes);
       const hasProgress = data.classes[0]?.classworks[0]?.progress >= 0;
       setIsEnrolled(hasProgress);
     } catch (error) {
