@@ -41,33 +41,6 @@ export const useModalStyles = (
   } as ReactModal.Styles;
 };
 
-export const useEditModalStyles = (theme: ThemeInterface) => {
-  return {
-    overlay: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(0, 0, 0, 0.7)',
-      zIndex: 20,
-    },
-    content: {
-      height: '100vh',
-      border: '1px solid #ccc',
-      background: theme.color.white,
-      WebkitOverflowScrolling: 'touch',
-      borderRadius: '8px',
-      outline: 'none',
-      padding: '2em',
-      paddingBottom: '1em',
-      display: 'flex',
-      flexDirection: 'column',
-      minHeight: '28rem',
-    },
-  } as ReactModal.Styles;
-};
-
 export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;

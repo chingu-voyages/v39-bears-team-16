@@ -50,6 +50,7 @@ export const DeleteClassModal = ({
       onCloseModal={toggle}
       primaryAction={<WarningButton onClick={handleSubmit}>Yes</WarningButton>}
       secondaryAction={<Button onClick={toggle}>No</Button>}
+      customStyles={{ content: { minHeight: 'fit-content' } }}
     >
       <Container>
         <Text>

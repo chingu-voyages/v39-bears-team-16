@@ -87,7 +87,6 @@ export const EditClassModal = ({
 
   return (
     <Modal
-      className="edit"
       titleText="Edit Class"
       isOpen={isOpen}
       onCloseModal={toggle}
@@ -97,6 +96,12 @@ export const EditClassModal = ({
         </PrimaryButton>
       }
       secondaryAction={<Button onClick={handleCancelModal}>Cancel</Button>}
+      customStyles={{
+        content: {
+          height: '90vh',
+          width: '90vw',
+        },
+      }}
     >
       <StyledForm id="EditClassForm" onSubmit={handleSubmit(onSubmit)}>
         <InputField htmlFor="name">
