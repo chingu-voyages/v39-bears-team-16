@@ -1,7 +1,7 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { Input, InputField, TextArea } from 'components/Input';
@@ -13,7 +13,10 @@ import { FormErrorMessages, StyledErrorMessage } from 'components/ErrorMessage';
 
 import { Modal } from 'components/Modal/Modal';
 import { Button, PrimaryButton } from 'components/Button';
-import { classValidationRules } from 'utilities/validation';
+import {
+  classValidationRules,
+  classWorkValidationRules,
+} from 'utilities/validation';
 import { FaPlus } from 'react-icons/fa';
 import { TrashIcon } from 'pages/Editor/Classes/ClassComponent.styled';
 
@@ -57,10 +60,6 @@ export const EditClassModal = ({
     name: 'classworks',
     control,
   });
-  useEffect(() => {
-    setValue('name', item.name);
-    setValue('description', item.description);
-  }, [item.name, item.description, setValue]);
 
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
@@ -112,32 +111,44 @@ export const EditClassModal = ({
             id="name"
             placeholder="Enter Class Title"
             {...register('name', classValidationRules.name)}
+            defaultValue={item.name}
           />
         </InputField>
+        {errors.name?.message ? (
+          <StyledErrorMessage>{errors.name?.message}</StyledErrorMessage>
+        ) : null}
         <InputField htmlFor="description">
           <span>Class Description</span>
           <TextArea
             id="description"
             placeholder="Enter Class description"
             {...register('description', classValidationRules.description)}
+            defaultValue={item.description}
           />
         </InputField>
-
+        {errors.description?.message ? (
+          <StyledErrorMessage>{errors.name?.message}</StyledErrorMessage>
+        ) : null}
         {fields.map((field, index) => {
           return (
             <Classworks key={field.id}>
-              <Input
-                placeholder="name"
-                {...register(`classworks.${index}.name` as const, {
-                  required: true,
-                })}
-                defaultValue={field.name}
-              />
+              <InputField htmlFor="name">
+                <span>Class Work Name</span>
+                <Input
+                  placeholder="name"
+                  {...register(
+                    `classworks.${index}.name` as const,
+                    classWorkValidationRules.name
+                  )}
+                  defaultValue={field.name}
+                />
+              </InputField>
               <Input
                 placeholder="description"
-                {...register(`classworks.${index}.description` as const, {
-                  required: true,
-                })}
+                {...register(
+                  `classworks.${index}.description` as const,
+                  classWorkValidationRules.description
+                )}
                 defaultValue={field.description}
               />
 
@@ -146,7 +157,6 @@ export const EditClassModal = ({
           );
         })}
         <PrimaryButton
-          type="button"
           onClick={() =>
             append({
               name: '',
