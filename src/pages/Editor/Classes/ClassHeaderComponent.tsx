@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ClassHeaderDataProps } from 'pages/Editor/Classes/classTypes';
 import { useModal } from 'components/Modal/useModal';
+import { EditClassModal } from 'pages/Editor/Classes/UpdateClassModals/EditClassModal';
+import { DeleteClassModal } from 'pages/Editor/Classes/UpdateClassModals/DeleteClassModal';
 import {
   StyledClassHeaderWrapper,
   ClassTitleWrapper,
@@ -7,34 +10,32 @@ import {
   EditClassIcon,
   TrashIcon,
   ClassDescription,
-} from 'pages/Editor/Classes/ClassComponent.styled';
-import { DeleteClassModal } from 'pages/Editor/Classes/UpdateClassModals/DeleteClassModal';
+} from './ClassComponent.styled';
 
 /* eslint no-underscore-dangle: 0 */
 
-interface itemProps {
-  _id: string;
-  date: string;
-  name: string;
-  subject: string;
-  classworks?: [];
-}
-interface ClassHeaderComponentProps {
-  item: itemProps;
-  handleClose(): void;
-}
-
-const ClassHeaderComponent = ({
-  handleClose,
-  item,
-}: ClassHeaderComponentProps) => {
+const ClassHeaderComponent = ({ fetchClasses, item }: ClassHeaderDataProps) => {
   const { isOpen, toggle } = useModal();
+  const [editOpen, setEditOpen] = useState<boolean>(false);
+  const editToggle = () => {
+    setEditOpen(!editOpen);
+  };
 
   return (
     <StyledClassHeaderWrapper>
-      <ClassTitleWrapper>
-        <ClassTitle>{item.name}</ClassTitle>
-        <EditClassIcon />
+      <ClassTitleWrapper
+        onKeyDown={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
+        onFocus={(e) => e.stopPropagation()}
+        onMouseOver={(e) => e.stopPropagation()}
+      >
+        <EditClassIcon onClick={editToggle} />
+        <EditClassModal
+          item={item}
+          isOpen={editOpen}
+          toggle={editToggle}
+          fetchClasses={fetchClasses}
+        />
         <TrashIcon
           onClick={() => {
             toggle();
@@ -45,10 +46,12 @@ const ClassHeaderComponent = ({
           classID={item._id}
           isOpen={isOpen}
           toggle={toggle}
-          handleClose={handleClose}
+          fetchClasses={fetchClasses}
         />
+        <ClassTitle>{item.name}</ClassTitle>
       </ClassTitleWrapper>
-      <ClassDescription>{item.subject}</ClassDescription>
+
+      <ClassDescription>{item.description}</ClassDescription>
     </StyledClassHeaderWrapper>
   );
 };

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { AiOutlineEdit } from 'react-icons/ai';
+import { AiOutlineEdit, AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { BiTrash, BiPencil } from 'react-icons/bi';
 import { MdAdd } from 'react-icons/md';
-import { iconStyles } from './styles';
+import { iconStyles } from 'pages/Editor/Classes/styles';
 
 export const StyledClassContainer = styled.section`
   display: flex;
@@ -20,8 +20,8 @@ export const StyledAccordionWrapper = styled.section`
 
 export const StyledClassHeaderWrapper = styled.section`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 1em;
 
   .expanded {
     transform: rotate(0deg);
@@ -68,6 +68,12 @@ export const AddClassWrapper = styled.section`
 export const EditClassIcon = styled(BiPencil)`
   ${iconStyles}
   color: ${({ theme }) => theme.color.primary};
+`;
+
+export const ClassworkIcon = styled(AiOutlineAppstoreAdd)`
+  ${iconStyles}
+  color: ${({ theme }) => theme.color.primary};
+  margin: 0 1em;
 `;
 
 export const EditClassContentIcon = styled(AiOutlineEdit)`

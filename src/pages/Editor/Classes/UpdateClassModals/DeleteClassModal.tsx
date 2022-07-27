@@ -4,6 +4,7 @@ import { deleteClass } from 'api/classes';
 import { Modal } from 'components/Modal/Modal';
 import { Button, WarningButton } from 'components/Button';
 import { ErrorMessageInterface } from 'types';
+import { deleteClassProps } from 'pages/Editor/Classes/classTypes';
 import { StyledErrorMessage } from 'components/ErrorMessage';
 
 const Container = styled.div`
@@ -22,20 +23,12 @@ const Text = styled.h4`
   }
 `;
 
-interface deleteClassProps {
-  className: string;
-  classID: string;
-  isOpen: boolean;
-  toggle(): void;
-  handleClose(): void;
-}
-
 export const DeleteClassModal = ({
   className,
   classID,
   isOpen,
   toggle,
-  handleClose,
+  fetchClasses,
 }: deleteClassProps) => {
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
@@ -44,7 +37,7 @@ export const DeleteClassModal = ({
   const handleSubmit = async () => {
     try {
       await deleteClass(classID);
-      handleClose();
+      fetchClasses();
       toggle();
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);
@@ -58,6 +51,7 @@ export const DeleteClassModal = ({
       onCloseModal={toggle}
       primaryAction={<WarningButton onClick={handleSubmit}>Yes</WarningButton>}
       secondaryAction={<Button onClick={toggle}>No</Button>}
+      customStyles={{ content: { minHeight: 'fit-content' } }}
     >
       <Container>
         <Text>

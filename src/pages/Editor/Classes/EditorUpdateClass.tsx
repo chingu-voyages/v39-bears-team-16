@@ -11,19 +11,11 @@ import {
 import { AddNewClassForm } from 'pages/Editor/Classes/UpdateClassModals/AddNewClassModal';
 import ClassComponent from 'pages/Editor/Classes/ClassComponent';
 import { useModal } from 'components/Modal/useModal';
-
+import { ClassComponentDataProps } from 'pages/Editor/Classes/classTypes';
 import { ErrorMessageInterface } from 'types';
 import { ERROR_MESSAGES } from 'utilities/constants';
 import { getPlanClasses } from 'api/classes';
 import { PrimaryButton } from 'components/Button';
-
-interface ClassComponentDataProps {
-  _id: string;
-  date: string;
-  name: string;
-  subject: string;
-  classworks?: [];
-}
 
 const EditorUpdateClass = () => {
   const { isOpen, toggle } = useModal();
@@ -33,7 +25,7 @@ const EditorUpdateClass = () => {
   const fetchClasses = useCallback(async () => {
     try {
       const { data } = await getPlanClasses(id);
-      setClasses(data.classes);
+      setClasses(data.plan.classes);
     } catch (error) {
       const errors = error as ErrorMessageInterface[];
       if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {

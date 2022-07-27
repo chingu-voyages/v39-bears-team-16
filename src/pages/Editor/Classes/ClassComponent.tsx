@@ -1,65 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import {
   StyledClassContainer,
-  EditClassContentIcon,
-  AddClassContentIcon,
+  ClassworkIcon,
   StyledClassItem,
   StyledClassItemsContainer,
-  TrashIcon,
 } from 'pages/Editor/Classes/ClassComponent.styled';
 import AccordionWrapper from 'components/Accordion/Accordion';
-import { useModal } from 'components/Modal/useModal';
-
-import { AddNewClassWorkForm } from 'pages/Editor/Classes/UpdateClassModals/AddNewClassWorkModal';
 
 import ClassHeaderComponent from 'pages/Editor/Classes/ClassHeaderComponent';
+import {
+  ClassComponentDataProps,
+  classesProps,
+  headerProps,
+  classesWorkProps,
+} from 'pages/Editor/Classes/classTypes';
 
 /* eslint no-underscore-dangle: 0 */
 
-interface ClassComponentDataProps {
-  _id: string;
-  date: string;
-  name: string;
-  subject: string;
-  classworks?: [];
-}
-
-interface classesProps {
-  classes: ClassComponentDataProps[] | undefined;
-  fetchClasses(): void;
-}
-
-interface headerProps {
-  item: ClassComponentDataProps;
-  fetchClasses(): void;
-}
-
-interface classesWorkProps {
-  name: string;
-  body: string;
-}
-
 const getHeaderComponent = ({ item, fetchClasses }: headerProps) => {
-  return <ClassHeaderComponent item={item} handleClose={fetchClasses} />;
+  return <ClassHeaderComponent item={item} fetchClasses={fetchClasses} />;
 };
 
 const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
-  const { isOpen, toggle } = useModal();
-  const [ClassID, setClassID] = useState<string | undefined>();
-
-  const handleClick = (classId: string | undefined) => {
-    setClassID(classId);
-    toggle();
-  };
-
   const classWorkDetails = (innerElement: classesWorkProps) => {
-    if (innerElement.body) {
+    if (innerElement.description) {
       return (
         <>
-          <div> {innerElement.name}</div>
-          <div>{innerElement.body}</div>
+          <ClassworkIcon /> {innerElement.description}
         </>
       );
     }
@@ -77,31 +46,11 @@ const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
               <div key={uuidv4()}>
                 <StyledClassItemsContainer>
                   <StyledClassItem>
-                    <EditClassContentIcon />
-                    <TrashIcon />
                     {classWorkDetails(innerElement)}
                   </StyledClassItem>
                 </StyledClassItemsContainer>
               </div>
             ))}
-
-            <StyledClassItemsContainer>
-              <StyledClassItem
-                onClick={() => {
-                  handleClick(item._id);
-                }}
-              >
-                <AddClassContentIcon />
-                Add Resources
-              </StyledClassItem>
-
-              <AddNewClassWorkForm
-                isOpen={isOpen}
-                toggle={toggle}
-                classId={ClassID}
-                handleClose={fetchClasses}
-              />
-            </StyledClassItemsContainer>
           </AccordionWrapper>
         </div>
       ))}
