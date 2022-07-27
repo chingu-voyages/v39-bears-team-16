@@ -10,6 +10,7 @@ import {
 } from 'components';
 import { PlanInterface, ErrorMessageInterface } from 'types';
 import { ERROR_MESSAGES } from 'utilities/constants';
+import { toast } from 'react-toastify';
 import { EditorModalTypes, EditorPlanModal } from './EditorPlanModal';
 import {
   EditorPlansPageContainer,
@@ -40,18 +41,22 @@ const EditorPlans = () => {
 
   const toggleVisibility = useCallback(
     async (plan) => {
+      const planStatusChange = plan.visible ? 'private' : 'public';
       try {
         await updatePlan({
           ...plan,
           visible: !plan.visible,
         });
 
+        toast.success(`Plan updated to be ${planStatusChange}`, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+
         fetchEditorPlans();
       } catch (error) {
-        const errors = error as ErrorMessageInterface[];
-        if (errors?.[0]?.msg === ERROR_MESSAGES.unauthorized) {
-          // navigate('/sign-in', { replace: true });
-        }
+        toast.error(`Failed to make plan ${planStatusChange}`, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       }
     },
     [fetchEditorPlans]

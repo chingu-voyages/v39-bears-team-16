@@ -3,7 +3,7 @@ import { BsFillBookmarkStarFill, BsBoxArrowInDown } from 'react-icons/bs';
 import { MdExplore } from 'react-icons/md';
 
 export const SidebarContainer = styled.div`
-  background-color: ${({ theme }) => theme.color.white};
+  background: rgba(197, 225, 255, 0.3);
   position: absolute;
   top: 64px;
   left: 0;

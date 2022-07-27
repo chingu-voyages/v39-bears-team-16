@@ -2,6 +2,7 @@ import React, { createContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { useCookies } from 'react-cookie';
+import { ToastContainer } from 'react-toastify';
 import { darkTheme } from './theme';
 import { GlobalStyle } from './global-style';
 import SignUp from './pages/Authentication/SignUp';
@@ -14,6 +15,7 @@ import EditorPlans from './pages/Editor/EditorPlans';
 import EditorClasses from './pages/Editor/EditorClasses';
 import HomeEnrolled from './pages/Home/Enrolled/HomeEnrolled';
 import HomeFeatured from './pages/Home/Featured/HomeFeatured';
+import 'react-toastify/dist/ReactToastify.css';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const UserContext = createContext<any | null>(null);
@@ -28,6 +30,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <ToastContainer autoClose={5000} />
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Navigate to="sign-in" replace />} />
