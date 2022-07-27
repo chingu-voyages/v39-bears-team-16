@@ -15,7 +15,8 @@ import {
   classesProps,
   headerProps,
   classesWorkProps,
-} from 'types';
+} from 'pages/Editor/Classes/classTypes';
+
 /* eslint no-underscore-dangle: 0 */
 
 const getHeaderComponent = ({ item, fetchClasses }: headerProps) => {

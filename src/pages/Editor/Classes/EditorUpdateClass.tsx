@@ -11,8 +11,8 @@ import {
 import { AddNewClassForm } from 'pages/Editor/Classes/UpdateClassModals/AddNewClassModal';
 import ClassComponent from 'pages/Editor/Classes/ClassComponent';
 import { useModal } from 'components/Modal/useModal';
-
-import { ErrorMessageInterface, ClassComponentDataProps } from 'types';
+import { ClassComponentDataProps } from 'pages/Editor/Classes/classTypes';
+import { ErrorMessageInterface } from 'types';
 import { ERROR_MESSAGES } from 'utilities/constants';
 import { getPlanClasses } from 'api/classes';
 import { PrimaryButton } from 'components/Button';

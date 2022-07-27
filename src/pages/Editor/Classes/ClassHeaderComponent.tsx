@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ClassHeaderDataProps } from 'types';
+import { ClassHeaderDataProps } from 'pages/Editor/Classes/classTypes';
 import { useModal } from 'components/Modal/useModal';
 import { EditClassModal } from 'pages/Editor/Classes/UpdateClassModals/EditClassModal';
 import { DeleteClassModal } from 'pages/Editor/Classes/UpdateClassModals/DeleteClassModal';

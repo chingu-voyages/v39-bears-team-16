@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { deleteClass } from 'api/classes';
 import { Modal } from 'components/Modal/Modal';
 import { Button, WarningButton } from 'components/Button';
-import { ErrorMessageInterface, deleteClassProps } from 'types';
+import { ErrorMessageInterface } from 'types';
+import { deleteClassProps } from 'pages/Editor/Classes/classTypes';
 import { StyledErrorMessage } from 'components/ErrorMessage';
 
 const Container = styled.div`
