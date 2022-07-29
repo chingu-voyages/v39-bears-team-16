@@ -1,34 +1,52 @@
 import styled from 'styled-components';
 
-export const SyllabusContainer = styled.section`
+export const PageContainer = styled.div`
+  height: 100vh;
+  overflow: auto;
+`;
+
+export const ImageBanner = styled.img`
+  width: 100%;
+  height: 500px;
+`;
+
+export const PlanClassesContainer = styled.section`
   display: flex;
   flex-direction: column;
   max-width: 100%;
   margin: 1.5em;
   padding: 1.5em;
   border-radius: 1em;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
+  margin-bottom: 5em;
 `;
 
-export const Line = styled.div`
-  width: 100%;
-  background-color: ${({ theme }) => theme.color.primary};
-  height: 1px;
+export const PlanInfoContainer = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
-export const SyllabusHeadlineWrapper = styled.section`
+export const PlanInfoHeadlineWrapper = styled.section`
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   margin-bottom: 1em;
+  align-items: start;
+  flex: 0.8;
+`;
+
+export const ProgressBarContainer = styled.div`
+  flex: 0.1;
   align-items: center;
 `;
 
-export const SyllabusHeadline = styled.h1`
-  font-weight: 500;
-`;
-
-export const Classes = styled.section`
+export const StyledClassesContainer = styled.section`
   display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
+  width: 100%;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 8px;
+  gap: 2em;
+  margin-top: 5em;
 `;

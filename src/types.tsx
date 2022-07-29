@@ -30,6 +30,8 @@ export interface PlanInterface {
   thumbnail: string;
   description: string;
   visible: boolean;
+  progress: number;
+  createdBy: string;
 }
 
 export interface ThemeInterface {

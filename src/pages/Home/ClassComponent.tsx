@@ -1,9 +1,8 @@
 import React from 'react';
 import { BiCircle } from 'react-icons/bi';
-import { ClassInterface } from 'types';
+import { ClassInterface, ClassworkInterface } from 'types';
 import AccordionWrapper from 'components/Accordion/Accordion';
 import {
-  StyledClassContainer,
   StyledClassHeaderWrapper,
   ClassTitle,
   StyledClassworkContainer,
@@ -17,63 +16,53 @@ import {
 } from './ClassComponent.styled';
 
 interface ClassComponentProps {
-  classes: ClassInterface[];
+  classworks: ClassworkInterface[];
   isEnrolled: boolean;
-}
-
-interface ClassDetailsProps {
   name: string;
   description: string;
 }
 
-const ClassDetails = ({ name, description }: ClassDetailsProps) => {
+const ClassComponent = ({
+  isEnrolled,
+  classworks,
+  name: className,
+  description: classDescription,
+}: ClassComponentProps) => {
   return (
-    <StyledClassHeaderWrapper>
-      <ClassTitle>{name}</ClassTitle>
-      <p>{description}</p>
-    </StyledClassHeaderWrapper>
-  );
-};
-
-const ClassComponent = ({ classes, isEnrolled }: ClassComponentProps) => {
-  console.log('classes', classes);
-
-  return (
-    <StyledClassContainer>
-      {classes?.map(({ _id: classId, classworks, ...classData }) => (
-        <div key={classId}>
-          <AccordionWrapper header={<ClassDetails {...classData} />}>
-            <StyledAccordionContentWrapper>
-              {classworks?.map(
-                ({ _id: classworkId, name, description, completed, link }) => (
-                  <StyledClassworkContainer key={classworkId}>
-                    <StyledCheckmarkButton>
-                      {completed ? <StyledFilledCheckmark /> : <BiCircle />}
-                    </StyledCheckmarkButton>
-                    <StyledClassworkDetails>
-                      <StyledClassworkTitle>{name}</StyledClassworkTitle>
-                      <p>{description}</p>
-                      <StyledClassworkLink
-                        href={link}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                      >
-                        {link}
-                      </StyledClassworkLink>
-                      {isEnrolled ? (
-                        <StyledMarkDoneButton>
-                          Mark as Complete
-                        </StyledMarkDoneButton>
-                      ) : null}
-                    </StyledClassworkDetails>
-                  </StyledClassworkContainer>
-                )
-              )}
-            </StyledAccordionContentWrapper>
-          </AccordionWrapper>
-        </div>
-      ))}
-    </StyledClassContainer>
+    <AccordionWrapper
+      header={
+        <StyledClassHeaderWrapper>
+          <ClassTitle>{className}</ClassTitle>
+          <p>{classDescription}</p>
+        </StyledClassHeaderWrapper>
+      }
+    >
+      <StyledAccordionContentWrapper>
+        {classworks?.map(
+          ({ _id: classworkId, name, description, completed, link }) => (
+            <StyledClassworkContainer key={classworkId}>
+              <StyledCheckmarkButton>
+                {completed ? <StyledFilledCheckmark /> : <BiCircle />}
+              </StyledCheckmarkButton>
+              <StyledClassworkDetails>
+                <StyledClassworkTitle>{name}</StyledClassworkTitle>
+                <p>{description}</p>
+                <StyledClassworkLink
+                  href={link}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {link}
+                </StyledClassworkLink>
+                {isEnrolled ? (
+                  <StyledMarkDoneButton>Mark as Complete</StyledMarkDoneButton>
+                ) : null}
+              </StyledClassworkDetails>
+            </StyledClassworkContainer>
+          )
+        )}
+      </StyledAccordionContentWrapper>
+    </AccordionWrapper>
   );
 };
 
