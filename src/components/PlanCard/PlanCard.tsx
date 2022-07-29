@@ -13,6 +13,7 @@ import {
   PlanDescription,
   PlanImg,
 } from './PlanCard.styled';
+import { StyledPillLabelContainer, PillLabel } from '../PillLabel';
 
 interface PlanCardProps extends PlanInterface {
   handleClick(): void;
@@ -41,6 +42,7 @@ export const PlanCard = ({
       </PlanInfoWrapper>
       <PlanDescription>{description}</PlanDescription>
       <PlanNav>
+        <PillLabel text="coding" type="primary" />
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>

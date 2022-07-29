@@ -11,10 +11,12 @@ export const StyledDropDownMenuItemHeader = styled.div`
   width: 100%;
   display: flex;
   gap: 0.5em;
+  border-radius: 5px;
   cursor: pointer;
+  background-color: ${({ theme }) => theme.color.white};
 `;
 
-export const StlyedDropDownMenuItemBody = styled.div`
+export const StyledDropDownMenuItemBody = styled.div`
   position: absolute;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 5px;

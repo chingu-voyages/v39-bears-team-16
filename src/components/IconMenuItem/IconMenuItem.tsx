@@ -2,9 +2,9 @@ import useOnClickOutside from 'hooks/useOnClickOutside';
 import React, { useRef, useState } from 'react';
 import {
   StyledDropDownMenuItemBody,
-  StyledDropDownMenuItemHeader,
   StyledDropDownMenuItem,
-} from './DropDownMenuItem.styled';
+} from '../DropDownMenuItem/DropDownMenuItem.styled';
+import { StyledIconMenu } from './IconMenuItem.styled';
 
 interface DropDownMenuItemProps {
   header: JSX.Element;
@@ -24,9 +24,9 @@ const DropDownMenuItem = ({
 
   return (
     <StyledDropDownMenuItem ref={container}>
-      <StyledDropDownMenuItemHeader onClick={() => setIsOpen(!isOpen)}>
+      <StyledIconMenu onClick={() => setIsOpen(!isOpen)}>
         {header}
-      </StyledDropDownMenuItemHeader>
+      </StyledIconMenu>
       <StyledDropDownMenuItemBody>
         {isOpen && <div>{children}</div>}
       </StyledDropDownMenuItemBody>

@@ -5,11 +5,10 @@ export const Button = styled.button`
   align-items: center;
   gap: 0.7em;
   justify-content: center;
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: ${({ theme }) => theme.color.white};
   padding: 0.5em 1.5em;
   box-shadow: none;
-  border: none;
   transition: 0.3s;
   cursor: pointer;
 
@@ -21,8 +20,10 @@ export const Button = styled.button`
 
 export const PrimaryButton = styled(Button)`
   background-color: transparent;
-  color: ${({ theme }) => theme.color.primary};
-  border: 1px solid ${({ theme }) => theme.color.primary};
+  border-radius: 50px;
+  border: solid black 0.125em;
+  color: ${({ theme }) => theme.color.black};
+  border: 1px solid ${({ theme }) => theme.color.black};
 
   &:hover {
     background-color: ${({ theme }) => theme.color.primary};
