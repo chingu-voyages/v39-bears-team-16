@@ -2,7 +2,11 @@ import React from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const CircularProgress = (value: number) => {
+export interface circularProgressProps {
+  value: number;
+}
+
+const CircularProgress = ({ value }: circularProgressProps) => {
   return (
     <div>
       <div style={{ width: '100px' }}>

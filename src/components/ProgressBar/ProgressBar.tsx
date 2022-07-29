@@ -24,7 +24,10 @@ const Container = styled.div`
 const Value = styled.span`
   font-style: italic;
 `;
-const ProgressBar = (value: number) => {
+export interface progressProps {
+  value: number;
+}
+const ProgressBar = ({ value }: progressProps) => {
   return (
     <Container>
       <progress value={value} max="100" />
