@@ -24,9 +24,7 @@ const Container = styled.div`
 const Value = styled.span`
   font-style: italic;
 `;
-const ProgressBar = (props) => {
-  const { value } = props;
-
+const ProgressBar = (value: number) => {
   return (
     <Container>
       <progress value={value} max="100" />
