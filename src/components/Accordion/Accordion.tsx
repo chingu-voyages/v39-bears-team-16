@@ -15,7 +15,7 @@ import {
 
 interface AccordionProps {
   header: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const AccordionWrapper = ({ header, children }: AccordionProps) => {
@@ -31,7 +31,7 @@ const AccordionWrapper = ({ header, children }: AccordionProps) => {
               <StyledClassHeaderWrapper>
                 {header}
 
-                <ExpandArrow className={expanded ? 'closed' : 'expanded'} />
+                <ExpandArrow state={expanded ? 'closed' : 'expanded'} />
               </StyledClassHeaderWrapper>
             </AccordionItemButton>
           </AccordionItemHeading>

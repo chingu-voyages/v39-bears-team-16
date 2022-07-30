@@ -7,8 +7,9 @@ import { getCsrfToken } from 'api/getCsrfToken';
 const StyledMemberLayout = styled.div`
   width: 100%;
   height: 100vh;
-  overflow: hidden;
   background: ${({ theme }) => theme.color.white};
+  max-width: 1440px;
+  margin: auto;
 `;
 
 const Section = styled.section`

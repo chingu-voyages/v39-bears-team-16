@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
   }
 `;

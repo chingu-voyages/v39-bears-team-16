@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { AiOutlineEdit, AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { BiTrash, BiPencil } from 'react-icons/bi';
 import { MdAdd } from 'react-icons/md';
-import { iconStyles } from 'pages/Editor/Classes/styles';
+import { iconStyles } from 'components/Icon.styles';
 
 export const StyledClassContainer = styled.section`
   display: flex;
@@ -22,15 +22,6 @@ export const StyledClassHeaderWrapper = styled.section`
   display: flex;
   flex-direction: column;
   padding-top: 1em;
-
-  .expanded {
-    transform: rotate(0deg);
-    transition: all 0.3s ease-out;
-  }
-  .closed {
-    transform: rotate(180deg);
-    transition: all 0.3s ease-out;
-  }
 `;
 
 export const ClassTitleWrapper = styled.section`

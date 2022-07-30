@@ -3,19 +3,18 @@ import { useParams } from 'react-router-dom';
 import { getPlanClasses } from 'api/classes';
 import { ClassInterface, PlanInterface } from 'types';
 import { PrimaryButton } from 'components';
-import PLAN_BANNER_IMG from 'assets/img/plan-banner.jpg';
+import PLAN_BANNER_IMG from 'assets/img/plan-banner.jpeg';
 import {
-  PageContainer,
   ImageBanner,
   StyledClassesContainer,
   PlanInfoContainer,
   PlanInfoHeadlineWrapper,
   PlanClassesContainer,
   ProgressBarContainer,
-} from './PlanClassesComponent.styled';
+} from './PlanClasses.styled';
 import ClassComponent from './ClassComponent';
 
-const PlanClassesComponent = () => {
+const PlanClasses = () => {
   const [classes, setClasses] = useState<ClassInterface[]>([]);
   const [planInfo, setPlanInfo] = useState<PlanInterface>();
   const { planId } = useParams();
@@ -36,23 +35,20 @@ const PlanClassesComponent = () => {
   }, [fetchClasses]);
 
   return (
-    <PageContainer>
-      <ImageBanner src={PLAN_BANNER_IMG} alt={`${planInfo?.name}`} />
+    <div>
+      <ImageBanner src={planInfo?.thumbnail || PLAN_BANNER_IMG} />
       <PlanClassesContainer>
         <PlanInfoContainer>
           <PlanInfoHeadlineWrapper>
             <h1>{planInfo?.name}</h1>
             <p>
               {planInfo?.description} Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry&lsquo;s standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
+              printing and typesetting industry. It has survived not only five
+              centuries, but also the leap into electronic typesetting,
+              remaining essentially unchanged. It was popularised in the 1960s
+              with the release of Letraset sheets containing Lorem Ipsum
+              passages, and more recently with desktop publishing software like
+              Aldus PageMaker including versions of Lorem Ipsum.
             </p>
             <p>
               Created by{' '}
@@ -72,8 +68,8 @@ const PlanClassesComponent = () => {
           ))}
         </StyledClassesContainer>
       </PlanClassesContainer>
-    </PageContainer>
+    </div>
   );
 };
 
-export default PlanClassesComponent;
+export default PlanClasses;

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const PageContainer = styled.div`
-  height: 100vh;
-  overflow: auto;
-`;
+interface ImageBannerProps {
+  src: string;
+}
 
-export const ImageBanner = styled.img`
-  width: 100%;
-  height: 500px;
+export const ImageBanner = styled.div`
+  height: 25rem;
+  background-image: url(${({ src }: ImageBannerProps) => src});
+  background-size: cover;
 `;
 
 export const PlanClassesContainer = styled.section`
@@ -34,6 +34,15 @@ export const PlanInfoHeadlineWrapper = styled.section`
   margin-bottom: 1em;
   align-items: start;
   flex: 0.8;
+
+  h1 {
+    font-weight: 600;
+  }
+
+  p {
+    font-weight: 300;
+    line-height: 1.5rem;
+  }
 `;
 
 export const ProgressBarContainer = styled.div`
@@ -45,7 +54,6 @@ export const StyledClassesContainer = styled.section`
   display: flex;
   width: 100%;
   flex-direction: column;
-  background: #ffffff;
   border-radius: 8px;
   gap: 2em;
   margin-top: 5em;

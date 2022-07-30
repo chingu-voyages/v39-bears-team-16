@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 export const iconStyles = {
   fontSize: '1.3rem',
   opacity: '80%',
@@ -9,8 +7,3 @@ export const iconStyles = {
     opacity: '100%',
   },
 };
-
-export const StyledDateString = styled.span`
-  font-weight: 100;
-  font-style: italic;
-`;
