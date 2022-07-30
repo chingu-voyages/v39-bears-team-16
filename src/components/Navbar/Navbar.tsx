@@ -12,7 +12,7 @@ import {
 import { UserContext } from '../../App';
 import logo from '../../assets/sail-logo/vector/default-monochrome-primary.svg';
 import { StyledDropdownItem } from '../DropDownMenuItem/DropDownMenuItem.styled';
-import IconMenuItem from '../IconMenuItem/IconMenuItem';
+import IconMenuItem from 'components/IconMenuItem/IconMenuItem';
 
 const Navbar = () => {
   const user = useContext(UserContext);

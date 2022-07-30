@@ -13,7 +13,7 @@ import {
   PlanDescription,
   PlanImg,
 } from './PlanCard.styled';
-import { StyledPillLabelContainer, PillLabel } from '../PillLabel';
+import { PillLabel } from 'components/PillLabel';
 
 interface PlanCardProps extends PlanInterface {
   handleClick(): void;
@@ -42,7 +42,13 @@ export const PlanCard = ({
       </PlanInfoWrapper>
       <PlanDescription>{description}</PlanDescription>
       <PlanNav>
-        <PillLabel text="coding" type="primary" />
+        {/* I know the 'coding' label is incorrect here because it won't be hard-coded, this is just to check styling for approval. */}
+        <PillLabel text="design" type="secondary">
+          coding
+        </PillLabel>
+        <PillLabel text="coding" type="primary">
+          Completed
+        </PillLabel>
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>

@@ -11,10 +11,10 @@ export const StyledPillLabelContainer = styled.div`
   color: ${({ theme }) => theme.color.white};
   padding: 0.5em 1.5em;
   box-shadow: none;
-  border: solid black 0.125em;
+  font-size: 14px;
   transition: 0.3s;
   cursor: pointer;
-  border: 1px solid ${({ theme }) => theme.color.black};
+  /* border: 1px solid ${({ theme }) => theme.color.black}; */
   background-color: ${({ theme, type }) => theme.color[type]};
 `;
 
