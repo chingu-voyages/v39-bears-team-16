@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import IconMenuItem from 'components/IconMenuItem/IconMenuItem';
 import { logout } from '../../api/logout';
 import { UnderlineMenuItem } from '../MenuItem';
 import {
@@ -12,7 +13,6 @@ import {
 import { UserContext } from '../../App';
 import logo from '../../assets/sail-logo/vector/default-monochrome-primary.svg';
 import { StyledDropdownItem } from '../DropDownMenuItem/DropDownMenuItem.styled';
-import IconMenuItem from 'components/IconMenuItem/IconMenuItem';
 
 const Navbar = () => {
   const user = useContext(UserContext);
