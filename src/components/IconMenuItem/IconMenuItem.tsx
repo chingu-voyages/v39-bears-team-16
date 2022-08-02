@@ -6,17 +6,17 @@ import {
 } from '../DropDownMenuItem/DropDownMenuItem.styled';
 import { StyledIconMenu } from './IconMenuItem.styled';
 
-interface DropDownMenuItemProps {
+interface IconMenuItemProps {
   header: JSX.Element;
   children: JSX.Element;
   isOpen?: boolean;
 }
 
-const DropDownMenuItem = ({
+const IconMenuItem = ({
   header,
   children,
   isOpen: dropdownIsOpen = false,
-}: DropDownMenuItemProps) => {
+}: IconMenuItemProps) => {
   const [isOpen, setIsOpen] = useState(dropdownIsOpen);
   const container = useRef<HTMLDivElement>(null);
 
@@ -34,4 +34,4 @@ const DropDownMenuItem = ({
   );
 };
 
-export default DropDownMenuItem;
+export default IconMenuItem;

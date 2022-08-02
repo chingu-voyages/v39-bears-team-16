@@ -5,7 +5,7 @@ export const Button = styled.button`
   align-items: center;
   gap: 0.7em;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: ${({ theme }) => theme.color.white};
   padding: 0.5em 1.5em;
   box-shadow: none;
@@ -20,8 +20,8 @@ export const Button = styled.button`
 
 export const PrimaryButton = styled(Button)`
   background-color: transparent;
-  border-radius: 50px;
-  border: solid black 0.125em;
+  border-radius: 20px;
+  border: 1.5px solid black;
   color: ${({ theme }) => theme.color.black};
   border: 1px solid ${({ theme }) => theme.color.black};
 

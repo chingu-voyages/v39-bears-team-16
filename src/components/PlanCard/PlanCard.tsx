@@ -1,4 +1,5 @@
 import React from 'react';
+import { PrimaryPillLabel, SecondaryPillLabel } from 'components/PillLabel';
 import planCard1 from '../../assets/img/plan-card-1.png';
 import { PlanInterface } from '../../types';
 import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
@@ -13,7 +14,6 @@ import {
   PlanDescription,
   PlanImg,
 } from './PlanCard.styled';
-import { PillLabel } from 'components/PillLabel';
 
 interface PlanCardProps extends PlanInterface {
   handleClick(): void;
@@ -43,12 +43,8 @@ export const PlanCard = ({
       <PlanDescription>{description}</PlanDescription>
       <PlanNav>
         {/* I know the 'coding' label is incorrect here because it won't be hard-coded, this is just to check styling for approval. */}
-        <PillLabel text="design" type="secondary">
-          coding
-        </PillLabel>
-        <PillLabel text="coding" type="primary">
-          Completed
-        </PillLabel>
+        <PrimaryPillLabel>test label</PrimaryPillLabel>
+        <SecondaryPillLabel>test label</SecondaryPillLabel>
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>
