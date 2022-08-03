@@ -12,12 +12,12 @@ const Container = styled.div`
     ::-webkit-progress-bar {
       height: 10px;
       border-radius: 2px;
-      background-color: lightgray;
+      background-color: ${({ theme }) => theme.color.grey};
     }
     ::-webkit-progress-value {
       height: 10px;
       border-radius: 2px;
-      background-color: mediumspringgreen;
+      background-color: ${({ theme }) => theme.color.green};
     }
   }
 `;
