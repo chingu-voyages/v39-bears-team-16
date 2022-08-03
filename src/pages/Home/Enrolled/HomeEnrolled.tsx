@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PlanCard, StyledDropdownItem } from 'components';
 import { PlanInterface } from 'types';
-import { getEnrolledPlans } from 'api/plans';
+import { getEnrolledPlans } from 'api/enrollments';
 import {
   HomePlansPageContainer,
   StyledPlanCardsContainer,

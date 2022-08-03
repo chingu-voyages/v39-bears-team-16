@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { getPlanClasses } from 'api/classes';
+import { enrollToPlan } from 'api/enrollments';
 import { ClassInterface, PlanInterface } from 'types';
 import { PrimaryButton } from 'components';
 import PLAN_BANNER_IMG from 'assets/img/plan-banner.jpeg';
@@ -30,6 +32,21 @@ const PlanClasses = () => {
     }
   }, [planId]);
 
+  const onEnrollToPlan = async () => {
+    try {
+      await enrollToPlan({ planId: planInfo?._id || '' });
+      fetchClasses();
+      toast.success('Successfully enrolled to plan', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    } catch (error) {
+      // setErrorMessages(error as ErrorMessageInterface[]);
+      toast.error('Failed to enroll to plan', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    }
+  };
+
   useEffect(() => {
     fetchClasses();
   }, [fetchClasses]);
@@ -56,7 +73,9 @@ const PlanClasses = () => {
                 <i>{planInfo?.createdBy}</i>
               </strong>
             </p>
-            {!planInfo?.progress && <PrimaryButton>Enroll</PrimaryButton>}
+            {!planInfo?.progress && (
+              <PrimaryButton onClick={onEnrollToPlan}>Enroll</PrimaryButton>
+            )}
           </PlanInfoHeadlineWrapper>
           <ProgressBarContainer>Progress bar</ProgressBarContainer>
         </PlanInfoContainer>

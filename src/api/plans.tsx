@@ -10,10 +10,6 @@ export const getPlans = () => {
   return api.get('/plans');
 };
 
-export const getEnrolledPlans = () => {
-  return api.get('/enrollments');
-};
-
 export const getOwnedPlans = () => {
   return api.get('/user/plans');
 };
