@@ -7,7 +7,7 @@ export interface circularProgressProps {
   value: number;
 }
 
-const CircularProgress = ({ value }: circularProgressProps) => {
+export const CircularProgress = ({ value }: circularProgressProps) => {
   return (
     <div style={{ width: '100px' }}>
       <CircularProgressbar
@@ -29,5 +29,3 @@ const CircularProgress = ({ value }: circularProgressProps) => {
     </div>
   );
 };
-
-export default CircularProgress;

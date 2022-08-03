@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { getPlanClasses } from 'api/classes';
 import { enrollToPlan } from 'api/enrollments';
 import { ClassInterface, PlanInterface } from 'types';
-import { PrimaryButton } from 'components';
+import { PrimaryButton, CircularProgress } from 'components';
 import PLAN_BANNER_IMG from 'assets/img/plan-banner.jpeg';
 import {
   ImageBanner,
@@ -24,7 +24,6 @@ const PlanClasses = () => {
   const fetchClasses = useCallback(async () => {
     try {
       const { data } = await getPlanClasses(planId);
-      console.log('responseTEST', data);
       setPlanInfo(data.plan);
       setClasses(data.plan.classes);
     } catch (error) {
@@ -77,7 +76,9 @@ const PlanClasses = () => {
               <PrimaryButton onClick={onEnrollToPlan}>Enroll</PrimaryButton>
             )}
           </PlanInfoHeadlineWrapper>
-          <ProgressBarContainer>Progress bar</ProgressBarContainer>
+          <ProgressBarContainer>
+            <CircularProgress value={(planInfo?.progress ?? 0) * 100} />
+          </ProgressBarContainer>
         </PlanInfoContainer>
         <StyledClassesContainer>
           {classes?.map(({ _id: classId, ...classData }) => (

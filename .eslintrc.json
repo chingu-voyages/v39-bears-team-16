@@ -61,7 +61,7 @@
 		"react/prop-types": "off",
 		"react/jsx-props-no-spreading": "off",
 		"react/require-default-props": "off",
-		"no-underscore-dangle":  ["error"]
+		"no-underscore-dangle": "off"
 	},
 	"settings": {
 		"import/resolver": {
