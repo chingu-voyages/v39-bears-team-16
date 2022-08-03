@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import IconMenuItem from 'components/IconMenuItem/IconMenuItem';
+import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
 import { logout } from '../../api/logout';
 import { UnderlineMenuItem } from '../MenuItem';
 import {
@@ -12,7 +12,10 @@ import {
 } from './Navbar.styled';
 import { UserContext } from '../../App';
 import logo from '../../assets/sail-logo/vector/default-monochrome-primary.svg';
-import { StyledDropdownItem } from '../DropDownMenuItem/DropDownMenuItem.styled';
+import {
+  StyledDropdownItem,
+  UserIconDropDownHeader,
+} from '../DropDownMenuItem/DropDownMenuItem.styled';
 
 const Navbar = () => {
   const user = useContext(UserContext);
@@ -45,12 +48,17 @@ const Navbar = () => {
       </StyledNavbarSection>
       <StyledNavbarSection>
         <SearchIcon />
-        <IconMenuItem header={<span>{user.name.charAt(0).toUpperCase()}</span>}>
-          <StyledDropdownItem onClick={() => handleLogout()}>
-            <LogoutIcon />
-            Logout
-          </StyledDropdownItem>
-        </IconMenuItem>
+        <DropDownMenuItem
+          header={
+            <UserIconDropDownHeader>
+              {user.name.charAt(0).toUpperCase()}
+            </UserIconDropDownHeader>
+          }
+        />
+        <StyledDropdownItem onClick={() => handleLogout()}>
+          <LogoutIcon />
+          Logout
+        </StyledDropdownItem>
       </StyledNavbarSection>
     </StyledNavbar>
   );

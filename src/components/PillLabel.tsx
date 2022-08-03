@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const PillLabel = styled.div`
+interface PillLabelProps {
+  type: 'primary' | 'secondary';
+  children: JSX.Element;
+}
+
+export const StyledPillLabelContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 0.7em;
@@ -14,13 +19,15 @@ export const PillLabel = styled.div`
   font-size: 14px;
   transition: 0.3s;
   cursor: pointer;
+
+  background-color: ${({ theme, type }) =>
+    type === 'primary' ? theme.color.primary : theme.color.secondary};
+  color: ${({ theme, type }) =>
+    type === 'primary' ? theme.color.white : theme.color.black};
 `;
 
-export const PrimaryPillLabel = styled(PillLabel)`
-  background-color: ${({ theme }) => theme.color.primary};
-`;
-
-export const SecondaryPillLabel = styled(PillLabel)`
-  background-color: ${({ theme }) => theme.color.secondary};
-  color: ${({ theme }) => theme.color.black};
-`;
+export const PillLabel = ({ type, children }: PillLabelProps) => {
+  return (
+    <StyledPillLabelContainer type={type}>{children}</StyledPillLabelContainer>
+  );
+};

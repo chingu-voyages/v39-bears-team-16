@@ -30,3 +30,17 @@ export const StyledDropdownItem = styled(Button)`
   justify-content: start;
   width: 100%;
 `;
+
+export const UserIconDropDownHeader = styled.div`
+  position: relative;
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.color.secondary};
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: medium;
+`;

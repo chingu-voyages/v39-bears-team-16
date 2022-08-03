@@ -1,5 +1,5 @@
 import React from 'react';
-import { PrimaryPillLabel, SecondaryPillLabel } from 'components/PillLabel';
+import { StyledPillLabelContainer } from 'components/PillLabel';
 import planCard1 from '../../assets/img/plan-card-1.png';
 import { PlanInterface } from '../../types';
 import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
@@ -42,9 +42,14 @@ export const PlanCard = ({
       </PlanInfoWrapper>
       <PlanDescription>{description}</PlanDescription>
       <PlanNav>
-        {/* I know the 'coding' label is incorrect here because it won't be hard-coded, this is just to check styling for approval. */}
-        <PrimaryPillLabel>test label</PrimaryPillLabel>
-        <SecondaryPillLabel>test label</SecondaryPillLabel>
+        <StyledPillLabelContainer type={'primary'}>
+          {' '}
+          test label
+        </StyledPillLabelContainer>
+        <StyledPillLabelContainer type={'secondary'}>
+          {' '}
+          test label
+        </StyledPillLabelContainer>
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>

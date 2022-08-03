@@ -40,5 +40,5 @@ export const LogoutIcon = styled(RiLogoutCircleLine)`
   font-size: 1.3rem;
 `;
 export const SearchIcon = styled(RiSearchLine)`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 `;
