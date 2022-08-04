@@ -39,6 +39,6 @@ export const MenuItemWrapper = styled.div`
 export const LogoutIcon = styled(RiLogoutCircleLine)`
   font-size: 1.3rem;
 `;
-export const SearchIcon = styled(RiSearchLine)`
-  font-size: 1.4rem;
-`;
+// export const SearchIcon = styled(RiSearchLine)`
+//   font-size: 1.4rem;
+// `;

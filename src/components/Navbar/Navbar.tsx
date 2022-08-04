@@ -8,7 +8,6 @@ import {
   StyledNavbar,
   StyledNavbarSection,
   LogoutIcon,
-  SearchIcon,
 } from './Navbar.styled';
 import { UserContext } from '../../App';
 import logo from '../../assets/sail-logo/vector/default-monochrome-primary.svg';
@@ -47,7 +46,6 @@ const Navbar = () => {
         </MenuItemWrapper>
       </StyledNavbarSection>
       <StyledNavbarSection>
-        <SearchIcon />
         <DropDownMenuItem
           header={
             <UserIconDropDownHeader>

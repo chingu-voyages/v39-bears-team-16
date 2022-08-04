@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledPillLabelContainer } from 'components/PillLabel';
+import { PillLabel } from 'components/PillLabel';
 import planCard1 from '../../assets/img/plan-card-1.png';
 import { PlanInterface } from '../../types';
 import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
@@ -42,14 +42,8 @@ export const PlanCard = ({
       </PlanInfoWrapper>
       <PlanDescription>{description}</PlanDescription>
       <PlanNav>
-        <StyledPillLabelContainer type={'primary'}>
-          {' '}
-          test label
-        </StyledPillLabelContainer>
-        <StyledPillLabelContainer type={'secondary'}>
-          {' '}
-          test label
-        </StyledPillLabelContainer>
+        <PillLabel type={'primary'}> test label</PillLabel>
+        <PillLabel type={'secondary'}> test label</PillLabel>
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>
