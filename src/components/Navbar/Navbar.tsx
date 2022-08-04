@@ -8,6 +8,7 @@ import {
   StyledNavbar,
   StyledNavbarSection,
   LogoutIcon,
+  SearchIcon,
 } from './Navbar.styled';
 import { UserContext } from '../../App';
 import logo from '../../assets/sail-logo/vector/default-monochrome-primary.svg';
@@ -46,17 +47,19 @@ const Navbar = () => {
         </MenuItemWrapper>
       </StyledNavbarSection>
       <StyledNavbarSection>
+        <SearchIcon />
         <DropDownMenuItem
           header={
             <UserIconDropDownHeader>
               {user.name.charAt(0).toUpperCase()}
             </UserIconDropDownHeader>
           }
-        />
-        <StyledDropdownItem onClick={() => handleLogout()}>
-          <LogoutIcon />
-          Logout
-        </StyledDropdownItem>
+        >
+          <StyledDropdownItem onClick={() => handleLogout()}>
+            <LogoutIcon />
+            Logout
+          </StyledDropdownItem>
+        </DropDownMenuItem>
       </StyledNavbarSection>
     </StyledNavbar>
   );

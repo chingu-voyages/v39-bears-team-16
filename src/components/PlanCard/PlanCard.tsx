@@ -42,8 +42,8 @@ export const PlanCard = ({
       </PlanInfoWrapper>
       <PlanDescription>{description}</PlanDescription>
       <PlanNav>
-        <PillLabel type={'primary'}> test label</PillLabel>
-        <PillLabel type={'secondary'}> test label</PillLabel>
+        <PillLabel type="primary"> test label</PillLabel>
+        <PillLabel type="secondary"> test label</PillLabel>
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>
