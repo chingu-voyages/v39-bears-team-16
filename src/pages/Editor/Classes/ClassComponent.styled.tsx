@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { AiOutlineEdit, AiOutlineAppstoreAdd } from 'react-icons/ai';
-import { BiTrash, BiPencil } from 'react-icons/bi';
+import { BiPencil, BiTrashAlt } from 'react-icons/bi';
 import { MdAdd } from 'react-icons/md';
 import { iconStyles } from 'pages/Editor/Classes/styles';
+import { FaArrowLeft } from 'react-icons/fa';
 
 export const StyledClassContainer = styled.section`
   display: flex;
@@ -81,9 +82,10 @@ export const EditClassContentIcon = styled(AiOutlineEdit)`
   color: ${({ theme }) => theme.color.white};
 `;
 
-export const TrashIcon = styled(BiTrash)`
+export const TrashIcon = styled(BiTrashAlt)`
   ${iconStyles}
-  color: ${({ theme }) => theme.color.red};
+  color: ${({ theme }) => theme.color.black};
+  font-size: 21px;
 `;
 
 export const AddClassContentIcon = styled(MdAdd)`
@@ -91,6 +93,11 @@ export const AddClassContentIcon = styled(MdAdd)`
   color: ${({ theme }) => theme.color.primary};
 `;
 
+export const LeftArrow = styled(FaArrowLeft)`
+  ${iconStyles}
+  color: ${({ theme }) => theme.color.primary};
+  font-size: 15px;
+`;
 export const MaterialLists = styled.div`
   margin: 2rem;
   width: 15rem;

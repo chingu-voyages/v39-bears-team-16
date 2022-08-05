@@ -18,21 +18,55 @@ import {
   classWorkValidationRules,
 } from 'utilities/validation';
 import { FaPlus } from 'react-icons/fa';
-import { TrashIcon } from 'pages/Editor/Classes/ClassComponent.styled';
+import {
+  LeftArrow,
+  TrashIcon,
+} from 'pages/Editor/Classes/ClassComponent.styled';
 
 const StyledForm = styled.form`
+  margin: 0 5% 0 5%;
+  font-family: 'Poppins';
+  font-style: normal;
   display: flex;
   flex-direction: column;
   gap: 1em;
 `;
 
 const Classworks = styled.div`
-  background: #fff;
-  border-radius: 4px;
-  padding: 1em;
-  overflow: hidden;
-  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25),
-    0 8px 1px -8px hsla(0, 0%, 0%, 0.1), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
+  display: flex;
+  flex-direction: column;
+`;
+
+const ClassWorkHeading = styled.div`
+  height: 50px;
+  background: ${({ theme }) => theme.color.secondary};
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 0 2px 0;
+  padding: 10px;
+
+  span {
+    height: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: 0.5px;
+  }
+`;
+const AddNewClassWorkBtn = styled(PrimaryButton)`
+  border-radius: 20px;
+`;
+const ReturnBtn = styled(Button)`
+  border-radius: 20px;
+  height: 21px;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  margin: 2% 5% 2% 5%;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `;
 
 /* eslint no-underscore-dangle: 0 */
@@ -83,7 +117,7 @@ export const EditClassModal = ({
 
   return (
     <Modal
-      titleText="Edit Class"
+      titleText=""
       isOpen={isOpen}
       onCloseModal={toggle}
       primaryAction={
@@ -91,14 +125,29 @@ export const EditClassModal = ({
           Submit
         </PrimaryButton>
       }
-      secondaryAction={<Button onClick={handleCancelModal}>Cancel</Button>}
+      secondaryAction={
+        <AddNewClassWorkBtn
+          type="button"
+          onClick={() =>
+            append({
+              name: '',
+              description: '',
+            })
+          }
+        >
+          <FaPlus /> New Class Work
+        </AddNewClassWorkBtn>
+      }
       customStyles={{
         content: {
-          height: '90vh',
-          width: '90vw',
+          height: '100vh',
+          width: '100vw',
         },
       }}
     >
+      <ReturnBtn>
+        <LeftArrow /> back to Syllabus
+      </ReturnBtn>
       <StyledForm id="EditClassForm" onSubmit={handleSubmit(onSubmit)}>
         <InputField htmlFor="name">
           <span>Class Title</span>
@@ -130,8 +179,12 @@ export const EditClassModal = ({
           return (
             <div>
               <Classworks key={field.id}>
-                <InputField htmlFor="classworkName">
+                <ClassWorkHeading>
                   <span>Class Work {index + 1}</span>
+                  <TrashIcon type="button" onClick={() => remove(index)} />
+                </ClassWorkHeading>
+                <InputField htmlFor="classworkName">
+                  <span> Title</span>
                   <Input
                     placeholder="name"
                     {...register(
@@ -149,6 +202,7 @@ export const EditClassModal = ({
                   ) : null
                 )}
                 <InputField htmlFor="classworkDescription">
+                  <span> Description</span>
                   <Input
                     placeholder="description"
                     {...register(
@@ -165,22 +219,12 @@ export const EditClassModal = ({
                     </StyledErrorMessage>
                   ) : null
                 )}
-                <TrashIcon type="button" onClick={() => remove(index)} />
               </Classworks>
             </div>
           );
         })}
-        <PrimaryButton
-          onClick={() =>
-            append({
-              name: '',
-              description: '',
-            })
-          }
-        >
-          <FaPlus /> New Class Work
-        </PrimaryButton>
       </StyledForm>
+
       {errorMessages?.map(({ msg }) => (
         <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
       ))}
