@@ -63,4 +63,7 @@ export const classWorkValidationRules = {
   description: {
     required: 'Class Work Description is required',
   },
+  type: {
+    required: 'Please select a valid Class Work type',
+  },
 };

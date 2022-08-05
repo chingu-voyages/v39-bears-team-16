@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { Input, InputField, TextArea } from 'components/Input';
+import { Input, InputField, Select, TextArea, Option } from 'components/Input';
 import { ErrorMessageInterface } from 'types';
 import { EditClassModalProps } from 'pages/Editor/Classes/classTypes';
 import { CreateClassProps, editClass } from 'api/classes';
@@ -12,7 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { StyledErrorMessage } from 'components/ErrorMessage';
 
 import { Modal } from 'components/Modal/Modal';
-import { Button, PrimaryButton } from 'components/Button';
+import { PrimaryButton } from 'components/Button';
 import {
   classValidationRules,
   classWorkValidationRules,
@@ -56,16 +56,19 @@ const ClassWorkHeading = styled.div`
 const AddNewClassWorkBtn = styled(PrimaryButton)`
   border-radius: 20px;
 `;
-const ReturnBtn = styled(Button)`
-  border-radius: 20px;
+const ReturnBtn = styled.button`
   height: 21px;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.5px;
-  margin: 2% 5% 2% 5%;
+  margin: 2% 5% 2% 2%;
+  background-color: transparent;
+  color: ${({ theme }) => theme.color.primary};
+  border: none;
   &:hover {
-    text-decoration: underline;
+    font-weight: bold;
     cursor: pointer;
+    text-decoration: underline;
   }
 `;
 
@@ -108,7 +111,7 @@ export const EditClassModal = ({
   const onSubmit = async (data: CreateClassProps) => {
     try {
       await editClass(data, item._id);
-      fetchClasses();
+      await fetchClasses();
       handleCancelModal();
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);
@@ -154,25 +157,31 @@ export const EditClassModal = ({
           <Input
             type="text"
             id="name"
+            aria-invalid={errors.name ? 'true' : 'false'}
             placeholder="Enter Class Title"
             {...register('name', classValidationRules.name)}
             defaultValue={item.name}
           />
         </InputField>
         {errors.name?.message ? (
-          <StyledErrorMessage>{errors.name?.message}</StyledErrorMessage>
+          <StyledErrorMessage role="alert">
+            {errors.name?.message}
+          </StyledErrorMessage>
         ) : null}
         <InputField htmlFor="description">
           <span>Class Description</span>
           <TextArea
             id="description"
+            aria-invalid={errors.description ? 'true' : 'false'}
             placeholder="Enter Class description"
             {...register('description', classValidationRules.description)}
             defaultValue={item.description}
           />
         </InputField>
         {errors.description?.message ? (
-          <StyledErrorMessage>{errors.description?.message}</StyledErrorMessage>
+          <StyledErrorMessage role="alert">
+            {errors.description?.message}
+          </StyledErrorMessage>
         ) : null}
 
         {fields.map((field, index) => {
@@ -183,6 +192,30 @@ export const EditClassModal = ({
                   <span>Class Work {index + 1}</span>
                   <TrashIcon type="button" onClick={() => remove(index)} />
                 </ClassWorkHeading>
+                <InputField htmlFor="type">
+                  <span> Type</span>
+                  <Select
+                    id="type"
+                    placeholder="Select Type"
+                    {...register(
+                      `classworks.${index}.type` as const,
+                      classWorkValidationRules.type
+                    )}
+                    defaultValue={field.type}
+                  >
+                    <Option value="material" selected>
+                      Material
+                    </Option>
+                    <Option value="submission">Submission</Option>
+                  </Select>
+                </InputField>
+                {errors.classworks?.map(({ type }, ind) =>
+                  ind === index ? (
+                    <StyledErrorMessage role="alert" key={uuidv4()}>
+                      {type?.message}
+                    </StyledErrorMessage>
+                  ) : null
+                )}
                 <InputField htmlFor="classworkName">
                   <span> Title</span>
                   <Input
@@ -196,7 +229,7 @@ export const EditClassModal = ({
                 </InputField>
                 {errors.classworks?.map(({ name }, ind) =>
                   ind === index ? (
-                    <StyledErrorMessage key={uuidv4()}>
+                    <StyledErrorMessage role="alert" key={uuidv4()}>
                       {name?.message}
                     </StyledErrorMessage>
                   ) : null
@@ -214,7 +247,7 @@ export const EditClassModal = ({
                 </InputField>
                 {errors.classworks?.map(({ description }, ind) =>
                   ind === index ? (
-                    <StyledErrorMessage key={uuidv4()}>
+                    <StyledErrorMessage role="alert" key={uuidv4()}>
                       {description?.message}
                     </StyledErrorMessage>
                   ) : null

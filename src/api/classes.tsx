@@ -10,6 +10,7 @@ export interface CreateClassProps {
 export interface CreateClassWorkProps {
   name: string;
   description: string;
+  type?: string;
 }
 
 // Class Apis

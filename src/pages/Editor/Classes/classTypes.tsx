@@ -44,9 +44,13 @@ export interface headerProps {
   fetchClasses(): void;
 }
 
-export interface classesWorkProps {
+export interface classWorkProps {
   name: string;
   description: string;
+  classworkId?: string;
+  type?: string;
+  order?: string;
+  createdAt?: string;
 }
 
 export interface ClassHeaderDataProps {

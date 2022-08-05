@@ -14,7 +14,7 @@ import {
   ClassComponentDataProps,
   classesProps,
   headerProps,
-  classesWorkProps,
+  classWorkProps,
 } from 'pages/Editor/Classes/classTypes';
 
 /* eslint no-underscore-dangle: 0 */
@@ -24,10 +24,12 @@ const getHeaderComponent = ({ item, fetchClasses }: headerProps) => {
 };
 
 const ClassComponent = ({ classes = [], fetchClasses }: classesProps) => {
-  const classWorkDetails = (innerElement: classesWorkProps) => {
+  const classWorkDetails = (innerElement: classWorkProps) => {
     if (innerElement.description) {
       return (
         <>
+          <ClassworkIcon /> {innerElement.type}
+          <ClassworkIcon /> {innerElement.name}
           <ClassworkIcon /> {innerElement.description}
         </>
       );
