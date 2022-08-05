@@ -55,15 +55,18 @@ const ClassWorkHeading = styled.div`
 `;
 const AddNewClassWorkBtn = styled(PrimaryButton)`
   border-radius: 20px;
+  position: absolute;
+  left: 7%;
 `;
 const ReturnBtn = styled.button`
   height: 21px;
   font-weight: 400;
   font-size: 16px;
   letter-spacing: 0.5px;
-  margin: 2% 5% 2% 2%;
+  margin: 2% 5% 2% 5%;
   background-color: transparent;
   color: ${({ theme }) => theme.color.primary};
+  padding: 0;
   border: none;
   &:hover {
     font-weight: bold;
