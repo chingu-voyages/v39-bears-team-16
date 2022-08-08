@@ -12,9 +12,10 @@ export const StyledDropDownMenuItemHeader = styled.div`
   display: flex;
   gap: 0.5em;
   cursor: pointer;
+  background-color: ${({ theme }) => theme.color.white};
 `;
 
-export const StlyedDropDownMenuItemBody = styled.div`
+export const StyledDropDownMenuItemBody = styled.div`
   position: absolute;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 5px;
@@ -27,4 +28,18 @@ export const StyledDropdownItem = styled(Button)`
   font-size: 1rem;
   justify-content: start;
   width: 100%;
+`;
+
+export const UserIconDropDownHeader = styled.div`
+  position: relative;
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.color.secondary};
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: medium;
 `;

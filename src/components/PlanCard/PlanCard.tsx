@@ -1,6 +1,8 @@
 import React from 'react';
+import { PillLabel } from 'components/PillLabel.styled';
 import planCard1 from '../../assets/img/plan-card-1.png';
 import { PlanInterface } from '../../types';
+import { PrimaryButton, ArrowIcon } from '../Button';
 import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
 import {
   CardContainer,
@@ -40,7 +42,13 @@ export const PlanCard = ({
         <PlanImg src={planCard1} alt="" />
       </PlanInfoWrapper>
       <PlanDescription>{description}</PlanDescription>
+      <PrimaryButton>
+        <ArrowIcon />
+        Go to Syllabus
+      </PrimaryButton>
       <PlanNav>
+        <PillLabel type="primary"> test label</PillLabel>
+        <PillLabel type="secondary"> test label</PillLabel>
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>

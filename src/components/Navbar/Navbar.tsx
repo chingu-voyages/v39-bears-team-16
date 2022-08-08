@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
 import { logout } from '../../api/logout';
 import { UnderlineMenuItem } from '../MenuItem';
 import {
@@ -7,11 +8,14 @@ import {
   StyledNavbar,
   StyledNavbarSection,
   LogoutIcon,
+  SearchIcon,
 } from './Navbar.styled';
-import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';
 import { UserContext } from '../../App';
 import logo from '../../assets/sail-logo/vector/default-monochrome-primary.svg';
-import { StyledDropdownItem } from '../DropDownMenuItem/DropDownMenuItem.styled';
+import {
+  StyledDropdownItem,
+  UserIconDropDownHeader,
+} from '../DropDownMenuItem/DropDownMenuItem.styled';
 
 const Navbar = () => {
   const user = useContext(UserContext);
@@ -43,12 +47,12 @@ const Navbar = () => {
         </MenuItemWrapper>
       </StyledNavbarSection>
       <StyledNavbarSection>
+        <SearchIcon />
         <DropDownMenuItem
           header={
-            <>
-              <span>P</span>
-              <span>{user.name}</span>
-            </>
+            <UserIconDropDownHeader>
+              {user.name.charAt(0).toUpperCase()}
+            </UserIconDropDownHeader>
           }
         >
           <StyledDropdownItem onClick={() => handleLogout()}>

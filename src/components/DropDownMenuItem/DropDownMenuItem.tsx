@@ -1,7 +1,7 @@
 import useOnClickOutside from 'hooks/useOnClickOutside';
 import React, { useRef, useState } from 'react';
 import {
-  StlyedDropDownMenuItemBody,
+  StyledDropDownMenuItemBody,
   StyledDropDownMenuItemHeader,
   StyledDropDownMenuItem,
 } from './DropDownMenuItem.styled';
@@ -27,9 +27,9 @@ const DropDownMenuItem = ({
       <StyledDropDownMenuItemHeader onClick={() => setIsOpen(!isOpen)}>
         {header}
       </StyledDropDownMenuItemHeader>
-      <StlyedDropDownMenuItemBody>
+      <StyledDropDownMenuItemBody>
         {isOpen && <div>{children}</div>}
-      </StlyedDropDownMenuItemBody>
+      </StyledDropDownMenuItemBody>
     </StyledDropDownMenuItem>
   );
 };
