@@ -11,7 +11,6 @@ export const StyledDropDownMenuItemHeader = styled.div`
   width: 100%;
   display: flex;
   gap: 0.5em;
-  border-radius: 3px;
   cursor: pointer;
   background-color: ${({ theme }) => theme.color.white};
 `;

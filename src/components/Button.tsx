@@ -1,3 +1,4 @@
+import { FaArrowRight } from 'react-icons/fa';
 import styled from 'styled-components';
 
 export const Button = styled.button`
@@ -9,6 +10,7 @@ export const Button = styled.button`
   background-color: ${({ theme }) => theme.color.white};
   padding: 0.5em 1.5em;
   box-shadow: none;
+  border: none;
   transition: 0.3s;
   cursor: pointer;
 
@@ -21,7 +23,6 @@ export const Button = styled.button`
 export const PrimaryButton = styled(Button)`
   background-color: transparent;
   border-radius: 20px;
-  border: 1.5px solid black;
   color: ${({ theme }) => theme.color.black};
   border: 1px solid ${({ theme }) => theme.color.black};
 
@@ -60,4 +61,8 @@ export const InvertPrimaryButton = styled(Button)`
     color: ${({ theme }) => theme.color.white};
     cursor: pointer;
   }
+`;
+
+export const ArrowIcon = styled(FaArrowRight)`
+  font-size: 1.3rem;
 `;
