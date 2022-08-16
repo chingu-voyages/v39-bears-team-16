@@ -7,13 +7,13 @@ interface MenuItemInterface extends NavLinkProps {
 }
 
 const highlightActiveStyle = (theme) => ({
-  fontWeight: '700',
+  fontWeight: '600',
   backgroundColor: 'rgba(197, 225, 255, 0.5)',
   borderLeft: `6px solid ${theme.color.primary}`,
 });
 
 const underlineActiveStyle = (theme) => ({
-  fontWeight: '700',
+  fontWeight: '600',
   borderBottom: `4px solid ${theme.color.primary}`,
 });
 

@@ -7,7 +7,7 @@ export const SyllabusContainer = styled.section`
   margin: 1.5em;
   padding: 1.5em;
   border-radius: 1em;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
 `;
 
 export const Line = styled.div`

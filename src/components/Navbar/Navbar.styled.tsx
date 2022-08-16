@@ -24,7 +24,7 @@ export const StyledNavbarSection = styled.div`
   align-items: center;
   justify-content: start;
 
-  gap: 1em;
+  gap: 1.6em;
 
   img {
     max-width: 100%;
