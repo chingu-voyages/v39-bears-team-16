@@ -11,7 +11,7 @@ export const CardTopNav = styled.section`
   justify-content: space-between;
   align-items: center;
   background: ${({ theme }) => theme.color.white};
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
   font-size: 1.1rem;
   font-weight: 600;
   padding: 1em;
@@ -44,23 +44,23 @@ export const PlanNav = styled.section`
 `;
 
 export const OptionIcon = styled(BsThreeDotsVertical)`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
 `;
 
 export const HeartIcon = styled(BsHeart)`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
   font-size: 1rem;
   margin-right: 4px;
 `;
 
 export const HeartDisplay = styled.section`
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
   font-size: 0.8rem;
 `;
 
 export const PlanDescription = styled.section`
   font-size: 0.9rem;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
   background-color: ${({ theme }) => theme.color.white};
   overflow: hidden;
   white-space: nowrap;

@@ -56,7 +56,7 @@ export const HighlightMenuItem = styled(MenuItem)`
 export const UnderlineMenuItem = styled(MenuItem)`
   text-decoration: none;
   font-size: 1.1rem;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
   padding: 0.9em;
 
   &:hover {
