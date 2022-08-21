@@ -60,7 +60,7 @@ export const HeartDisplay = styled.section`
 
 export const PlanDescription = styled.section`
   font-size: 0.9rem;
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.darkGrey};
   background-color: ${({ theme }) => theme.color.white};
   overflow: hidden;
   white-space: nowrap;
