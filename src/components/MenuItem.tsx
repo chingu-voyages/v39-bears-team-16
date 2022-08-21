@@ -40,6 +40,7 @@ export const HighlightMenuItem = styled(MenuItem)`
   position: relative;
   text-decoration: none;
   font-size: 1.1rem;
+  font-weight: 400;
   color: ${({ theme }) => theme.color.black};
   display: flex;
   align-items: center;

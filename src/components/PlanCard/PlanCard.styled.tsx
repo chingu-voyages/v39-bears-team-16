@@ -13,7 +13,7 @@ export const CardTopNav = styled.section`
   background: ${({ theme }) => theme.color.white};
   color: ${({ theme }) => theme.color.black};
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 1em;
 `;
 

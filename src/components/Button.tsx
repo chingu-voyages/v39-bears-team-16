@@ -11,6 +11,7 @@ export const Button = styled.button`
   padding: 0.5em 1.5em;
   box-shadow: none;
   border: none;
+  font-weight: 500;
   transition: 0.3s;
   cursor: pointer;
 
@@ -23,6 +24,7 @@ export const Button = styled.button`
 export const PrimaryButton = styled(Button)`
   background-color: transparent;
   border-radius: 20px;
+  font-weight: 700;
   color: ${({ theme }) => theme.color.black};
   border: 1px solid ${({ theme }) => theme.color.black};
 
