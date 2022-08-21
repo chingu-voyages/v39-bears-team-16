@@ -2,10 +2,7 @@ import styled from 'styled-components';
 import { AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { BiTrash, BiPencil } from 'react-icons/bi';
 import { iconStyles } from 'components/Icon.styles';
-import {
-  StyledDescription,
-  StyledSubmissionInput,
-} from 'components/ClassCommon.styled';
+import { StyledDescription } from 'components/ClassCommon.styled';
 
 export const StyledEditorClassHeaderWrapper = styled.section`
   display: flex;
@@ -23,6 +20,7 @@ export const EditClassIcon = styled(BiPencil)`
 
 export const ClassworkIcon = styled(AiOutlineAppstoreAdd)`
   ${iconStyles}
+  cursor: unset;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.color.primary};
   margin: 0 1em;

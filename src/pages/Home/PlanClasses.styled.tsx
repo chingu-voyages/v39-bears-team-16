@@ -10,10 +10,14 @@ export const ImageBanner = styled.div`
   background-size: cover;
 `;
 
+export const PlanClassesPageContainer = styled.div`
+  max-width: 1500px;
+  margin: auto;
+`;
+
 export const PlanClassesContainer = styled.section`
   display: flex;
   flex-direction: column;
-  max-width: 100%;
   margin: 1.5em;
   padding: 1.5em;
   border-radius: 1em;

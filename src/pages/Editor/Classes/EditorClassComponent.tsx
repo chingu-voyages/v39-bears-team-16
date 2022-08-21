@@ -76,8 +76,8 @@ const EditorClassComponent = ({
                     risus sem sollicitudin lacus, ut interdum tellus elit sed
                     risus
                   </StyledDescription>
-                  <StyledClassworkResourceContainer>
-                    {type !== 'submission' && (
+                  {type !== 'submission' && (
+                    <StyledClassworkResourceContainer>
                       <StyledClassworkLink
                         href={link}
                         target="_blank"
@@ -85,8 +85,8 @@ const EditorClassComponent = ({
                       >
                         {link || 'https://www.youtube.com'}
                       </StyledClassworkLink>
-                    )}
-                  </StyledClassworkResourceContainer>
+                    </StyledClassworkResourceContainer>
+                  )}
                 </StyledClassworkDetails>
               </StyledClassworkContainer>
               {index !== classData.classworks.length - 1 && <Line />}

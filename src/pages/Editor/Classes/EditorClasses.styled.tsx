@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
+export const SyllabusPageContainer = styled.div`
+  max-width: 1500px;
+  margin: auto;
+`;
+
 export const SyllabusContainer = styled.section`
   display: flex;
   flex-direction: column;
-  max-width: 100%;
   margin: 1.5em;
   padding: 1.5em;
   border-radius: 1em;

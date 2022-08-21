@@ -13,6 +13,7 @@ import {
   PlanInfoHeadlineWrapper,
   PlanClassesContainer,
   ProgressBarContainer,
+  PlanClassesPageContainer,
 } from './PlanClasses.styled';
 import ClassComponent from './ClassComponent';
 
@@ -56,42 +57,47 @@ const PlanClasses = () => {
   return (
     <div>
       <ImageBanner src={planInfo?.thumbnail || PLAN_BANNER_IMG} />
-      <PlanClassesContainer>
-        <PlanInfoContainer>
-          <PlanInfoHeadlineWrapper>
-            <h1>{planInfo?.name}</h1>
-            <p>
-              {planInfo?.description} Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. It has survived not only five
-              centuries, but also the leap into electronic typesetting,
-              remaining essentially unchanged. It was popularised in the 1960s
-              with the release of Letraset sheets containing Lorem Ipsum
-              passages, and more recently with desktop publishing software like
-              Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-            <p>
-              Created by{' '}
-              <strong>
-                <i>{planInfo?.createdBy}</i>
-              </strong>
-            </p>
+      <PlanClassesPageContainer>
+        <PlanClassesContainer>
+          <PlanInfoContainer>
+            <PlanInfoHeadlineWrapper>
+              <h1>{planInfo?.name}</h1>
+              <p>
+                {planInfo?.description} Lorem Ipsum is simply dummy text of the
+                printing and typesetting industry. It has survived not only five
+                centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s
+                with the release of Letraset sheets containing Lorem Ipsum
+                passages, and more recently with desktop publishing software
+                like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+              <p>
+                Created by{' '}
+                <strong>
+                  <i>{planInfo?.createdBy}</i>
+                </strong>
+              </p>
 
-            {!hasProgress && (
-              <PrimaryButton onClick={onEnrollToPlan}>Enroll</PrimaryButton>
-            )}
-          </PlanInfoHeadlineWrapper>
-          <ProgressBarContainer>
-            <CircularProgress value={(planInfo?.progress ?? 0) * 100} />
-          </ProgressBarContainer>
-        </PlanInfoContainer>
-        <StyledClassesContainer>
-          {classes?.map(({ _id: classId, ...classData }) => (
-            <div key={classId}>
-              <ClassComponent isEnrolled={!planInfo?.progress} {...classData} />
-            </div>
-          ))}
-        </StyledClassesContainer>
-      </PlanClassesContainer>
+              {!hasProgress && (
+                <PrimaryButton onClick={onEnrollToPlan}>Enroll</PrimaryButton>
+              )}
+            </PlanInfoHeadlineWrapper>
+            <ProgressBarContainer>
+              <CircularProgress value={(planInfo?.progress ?? 0) * 100} />
+            </ProgressBarContainer>
+          </PlanInfoContainer>
+          <StyledClassesContainer>
+            {classes?.map(({ _id: classId, ...classData }) => (
+              <div key={classId}>
+                <ClassComponent
+                  isEnrolled={!planInfo?.progress}
+                  {...classData}
+                />
+              </div>
+            ))}
+          </StyledClassesContainer>
+        </PlanClassesContainer>
+      </PlanClassesPageContainer>
     </div>
   );
 };
