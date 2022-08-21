@@ -8,7 +8,7 @@ import { createClass, CreateClassProps } from 'api/classes';
 import { FormErrorMessages, StyledErrorMessage } from 'components/ErrorMessage';
 import { Form } from 'components/Form';
 import { Modal } from 'components/Modal/Modal';
-import { Button, PrimaryButton } from 'components/Button';
+import { TransparentButton, SecondaryButton } from 'components/Button';
 import { classValidationRules } from 'utilities/validation';
 
 export const AddNewClassForm = ({
@@ -50,11 +50,15 @@ export const AddNewClassForm = ({
       isOpen={isOpen}
       onCloseModal={toggle}
       primaryAction={
-        <PrimaryButton type="submit" form="addClassForm">
+        <SecondaryButton type="submit" form="addClassForm">
           Submit
-        </PrimaryButton>
+        </SecondaryButton>
       }
-      secondaryAction={<Button onClick={handleCancelModal}>Cancel</Button>}
+      secondaryAction={
+        <TransparentButton onClick={handleCancelModal}>
+          Cancel
+        </TransparentButton>
+      }
     >
       <Form id="addClassForm" onSubmit={handleSubmit(onSubmit)}>
         <InputField htmlFor="name">

@@ -4,7 +4,11 @@ import { AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
 import { Input, InputField, TextArea } from '../../components/Input';
 import { Modal } from '../../components/Modal/Modal';
-import { Button, PrimaryButton, WarningButton } from '../../components/Button';
+import {
+  TransparentButton,
+  SecondaryButton,
+  WarningButton,
+} from '../../components/Button';
 import { StyledErrorMessage } from '../../components/ErrorMessage';
 import { Form } from '../../components/Form';
 import { AddUpdatePlanProps } from '../../api/plans';
@@ -59,7 +63,9 @@ const DeletePlanModal = ({ onSubmit, name, isOpen, handleCloseModal }) => {
           Delete
         </WarningButton>
       }
-      secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
+      secondaryAction={
+        <TransparentButton onClick={handleCloseModal}>Cancel</TransparentButton>
+      }
       customStyles={{ content: { minHeight: 'fit-content' } }}
     >
       Are you sure you want to delete <strong>{name}</strong>?
@@ -123,15 +129,19 @@ export const EditorPlanModal = ({
     />
   ) : (
     <Modal
-      titleText={type === EditorModalTypes.Add ? 'Add New Plan' : 'Update Plan'}
+      titleText={
+        type === EditorModalTypes.Add ? 'Add New Plan' : 'Edit Plan Info'
+      }
       isOpen={isOpen}
       onCloseModal={handleCloseModal}
       primaryAction={
-        <PrimaryButton type="submit" form="add-update-plan-form">
-          Submit
-        </PrimaryButton>
+        <SecondaryButton type="submit" form="add-update-plan-form">
+          Save
+        </SecondaryButton>
       }
-      secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
+      secondaryAction={
+        <TransparentButton onClick={handleCloseModal}>Cancel</TransparentButton>
+      }
     >
       <Form id="add-update-plan-form" onSubmit={handleSubmit(onSubmit)}>
         <div>

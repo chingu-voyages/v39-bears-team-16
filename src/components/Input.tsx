@@ -21,7 +21,10 @@ export const InputField = styled.label`
   display: flex;
   gap: 0.5em;
   flex-direction: column;
-  font-weight: 700;
+
+  span {
+    font-weight: 500;
+  }
 `;
 
 export const TextArea = styled.textarea<InputFieldProps>`
@@ -35,6 +38,7 @@ export const TextArea = styled.textarea<InputFieldProps>`
   font-weight: 300;
   padding-left: 8px;
   padding-top: 8px;
+  letter-spacing: 1px;
 
   :focus {
     outline: none;

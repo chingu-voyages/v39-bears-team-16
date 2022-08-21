@@ -5,18 +5,9 @@ interface PillLabelProps {
 }
 
 export const PillLabel = styled.div<PillLabelProps>`
-  display: flex;
-  align-items: center;
-  gap: 0.7em;
-  justify-content: center;
   border-radius: 20px;
-  padding: 0.5em 1.5em;
-  box-shadow: none;
-  font-size: 1rem;
-  font-weight: 400;
-  transition: 0.3s;
-  cursor: pointer;
-
+  padding: 0.2em 0.8em;
+  font-size: 0.8rem;
   background-color: ${({ theme, type }) =>
     type === 'primary' ? theme.color.primary : theme.color.secondary};
   color: ${({ theme, type }) =>

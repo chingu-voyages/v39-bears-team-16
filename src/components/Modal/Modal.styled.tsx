@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ReactModal from 'react-modal';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { IoClose } from 'react-icons/io5';
 import { ThemeInterface } from 'types';
 import { iconStyles } from 'components/Icon.styles';
 
@@ -49,6 +49,8 @@ export const TitleContainer = styled.div`
 
 export const Title = styled.h2`
   color: ${({ theme }) => theme.color.black};
+  font-weight: 500;
+  font-size: 1.3rem;
   margin: 0;
 `;
 
@@ -63,14 +65,10 @@ export const Content = styled.div`
   }
 `;
 
-export const CloseButton = styled(AiOutlineCloseCircle)`
+export const CloseButton = styled(IoClose)`
   ${iconStyles}
   margin: 0 10px;
   color: ${({ theme }) => theme.color.black};
-  font-size: 2rem;
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
 `;
 
 export const StyledActionContainer = styled.div`

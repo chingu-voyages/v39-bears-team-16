@@ -13,11 +13,15 @@ export const StyledAccordionWrapper = styled.section`
   padding: 2em;
 `;
 
-export const StyledClassHeaderWrapper = styled.section`
+export const StyledAccordionHeaderContainer = styled.section`
   display: flex;
-  justify-content: space-between;
   padding: 0.5em;
   cursor: pointer;
+  width: 100%;
+`;
+
+export const StyledHeaderWrapper = styled.div`
+  width: 100%;
 `;
 
 interface ExpandArrowProps {

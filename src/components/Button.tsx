@@ -1,4 +1,3 @@
-import { FaArrowRight } from 'react-icons/fa';
 import styled from 'styled-components';
 
 export const Button = styled.button`
@@ -14,6 +13,8 @@ export const Button = styled.button`
   font-weight: 500;
   transition: 0.3s;
   cursor: pointer;
+  min-width: 8rem;
+  font-size: 0.9rem;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.lightSecondary};
@@ -21,10 +22,12 @@ export const Button = styled.button`
   }
 `;
 
-export const PrimaryButton = styled(Button)`
-  background-color: transparent;
+export const PillButton = styled(Button)`
   border-radius: 20px;
-  font-weight: 500;
+`;
+
+export const PrimaryButton = styled(PillButton)`
+  background-color: transparent;
   color: ${({ theme }) => theme.color.black};
   border: 1px solid ${({ theme }) => theme.color.black};
 
@@ -35,7 +38,7 @@ export const PrimaryButton = styled(Button)`
   }
 `;
 
-export const SuccessButton = styled(Button)`
+export const SuccessButton = styled(PillButton)`
   background-color: ${({ theme }) => theme.color.green};
   color: white;
 
@@ -45,7 +48,7 @@ export const SuccessButton = styled(Button)`
   }
 `;
 
-export const WarningButton = styled(Button)`
+export const WarningButton = styled(PillButton)`
   background-color: ${({ theme }) => theme.color.red};
   color: ${({ theme }) => theme.color.white};
 
@@ -54,17 +57,23 @@ export const WarningButton = styled(Button)`
   }
 `;
 
-export const InvertPrimaryButton = styled(Button)`
-  background-color: ${({ theme }) => theme.color.primary};
-  color: ${({ theme }) => theme.color.white};
+export const TransparentButton = styled(PillButton)`
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.color.darkGrey};
+  color: ${({ theme }) => theme.color.darkGrey};
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.darkPrimary};
-    color: ${({ theme }) => theme.color.white};
-    cursor: pointer;
+    background-color: ${({ theme }) => theme.color.lightGrey};
+    border: 1px solid ${({ theme }) => theme.color.lightGrey};
   }
 `;
 
-export const ArrowIcon = styled(FaArrowRight)`
-  font-size: 1.3rem;
+export const SecondaryButton = styled(PillButton)`
+  background-color: ${({ theme }) => theme.color.blue};
+  border-radius: 20px;
+  color: ${({ theme }) => theme.color.white};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.darkBlue};
+  }
 `;

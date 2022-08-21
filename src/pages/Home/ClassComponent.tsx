@@ -2,21 +2,23 @@ import React from 'react';
 import { ClassworkInterface } from 'types';
 import AccordionWrapper from 'components/Accordion/Accordion';
 import {
-  StyledClassHeaderWrapper,
   StyledClassTitle,
-  StyledClassDescription,
-  StyledClassworkTotal,
+  StyledDescription,
   StyledClassworkContainer,
   StyledClassworkTitle,
   StyledAccordionContentWrapper,
-  StyledFilledCheckmarkIcon,
-  StyledFilledCircleIcon,
-  StyledCheckmark,
   StyledClassworkDetails,
   StyledClassworkLink,
   StyledSubmissionInput,
-  StyledMarkDoneButton,
   Line,
+} from 'components/ClassCommon.styled';
+import {
+  StyledClassHeaderWrapper,
+  StyledClassworkTotal,
+  StyledFilledCheckmarkIcon,
+  StyledFilledCircleIcon,
+  StyledCheckmark,
+  StyledMarkDoneButton,
 } from './ClassComponent.styled';
 
 interface ClassComponentProps {
@@ -37,12 +39,12 @@ const ClassComponent = ({
       header={
         <StyledClassHeaderWrapper>
           <StyledClassTitle>{className}</StyledClassTitle>
-          <StyledClassDescription>
+          <StyledDescription>
             {classDescription}Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed
             dignissim, metus nec fringilla accumsan, risus sem sollicitudin
             lacus, ut interdum tellus elit sed risus
-          </StyledClassDescription>
+          </StyledDescription>
           <StyledClassworkTotal>
             {classworks.length} classworks
           </StyledClassworkTotal>
@@ -56,7 +58,6 @@ const ClassComponent = ({
             index
           ) => (
             <>
-              {console.log('idx', index, classworks.length - 1)}
               <StyledClassworkContainer key={classworkId}>
                 <StyledCheckmark>
                   {completed ? (
@@ -67,7 +68,13 @@ const ClassComponent = ({
                 </StyledCheckmark>
                 <StyledClassworkDetails>
                   <StyledClassworkTitle>{name}</StyledClassworkTitle>
-                  <p>{description}</p>
+                  <StyledDescription>
+                    {description}Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Etiam eu turpis molestie, dictum est a,
+                    mattis tellus. Sed dignissim, metus nec fringilla accumsan,
+                    risus sem sollicitudin lacus, ut interdum tellus elit sed
+                    risus
+                  </StyledDescription>
                   {type === 'submission' ? (
                     <StyledSubmissionInput
                       placeholder="Insert your submission link here"
@@ -79,7 +86,7 @@ const ClassComponent = ({
                       target="_blank"
                       rel="noreferrer noopener"
                     >
-                      {link}
+                      {link || 'https://www.youtube.com'}
                     </StyledClassworkLink>
                   )}
 

@@ -5,17 +5,17 @@ import { MdExplore } from 'react-icons/md';
 export const SidebarContainer = styled.div`
   background: rgba(197, 225, 255, 0.3);
   position: absolute;
-  top: 64px;
   left: 0;
   width: 15em;
   color: ${({ theme }) => theme.color.primary};
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 64px);
+  height: 100%;
 `;
 
 const iconStyles = {
-  fontSize: '1.5rem',
+  fontSize: '1.3rem',
   margin: '.175em',
   color: '#0b173d',
 };

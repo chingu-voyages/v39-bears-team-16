@@ -31,6 +31,8 @@ export interface PlanInterface {
   description: string;
   visible: boolean;
   progress: number;
+  likes: number;
+  tags: string[];
   createdBy: string;
 }
 

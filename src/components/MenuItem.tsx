@@ -7,14 +7,14 @@ interface MenuItemInterface extends NavLinkProps {
 }
 
 const highlightActiveStyle = (theme) => ({
-  fontWeight: '600',
+  fontWeight: '500',
   backgroundColor: 'rgba(197, 225, 255, 0.5)',
   borderLeft: `6px solid ${theme.color.primary}`,
 });
 
 const underlineActiveStyle = (theme) => ({
-  fontWeight: '600',
-  borderBottom: `4px solid ${theme.color.primary}`,
+  fontWeight: '500',
+  borderBottom: `6px solid ${theme.color.primary}`,
 });
 
 const MenuItem = ({ style, menuItemTheme, ...props }: MenuItemInterface) => {
@@ -39,8 +39,7 @@ const MenuItem = ({ style, menuItemTheme, ...props }: MenuItemInterface) => {
 export const HighlightMenuItem = styled(MenuItem)`
   position: relative;
   text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 1rem;
   color: ${({ theme }) => theme.color.black};
   display: flex;
   align-items: center;
@@ -56,8 +55,8 @@ export const HighlightMenuItem = styled(MenuItem)`
 
 export const UnderlineMenuItem = styled(MenuItem)`
   text-decoration: none;
-  font-size: 1.1rem;
-  color: ${({ theme }) => theme.color.black};
+  font-size: 1rem;
+  color: ${({ theme }) => theme.color.primary};
   padding: 0.9em;
 
   &:hover {

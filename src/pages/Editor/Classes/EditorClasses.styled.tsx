@@ -8,6 +8,7 @@ export const SyllabusContainer = styled.section`
   padding: 1.5em;
   border-radius: 1em;
   color: ${({ theme }) => theme.color.black};
+  margin-bottom: 5em;
 `;
 
 export const Line = styled.div`
@@ -28,8 +29,11 @@ export const SyllabusHeadline = styled.h1`
   font-weight: 500;
 `;
 
-export const Classes = styled.section`
+export const StyledClassesContainer = styled.section`
   display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
+  width: 100%;
+  flex-direction: column;
+  border-radius: 8px;
+  gap: 2em;
+  margin-top: 5em;
 `;

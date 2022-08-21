@@ -13,7 +13,7 @@ import ResetPassword from './pages/Authentication/ResetPassword';
 import MemberLayout from './pages/Member/MemberLayout';
 import Home from './pages/Home/Home';
 import EditorPlans from './pages/Editor/EditorPlans';
-import EditorClasses from './pages/Editor/EditorClasses';
+import EditorClasses from './pages/Editor/Classes/EditorClasses';
 import HomeEnrolled from './pages/Home/Enrolled/HomeEnrolled';
 import HomeFeatured from './pages/Home/Featured/HomeFeatured';
 import PlanClasses from './pages/Home/PlanClasses';

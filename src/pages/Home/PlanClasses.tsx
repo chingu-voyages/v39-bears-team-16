@@ -50,6 +50,9 @@ const PlanClasses = () => {
     fetchClasses();
   }, [fetchClasses]);
 
+  const hasProgress =
+    planInfo?.progress !== undefined && planInfo.progress >= 0;
+
   return (
     <div>
       <ImageBanner src={planInfo?.thumbnail || PLAN_BANNER_IMG} />
@@ -72,7 +75,8 @@ const PlanClasses = () => {
                 <i>{planInfo?.createdBy}</i>
               </strong>
             </p>
-            {!planInfo?.progress && (
+
+            {!hasProgress && (
               <PrimaryButton onClick={onEnrollToPlan}>Enroll</PrimaryButton>
             )}
           </PlanInfoHeadlineWrapper>

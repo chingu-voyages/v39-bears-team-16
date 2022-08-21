@@ -21,11 +21,12 @@ export const StyledDropDownMenuItemBody = styled.div`
   border-radius: 5px;
   z-index: 20;
   width: 150px;
+  border: 1px solid ${({ theme }) => theme.color.subtleWhite};
 `;
 
 export const StyledDropdownItem = styled(Button)`
   padding: 0.75em 1em;
-  font-size: 1rem;
+  font-size: 0.9rem;
   justify-content: start;
   width: 100%;
 `;

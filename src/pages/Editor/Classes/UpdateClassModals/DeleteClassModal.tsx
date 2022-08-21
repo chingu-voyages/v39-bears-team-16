@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { deleteClass } from 'api/classes';
 import { Modal } from 'components/Modal/Modal';
-import { Button, WarningButton } from 'components/Button';
+import { TransparentButton, WarningButton } from 'components/Button';
 import { ErrorMessageInterface } from 'types';
-import { deleteClassProps } from 'pages/Editor/Classes/classTypes';
+import { DeleteClassProps } from 'pages/Editor/Classes/classTypes';
 import { StyledErrorMessage } from 'components/ErrorMessage';
 
 const Container = styled.div`
@@ -29,7 +29,7 @@ export const DeleteClassModal = ({
   isOpen,
   toggle,
   fetchClasses,
-}: deleteClassProps) => {
+}: DeleteClassProps) => {
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
   );
@@ -50,7 +50,9 @@ export const DeleteClassModal = ({
       isOpen={isOpen}
       onCloseModal={toggle}
       primaryAction={<WarningButton onClick={handleSubmit}>Yes</WarningButton>}
-      secondaryAction={<Button onClick={toggle}>No</Button>}
+      secondaryAction={
+        <TransparentButton onClick={toggle}>No</TransparentButton>
+      }
       customStyles={{ content: { minHeight: 'fit-content' } }}
     >
       <Container>

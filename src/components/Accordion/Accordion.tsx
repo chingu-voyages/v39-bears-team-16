@@ -8,7 +8,8 @@ import {
 } from 'react-accessible-accordion';
 import {
   StyledAccordionWrapper,
-  StyledClassHeaderWrapper,
+  StyledAccordionHeaderContainer,
+  StyledHeaderWrapper,
   ExpandArrow,
   Appear,
 } from './Accordion.styled';
@@ -28,11 +29,10 @@ const AccordionWrapper = ({ header, children }: AccordionProps) => {
           <AccordionItemHeading onClick={() => setExpanded(!expanded)}>
             {/* accordion header */}
             <AccordionItemButton>
-              <StyledClassHeaderWrapper>
-                {header}
-
+              <StyledAccordionHeaderContainer>
+                <StyledHeaderWrapper>{header}</StyledHeaderWrapper>
                 <ExpandArrow state={expanded ? 'closed' : 'expanded'} />
-              </StyledClassHeaderWrapper>
+              </StyledAccordionHeaderContainer>
             </AccordionItemButton>
           </AccordionItemHeading>
 

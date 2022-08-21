@@ -4,9 +4,9 @@ import { PlanCard, StyledDropdownItem } from 'components';
 import { PlanInterface } from 'types';
 import { getPlans } from 'api/plans';
 import {
-  HomePlansPageContainer,
+  PlansPageContainer,
   StyledPlanCardsContainer,
-} from '../Home.styled';
+} from 'pages/Member/MemberLayout';
 
 const HomeEnrolled = () => {
   const [plans, setPlans] = useState<PlanInterface[]>();
@@ -23,7 +23,7 @@ const HomeEnrolled = () => {
   }, []);
 
   return (
-    <HomePlansPageContainer>
+    <PlansPageContainer>
       <StyledPlanCardsContainer>
         {plans?.map(({ _id, ...planData }: PlanInterface) => (
           <PlanCard
@@ -35,7 +35,7 @@ const HomeEnrolled = () => {
           />
         ))}
       </StyledPlanCardsContainer>
-    </HomePlansPageContainer>
+    </PlansPageContainer>
   );
 };
 

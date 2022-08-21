@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Input, InvertPrimaryButton } from 'components';
+import { Button, Input } from 'components';
 import { InputFieldProps } from 'types';
 
 export const AuthCard = styled.section`
@@ -16,6 +16,7 @@ export const AuthCard = styled.section`
   padding: 2em;
   background: ${({ theme }) => theme.color.white};
   border: 2px solid ${({ theme }) => theme.color.grey};
+  font-size: 0.9rem;
 `;
 
 export const AuthHeaderWrapper = styled.div`
@@ -40,7 +41,6 @@ export const AuthHead = styled.h1`
 
 export const AuthSpan = styled.span`
   color: ${({ theme }) => theme.color.black};
-  font-size: 1rem;
   font-weight: 200;
 `;
 
@@ -67,14 +67,21 @@ export const AuthInput = styled(Input)`
   border: none;
   width: 100%;
   &::placeholder {
-    color: ${({ theme }) => theme.color.black};
+    color: ${({ theme }) => theme.color.darkGrey};
     opacity: 1;
   }
 `;
 
-export const AuthButton = styled(InvertPrimaryButton)`
+export const AuthButton = styled(Button)`
   border-radius: 8px;
   height: 3rem;
+  background-color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.white};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.darkPrimary};
+    color: ${({ theme }) => theme.color.white};
+  }
 `;
 
 export const AuthFoot = styled.div`

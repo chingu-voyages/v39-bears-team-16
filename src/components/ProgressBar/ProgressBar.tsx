@@ -6,6 +6,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  gap: 1em;
 
   progress[value] {
     appearance: none;
