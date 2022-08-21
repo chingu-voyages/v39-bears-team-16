@@ -23,13 +23,9 @@ const PlanClasses = () => {
   const { planId } = useParams();
 
   const fetchClasses = useCallback(async () => {
-    try {
-      const { data } = await getPlanClasses(planId);
-      setPlanInfo(data.plan);
-      setClasses(data.plan.classes);
-    } catch (error) {
-      console.error(error);
-    }
+    const { data } = await getPlanClasses(planId);
+    setPlanInfo(data.plan);
+    setClasses(data.plan.classes);
   }, [planId]);
 
   const onEnrollToPlan = async () => {

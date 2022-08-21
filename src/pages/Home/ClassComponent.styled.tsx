@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BsCheckCircleFill, BsCircleFill } from 'react-icons/bs';
-import { Input, PrimaryButton } from 'components';
+import { PrimaryButton } from 'components';
 
 export const StyledClassHeaderWrapper = styled.section`
   display: flex;
