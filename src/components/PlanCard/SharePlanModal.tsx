@@ -34,6 +34,14 @@ const copy = async () => {
   await navigator.clipboard.writeText('');
 };
 
+export interface SharePlanProps {
+  className: string;
+  classID: string;
+  isOpen: boolean;
+  toggle(): void;
+  fetchClasses(): void;
+}
+
 export const SharePlanModal = ({
   className,
   isOpen,

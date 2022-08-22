@@ -53,11 +53,3 @@ export interface ClassHeaderDataProps {
   item: ClassComponentDataProps;
   fetchClasses(): void;
 }
-
-export interface SharePlanProps {
-  className: string;
-  classID: string;
-  isOpen: boolean;
-  toggle(): void;
-  fetchClasses(): void;
-}
