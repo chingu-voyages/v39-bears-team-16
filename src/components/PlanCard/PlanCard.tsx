@@ -15,6 +15,7 @@ import {
   PlanDescription,
   PlanImg,
 } from './PlanCard.styled';
+import { SharePlanModal } from './SharePlanModal';
 
 interface PlanCardProps extends PlanInterface {
   handleClick(): void;
@@ -49,6 +50,16 @@ export const PlanCard = ({
       <PlanNav>
         <PillLabel type="primary"> test label</PillLabel>
         <PillLabel type="secondary"> test label</PillLabel>
+        <PrimaryButton onClick={handleClick}>
+          Share
+          <SharePlanModal
+            className={''}
+            classID={''}
+            isOpen={true}
+            toggle={toggle}
+            fetchClasses={}
+          />
+        </PrimaryButton>
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>

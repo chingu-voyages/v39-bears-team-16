@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Modal } from '../../components/Modal/Modal';
-import { SharePlanProps } from 'pages/Editor/Classes/classTypes';
 
 const Container = styled.div`
   display: flex;
