@@ -61,7 +61,7 @@ export const Content = styled.div`
 
   input,
   textarea {
-    width: 100%;
+    width: 95%;
   }
 `;
 

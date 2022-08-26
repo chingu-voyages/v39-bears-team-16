@@ -4,6 +4,7 @@ export interface AddUpdatePlanProps {
   name: string;
   description: string;
   planId?: string;
+  tags?: string[];
 }
 
 export const getPlans = () => {
