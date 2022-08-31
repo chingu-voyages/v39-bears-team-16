@@ -12,7 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { StyledErrorMessage } from 'components/ErrorMessage';
 
 import { Modal } from 'components/Modal/Modal';
-import { PrimaryButton } from 'components/Button';
+import { PrimaryButton, LeftArrowButton } from 'components/Button';
 import {
   classValidationRules,
   classWorkValidationRules,
@@ -23,57 +23,8 @@ import {
   TrashIcon,
 } from 'pages/Editor/Classes/ClassComponent.styled';
 
-const StyledForm = styled.form`
-  margin: 0 5% 0 5%;
-  font-family: 'Poppins';
-  font-style: normal;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-`;
+import { StyledForm, Classworks, ClassWorkHeading, AddNewClassWorkBtn } from 'pages/Editor/Classes/styles'
 
-const Classworks = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const ClassWorkHeading = styled.div`
-  height: 50px;
-  background: ${({ theme }) => theme.color.secondary};
-  display: flex;
-  justify-content: space-between;
-  margin: 2px 0 2px 0;
-  padding: 10px;
-
-  span {
-    height: 30px;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 30px;
-    letter-spacing: 0.5px;
-  }
-`;
-const AddNewClassWorkBtn = styled(PrimaryButton)`
-  border-radius: 20px;
-  position: absolute;
-  left: 7%;
-`;
-const ReturnBtn = styled.button`
-  height: 21px;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-  margin: 2% 5% 2% 5%;
-  background-color: transparent;
-  color: ${({ theme }) => theme.color.primary};
-  padding: 0;
-  border: none;
-  &:hover {
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`;
 
 /* eslint no-underscore-dangle: 0 */
 
@@ -151,9 +102,9 @@ export const EditClassModal = ({
         },
       }}
     >
-      <ReturnBtn>
+      <LeftArrowButton onClick={handleCancelModal}>
         <LeftArrow /> back to Syllabus
-      </ReturnBtn>
+      </LeftArrowButton>
       <StyledForm id="EditClassForm" onSubmit={handleSubmit(onSubmit)}>
         <InputField htmlFor="name">
           <span>Class Title</span>

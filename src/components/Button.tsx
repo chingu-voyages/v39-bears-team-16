@@ -59,4 +59,26 @@ export const InvertPrimaryButton = styled(Button)`
     color: ${({ theme }) => theme.color.white};
     cursor: pointer;
   }
+
+
+  
+`
+
+export const LeftArrowButton = styled.button`
+  height: 21px;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  margin: 2% 5% 2% 5%;
+  background-color: transparent;
+  color: ${({ theme }) => theme.color.primary};
+  padding: 0;
+  border: none;
+  &:hover {
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;
+
+;
