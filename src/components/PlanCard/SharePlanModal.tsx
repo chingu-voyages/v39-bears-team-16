@@ -5,6 +5,7 @@ import {
   Text,
   ShareLinkContainer,
   CopyButton,
+  ShareLinkDisplay,
 } from './SharePlanModal.styled';
 
 export interface SharePlanProps {
@@ -37,7 +38,7 @@ export const SharePlanModal = ({ id, isOpen, toggle }: SharePlanProps) => {
       <Container>
         <Text>Share this Plan</Text>
         <ShareLinkContainer>
-          <div>{planUrl}</div>
+          <ShareLinkDisplay>{planUrl}</ShareLinkDisplay>
           <CopyButton onClick={copy}>{copyButtonText}</CopyButton>
         </ShareLinkContainer>
       </Container>
