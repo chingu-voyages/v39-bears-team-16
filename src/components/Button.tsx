@@ -24,7 +24,7 @@ export const Button = styled.button`
 export const PrimaryButton = styled(Button)`
   background-color: transparent;
   border-radius: 20px;
-  font-weight: 700;
+  font-weight: 500;
   color: ${({ theme }) => theme.color.black};
   border: 1px solid ${({ theme }) => theme.color.black};
 
