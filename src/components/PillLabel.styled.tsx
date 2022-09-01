@@ -13,6 +13,7 @@ export const PillLabel = styled.div<PillLabelProps>`
   padding: 0.5em 1.5em;
   box-shadow: none;
   font-size: 1rem;
+  font-weight: 400;
   transition: 0.3s;
   cursor: pointer;
 

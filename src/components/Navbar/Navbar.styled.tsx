@@ -41,4 +41,5 @@ export const LogoutIcon = styled(RiLogoutCircleLine)`
 `;
 export const SearchIcon = styled(RiSearchLine)`
   font-size: 1.4rem;
+  color: ${({ theme }) => theme.color.black};
 `;
