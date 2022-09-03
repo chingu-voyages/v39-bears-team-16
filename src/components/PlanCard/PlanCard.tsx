@@ -54,7 +54,6 @@ export const PlanCard = ({
       <PlanNav>
         <PillLabel type="primary"> test label</PillLabel>
         <PillLabel type="secondary"> test label</PillLabel>
-        <PrimaryButton onClick={toggle}>Share</PrimaryButton>
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>

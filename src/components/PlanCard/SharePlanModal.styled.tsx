@@ -9,29 +9,25 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.h4`
-  gap: 1em;
-  align-items: center;
   font-weight: 700;
   font-size: 1.25em;
-  span {
-    font-weight: bold;
-  }
 `;
 
 export const ShareLinkContainer = styled.div`
   display: flex;
   flex-grow: 1;
-  overflow: hidden;
-  font-family: 'Poppins';
-  font-weight: 400;
 `;
 
 export const ShareLinkDisplay = styled.div`
   padding: 0.75em;
   background-color: ${({ theme }) => theme.color.lightSecondary};
+  font-weight: 300;
+  word-break: break-all;
 `;
 
 export const CopyButton = styled(Button)`
   background-color: ${({ theme }) => theme.color.blue};
   color: ${({ theme }) => theme.color.white};
+  white-space: nowrap;
+  min-width: 15%;
 `;
