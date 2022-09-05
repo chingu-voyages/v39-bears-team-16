@@ -1,5 +1,6 @@
 import React from 'react';
 import { PillLabel } from 'components/PillLabel.styled';
+import { useModal } from 'components/Modal';
 import planCard1 from '../../assets/img/plan-card-1.png';
 import { PlanInterface } from '../../types';
 import { PrimaryButton, ArrowIcon } from '../Button';
@@ -15,6 +16,7 @@ import {
   PlanDescription,
   PlanImg,
 } from './PlanCard.styled';
+import { SharePlanModal } from './SharePlanModal';
 
 interface PlanCardProps extends PlanInterface {
   handleClick(): void;
@@ -23,10 +25,13 @@ interface PlanCardProps extends PlanInterface {
 
 export const PlanCard = ({
   name,
+  _id,
   handleClick,
   description,
   dropdownOptions,
 }: PlanCardProps) => {
+  const { isOpen, toggle } = useModal();
+
   return (
     <CardContainer>
       {/* Plan Info */}
@@ -52,6 +57,7 @@ export const PlanCard = ({
         <HeartIcon />
         <HeartDisplay />
       </PlanNav>
+      <SharePlanModal id={_id} toggle={toggle} isOpen={isOpen} />
     </CardContainer>
   );
 };

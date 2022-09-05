@@ -16,8 +16,8 @@ export interface ModalProps {
   isOpen: boolean;
   onCloseModal(): void;
   titleText: string;
-  primaryAction: ReactNode;
-  secondaryAction?: ReactNode | undefined;
+  primaryAction?: ReactNode;
+  secondaryAction?: ReactNode;
   children: ReactNode;
   customStyles?: ReactModal.Styles;
 }
