@@ -16,12 +16,8 @@ export const StyledDateString = styled.span`
   font-style: italic;
 `;
 
-export const StyledForm = styled.form`
+export const StyledForm = styled(Form)`
   margin: 0 5% 0 5%;
-  font-family: 'Poppins';
-  font-style: normal;
-  display: flex;
-  flex-direction: column;
   gap: 1em;
 `;
 
