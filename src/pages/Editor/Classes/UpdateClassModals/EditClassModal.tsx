@@ -1,30 +1,34 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import React, { useState } from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
-import styled from 'styled-components';
-import { Input, InputField, Select, TextArea, Option } from 'components/Input';
-import { ErrorMessageInterface } from 'types';
-import { EditClassModalProps } from 'pages/Editor/Classes/classTypes';
-import { CreateClassProps, editClass } from 'api/classes';
-import { v4 as uuidv4 } from 'uuid';
-import { StyledErrorMessage } from 'components/ErrorMessage';
+import React, { useState } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
+import styled from "styled-components";
+import { Input, InputField, Select, TextArea, Option } from "components/Input";
+import { ErrorMessageInterface } from "types";
+import { EditClassModalProps } from "pages/Editor/Classes/classTypes";
+import { CreateClassProps, editClass } from "api/classes";
+import { v4 as uuidv4 } from "uuid";
+import { StyledErrorMessage } from "components/ErrorMessage";
 
-import { Modal } from 'components/Modal/Modal';
-import { PrimaryButton, LeftArrowButton } from 'components/Button';
+import { Modal } from "components/Modal/Modal";
+import { PrimaryButton, LeftArrowButton } from "components/Button";
 import {
   classValidationRules,
   classWorkValidationRules,
-} from 'utilities/validation';
-import { FaPlus } from 'react-icons/fa';
+} from "utilities/validation";
+import { FaPlus } from "react-icons/fa";
 import {
   LeftArrow,
   TrashIcon,
-} from 'pages/Editor/Classes/ClassComponent.styled';
+} from "pages/Editor/Classes/ClassComponent.styled";
 
-import { StyledForm, Classworks, ClassWorkHeading, AddNewClassWorkBtn } from 'pages/Editor/Classes/styles'
-
+import {
+  StyledForm,
+  Classworks,
+  ClassWorkHeading,
+  AddNewClassWorkBtn,
+} from "pages/Editor/Classes/styles";
 
 /* eslint no-underscore-dangle: 0 */
 
@@ -44,10 +48,10 @@ export const EditClassModal = ({
     defaultValues: {
       classworks: item.classworks,
     },
-    mode: 'onChange',
+    mode: "onChange",
   });
   const { fields, append, remove } = useFieldArray({
-    name: 'classworks',
+    name: "classworks",
     control,
   });
 
@@ -87,8 +91,8 @@ export const EditClassModal = ({
           type="button"
           onClick={() =>
             append({
-              name: '',
-              description: '',
+              name: "",
+              description: "",
             })
           }
         >
@@ -97,8 +101,8 @@ export const EditClassModal = ({
       }
       customStyles={{
         content: {
-          height: '100vh',
-          width: '100vw',
+          height: "100vh",
+          width: "100vw",
         },
       }}
     >
@@ -111,9 +115,9 @@ export const EditClassModal = ({
           <Input
             type="text"
             id="name"
-            aria-invalid={errors.name ? 'true' : 'false'}
+            aria-invalid={errors.name ? "true" : "false"}
             placeholder="Enter Class Title"
-            {...register('name', classValidationRules.name)}
+            {...register("name", classValidationRules.name)}
             defaultValue={item.name}
           />
         </InputField>
@@ -126,9 +130,9 @@ export const EditClassModal = ({
           <span>Class Description</span>
           <TextArea
             id="description"
-            aria-invalid={errors.description ? 'true' : 'false'}
+            aria-invalid={errors.description ? "true" : "false"}
             placeholder="Enter Class description"
-            {...register('description', classValidationRules.description)}
+            {...register("description", classValidationRules.description)}
             defaultValue={item.description}
           />
         </InputField>
