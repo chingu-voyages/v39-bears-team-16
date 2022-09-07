@@ -12,13 +12,17 @@ import { v4 as uuidv4 } from 'uuid';
 import { StyledErrorMessage } from 'components/ErrorMessage';
 
 import { Modal } from 'components/Modal/Modal';
-import { Button, PrimaryButton } from 'components/Button';
+import {
+  TransparentButton,
+  PrimaryButton,
+  SecondaryButton,
+} from 'components/Button';
 import {
   classValidationRules,
   classWorkValidationRules,
 } from 'utilities/validation';
 import { FaPlus } from 'react-icons/fa';
-import { TrashIcon } from 'pages/Editor/Classes/ClassComponent.styled';
+import { TrashIcon } from 'pages/Editor/Classes/EditorClassComponent.styled';
 
 const StyledForm = styled.form`
   display: flex;
@@ -38,7 +42,7 @@ const Classworks = styled.div`
 /* eslint no-underscore-dangle: 0 */
 
 export const EditClassModal = ({
-  item,
+  classData,
   isOpen,
   toggle,
   fetchClasses,
@@ -51,7 +55,7 @@ export const EditClassModal = ({
     formState: { errors },
   } = useForm<CreateClassProps>({
     defaultValues: {
-      classworks: item.classworks,
+      classworks: classData.classworks,
     },
     mode: 'onChange',
   });
@@ -73,7 +77,7 @@ export const EditClassModal = ({
 
   const onSubmit = async (data: CreateClassProps) => {
     try {
-      await editClass(data, item._id);
+      await editClass(data, classData._id);
       fetchClasses();
       handleCancelModal();
     } catch (error) {
@@ -87,11 +91,15 @@ export const EditClassModal = ({
       isOpen={isOpen}
       onCloseModal={toggle}
       primaryAction={
-        <PrimaryButton type="submit" form="EditClassForm">
+        <SecondaryButton type="submit" form="EditClassForm">
           Submit
-        </PrimaryButton>
+        </SecondaryButton>
       }
-      secondaryAction={<Button onClick={handleCancelModal}>Cancel</Button>}
+      secondaryAction={
+        <TransparentButton onClick={handleCancelModal}>
+          Cancel
+        </TransparentButton>
+      }
       customStyles={{
         content: {
           height: '90vh',
@@ -107,7 +115,7 @@ export const EditClassModal = ({
             id="name"
             placeholder="Enter Class Title"
             {...register('name', classValidationRules.name)}
-            defaultValue={item.name}
+            defaultValue={classData.name}
           />
         </InputField>
         {errors.name?.message ? (
@@ -119,7 +127,7 @@ export const EditClassModal = ({
             id="description"
             placeholder="Enter Class description"
             {...register('description', classValidationRules.description)}
-            defaultValue={item.description}
+            defaultValue={classData.description}
           />
         </InputField>
         {errors.description?.message ? (
@@ -128,7 +136,7 @@ export const EditClassModal = ({
 
         {fields.map((field, index) => {
           return (
-            <div>
+            <div key={field.id}>
               <Classworks key={field.id}>
                 <InputField htmlFor="classworkName">
                   <span>Class Work {index + 1}</span>

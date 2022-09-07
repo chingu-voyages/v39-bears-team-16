@@ -2,14 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
-import { Input, InputField, TextArea } from '../../components/Input';
-import { Modal } from '../../components/Modal/Modal';
-import { Button, PrimaryButton, WarningButton } from '../../components/Button';
-import { StyledErrorMessage } from '../../components/ErrorMessage';
-import { Form } from '../../components/Form';
+import {
+  Input,
+  InputField,
+  TextArea,
+  Modal,
+  Form,
+  StyledErrorMessage,
+  TransparentButton,
+  SecondaryButton,
+  WarningButton,
+} from 'components';
 import { AddUpdatePlanProps } from '../../api/plans';
 import { ErrorMessageInterface } from '../../types';
 import { planValidationRules } from '../../utilities/validation';
+import {
+  StyledTagsContainer,
+  StyledTagItem,
+  StyledTagItemClose,
+  StyledInput,
+} from './EditorPlanModal.styled';
 
 export enum EditorModalTypes {
   Add = 'add',
@@ -41,11 +53,13 @@ export interface EditorPlanModalProps {
   submitCallback(payload): Promise<AxiosResponse<any, any>>;
   name?: string;
   description?: string;
+  tags?: string[];
 }
 
 const defaultPlanValues = {
   name: '',
   description: '',
+  tags: [],
 };
 
 const DeletePlanModal = ({ onSubmit, name, isOpen, handleCloseModal }) => {
@@ -59,7 +73,9 @@ const DeletePlanModal = ({ onSubmit, name, isOpen, handleCloseModal }) => {
           Delete
         </WarningButton>
       }
-      secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
+      secondaryAction={
+        <TransparentButton onClick={handleCloseModal}>Cancel</TransparentButton>
+      }
       customStyles={{ content: { minHeight: 'fit-content' } }}
     >
       Are you sure you want to delete <strong>{name}</strong>?
@@ -75,7 +91,9 @@ export const EditorPlanModal = ({
   fetchEditorPlans,
   name,
   description,
+  tags,
 }: EditorPlanModalProps) => {
+  const [tagsData, setTagsData] = useState<string[]>([]);
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
   );
@@ -87,6 +105,27 @@ export const EditorPlanModal = ({
     formState: { errors: formErrors },
   } = useForm<AddUpdatePlanProps>();
 
+  const handleAddTag = (e) => {
+    if (e.key === 'Enter') e.preventDefault();
+    if (e.key !== 'Enter') return;
+
+    const { value } = e.target;
+    if (!value.trim()) return;
+
+    setTagsData([...tagsData, value]);
+    e.target.value = '';
+  };
+
+  const handleRemoveTag = (tag) => {
+    setTagsData(tagsData.filter((tagItem) => tagItem !== tag));
+  };
+
+  useEffect(() => {
+    if (tags && tags.length > 0) {
+      setTagsData(tags);
+    }
+  }, [tags]);
+
   const handleCloseModal = () => {
     toggle();
     reset(defaultPlanValues);
@@ -94,7 +133,7 @@ export const EditorPlanModal = ({
 
   const onSubmit = async (payload: AddUpdatePlanProps) => {
     try {
-      await submitCallback(payload);
+      await submitCallback({ ...payload, tags: tagsData });
       fetchEditorPlans();
       handleCloseModal();
       toast.success(toastMsgMap[type].success, {
@@ -123,15 +162,19 @@ export const EditorPlanModal = ({
     />
   ) : (
     <Modal
-      titleText={type === EditorModalTypes.Add ? 'Add New Plan' : 'Update Plan'}
+      titleText={
+        type === EditorModalTypes.Add ? 'Add New Plan' : 'Edit Plan Info'
+      }
       isOpen={isOpen}
       onCloseModal={handleCloseModal}
       primaryAction={
-        <PrimaryButton type="submit" form="add-update-plan-form">
-          Submit
-        </PrimaryButton>
+        <SecondaryButton type="submit" form="add-update-plan-form">
+          Save
+        </SecondaryButton>
       }
-      secondaryAction={<Button onClick={handleCloseModal}>Cancel</Button>}
+      secondaryAction={
+        <TransparentButton onClick={handleCloseModal}>Cancel</TransparentButton>
+      }
     >
       <Form id="add-update-plan-form" onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -165,6 +208,28 @@ export const EditorPlanModal = ({
               {formErrors.description?.message}
             </StyledErrorMessage>
           ) : null}
+        </div>
+
+        <div>
+          <InputField htmlFor="tags">
+            <span>Tags</span>
+            <StyledTagsContainer>
+              {tagsData.map((tag) => (
+                <StyledTagItem key={tag} type="secondary">
+                  <span className="text">{tag}</span>
+                  <StyledTagItemClose onClick={() => handleRemoveTag(tag)}>
+                    x
+                  </StyledTagItemClose>
+                </StyledTagItem>
+              ))}
+              <StyledInput
+                type="text"
+                id="tags"
+                placeholder="Type a tag and hit enter"
+                onKeyDown={handleAddTag}
+              />
+            </StyledTagsContainer>
+          </InputField>
         </div>
         {errorMessages?.map(({ msg }) => (
           <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>

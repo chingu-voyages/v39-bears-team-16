@@ -46,13 +46,14 @@ export const Modal = ({
     >
       <TitleContainer>
         <Title>{titleText}</Title>
+        <CloseButton
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+          onClick={onCloseModal}
+        />
       </TitleContainer>
-      <CloseButton
-        type="button"
-        data-dismiss="modal"
-        aria-label="Close"
-        onClick={onCloseModal}
-      />
+
       <Content>{children}</Content>
       <StyledActionContainer>
         {secondaryAction}

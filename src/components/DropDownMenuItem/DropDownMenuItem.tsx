@@ -27,9 +27,9 @@ const DropDownMenuItem = ({
       <StyledDropDownMenuItemHeader onClick={() => setIsOpen(!isOpen)}>
         {header}
       </StyledDropDownMenuItemHeader>
-      <StyledDropDownMenuItemBody>
-        {isOpen && <div>{children}</div>}
-      </StyledDropDownMenuItemBody>
+      {isOpen && (
+        <StyledDropDownMenuItemBody>{children}</StyledDropDownMenuItemBody>
+      )}
     </StyledDropDownMenuItem>
   );
 };

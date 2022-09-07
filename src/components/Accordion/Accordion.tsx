@@ -8,14 +8,15 @@ import {
 } from 'react-accessible-accordion';
 import {
   StyledAccordionWrapper,
-  StyledClassHeaderWrapper,
+  StyledAccordionHeaderContainer,
+  StyledHeaderWrapper,
   ExpandArrow,
   Appear,
 } from './Accordion.styled';
 
 interface AccordionProps {
   header: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const AccordionWrapper = ({ header, children }: AccordionProps) => {
@@ -28,11 +29,10 @@ const AccordionWrapper = ({ header, children }: AccordionProps) => {
           <AccordionItemHeading onClick={() => setExpanded(!expanded)}>
             {/* accordion header */}
             <AccordionItemButton>
-              <StyledClassHeaderWrapper>
-                {header}
-
-                <ExpandArrow className={expanded ? 'closed' : 'expanded'} />
-              </StyledClassHeaderWrapper>
+              <StyledAccordionHeaderContainer>
+                <StyledHeaderWrapper>{header}</StyledHeaderWrapper>
+                <ExpandArrow state={expanded ? 'closed' : 'expanded'} />
+              </StyledAccordionHeaderContainer>
             </AccordionItemButton>
           </AccordionItemHeading>
 

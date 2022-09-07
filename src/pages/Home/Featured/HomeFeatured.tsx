@@ -4,9 +4,10 @@ import { PlanCard, StyledDropdownItem } from 'components';
 import { PlanInterface } from 'types';
 import { getPlans } from 'api/plans';
 import {
-  HomePlansPageContainer,
+  PlansPageContainer,
   StyledPlanCardsContainer,
-} from '../Home.styled';
+} from 'pages/Member/MemberLayout';
+import { getEnrolledPlans } from 'api/enrollments';
 
 const HomeEnrolled = () => {
   const [plans, setPlans] = useState<PlanInterface[]>();
@@ -15,7 +16,13 @@ const HomeEnrolled = () => {
   useEffect(() => {
     const fetchPlans = async () => {
       const { data } = await getPlans();
-      const visiblePlans = data.plans.filter(({ visible }) => visible);
+      const { data: enrolledPlans } = await getEnrolledPlans();
+      const visiblePlans = data.plans.filter(({ visible, _id }) => {
+        const enrolledToPlan = enrolledPlans.plans.some(
+          ({ _id: enrolledPlanId }) => _id === enrolledPlanId
+        );
+        return visible && !enrolledToPlan;
+      });
       setPlans(visiblePlans);
     };
 
@@ -23,7 +30,7 @@ const HomeEnrolled = () => {
   }, []);
 
   return (
-    <HomePlansPageContainer>
+    <PlansPageContainer>
       <StyledPlanCardsContainer>
         {plans?.map(({ _id, ...planData }: PlanInterface) => (
           <PlanCard
@@ -35,7 +42,7 @@ const HomeEnrolled = () => {
           />
         ))}
       </StyledPlanCardsContainer>
-    </HomePlansPageContainer>
+    </PlansPageContainer>
   );
 };
 

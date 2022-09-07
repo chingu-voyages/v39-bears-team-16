@@ -4,14 +4,11 @@ export interface AddUpdatePlanProps {
   name: string;
   description: string;
   planId?: string;
+  tags?: string[];
 }
 
 export const getPlans = () => {
   return api.get('/plans');
-};
-
-export const getEnrolledPlans = () => {
-  return api.get('/enrollments');
 };
 
 export const getOwnedPlans = () => {

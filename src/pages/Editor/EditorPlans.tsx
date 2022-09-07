@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { addNewPlan, getOwnedPlans, updatePlan, deletePlan } from 'api/plans';
 import {
   PlanCard,
@@ -10,12 +11,12 @@ import {
 } from 'components';
 import { PlanInterface, ErrorMessageInterface } from 'types';
 import { ERROR_MESSAGES } from 'utilities/constants';
-import { toast } from 'react-toastify';
-import { EditorModalTypes, EditorPlanModal } from './EditorPlanModal';
 import {
-  EditorPlansPageContainer,
+  PlansPageContainer,
   StyledPlanCardsContainer,
-} from './EditorPlans.styled';
+} from 'pages/Member/MemberLayout';
+import { EditorModalTypes, EditorPlanModal } from './EditorPlanModal';
+import { EditorPlansPageContentWrapper } from './EditorPlans.styled';
 
 const EditorPlans = () => {
   const navigate = useNavigate();
@@ -67,74 +68,77 @@ const EditorPlans = () => {
   }, [fetchEditorPlans]);
 
   return (
-    <EditorPlansPageContainer>
-      <PrimaryButton
-        onClick={() => {
-          toggle();
-          setModalData({
-            type: EditorModalTypes.Add,
-            submitCallback: (payload) => addNewPlan(payload),
-          });
-        }}
-      >
-        <FaPlus />
-        Add New Plan
-      </PrimaryButton>
-      <StyledPlanCardsContainer>
-        {plans?.map(({ _id: planId, ...planData }: PlanInterface) => (
-          <PlanCard
-            _id={planId}
-            key={planId}
-            handleClick={() => {
-              navigate(`/member/editor/plans/${planId}`, { replace: true });
-            }}
-            dropdownOptions={
-              <div>
-                <StyledDropdownItem
-                  onClick={() => {
-                    toggle();
-                    setModalData({
-                      type: EditorModalTypes.Update,
-                      submitCallback: (payload) =>
-                        updatePlan({ ...payload, planId }),
-                      ...planData,
-                    });
-                  }}
-                >
-                  Edit
-                </StyledDropdownItem>
-                <StyledDropdownItem
-                  onClick={() => {
-                    toggle();
-                    setModalData({
-                      type: EditorModalTypes.Delete,
-                      submitCallback: () => deletePlan({ planId }),
-                      ...planData,
-                    });
-                  }}
-                >
-                  Delete
-                </StyledDropdownItem>
-                <StyledDropdownItem
-                  onClick={() => toggleVisibility({ planId, ...planData })}
-                >
-                  {planData.visible ? 'Make private' : 'Make public'}
-                </StyledDropdownItem>
-              </div>
-            }
-            {...planData}
+    <PlansPageContainer>
+      <EditorPlansPageContentWrapper>
+        <PrimaryButton
+          onClick={() => {
+            toggle();
+            setModalData({
+              type: EditorModalTypes.Add,
+              submitCallback: (payload) => addNewPlan(payload),
+            });
+          }}
+        >
+          <FaPlus />
+          Add New Plan
+        </PrimaryButton>
+        <StyledPlanCardsContainer>
+          {plans?.map(({ _id: planId, ...planData }: PlanInterface) => (
+            <PlanCard
+              _id={planId}
+              key={planId}
+              canEdit
+              handleClick={() => {
+                navigate(`/member/editor/plans/${planId}`, { replace: true });
+              }}
+              dropdownOptions={
+                <div>
+                  <StyledDropdownItem
+                    onClick={() => {
+                      toggle();
+                      setModalData({
+                        type: EditorModalTypes.Update,
+                        submitCallback: (payload) =>
+                          updatePlan({ ...payload, planId }),
+                        ...planData,
+                      });
+                    }}
+                  >
+                    Edit
+                  </StyledDropdownItem>
+                  <StyledDropdownItem
+                    onClick={() => {
+                      toggle();
+                      setModalData({
+                        type: EditorModalTypes.Delete,
+                        submitCallback: () => deletePlan({ planId }),
+                        ...planData,
+                      });
+                    }}
+                  >
+                    Delete
+                  </StyledDropdownItem>
+                  <StyledDropdownItem
+                    onClick={() => toggleVisibility({ planId, ...planData })}
+                  >
+                    {planData.visible ? 'Make private' : 'Make public'}
+                  </StyledDropdownItem>
+                </div>
+              }
+              {...planData}
+            />
+          ))}
+        </StyledPlanCardsContainer>
+        {isOpen ? (
+          <EditorPlanModal
+            isOpen={isOpen}
+            toggle={toggle}
+            fetchEditorPlans={fetchEditorPlans}
+            {...modalData}
           />
-        ))}
-      </StyledPlanCardsContainer>
-      {isOpen ? (
-        <EditorPlanModal
-          isOpen={isOpen}
-          toggle={toggle}
-          fetchEditorPlans={fetchEditorPlans}
-          {...modalData}
-        />
-      ) : null}
-    </EditorPlansPageContainer>
+        ) : null}
+      </EditorPlansPageContentWrapper>
+    </PlansPageContainer>
   );
 };
 

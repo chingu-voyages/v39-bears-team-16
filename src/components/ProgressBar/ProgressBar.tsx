@@ -6,6 +6,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  gap: 1em;
 
   progress[value] {
     appearance: none;
@@ -21,13 +22,15 @@ const Container = styled.div`
     }
   }
 `;
+
 const Value = styled.span`
   font-style: italic;
 `;
 export interface progressProps {
   value: number;
 }
-const ProgressBar = ({ value }: progressProps) => {
+
+export const ProgressBar = ({ value }: progressProps) => {
   return (
     <Container>
       <progress value={value} max="100" />
@@ -35,5 +38,3 @@ const ProgressBar = ({ value }: progressProps) => {
     </Container>
   );
 };
-
-export default ProgressBar;

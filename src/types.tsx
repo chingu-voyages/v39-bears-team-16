@@ -9,12 +9,31 @@ export interface ErrorMessageInterface {
   param?: string;
 }
 
+export interface ClassworkInterface {
+  _id: string;
+  name: string;
+  link: string;
+  type: string;
+  description: string;
+  completed: boolean;
+}
+export interface ClassInterface {
+  _id: string;
+  name: string;
+  description: string;
+  classworks: ClassworkInterface[];
+}
+
 export interface PlanInterface {
   _id: string;
   name: string;
   thumbnail: string;
   description: string;
   visible: boolean;
+  progress: number;
+  likes: number;
+  tags: string[];
+  createdBy: string;
 }
 
 export interface ThemeInterface {
@@ -25,4 +44,9 @@ export interface ThemeInterface {
 
 export interface InputFieldProps {
   hasError?: boolean;
+}
+
+export enum ClassworkTypes {
+  ASSIGNMENT = 'assignment',
+  MATERIAL = 'material',
 }
