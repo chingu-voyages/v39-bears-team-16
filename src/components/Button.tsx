@@ -59,10 +59,7 @@ export const InvertPrimaryButton = styled(Button)`
     color: ${({ theme }) => theme.color.white};
     cursor: pointer;
   }
-
-
-  
-`
+`;
 
 export const LeftArrowButton = styled.button`
   height: 21px;
@@ -80,5 +77,3 @@ export const LeftArrowButton = styled.button`
     text-decoration: underline;
   }
 `;
-
-;

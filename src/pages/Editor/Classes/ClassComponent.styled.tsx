@@ -85,7 +85,7 @@ export const EditClassContentIcon = styled(AiOutlineEdit)`
 export const TrashIcon = styled(BiTrashAlt)`
   ${iconStyles}
   color: ${({ theme }) => theme.color.black};
-  font-size: 21px;
+  font-size: 1.313rem;
 `;
 
 export const AddClassContentIcon = styled(MdAdd)`
@@ -96,7 +96,7 @@ export const AddClassContentIcon = styled(MdAdd)`
 export const LeftArrow = styled(FaArrowLeft)`
   ${iconStyles}
   color: ${({ theme }) => theme.color.primary};
-  font-size: 15px;
+  font-size: 0.938rem;
 `;
 export const MaterialLists = styled.div`
   margin: 2rem;

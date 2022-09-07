@@ -41,13 +41,13 @@ export const ClassWorkHeading = styled.div`
   span {
     height: 30px;
     font-weight: 600;
-    font-size: 16px;
-    line-height: 30px;
-    letter-spacing: 0.5px;
+    font-size: 1rem;
+    line-height: 1.875rem;
+    letter-spacing: 0.031rem;
   }
 `;
 export const AddNewClassWorkBtn = styled(PrimaryButton)`
   border-radius: 20px;
   position: absolute;
-  left: 7%;
+  left: 15px;
 `;
