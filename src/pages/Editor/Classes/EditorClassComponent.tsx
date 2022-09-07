@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import { ClassworkTypes } from 'types';
 import AccordionWrapper from 'components/Accordion/Accordion';
 import { useModal } from 'components/Modal/useModal';
 
@@ -76,7 +77,7 @@ const EditorClassComponent = ({
                     risus sem sollicitudin lacus, ut interdum tellus elit sed
                     risus
                   </StyledDescription>
-                  {type !== 'submission' && (
+                  {type !== ClassworkTypes.ASSIGNMENT && (
                     <StyledClassworkResourceContainer>
                       <StyledClassworkLink
                         href={link}

@@ -45,3 +45,8 @@ export interface ThemeInterface {
 export interface InputFieldProps {
   hasError?: boolean;
 }
+
+export enum ClassworkTypes {
+  ASSIGNMENT = 'assignment',
+  MATERIAL = 'material',
+}

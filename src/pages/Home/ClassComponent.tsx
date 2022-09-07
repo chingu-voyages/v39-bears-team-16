@@ -1,5 +1,5 @@
 import React from 'react';
-import { ClassworkInterface } from 'types';
+import { ClassworkInterface, ClassworkTypes } from 'types';
 import AccordionWrapper from 'components/Accordion/Accordion';
 import {
   StyledClassTitle,
@@ -75,10 +75,10 @@ const ClassComponent = ({
                     risus sem sollicitudin lacus, ut interdum tellus elit sed
                     risus
                   </StyledDescription>
-                  {type === 'submission' ? (
+                  {type === ClassworkTypes.ASSIGNMENT ? (
                     <StyledSubmissionInput
-                      placeholder="Insert your submission link here"
-                      name="submission"
+                      placeholder="Insert your assignment submission link here"
+                      name="assignment-submission"
                     />
                   ) : (
                     <StyledClassworkLink
