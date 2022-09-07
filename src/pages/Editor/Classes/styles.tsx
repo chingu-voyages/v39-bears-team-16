@@ -1,13 +1,14 @@
-import { PrimaryButton } from 'components/Button';
-import styled from 'styled-components';
+import { PrimaryButton } from "components/Button";
+import { Form } from "components/Form";
+import styled from "styled-components";
 
 export const iconStyles = {
-  fontSize: '1.3rem',
-  opacity: '80%',
-  cursor: 'pointer',
-  transition: 'all ease 0.1s',
-  '&:hover': {
-    opacity: '100%',
+  fontSize: "1.3rem",
+  opacity: "80%",
+  cursor: "pointer",
+  transition: "all ease 0.1s",
+  "&:hover": {
+    opacity: "100%",
   },
 };
 
