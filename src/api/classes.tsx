@@ -1,15 +1,16 @@
+/* eslint-disable prettier/prettier */
 import api from './api';
 
 export interface CreateClassProps {
   name: string;
   description: string;
-  completed?: boolean; // to be removed once backend is updated
   classworks?: CreateClassWorkProps[] | undefined;
 }
 
 export interface CreateClassWorkProps {
   name: string;
   description: string;
+  type?: string;
 }
 
 // Class Apis

@@ -1,10 +1,11 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-bitwise */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import React, { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { Input, InputField, TextArea } from 'components/Input';
+import { Input, InputField, Select, TextArea, Option } from 'components/Input';
 import { ErrorMessageInterface } from 'types';
 import { EditClassModalProps } from 'pages/Editor/Classes/classTypes';
 import { CreateClassProps, editClass } from 'api/classes';
@@ -12,37 +13,24 @@ import { v4 as uuidv4 } from 'uuid';
 import { StyledErrorMessage } from 'components/ErrorMessage';
 
 import { Modal } from 'components/Modal/Modal';
-import {
-  TransparentButton,
-  PrimaryButton,
-  SecondaryButton,
-} from 'components/Button';
+import { PrimaryButton, LinkButton } from 'components/Button';
 import {
   classValidationRules,
   classWorkValidationRules,
 } from 'utilities/validation';
 import { FaPlus } from 'react-icons/fa';
-import { TrashIcon } from 'pages/Editor/Classes/EditorClassComponent.styled';
+import {
+  LeftArrow,
+  TrashIcon,
+} from 'pages/Editor/Classes/EditorClassComponent.styled';
 
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-`;
+import { StyledForm, Classworks, ClassWorkHeading, AddNewClassWorkBtn } from 'pages/Editor/Classes/styles'
 
-const Classworks = styled.div`
-  background: #fff;
-  border-radius: 4px;
-  padding: 1em;
-  overflow: hidden;
-  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25),
-    0 8px 1px -8px hsla(0, 0%, 0%, 0.1), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
-`;
 
 /* eslint no-underscore-dangle: 0 */
 
 export const EditClassModal = ({
-  classData,
+  item,
   isOpen,
   toggle,
   fetchClasses,
@@ -55,7 +43,7 @@ export const EditClassModal = ({
     formState: { errors },
   } = useForm<CreateClassProps>({
     defaultValues: {
-      classworks: classData.classworks,
+      classworks: item.classworks,
     },
     mode: 'onChange',
   });
@@ -77,8 +65,8 @@ export const EditClassModal = ({
 
   const onSubmit = async (data: CreateClassProps) => {
     try {
-      await editClass(data, classData._id);
-      fetchClasses();
+      await editClass(data, item._id);
+      await fetchClasses();
       handleCancelModal();
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);
@@ -87,59 +75,104 @@ export const EditClassModal = ({
 
   return (
     <Modal
-      titleText="Edit Class"
+      titleText=""
       isOpen={isOpen}
       onCloseModal={toggle}
       primaryAction={
-        <SecondaryButton type="submit" form="EditClassForm">
+        <PrimaryButton type="submit" form="EditClassForm">
           Submit
-        </SecondaryButton>
+        </PrimaryButton>
       }
       secondaryAction={
-        <TransparentButton onClick={handleCancelModal}>
-          Cancel
-        </TransparentButton>
+        <AddNewClassWorkBtn
+          type="button"
+          onClick={() =>
+            append({
+              name: '',
+              description: '',
+            })
+          }
+        >
+          <FaPlus /> New Class Work
+        </AddNewClassWorkBtn>
       }
       customStyles={{
         content: {
-          height: '90vh',
-          width: '90vw',
+          height: '100vh',
+          width: '100vw',
         },
       }}
     >
+      <LinkButton onClick={handleCancelModal}>
+        <LeftArrow /> back to Syllabus
+      </LinkButton>
       <StyledForm id="EditClassForm" onSubmit={handleSubmit(onSubmit)}>
         <InputField htmlFor="name">
           <span>Class Title</span>
           <Input
             type="text"
             id="name"
+            aria-invalid={errors.name ? 'true' : 'false'}
             placeholder="Enter Class Title"
             {...register('name', classValidationRules.name)}
-            defaultValue={classData.name}
+            defaultValue={item.name}
           />
         </InputField>
         {errors.name?.message ? (
-          <StyledErrorMessage>{errors.name?.message}</StyledErrorMessage>
+          <StyledErrorMessage role="alert">
+            {errors.name?.message}
+          </StyledErrorMessage>
         ) : null}
         <InputField htmlFor="description">
           <span>Class Description</span>
           <TextArea
             id="description"
+            aria-invalid={errors.description ? 'true' : 'false'}
             placeholder="Enter Class description"
             {...register('description', classValidationRules.description)}
-            defaultValue={classData.description}
+            defaultValue={item.description}
           />
         </InputField>
         {errors.description?.message ? (
-          <StyledErrorMessage>{errors.description?.message}</StyledErrorMessage>
+          <StyledErrorMessage role="alert">
+            {errors.description?.message}
+          </StyledErrorMessage>
         ) : null}
 
         {fields.map((field, index) => {
           return (
-            <div key={field.id}>
+            <div>
               <Classworks key={field.id}>
-                <InputField htmlFor="classworkName">
+                <ClassWorkHeading>
                   <span>Class Work {index + 1}</span>
+                  <TrashIcon type="button" onClick={() => remove(index)} />
+                </ClassWorkHeading>
+                <InputField htmlFor="type">
+                  <span> Type</span>
+                  <Select
+                    id="type"
+                    placeholder="Select Type"
+                    {...register(
+                      `classworks.${index}.type` as const,
+                      classWorkValidationRules.type
+                    )}
+                    defaultValue={field.type}
+                  >
+                    <Option value="material" selected>
+                      Material
+                    </Option>
+                    <Option value="submission">Submission</Option>
+                  </Select>
+                </InputField>
+                {errors.classworks?.map(({ type }, ind) =>
+                  ind === index ? (
+                    <StyledErrorMessage role="alert" key={uuidv4()}>
+                      {type?.message}
+                    </StyledErrorMessage>
+                  ) : null
+                )}
+                <InputField htmlFor="classworkName">
+                  <span> Title</span>
                   <Input
                     placeholder="name"
                     {...register(
@@ -151,12 +184,13 @@ export const EditClassModal = ({
                 </InputField>
                 {errors.classworks?.map(({ name }, ind) =>
                   ind === index ? (
-                    <StyledErrorMessage key={uuidv4()}>
+                    <StyledErrorMessage role="alert" key={uuidv4()}>
                       {name?.message}
                     </StyledErrorMessage>
                   ) : null
                 )}
                 <InputField htmlFor="classworkDescription">
+                  <span> Description</span>
                   <Input
                     placeholder="description"
                     {...register(
@@ -168,27 +202,17 @@ export const EditClassModal = ({
                 </InputField>
                 {errors.classworks?.map(({ description }, ind) =>
                   ind === index ? (
-                    <StyledErrorMessage key={uuidv4()}>
+                    <StyledErrorMessage role="alert" key={uuidv4()}>
                       {description?.message}
                     </StyledErrorMessage>
                   ) : null
                 )}
-                <TrashIcon type="button" onClick={() => remove(index)} />
               </Classworks>
             </div>
           );
         })}
-        <PrimaryButton
-          onClick={() =>
-            append({
-              name: '',
-              description: '',
-            })
-          }
-        >
-          <FaPlus /> New Class Work
-        </PrimaryButton>
       </StyledForm>
+
       {errorMessages?.map(({ msg }) => (
         <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
       ))}

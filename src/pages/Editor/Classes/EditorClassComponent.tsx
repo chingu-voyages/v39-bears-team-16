@@ -1,114 +1,62 @@
-import React, { useState } from 'react';
+/* eslint-disable prettier/prettier */
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ClassworkTypes } from 'types';
-import AccordionWrapper from 'components/Accordion/Accordion';
-import { useModal } from 'components/Modal/useModal';
-
 import {
+  StyledClassContainer,
   ClassworkIcon,
-  StyledEditorClassHeaderWrapper,
-  EditClassIcon,
-  TrashIcon,
-  StyledEditorClassDescription,
+  StyledClassItem,
+  StyledClassItemsContainer,
 } from 'pages/Editor/Classes/EditorClassComponent.styled';
+import AccordionWrapper from 'components/Accordion/Accordion';
+import ClassHeaderComponent from 'pages/Editor/Classes/EditorClassHeaderComponent';
 import {
-  StyledClassTitle,
-  StyledClassworkContainer,
-  StyledClassworkTitle,
-  StyledDescription,
-  StyledClassworkLink,
-  StyledClassworkDetails,
-  StyledAccordionContentWrapper,
-  StyledClassworkResourceContainer,
-  Line,
-} from 'components/ClassCommon.styled';
-import { EditClassModal } from 'pages/Editor/Classes/UpdateClassModals/EditClassModal';
-import { DeleteClassModal } from 'pages/Editor/Classes/UpdateClassModals/DeleteClassModal';
-import { EditorClassComponentProps } from './classTypes';
+  ClassComponentDataProps,
+  classesProps,
+  headerProps,
+  classWorkProps,
+} from 'pages/Editor/Classes/classTypes';
 
 /* eslint no-underscore-dangle: 0 */
 
-const EditorClassComponent = ({
-  classData,
-  fetchClasses,
-}: EditorClassComponentProps) => {
-  const { isOpen: deleteOpen, toggle: toggleDelete } = useModal();
-  const [editOpen, setEditOpen] = useState<boolean>(false);
-  const toggleEdit = () => {
-    setEditOpen(!editOpen);
+const getHeaderComponent = ({ item, fetchClasses }: headerProps) => {
+  return <ClassHeaderComponent item={item} fetchClasses={fetchClasses} />;
+};
+
+const EditorClassComponent = ({ classes, fetchClasses }: classesProps) => {
+  const classWorkDetails = (innerElement: classWorkProps) => {
+    if (innerElement.description) {
+      return (
+        <>
+          <ClassworkIcon /> {innerElement.type}
+          <ClassworkIcon /> {innerElement.name}
+          <ClassworkIcon /> {innerElement.description}
+        </>
+      );
+    }
+    return null;
   };
 
   return (
-    <AccordionWrapper
-      header={
-        <StyledEditorClassHeaderWrapper>
-          <StyledClassTitle>{classData.name}</StyledClassTitle>
-          <div>
-            <EditClassIcon onClick={toggleEdit} />
-            <TrashIcon
-              onClick={() => {
-                toggleDelete();
-              }}
-            />
-          </div>
-        </StyledEditorClassHeaderWrapper>
-      }
-    >
-      {/* accordion content */}
-      <StyledEditorClassDescription>
-        {classData.description}Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.
-        Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin
-        lacus, ut interdum tellus elit sed risus
-      </StyledEditorClassDescription>
-      <StyledAccordionContentWrapper>
-        {classData.classworks?.map(
-          ({ name, description, type, link }, index) => (
-            <div key={uuidv4()}>
-              <StyledClassworkContainer>
-                <ClassworkIcon />
-                <StyledClassworkDetails>
-                  <StyledClassworkTitle>{name}</StyledClassworkTitle>
-                  <StyledDescription>
-                    {description}Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Etiam eu turpis molestie, dictum est a,
-                    mattis tellus. Sed dignissim, metus nec fringilla accumsan,
-                    risus sem sollicitudin lacus, ut interdum tellus elit sed
-                    risus
-                  </StyledDescription>
-                  {type !== ClassworkTypes.ASSIGNMENT && (
-                    <StyledClassworkResourceContainer>
-                      <StyledClassworkLink
-                        href={link}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                      >
-                        {link || 'https://www.youtube.com'}
-                      </StyledClassworkLink>
-                    </StyledClassworkResourceContainer>
-                  )}
-                </StyledClassworkDetails>
-              </StyledClassworkContainer>
-              {index !== classData.classworks.length - 1 && <Line />}
-            </div>
-          )
-        )}
-      </StyledAccordionContentWrapper>
-      <EditClassModal
-        classData={classData}
-        isOpen={editOpen}
-        toggle={toggleEdit}
-        fetchClasses={fetchClasses}
-      />
-      <DeleteClassModal
-        className={classData.name}
-        classID={classData._id}
-        isOpen={deleteOpen}
-        toggle={toggleDelete}
-        fetchClasses={fetchClasses}
-      />
-    </AccordionWrapper>
+    <StyledClassContainer>
+      {classes?.map((item: ClassComponentDataProps) => (
+        <div key={item._id}>
+          <AccordionWrapper header={getHeaderComponent({ item, fetchClasses })}>
+            {/* accordion content */}
+
+            {item.classworks?.map((innerElement) => (
+              <div key={uuidv4()}>
+                <StyledClassItemsContainer>
+                  <StyledClassItem>
+                    {classWorkDetails(innerElement)}
+                  </StyledClassItem>
+                </StyledClassItemsContainer>
+              </div>
+            ))}
+          </AccordionWrapper>
+        </div>
+      ))}
+    </StyledClassContainer>
   );
 };
 
