@@ -4,7 +4,6 @@
 
 import React, { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
-import styled from 'styled-components';
 import { Input, InputField, Select, TextArea, Option } from 'components/Input';
 import { ErrorMessageInterface } from 'types';
 import { EditClassModalProps } from 'pages/Editor/Classes/classTypes';
