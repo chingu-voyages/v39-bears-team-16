@@ -86,7 +86,7 @@ export const LinkButton = styled.button`
   letter-spacing: 0.5px;
   margin: 2% 5% 2% 5%;
   background-color: transparent;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
   padding: 0;
   border: none;
   &:hover {

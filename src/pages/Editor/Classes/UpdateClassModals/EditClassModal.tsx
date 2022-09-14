@@ -10,9 +10,8 @@ import { EditClassModalProps } from 'pages/Editor/Classes/classTypes';
 import { CreateClassProps, editClass } from 'api/classes';
 import { v4 as uuidv4 } from 'uuid';
 import { StyledErrorMessage } from 'components/ErrorMessage';
-
 import { Modal } from 'components/Modal/Modal';
-import { PrimaryButton, LinkButton } from 'components/Button';
+import { LinkButton, SecondaryButton } from 'components/Button';
 import {
   classValidationRules,
   classWorkValidationRules,
@@ -78,9 +77,9 @@ export const EditClassModal = ({
       isOpen={isOpen}
       onCloseModal={toggle}
       primaryAction={
-        <PrimaryButton type="submit" form="EditClassForm">
-          Submit
-        </PrimaryButton>
+        <SecondaryButton type="submit" form="EditClassForm">
+          Save
+        </SecondaryButton>
       }
       secondaryAction={
         <AddNewClassWorkBtn
@@ -92,7 +91,7 @@ export const EditClassModal = ({
             })
           }
         >
-          <FaPlus /> New Class Work
+          <FaPlus /> Add New Classwork
         </AddNewClassWorkBtn>
       }
       customStyles={{
@@ -143,7 +142,7 @@ export const EditClassModal = ({
             <div>
               <Classworks key={field.id}>
                 <ClassWorkHeading>
-                  <span>Class Work {index + 1}</span>
+                  <span>Classwork {index + 1}</span>
                   <TrashIcon type="button" onClick={() => remove(index)} />
                 </ClassWorkHeading>
                 <InputField htmlFor="type">

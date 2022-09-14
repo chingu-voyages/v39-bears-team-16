@@ -8,7 +8,6 @@ export const Input = styled.input<InputFieldProps>`
   border-color: ${({ hasError, theme }) => hasError && theme.color.red};
   border-radius: 4px;
   min-height: 40px;
-  width: 11rem;
   color: ${({ theme }) => theme.color.black};
   font-weight: 300;
   padding-left: 8px;
@@ -22,6 +21,7 @@ export const Input = styled.input<InputFieldProps>`
 `;
 
 export const InputField = styled.label`
+
   display: flex;
   gap: 0.5em;
   flex-direction: column;
@@ -42,7 +42,6 @@ export const TextArea = styled.textarea<InputFieldProps>`
   border-color: ${({ hasError, theme }) => hasError && theme.color.red};
   border-radius: 4px;
   min-height: 8rem;
-  width: 11rem;
   color: ${({ theme }) => theme.color.black};
   font-weight: 300;
   padding-left: 8px;
@@ -61,6 +60,7 @@ export const TextArea = styled.textarea<InputFieldProps>`
 
 export const Select = styled.select<InputFieldProps>`
   position: relative;
+  width:95%;
   background: transparent;
   border: 1px solid ${({ theme }) => theme.color.grey};
   border-color: ${({ hasError, theme }) => hasError && theme.color.red};

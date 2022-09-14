@@ -7,7 +7,7 @@ import {
   SyllabusContainer,
   SyllabusHeadline,
   SyllabusHeadlineWrapper,
-} from 'pages/Editor/Classes/EditorUpdateClass.styled';
+} from 'pages/Editor/Classes/EditorClasses.styled';
 import { AddNewClassForm } from 'pages/Editor/Classes/UpdateClassModals/AddNewClassModal';
 import EditorClassComponent from 'pages/Editor/Classes/EditorClassComponent';
 import { useModal } from 'components/Modal/useModal';
@@ -17,7 +17,7 @@ import { ERROR_MESSAGES } from 'utilities/constants';
 import { getPlanClasses } from 'api/classes';
 import { PrimaryButton } from 'components/Button';
 
-const EditorUpdateClass = () => {
+const EditorClasses = () => {
   const { isOpen, toggle } = useModal();
   const [classes, setClasses] = useState<ClassComponentDataProps[]>([]);
   const { id } = useParams();
@@ -60,4 +60,4 @@ const EditorUpdateClass = () => {
   );
 };
 
-export default EditorUpdateClass;
+export default EditorClasses;

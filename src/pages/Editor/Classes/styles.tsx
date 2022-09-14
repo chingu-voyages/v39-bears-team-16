@@ -3,13 +3,13 @@ import { PrimaryButton } from 'components/Button';
 import styled from 'styled-components';
 
 export const iconStyles = {
-    fontSize: '1.3rem',
-    opacity: '80%',
-    cursor: 'pointer',
-    transition: 'all ease 0.1s',
-    '&:hover': {
-        opacity: '100%',
-    },
+  fontSize: '1.3rem',
+  opacity: '80%',
+  cursor: 'pointer',
+  transition: 'all ease 0.1s',
+  '&:hover': {
+    opacity: '100%',
+  },
 };
 
 export const StyledDateString = styled.span`
@@ -24,11 +24,13 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1em;
+
 `;
 
 export const Classworks = styled.div`
   display: flex;
   flex-direction: column;
+
 `;
 
 export const ClassWorkHeading = styled.div`
@@ -38,6 +40,7 @@ export const ClassWorkHeading = styled.div`
   justify-content: space-between;
   margin: 2px 0;
   padding: 10px;
+  width:95%;
   span {
     height: 30px;
     font-weight: 600;

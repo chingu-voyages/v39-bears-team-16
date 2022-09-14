@@ -13,7 +13,7 @@ import ResetPassword from './pages/Authentication/ResetPassword';
 import MemberLayout from './pages/Member/MemberLayout';
 import Home from './pages/Home/Home';
 import EditorPlans from './pages/Editor/EditorPlans';
-import EditorUpdateClass from './pages/Editor/Classes/EditorUpdateClass';
+import EditorClasses from './pages/Editor/Classes/EditorClasses';
 import HomeEnrolled from './pages/Home/Enrolled/HomeEnrolled';
 import HomeFeatured from './pages/Home/Featured/HomeFeatured';
 import PlanClasses from './pages/Home/PlanClasses';
@@ -54,7 +54,7 @@ const App = () => {
           </Route>
           <Route path="editor">
             <Route path="plans" element={<EditorPlans />} />
-            <Route path="plans/:id" element={<EditorUpdateClass />} />
+            <Route path="plans/:id" element={<EditorClasses />} />
             <Route index element={<Navigate to="plans" replace />} />
           </Route>
           <Route path="plans/:planId" element={<PlanClasses />} />
