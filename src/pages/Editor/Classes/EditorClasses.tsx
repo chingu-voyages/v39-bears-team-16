@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa';
 import {
-  Classes,
   Line,
   SyllabusContainer,
   SyllabusHeadline,
@@ -11,15 +10,15 @@ import {
 import { AddNewClassForm } from 'pages/Editor/Classes/UpdateClassModals/AddNewClassModal';
 import EditorClassComponent from 'pages/Editor/Classes/EditorClassComponent';
 import { useModal } from 'components/Modal/useModal';
-import { ClassComponentDataProps } from 'pages/Editor/Classes/classTypes';
-import { ErrorMessageInterface } from 'types';
+import { ErrorMessageInterface, ClassInterface } from 'types';
 import { ERROR_MESSAGES } from 'utilities/constants';
 import { getPlanClasses } from 'api/classes';
 import { PrimaryButton } from 'components/Button';
+import { StyledClassesContainer } from 'pages/Home/PlanClasses.styled';
 
 const EditorClasses = () => {
   const { isOpen, toggle } = useModal();
-  const [classes, setClasses] = useState<ClassComponentDataProps[]>([]);
+  const [classes, setClasses] = useState<ClassInterface[]>([]);
   const { id } = useParams();
 
   const fetchClasses = useCallback(async () => {
@@ -53,9 +52,16 @@ const EditorClasses = () => {
         />
       </SyllabusHeadlineWrapper>
       <Line />
-      <Classes>
-        <EditorClassComponent classes={classes} fetchClasses={fetchClasses} />
-      </Classes>
+      <StyledClassesContainer>
+        {classes?.map((classData) => (
+          <div key={classData._id}>
+            <EditorClassComponent
+              classData={classData}
+              fetchClasses={fetchClasses}
+            />
+          </div>
+        ))}
+      </StyledClassesContainer>
     </SyllabusContainer>
   );
 };

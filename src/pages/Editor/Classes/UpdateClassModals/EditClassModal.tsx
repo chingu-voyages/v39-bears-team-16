@@ -28,7 +28,7 @@ import { StyledForm, Classworks, ClassWorkHeading, AddNewClassWorkBtn } from 'pa
 /* eslint no-underscore-dangle: 0 */
 
 export const EditClassModal = ({
-  item,
+  classData,
   isOpen,
   toggle,
   fetchClasses,
@@ -41,7 +41,7 @@ export const EditClassModal = ({
     formState: { errors },
   } = useForm<CreateClassProps>({
     defaultValues: {
-      classworks: item.classworks,
+      classworks: classData.classworks,
     },
     mode: 'onChange',
   });
@@ -63,7 +63,7 @@ export const EditClassModal = ({
 
   const onSubmit = async (data: CreateClassProps) => {
     try {
-      await editClass(data, item._id);
+      await editClass(data, classData._id);
       await fetchClasses();
       handleCancelModal();
     } catch (error) {
@@ -113,7 +113,7 @@ export const EditClassModal = ({
             aria-invalid={errors.name ? 'true' : 'false'}
             placeholder="Enter Class Title"
             {...register('name', classValidationRules.name)}
-            defaultValue={item.name}
+            defaultValue={classData.name}
           />
         </InputField>
         {errors.name?.message ? (
@@ -128,7 +128,7 @@ export const EditClassModal = ({
             aria-invalid={errors.description ? 'true' : 'false'}
             placeholder="Enter Class description"
             {...register('description', classValidationRules.description)}
-            defaultValue={item.description}
+            defaultValue={classData.description}
           />
         </InputField>
         {errors.description?.message ? (
