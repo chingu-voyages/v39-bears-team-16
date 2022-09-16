@@ -66,4 +66,7 @@ export const classWorkValidationRules = {
   type: {
     required: 'Please select a valid Class Work type',
   },
+  link: {
+    required: 'Link is required',
+  },
 };

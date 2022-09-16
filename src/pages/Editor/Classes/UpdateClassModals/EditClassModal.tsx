@@ -90,6 +90,8 @@ export const EditClassModal = ({
             append({
               name: '',
               description: '',
+              link: '',
+              type: '',
             })
           }
         >
@@ -204,6 +206,24 @@ export const EditClassModal = ({
                   ind === index ? (
                     <StyledErrorMessage role="alert" key={uuidv4()}>
                       {description?.message}
+                    </StyledErrorMessage>
+                  ) : null
+                )}
+                <InputField htmlFor="classworkLink">
+                  <span> Link</span>
+                  <Input
+                    placeholder="Link"
+                    {...register(
+                      `classworks.${index}.link` as const,
+                      classWorkValidationRules.link
+                    )}
+                    defaultValue={field.link}
+                  />
+                </InputField>
+                {errors.classworks?.map(({ link }, ind) =>
+                  ind === index ? (
+                    <StyledErrorMessage role="alert" key={uuidv4()}>
+                      {link?.message}
                     </StyledErrorMessage>
                   ) : null
                 )}
