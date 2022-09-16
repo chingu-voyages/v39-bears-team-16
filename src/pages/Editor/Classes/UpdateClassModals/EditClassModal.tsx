@@ -50,9 +50,11 @@ export const EditClassModal = ({
     control,
   });
 
+
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
   );
+
 
   // ClassWork
 
@@ -65,7 +67,7 @@ export const EditClassModal = ({
     try {
       await editClass(data, classData._id);
       await fetchClasses();
-      handleCancelModal();
+      toggle();
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);
     }
