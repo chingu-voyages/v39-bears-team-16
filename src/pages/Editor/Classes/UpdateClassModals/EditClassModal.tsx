@@ -193,7 +193,7 @@ export const EditClassModal = ({
                 )}
                 <InputField htmlFor="classworkDescription">
                   <span> Description</span>
-                  <Input
+                  <TextArea
                     placeholder="description"
                     {...register(
                       `classworks.${index}.description` as const,
