@@ -232,7 +232,6 @@ export const EditClassModal = ({
           );
         })}
       </StyledForm>
-
       {errorMessages?.map(({ msg }) => (
         <StyledErrorMessage key={msg}>{msg}</StyledErrorMessage>
       ))}
