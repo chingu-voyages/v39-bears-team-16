@@ -10,7 +10,7 @@ export interface ErrorMessageInterface {
 }
 
 export interface ClassworkInterface {
-  _id: string;
+  _id?: string;
   name: string;
   link: string;
   type: string;

@@ -1,16 +1,13 @@
+/* eslint-disable prettier/prettier */
+import { ClassworkInterface } from 'types';
 import api from './api';
 
 export interface CreateClassProps {
   name: string;
   description: string;
-  completed?: boolean; // to be removed once backend is updated
-  classworks?: CreateClassWorkProps[] | undefined;
+  classworks?: ClassworkInterface[] | undefined;
 }
 
-export interface CreateClassWorkProps {
-  name: string;
-  description: string;
-}
 
 // Class Apis
 
@@ -50,12 +47,13 @@ export const editClass = (
 // ClassWorks
 
 export const createClassWorks = (
-  { name, description }: CreateClassWorkProps,
+  { name, description, link }: ClassworkInterface,
   classId: string | undefined
 ) => {
   return api.post(`classes/${classId}/classworks`, {
     classId,
     name,
     description,
+    link
   });
 };

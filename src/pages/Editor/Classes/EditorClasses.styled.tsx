@@ -1,18 +1,13 @@
 import styled from 'styled-components';
 
-export const SyllabusPageContainer = styled.div`
-  max-width: 1500px;
-  margin: auto;
-`;
-
 export const SyllabusContainer = styled.section`
   display: flex;
   flex-direction: column;
+  max-width: 100%;
   margin: 1.5em;
   padding: 1.5em;
   border-radius: 1em;
-  color: ${({ theme }) => theme.color.black};
-  margin-bottom: 5em;
+  color: ${({ theme }) => theme.color.primary};
 `;
 
 export const Line = styled.div`
@@ -33,11 +28,8 @@ export const SyllabusHeadline = styled.h1`
   font-weight: 500;
 `;
 
-export const StyledClassesContainer = styled.section`
+export const Classes = styled.section`
   display: flex;
-  width: 100%;
-  flex-direction: column;
-  border-radius: 8px;
-  gap: 2em;
-  margin-top: 5em;
+  justify-content: space-between;
+  margin-top: 50px;
 `;

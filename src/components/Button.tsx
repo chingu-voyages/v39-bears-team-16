@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import styled from 'styled-components';
 
 export const Button = styled.button`
@@ -75,5 +76,22 @@ export const SecondaryButton = styled(PillButton)`
 
   &:hover {
     background-color: ${({ theme }) => theme.color.darkBlue};
+  }
+`;
+
+export const LinkButton = styled.button`
+  height: 21px;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  margin: 2% 5% 2% 5%;
+  background-color: transparent;
+  color: ${({ theme }) => theme.color.black};
+  padding: 0;
+  border: none;
+  &:hover {
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
   }
 `;

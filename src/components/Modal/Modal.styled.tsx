@@ -78,4 +78,5 @@ export const StyledActionContainer = styled.div`
   flex-wrap: wrap;
   gap: 1em;
   padding-top: 1em;
+  padding-bottom: 1em;
 `;
