@@ -3,8 +3,11 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Input, InputField, TextArea } from 'components/Input';
 import { ErrorMessageInterface } from 'types';
-import { AddNewClassFormProps } from 'pages/Editor/Classes/classTypes';
-import { createClass, CreateClassProps } from 'api/classes';
+import {
+  AddNewClassFormProps,
+  EditorClassProps,
+} from 'pages/Editor/Classes/classTypes';
+import { createClass } from 'api/classes';
 import { FormErrorMessages, StyledErrorMessage } from 'components/ErrorMessage';
 import { Form } from 'components/Form';
 import { Modal } from 'components/Modal/Modal';
@@ -21,7 +24,7 @@ export const AddNewClassForm = ({
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<CreateClassProps>();
+  } = useForm<EditorClassProps>();
 
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
@@ -33,7 +36,7 @@ export const AddNewClassForm = ({
     toggle();
   };
 
-  const onSubmit = async (data: CreateClassProps) => {
+  const onSubmit = async (data: EditorClassProps) => {
     try {
       await createClass(data, id);
       reset();

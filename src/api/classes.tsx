@@ -1,13 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { ClassworkInterface } from 'types';
+
+import { EditorClassProps, EditorClassworkInterface } from 'pages/Editor/Classes/classTypes';
 import api from './api';
-
-export interface CreateClassProps {
-  name: string;
-  description: string;
-  classworks?: ClassworkInterface[] | undefined;
-}
-
 
 // Class Apis
 
@@ -16,7 +10,7 @@ export const getPlanClasses = (planId: string | undefined) => {
 };
 
 export const createClass = (
-  { name, description }: CreateClassProps,
+  { name, description }: EditorClassProps,
   planId: string | undefined
 ) => {
   return api.post(`/plans/${planId}/classes`, {
@@ -33,7 +27,7 @@ export const deleteClass = (
 };
 
 export const editClass = (
-  { name, description, classworks }: CreateClassProps,
+  { name, description, classworks }: EditorClassProps,
   classId: string | undefined
 ) => {
   return api.put(`/classes/${classId}`, {
@@ -47,7 +41,7 @@ export const editClass = (
 // ClassWorks
 
 export const createClassWorks = (
-  { name, description, link }: ClassworkInterface,
+  { name, description, link }: EditorClassworkInterface,
   classId: string | undefined
 ) => {
   return api.post(`classes/${classId}/classworks`, {

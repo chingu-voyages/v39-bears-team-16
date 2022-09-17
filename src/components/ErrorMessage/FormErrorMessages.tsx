@@ -12,7 +12,9 @@ export const FormErrorMessages = ({ errors }: ErrorProps) => {
       {Object.keys(errors).map((fieldName) => {
         return (
           <li key={fieldName}>
-            <StyledErrorMessage>{errors[fieldName].message}</StyledErrorMessage>
+            <StyledErrorMessage>
+              {errors[fieldName]?.message}
+            </StyledErrorMessage>
           </li>
         );
       })}

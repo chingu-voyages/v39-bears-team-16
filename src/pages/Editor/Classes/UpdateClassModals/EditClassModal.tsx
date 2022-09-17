@@ -6,8 +6,8 @@ import React, { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { Input, InputField, Select, TextArea, Option } from 'components/Input';
 import { ErrorMessageInterface } from 'types';
-import { EditClassModalProps } from 'pages/Editor/Classes/classTypes';
-import { CreateClassProps, editClass } from 'api/classes';
+import { EditClassModalProps, EditorClassProps } from 'pages/Editor/Classes/classTypes';
+import { editClass } from 'api/classes';
 import { v4 as uuidv4 } from 'uuid';
 import { StyledErrorMessage } from 'components/ErrorMessage';
 import { Modal } from 'components/Modal/Modal';
@@ -26,6 +26,8 @@ import { StyledForm, Classworks, ClassWorkHeading, AddNewClassWorkBtn } from 'pa
 
 
 /* eslint no-underscore-dangle: 0 */
+// https://github.com/react-hook-form/react-hook-form/issues/8653
+
 
 export const EditClassModal = ({
   classData,
@@ -39,7 +41,7 @@ export const EditClassModal = ({
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<CreateClassProps>({
+  } = useForm<EditorClassProps>({
     defaultValues: {
       classworks: classData.classworks,
     },
@@ -50,11 +52,9 @@ export const EditClassModal = ({
     control,
   });
 
-
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
   );
-
 
   // ClassWork
 
@@ -63,7 +63,7 @@ export const EditClassModal = ({
     toggle();
   };
 
-  const onSubmit = async (data: CreateClassProps) => {
+  const onSubmit = async (data: EditorClassProps) => {
     try {
       await editClass(data, classData._id);
       await fetchClasses();
