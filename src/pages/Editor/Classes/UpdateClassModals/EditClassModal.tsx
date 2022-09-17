@@ -50,9 +50,11 @@ export const EditClassModal = ({
     control,
   });
 
+
   const [errorMessages, setErrorMessages] = useState<ErrorMessageInterface[]>(
     []
   );
+
 
   // ClassWork
 
@@ -65,7 +67,7 @@ export const EditClassModal = ({
     try {
       await editClass(data, classData._id);
       await fetchClasses();
-      handleCancelModal();
+      toggle();
     } catch (error) {
       setErrorMessages(error as ErrorMessageInterface[]);
     }
@@ -88,6 +90,8 @@ export const EditClassModal = ({
             append({
               name: '',
               description: '',
+              link: '',
+              type: '',
             })
           }
         >
@@ -189,7 +193,7 @@ export const EditClassModal = ({
                 )}
                 <InputField htmlFor="classworkDescription">
                   <span> Description</span>
-                  <Input
+                  <TextArea
                     placeholder="description"
                     {...register(
                       `classworks.${index}.description` as const,
@@ -202,6 +206,24 @@ export const EditClassModal = ({
                   ind === index ? (
                     <StyledErrorMessage role="alert" key={uuidv4()}>
                       {description?.message}
+                    </StyledErrorMessage>
+                  ) : null
+                )}
+                <InputField htmlFor="classworkLink">
+                  <span> Link</span>
+                  <Input
+                    placeholder="Link"
+                    {...register(
+                      `classworks.${index}.link` as const,
+                      classWorkValidationRules.link
+                    )}
+                    defaultValue={field.link}
+                  />
+                </InputField>
+                {errors.classworks?.map(({ link }, ind) =>
+                  ind === index ? (
+                    <StyledErrorMessage role="alert" key={uuidv4()}>
+                      {link?.message}
                     </StyledErrorMessage>
                   ) : null
                 )}

@@ -1,13 +1,21 @@
 import { ClassInterface } from 'types';
 
-export interface AddNewClassFormProps {
-  isOpen: boolean;
-  toggle(): void;
-  fetchClasses(): void;
+export interface EditorClassProps {
+  _id?: string;
+  name: string;
+  description: string;
+  classworks: EditorClassworkInterface[];
 }
 
-export interface AddNewClassWorkFormProps {
-  classId: string | undefined;
+export interface EditorClassworkInterface {
+  _id?: string;
+  name: string;
+  link: string;
+  type: string;
+  description: string;
+}
+
+export interface AddNewClassFormProps {
   isOpen: boolean;
   toggle(): void;
   fetchClasses(): void;
@@ -22,7 +30,7 @@ export interface DeleteClassProps {
 }
 
 export interface EditClassModalProps {
-  classData: ClassInterface;
+  classData: EditorClassProps;
   isOpen: boolean;
   toggle(): void;
   fetchClasses(): void;
