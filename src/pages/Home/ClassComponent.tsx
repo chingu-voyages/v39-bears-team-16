@@ -22,31 +22,33 @@ import {
 } from './ClassComponent.styled';
 
 interface ClassComponentProps {
-  classworks: ClassworkInterface[];
+  classId: string;
+  classworks?: ClassworkInterface[];
   isEnrolled: boolean;
-  name: string;
-  description: string;
+  name?: string;
+  description?: string;
+  onMarkAsComplete(payload): void;
 }
 
 const ClassComponent = ({
+  classId,
   isEnrolled,
   classworks,
   name: className,
   description: classDescription,
+  onMarkAsComplete,
 }: ClassComponentProps) => {
+  const handleMarkDoneClick = ({ completed, classworkId }) => {
+    onMarkAsComplete({ classId, classworkId, val: completed ? 1 : 0 });
+  };
   return (
     <AccordionWrapper
       header={
         <StyledClassHeaderWrapper>
           <StyledClassTitle>{className}</StyledClassTitle>
-          <StyledDescription>
-            {classDescription}Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed
-            dignissim, metus nec fringilla accumsan, risus sem sollicitudin
-            lacus, ut interdum tellus elit sed risus
-          </StyledDescription>
+          <StyledDescription>{classDescription}</StyledDescription>
           <StyledClassworkTotal>
-            {classworks.length} classworks
+            {classworks?.length || 0} classworks
           </StyledClassworkTotal>
         </StyledClassHeaderWrapper>
       }
@@ -68,13 +70,7 @@ const ClassComponent = ({
                 </StyledCheckmark>
                 <StyledClassworkDetails>
                   <StyledClassworkTitle>{name}</StyledClassworkTitle>
-                  <StyledDescription>
-                    {description}Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Etiam eu turpis molestie, dictum est a,
-                    mattis tellus. Sed dignissim, metus nec fringilla accumsan,
-                    risus sem sollicitudin lacus, ut interdum tellus elit sed
-                    risus
-                  </StyledDescription>
+                  <StyledDescription>{description}</StyledDescription>
                   {type === ClassworkTypes.ASSIGNMENT ? (
                     <StyledSubmissionInput
                       placeholder="Insert your assignment submission link here"
@@ -91,8 +87,12 @@ const ClassComponent = ({
                   )}
 
                   {isEnrolled ? (
-                    <StyledMarkDoneButton>
-                      Mark as Complete
+                    <StyledMarkDoneButton
+                      onClick={() =>
+                        handleMarkDoneClick({ completed, classworkId })
+                      }
+                    >
+                      {completed ? 'Mark as Incomplete' : 'Mark as Complete'}
                     </StyledMarkDoneButton>
                   ) : null}
                 </StyledClassworkDetails>

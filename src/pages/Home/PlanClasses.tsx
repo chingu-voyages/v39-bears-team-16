@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { getPlanClasses } from 'api/classes';
+import { getPlanClasses, markClassworkAsComplete } from 'api/classes';
 import { enrollToPlan } from 'api/enrollments';
 import { ClassInterface, PlanInterface } from 'types';
 import { PrimaryButton, CircularProgress } from 'components';
@@ -43,6 +43,18 @@ const PlanClasses = () => {
     }
   };
 
+  const onMarkAsComplete = async (payload) => {
+    try {
+      await markClassworkAsComplete({
+        ...payload,
+        planId: planInfo?._id,
+      });
+      fetchClasses();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchClasses();
   }, [fetchClasses]);
@@ -58,15 +70,7 @@ const PlanClasses = () => {
           <PlanInfoContainer>
             <PlanInfoHeadlineWrapper>
               <h1>{planInfo?.name}</h1>
-              <p>
-                {planInfo?.description} Lorem Ipsum is simply dummy text of the
-                printing and typesetting industry. It has survived not only five
-                centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s
-                with the release of Letraset sheets containing Lorem Ipsum
-                passages, and more recently with desktop publishing software
-                like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
+              <p>{planInfo?.description}</p>
               <p>
                 Created by{' '}
                 <strong>
@@ -87,6 +91,8 @@ const PlanClasses = () => {
               <div key={classId}>
                 <ClassComponent
                   isEnrolled={!planInfo?.progress}
+                  onMarkAsComplete={onMarkAsComplete}
+                  classId={classId}
                   {...classData}
                 />
               </div>

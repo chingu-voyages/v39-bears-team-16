@@ -8,7 +8,6 @@ export interface CreateClassProps {
   classworks?: ClassworkInterface[] | undefined;
 }
 
-
 // Class Apis
 
 export const getPlanClasses = (planId: string | undefined) => {
@@ -54,6 +53,18 @@ export const createClassWorks = (
     classId,
     name,
     description,
-    link
+    link,
+  });
+};
+
+export const markClassworkAsComplete = ({
+  planId,
+  classId,
+  classworkId,
+  val,
+}) => {
+  return api.post(`classes/${classId}/classworks/${classworkId}`, {
+    planId,
+    val,
   });
 };
