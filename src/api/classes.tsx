@@ -57,14 +57,16 @@ export const createClassWorks = (
   });
 };
 
-export const markClassworkAsComplete = ({
-  planId,
-  classId,
-  classworkId,
-  val,
-}) => {
+export const markClassworkAsComplete = ({ planId, classId, classworkId }) => {
   return api.post(`classes/${classId}/classworks/${classworkId}`, {
     planId,
-    val,
+  });
+};
+
+export const markClassworkAsIncomplete = ({ planId, classId, classworkId }) => {
+  return api.delete(`classes/${classId}/classworks/${classworkId}`, {
+    data: {
+      planId,
+    },
   });
 };

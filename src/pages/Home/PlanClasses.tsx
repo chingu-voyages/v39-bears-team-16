@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { getPlanClasses, markClassworkAsComplete } from 'api/classes';
+import {
+  getPlanClasses,
+  markClassworkAsComplete,
+  markClassworkAsIncomplete,
+} from 'api/classes';
 import { enrollToPlan } from 'api/enrollments';
 import { ClassInterface, PlanInterface } from 'types';
 import { PrimaryButton, CircularProgress } from 'components';
@@ -36,7 +40,6 @@ const PlanClasses = () => {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     } catch (error) {
-      // setErrorMessages(error as ErrorMessageInterface[]);
       toast.error('Failed to enroll to plan', {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
@@ -55,12 +58,24 @@ const PlanClasses = () => {
     }
   };
 
+  const onMarkAsIncomplete = async (payload) => {
+    try {
+      await markClassworkAsIncomplete({
+        ...payload,
+        planId: planInfo?._id,
+      });
+      fetchClasses();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchClasses();
   }, [fetchClasses]);
 
   const hasProgress =
-    planInfo?.progress !== undefined && planInfo.progress >= 0;
+    planInfo?.planProgress !== undefined && planInfo.planProgress >= 0;
 
   return (
     <div>
@@ -83,15 +98,16 @@ const PlanClasses = () => {
               )}
             </PlanInfoHeadlineWrapper>
             <ProgressBarContainer>
-              <CircularProgress value={(planInfo?.progress ?? 0) * 100} />
+              <CircularProgress value={(planInfo?.planProgress ?? 0) * 100} />
             </ProgressBarContainer>
           </PlanInfoContainer>
           <StyledClassesContainer>
             {classes?.map(({ _id: classId, ...classData }) => (
               <div key={classId}>
                 <ClassComponent
-                  isEnrolled={!planInfo?.progress}
+                  isEnrolled={hasProgress}
                   onMarkAsComplete={onMarkAsComplete}
+                  onMarkAsIncomplete={onMarkAsIncomplete}
                   classId={classId}
                   {...classData}
                 />

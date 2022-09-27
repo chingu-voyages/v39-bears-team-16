@@ -15,12 +15,13 @@ export interface ClassworkInterface {
   link: string;
   type: string;
   description: string;
-  completed: boolean;
+  classworkProgress: 0 | 1;
 }
 export interface ClassInterface {
   _id: string;
   name: string;
   description: string;
+  classProgress: number;
   classworks: ClassworkInterface[];
 }
 
@@ -34,6 +35,7 @@ export interface PlanInterface {
   likes: number;
   tags: string[];
   createdBy: string;
+  planProgress: number;
 }
 
 export interface ThemeInterface {
