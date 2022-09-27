@@ -1,7 +1,6 @@
 import React from 'react';
-import { PillLabel } from 'components/PillLabel.styled';
+import { PillLabel, ProgressBar } from 'components';
 import { useModal } from 'components/Modal';
-import { ProgressBar } from 'components/ProgressBar';
 import PLAN_PLACEHOLDER from 'assets/img/plan-banner.jpeg';
 import { PlanInterface } from '../../types';
 import DropDownMenuItem from '../DropDownMenuItem/DropDownMenuItem';

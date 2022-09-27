@@ -10,3 +10,4 @@ export * from './Navbar';
 export * from './PlanCard';
 export * from './Sidebar';
 export * from './ProgressBar';
+export * from './PillLabel';

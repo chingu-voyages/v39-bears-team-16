@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Input } from 'components/Input';
-import { PillLabel } from 'components/PillLabel.styled';
+import { PillLabel } from 'components/PillLabel';
 import { IoCloseOutline } from 'react-icons/io5';
 
 export const StyledTagsContainer = styled.div`

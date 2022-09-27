@@ -15,5 +15,5 @@ export const enrollToPlan = ({ planId }: EnrollmentProps) => {
 };
 
 export const unenrollPlan = ({ planId }: EnrollmentProps) => {
-  return api.delete(`/enrollments/${planId}`, {});
+  return api.delete(`/enrollments/${planId}`);
 };
