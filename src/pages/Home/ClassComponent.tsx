@@ -21,6 +21,7 @@ import {
   StyledFilledCircleIcon,
   StyledCheckmark,
   StyledMarkDoneButton,
+  StyledClassTitleWrapper,
 } from './ClassComponent.styled';
 
 interface ClassComponentProps {
@@ -56,12 +57,12 @@ const ClassComponent = ({
     <AccordionWrapper
       header={
         <StyledClassHeaderWrapper>
-          <div>
+          <StyledClassTitleWrapper>
             <StyledClassTitle>{className}</StyledClassTitle>
             {classProgress === 1 ? (
               <PillLabel type="primary">Completed</PillLabel>
             ) : null}
-          </div>
+          </StyledClassTitleWrapper>
 
           <StyledDescription>{classDescription}</StyledDescription>
           <StyledClassworkTotal>

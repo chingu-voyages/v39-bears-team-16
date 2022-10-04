@@ -14,6 +14,12 @@ export const StyledClassHeaderWrapper = styled.section`
   }
 `;
 
+export const StyledClassTitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1em;
+`;
+
 export const StyledClassworkTotal = styled.span`
   font-size: 0.9rem;
 `;

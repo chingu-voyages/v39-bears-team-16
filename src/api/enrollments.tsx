@@ -5,15 +5,13 @@ export interface EnrollmentProps {
 }
 
 export const getEnrolledPlans = () => {
-  return api.get('/enrollments');
+  return api.get('/enrolments');
 };
 
 export const enrollToPlan = ({ planId }: EnrollmentProps) => {
-  return api.post('/enrollments', {
-    planId,
-  });
+  return api.post(`/enrolments/${planId}`);
 };
 
 export const unenrollPlan = ({ planId }: EnrollmentProps) => {
-  return api.delete(`/enrollments/${planId}`);
+  return api.delete(`/enrolments/${planId}`);
 };
